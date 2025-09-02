@@ -13,6 +13,10 @@ Generate framework-aligned security reports (OWASP Top 10, SANS Top 25, MITRE KE
 
 ## Usage (GitHub Action)
 
+### Quick Start (pin to a release tag)
+
+After we publish a release (e.g. `v0.1.0`), prefer pinning:
+
 ```yaml
 name: Framework Reports
 on:
@@ -27,7 +31,35 @@ jobs:
 			contents: read
 		steps:
 			- uses: actions/checkout@v4
-			- name: Generate reports
+			- name: Generate framework reports
+				uses: Pandante-Central/GHAS-Reporting-Engine@v0.1.0
+				with:
+					frameworks: owasp,sans,kev
+					output_format: both   # json | md | both
+					include_empty: false
+			- name: Upload reports artifact
+				uses: actions/upload-artifact@v4
+				with:
+					name: ghas-framework-reports
+						path: reports
+```
+
+### Using `main` (latest, potentially unstable)
+
+```yaml
+name: Framework Reports (Main)
+on:
+	workflow_dispatch: {}
+
+jobs:
+	report:
+		runs-on: ubuntu-latest
+		permissions:
+			security-events: read
+			contents: read
+		steps:
+			- uses: actions/checkout@v4
+			- name: Generate reports (main)
 				uses: Pandante-Central/GHAS-Reporting-Engine@main
 				with:
 					frameworks: owasp,sans,kev
@@ -39,6 +71,9 @@ jobs:
 					name: ghas-framework-reports
 					path: reports
 ```
+
+### Output
+The action writes JSON reports and (if requested) `summary.md`. The markdown is also appended to the GitHub Actions job summary when `output_format` includes `md`.
 
 ## Local Run
 
