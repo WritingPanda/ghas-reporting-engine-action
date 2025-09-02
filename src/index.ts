@@ -10,8 +10,10 @@ dotenv.config();
 
 async function run() {
   try {
-    const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
-    if (!token) throw new Error('GITHUB_TOKEN not provided');
+    const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN || process.env.INPUT_TOKEN;
+    if (!token) {
+      info('No GITHUB_TOKEN found in env or inputs; proceeding with empty alert set (add with: token: ${{ github.token }} in workflow).');
+    }
 
     const owner = getInput('owner') || process.env.GITHUB_REPOSITORY?.split('/')[0];
     const repo = getInput('repo') || process.env.GITHUB_REPOSITORY?.split('/')[1];
@@ -25,8 +27,13 @@ async function run() {
     const outputFormat = (getInput('output_format') || process.env.OUTPUT_FORMAT || 'json').toLowerCase(); // json | md | both
     const includeEmpty = (getInput('include_empty') || process.env.INCLUDE_EMPTY || 'true').toLowerCase() === 'true';
 
-    info(`Fetching alerts for ${owner}/${repo}`);
-    const alerts = await fetchAlerts({ token, owner, repo, since, until, includeDependabot });
+    let alerts: any[] = [];
+    if (token) {
+      info(`Fetching alerts for ${owner}/${repo}`);
+      alerts = await fetchAlerts({ token, owner, repo, since, until, includeDependabot });
+    } else {
+      alerts = [];
+    }
 
     info(`Building reports for frameworks: ${frameworks.join(', ')}`);
     const reports = await buildReports({ alerts, frameworks });
