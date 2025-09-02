@@ -1,0 +1,41 @@
+name: "GHAS Reporting Engine"
+description: "Generate framework-aligned security reports (OWASP Top 10, SANS Top 25, MITRE KEV Top 10) from GHAS alerts."
+author: "WritingPanda"
+runs:
+  using: "node20"
+  main: "dist/index.js"
+inputs:
+  token:
+    description: "GitHub token with security_events read access (defaults to GITHUB_TOKEN)"
+    required: false
+  owner:
+    description: "Repository owner (defaults to context.repo.owner)"
+    required: false
+  repo:
+    description: "Repository name (defaults to context.repo.repo)"
+    required: false
+  frameworks:
+    description: "Comma list of frameworks to report: owasp,sans,kev"
+    required: false
+    default: "owasp,sans,kev"
+  since:
+    description: "Only include alerts created at or after this ISO timestamp"
+    required: false
+  until:
+    description: "Only include alerts created before this ISO timestamp"
+    required: false
+  output_format:
+    description: "json | md | both"
+    required: false
+    default: "json"
+  include_empty:
+    description: "Include frameworks even if no alerts matched (true/false)"
+    required: false
+    default: "true"
+  include_dependabot:
+    description: "Include Dependabot (dependency) alerts (true/false)"
+    required: false
+    default: "true"
+branding:
+  icon: "shield"
+  color: "blue"

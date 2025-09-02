@@ -1,0 +1,41 @@
+{
+  "name": "ghas-reporting-engine",
+  "version": "1.0.0",
+  "description": "A reporting engine to get reports like OWASP Top 10, SANS Top 25, and MITRE Top 10 KEV from GHAS alerts.",
+  "keywords": [
+    "ghas"
+  ],
+  "homepage": "https://github.com/Pandante-Central/GHAS-Reporting-Engine#readme",
+  "bugs": {
+    "url": "https://github.com/Pandante-Central/GHAS-Reporting-Engine/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pandante-Central/GHAS-Reporting-Engine.git"
+  },
+  "license": "MIT",
+  "author": "WritingPanda",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "vitest run",
+    "md-from-json": "ts-node scripts/build_markdown_from_reports.ts",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "build": "^0.1.4",
+    "dotenv": "^17.2.1",
+    "octokit": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vitest": "^1.6.1"
+  }
+}
