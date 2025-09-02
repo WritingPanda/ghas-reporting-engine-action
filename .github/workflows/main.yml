@@ -1,0 +1,23 @@
+name: Framework Reports
+on:
+  workflow_dispatch:
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: read
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate reports
+        uses: Pandante-Central/GHAS-Reporting-Engine@main
+        with:
+          frameworks: owasp,sans,kev
+          output_format: md
+          include_empty: false
+      # - name: Upload artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: ghas-framework-reports
+      #     path: reports
