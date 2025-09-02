@@ -1,67 +1,57 @@
 name: "GHAS Reporting Engine"
-description: "Generate framework-aligned security reports (OWASP Top 10, SANS Top 25, MITRE KEV Top 10) from GHAS alerts."
-author: "WritingPanda"
-runs:
-  using: "composite"
-  steps:
-    - name: Setup Node
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
-    - name: Install production dependencies
-      shell: bash
-      run: |
-        if [ -f package-lock.json ]; then
-          npm ci --omit=dev
-        else
-          npm install --omit=dev
-        fi
-    - name: Run GHAS Reporting Engine
-      shell: bash
-      run: |
-        node dist/index.js
-      env:
-        GITHUB_TOKEN: ${{ inputs.token || github.token }}
-        OWNER: ${{ inputs.owner || github.repository_owner }}
-        REPO: ${{ inputs.repo || github.event.repository.name }}
-        FRAMEWORKS: ${{ inputs.frameworks }}
-        SINCE: ${{ inputs.since }}
-        UNTIL: ${{ inputs.until }}
-        OUTPUT_FORMAT: ${{ inputs.output_format }}
-        INCLUDE_EMPTY: ${{ inputs.include_empty }}
-        INCLUDE_DEPENDABOT: ${{ inputs.include_dependabot }}
-inputs:
-  token:
-    description: "GitHub token with security_events read access (defaults to GITHUB_TOKEN)"
-    required: false
-  owner:
-    description: "Repository owner (defaults to context.repo.owner)"
-    required: false
-  repo:
-    description: "Repository name (defaults to context.repo.repo)"
-    required: false
-  frameworks:
-    description: "Comma list of frameworks to report: owasp,sans,kev"
-    required: false
-    default: "owasp,sans,kev"
-  since:
-    description: "Only include alerts created at or after this ISO timestamp"
-    required: false
-  until:
-    description: "Only include alerts created before this ISO timestamp"
-    required: false
-  output_format:
-    description: "json | md | both"
-    required: false
-    default: "json"
-  include_empty:
-    description: "Include frameworks even if no alerts matched (true/false)"
-    required: false
-    default: "true"
-  include_dependabot:
-    description: "Include Dependabot (dependency) alerts (true/false)"
-    required: false
-    default: "true"
+description: "Generate compliance reports from GitHub Advanced Security CodeQL alerts aligned with OWASP Top 10, SANS Top 25, and MITRE KEV frameworks"
 branding:
   icon: "shield"
   color: "blue"
+
+inputs:
+  token:
+    description: "GitHub token with security_events:read and repo:read permissions"
+    required: false
+    default: ${{ github.token }}
+
+  organization:
+    description: "GitHub organization to scan (mutually exclusive with enterprise)"
+    required: false
+
+  enterprise:
+    description: "GitHub enterprise to scan (mutually exclusive with organization)"
+    required: false
+
+  frameworks:
+    description: "Comma-separated list of frameworks to analyze (owasp, sans, kev)"
+    required: false
+    default: "owasp,sans,kev"
+
+  output_format:
+    description: "Output format for reports (markdown, json)"
+    required: false
+    default: "markdown"
+
+  include_empty:
+    description: "Include categories with zero alerts in reports"
+    required: false
+    default: "false"
+
+  since_date:
+    description: "Only include alerts created after this date (ISO 8601 format: YYYY-MM-DD)"
+    required: false
+
+  until_date:
+    description: "Only include alerts created before this date (ISO 8601 format: YYYY-MM-DD)"
+    required: false
+
+  repositories:
+    description: "Comma-separated list of specific repositories to scan (optional filter)"
+    required: false
+
+outputs:
+  reports_generated:
+    description: "Number of reports generated"
+
+  report_summary:
+    description: "Summary of the generated reports"
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
