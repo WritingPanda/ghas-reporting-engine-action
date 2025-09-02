@@ -2,8 +2,26 @@ name: "GHAS Reporting Engine"
 description: "Generate framework-aligned security reports (OWASP Top 10, SANS Top 25, MITRE KEV Top 10) from GHAS alerts."
 author: "WritingPanda"
 runs:
-  using: "node20"
-  main: "dist/index.js"
+  using: "composite"
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+    - name: Run GHAS Reporting Engine
+      shell: bash
+      run: |
+        node dist/index.js
+      env:
+        GITHUB_TOKEN: ${{ inputs.token || github.token }}
+        OWNER: ${{ inputs.owner || github.repository_owner }}
+        REPO: ${{ inputs.repo || github.event.repository.name }}
+        FRAMEWORKS: ${{ inputs.frameworks }}
+        SINCE: ${{ inputs.since }}
+        UNTIL: ${{ inputs.until }}
+        OUTPUT_FORMAT: ${{ inputs.output_format }}
+        INCLUDE_EMPTY: ${{ inputs.include_empty }}
+        INCLUDE_DEPENDABOT: ${{ inputs.include_dependabot }}
 inputs:
   token:
     description: "GitHub token with security_events read access (defaults to GITHUB_TOKEN)"
