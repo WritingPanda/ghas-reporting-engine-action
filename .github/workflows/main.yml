@@ -22,6 +22,9 @@ jobs:
           frameworks: owasp,sans,kev
           output_format: md
           include_empty: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
       # - name: Upload artifact
       #   uses: actions/upload-artifact@v4
       #   with:
