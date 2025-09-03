@@ -42,6 +42,7 @@ jobs:
           organization: ${{ github.event.inputs.organization }}
           frameworks: ${{ github.event.inputs.frameworks || 'owasp,sans,kev' }}
           output_format: 'markdown'
+          token: ${{ github.token }}
           include_empty: true
       
       - name: Upload reports

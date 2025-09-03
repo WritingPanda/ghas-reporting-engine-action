@@ -5,6 +5,11 @@ branding:
   color: "blue"
 
 inputs:
+  token:
+    description: "GitHub token with security_events:read and repo:read permissions"
+    required: true
+    default: ${{ github.token }}
+
   organization:
     description: "GitHub organization to scan (mutually exclusive with enterprise)"
     required: false
