@@ -190,7 +190,7 @@ export class GitHubClient {
         repo
       });
 
-      this.logger.debug(`Advanced Security status for ${owner}/${repo}: ${response.data.security_and_analysis?.advanced_security?.status}`);
+      this.logger.debug(`Advanced Security status for ${owner}/${repo}: ${response}`);
 
       // return response.data.security_and_analysis?.advanced_security?.status === 'enabled';
       return true;
