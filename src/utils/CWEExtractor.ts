@@ -15,6 +15,7 @@ export class CWEExtractor {
       for (const tag of alert.rule.tags) {
         const cweMatch = tag.match(/external\/cwe\/cwe-(\d+)/i);
         if (cweMatch) {
+          console.debug(`Found CWE: CWE-${cweMatch[1]}`);
           cwes.push(`CWE-${cweMatch[1]}`);
         }
       }
