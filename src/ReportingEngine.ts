@@ -261,6 +261,51 @@ export class ReportingEngine {
     lines.push('3. Set up regular monitoring to track progress over time');
     lines.push('');
 
+    // Add detailed alert listings by CWE for each framework
+    for (const report of reports) {
+      lines.push(`### Detailed Alerts for ${report.framework}`);
+      for (const mapping of report.mappings) {
+        if (mapping.alertCount === 0) continue;
+        // Group alerts by CWE
+        const cweToAlerts: Record<string, CodeQLAlert[]> = {};
+        for (const alert of mapping.alerts) {
+          // Extract CWEs for this alert
+          const cwes = alert.rule.tags?.filter(tag => tag.match(/CWE-\d+/i))?.map(tag => tag.match(/CWE-\d+/i)?.[0]) || [];
+          // Fallback to extracting from name/description/classifications
+          if (cwes.length === 0 && alert.rule.name) {
+            const matches = alert.rule.name.match(/CWE-\d+/gi);
+            if (matches) cwes.push(...matches);
+          }
+          if (cwes.length === 0 && alert.rule.description) {
+            const matches = alert.rule.description.match(/CWE-\d+/gi);
+            if (matches) cwes.push(...matches);
+          }
+          if (cwes.length === 0 && alert.most_recent_instance.classifications) {
+            for (const classification of alert.most_recent_instance.classifications) {
+              const match = classification.match(/CWE-\d+/i);
+              if (match) cwes.push(match[0]);
+            }
+          }
+          // If no CWE found, group under 'Unmapped'
+          if (cwes.length === 0) cwes.push('Unmapped');
+          for (const cweRaw of cwes) {
+            const cwe = typeof cweRaw === 'string' && cweRaw ? cweRaw : 'Unmapped';
+            if (!cweToAlerts[cwe]) cweToAlerts[cwe] = [];
+            cweToAlerts[cwe].push(alert);
+          }
+        }
+        // Output each CWE and its alerts
+        for (const [cwe, cweAlerts] of Object.entries(cweToAlerts)) {
+          lines.push(`#### ${cwe}`);
+          lines.push('');
+          for (const alert of cweAlerts) {
+            lines.push(`- [${alert.rule.name}](${alert.html_url}) in [${alert.repository?.full_name || 'unknown'}]`);
+          }
+          lines.push('');
+        }
+      }
+    }
+
     this.summaryText = lines.join('\n');
   }
 
