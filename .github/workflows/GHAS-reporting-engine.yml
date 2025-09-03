@@ -1,11 +1,5 @@
-name: Test GHAS Reporting Engine
+name: GHAS Reporting Engine
 on:
-  # push:
-  #   branches:
-  #     - main
-  # pull_request:
-  #   branches:
-  #     - main
   workflow_dispatch:
     inputs:
       organization:
@@ -16,16 +10,14 @@ on:
         description: 'Frameworks to test'
         required: false
         default: 'owasp,sans,kev'
-permissions:
-  contents: read
-  security-events: read
 
 jobs:
-  test:
+  generate_reports:
     runs-on: ubuntu-latest
     permissions:
-      security-events: read
+      security-events: write
       contents: read
+      actions: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -45,14 +37,13 @@ jobs:
           npm run bundle
       
       - name: Test with sample organization
+        
         uses: ./
         with:
           organization: ${{ github.event.inputs.organization }}
           frameworks: ${{ github.event.inputs.frameworks || 'owasp,sans,kev' }}
           output_format: 'markdown'
           include_empty: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Upload reports
         uses: actions/upload-artifact@v4
