@@ -3,21 +3,20 @@ on:
   workflow_dispatch:
     inputs:
       organization:
-        description: 'Organization to scan'
-        required: false
-        default: 'Pandante-Central'
+        description: 'Organization or Enterprise to scan'
       frameworks:
         description: 'Frameworks to test'
-        required: false
         default: 'owasp,sans,kev'
 
 jobs:
   generate_reports:
     runs-on: ubuntu-latest
     permissions:
-      security-events: write
+      security-events: read
       contents: read
       actions: read
+      pull-requests: read
+      issues: read
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,9 +34,9 @@ jobs:
         run: |
           npm run build
           npm run bundle
-      
-      - name: Test with sample organization
-        
+
+      - name: Generate ${{ github.event.inputs.frameworks }} Report(s) for ${{ github.event.inputs.organization }}
+        id: generate-reports
         uses: ./
         with:
           organization: ${{ github.event.inputs.organization }}
@@ -47,7 +46,7 @@ jobs:
       
       - name: Upload reports
         uses: actions/upload-artifact@v4
-        if: always()
+        if: steps.generate-reports.conclusion == 'success'
         with:
           name: ghas-reports-${{ github.run_number }}
           path: reports/

@@ -5,11 +5,6 @@ branding:
   color: "blue"
 
 inputs:
-  token:
-    description: "GitHub token with security_events:read and repo:read permissions"
-    required: false
-    default: ${{ github.token }}
-
   organization:
     description: "GitHub organization to scan (mutually exclusive with enterprise)"
     required: false
@@ -20,7 +15,7 @@ inputs:
 
   frameworks:
     description: "Comma-separated list of frameworks to analyze (owasp, sans, kev)"
-    required: false
+    required: true
     default: "owasp,sans,kev"
 
   output_format:
