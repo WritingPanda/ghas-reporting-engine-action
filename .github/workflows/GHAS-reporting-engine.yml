@@ -39,7 +39,7 @@ jobs:
         id: generate-reports
         uses: ./
         with:
-          organization: ${{ github.event.inputs.organization }}
+          organization: ${{ github.event.inputs.organization || github.repository_owner || '' }}
           frameworks: ${{ github.event.inputs.frameworks || 'owasp,sans,kev' }}
           output_format: 'markdown'
           include_empty: true
@@ -52,7 +52,7 @@ jobs:
           name: ghas-reports-${{ github.run_number }}
           path: reports/
           retention-days: 1
-          
+
       - name: Download reports
         uses: actions/download-artifact@v4
         with:
