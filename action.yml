@@ -11,11 +11,8 @@ inputs:
     default: ${{ github.token }}
 
   organization:
-    description: "GitHub organization to scan (mutually exclusive with enterprise)"
-    required: false
-
-  enterprise:
-    description: "GitHub enterprise to scan (mutually exclusive with organization)"
+    description: "GitHub organization to scan"
+    default: ${{ github.repository_owner }}
     required: false
 
   frameworks:

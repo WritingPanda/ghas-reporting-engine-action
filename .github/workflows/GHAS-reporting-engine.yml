@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       organization:
-        description: 'Organization or Enterprise to scan'
+        description: 'Organization to generate report'
       frameworks:
-        description: 'Frameworks to test'
+        description: 'Frameworks to use for report'
         default: 'owasp,sans,kev'
 
 jobs:
@@ -44,11 +44,11 @@ jobs:
           output_format: 'markdown'
           include_empty: true
         env:        
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Upload reports
         uses: actions/upload-artifact@v4
-        if: steps.generate-reports.conclusion == 'success'
+        if: steps.generate-reports.outputs.report_generated == 'true'
         with:
           name: ghas-reports-${{ github.run_number }}
           path: reports/
