@@ -48,7 +48,6 @@ jobs:
 
       - name: Upload reports
         uses: actions/upload-artifact@v4
-        if: steps.generate-reports.outputs.report_generated == 'true'
         with:
           name: ghas-reports-${{ github.run_number }}
           path: reports/
