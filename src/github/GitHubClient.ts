@@ -192,8 +192,8 @@ export class GitHubClient {
 
       this.logger.debug(`Advanced Security status for ${owner}/${repo}: ${response}`);
 
-      // return response.data.security_and_analysis?.advanced_security?.status === 'enabled';
-      return true;
+      return response.data.security_and_analysis?.advanced_security?.status === 'enabled';
+
     } catch (error) {
       this.logger.warn(`Could not check Advanced Security status for ${owner}/${repo}: ${error}`);
       return false;
