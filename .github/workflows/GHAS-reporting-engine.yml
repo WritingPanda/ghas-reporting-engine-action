@@ -16,6 +16,9 @@ on:
         description: 'Frameworks to test'
         required: false
         default: 'owasp,sans,kev'
+permissions:
+  contents: read
+  security-events: read
 
 jobs:
   test:
