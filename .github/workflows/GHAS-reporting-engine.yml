@@ -35,7 +35,7 @@ jobs:
           npm run build
           npm run bundle
 
-      - name: Generate ${{ github.event.inputs.frameworks }} Report(s) for ${{ github.event.inputs.organization }}
+      - name: Generate Report
         id: generate-reports
         uses: ./
         with:
@@ -51,4 +51,10 @@ jobs:
         with:
           name: ghas-reports-${{ github.run_number }}
           path: reports/
-          retention-days: 30
+          retention-days: 1
+          
+      - name: Download reports
+        uses: actions/download-artifact@v4
+        with:
+          name: ghas-reports-${{ github.run_number }}
+          path: reports/
