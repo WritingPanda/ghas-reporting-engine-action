@@ -82,7 +82,9 @@ jobs:
 ## Supported Frameworks
 
 ### OWASP Top 10 2021
+
 Maps CodeQL alerts to the latest OWASP Top 10 categories:
+
 - A01:2021 - Broken Access Control
 - A02:2021 - Cryptographic Failures
 - A03:2021 - Injection
@@ -95,7 +97,9 @@ Maps CodeQL alerts to the latest OWASP Top 10 categories:
 - A10:2021 - Server-Side Request Forgery (SSRF)
 
 ### SANS Top 25
+
 Aligns with the SANS Top 25 Most Dangerous Software Errors:
+
 - CWE-787: Out-of-bounds Write
 - CWE-79: Cross-site Scripting
 - CWE-89: SQL Injection
@@ -103,7 +107,9 @@ Aligns with the SANS Top 25 Most Dangerous Software Errors:
 - And 21 more critical weakness types
 
 ### MITRE Top 10 KEV
+
 Maps to MITRE's Top 10 Known Exploited Vulnerabilities:
+
 - CWE-787: Out-of-bounds Write (Score: 75.59)
 - CWE-843: Type Confusion (Score: 24.91)
 - CWE-78: OS Command Injection (Score: 24.27)
@@ -124,6 +130,7 @@ For enterprise scanning, additional permissions may be required.
 ## Report Structure
 
 ### Markdown Reports
+
 - Executive summary with key metrics
 - Framework-specific analysis with detailed breakdowns
 - Alert distribution by severity
@@ -131,6 +138,7 @@ For enterprise scanning, additional permissions may be required.
 - Actionable recommendations
 
 ### JSON Reports
+
 - Machine-readable format for integration with other tools
 - Complete alert details with CWE mappings
 - Structured data for dashboards and analytics
@@ -215,8 +223,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Security
 
-If you discover a security vulnerability, please send an email to security@example.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability, please send an email to <writingpanda@github.com>. All security vulnerabilities will be promptly addressed.
 
 ---
 
-Made with ❤️ by the Security Engineering Team
+Made with 🐼 by the Field Security Specialists team.

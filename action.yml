@@ -8,11 +8,16 @@ inputs:
   token:
     description: "GitHub token with security_events:read and repo:read permissions"
     required: true
-    default: ${{ github.token }}
+    default: ""
 
   organization:
     description: "GitHub organization to scan"
-    default: ${{ github.repository_owner }}
+    default: ""
+    required: false
+
+  enterprise:
+    description: "GitHub enterprise to scan"
+    default: ""
     required: false
 
   frameworks:

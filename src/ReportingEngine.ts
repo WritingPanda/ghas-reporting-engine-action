@@ -294,14 +294,28 @@ export class ReportingEngine {
             cweToAlerts[cwe].push(alert);
           }
         }
-        // Output each CWE and its alerts
+        // Output each CWE and its alerts grouped by repository
         for (const [cwe, cweAlerts] of Object.entries(cweToAlerts)) {
-          lines.push(`#### ${cwe}`);
+          const capitalizedCwe = cwe === 'Unmapped' ? 'Unmapped' : cwe.toUpperCase();
+          lines.push(`#### ${capitalizedCwe}`);
           lines.push('');
+
+          // Group alerts by repository
+          const repoToAlerts: Record<string, CodeQLAlert[]> = {};
           for (const alert of cweAlerts) {
-            lines.push(`- [${alert.rule.name}](${alert.html_url}) in [${alert.repository?.full_name || 'unknown'}]`);
+            const repoName = alert.repository?.full_name || 'unknown';
+            if (!repoToAlerts[repoName]) repoToAlerts[repoName] = [];
+            repoToAlerts[repoName].push(alert);
           }
-          lines.push('');
+
+          // Output alerts grouped by repository
+          for (const [repoName, repoAlerts] of Object.entries(repoToAlerts)) {
+            lines.push(`**${repoName}:**`);
+            for (const alert of repoAlerts) {
+              lines.push(`  - [${alert.rule.name}](${alert.html_url})`);
+            }
+            lines.push('');
+          }
         }
       }
     }
