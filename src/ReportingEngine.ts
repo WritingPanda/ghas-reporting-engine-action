@@ -314,7 +314,7 @@ export class ReportingEngine {
           for (const [repoName, repoAlerts] of Object.entries(repoToAlerts)) {
             lines.push(`  **${repoName}:**`);
             for (const alert of repoAlerts) {
-              lines.push(`    - ${alert.rule.description} (${alert.rule.name}) - [${alert.html_url}](${alert.html_url})`);
+              lines.push(`    - ${alert.rule.description} - [${alert.rule.name} (${alert.rule.id})](${alert.html_url})`);
             }
             lines.push('');
           }
