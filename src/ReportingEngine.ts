@@ -3,6 +3,7 @@ import { GitHubClient } from './github/GitHubClient';
 import { FrameworkAnalyzerFactory } from './frameworks/FrameworkAnalyzer';
 import { ReportGeneratorFactory } from './reports/ReportGenerator';
 import { Logger } from './utils/Logger';
+import { OWASP_TOP_10_MAPPINGS, SANS_TOP_25_MAPPINGS, MITRE_KEV_MAPPINGS } from './frameworks/mappings';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -297,7 +298,8 @@ export class ReportingEngine {
         // Output each CWE and its alerts grouped by repository
         for (const [cwe, cweAlerts] of Object.entries(cweToAlerts)) {
           const capitalizedCwe = cwe === 'Unmapped' ? 'Unmapped' : cwe.toUpperCase();
-          lines.push(`#### ${capitalizedCwe}`);
+          const cweName = cwe === 'Unmapped' ? 'Alerts without CWE mapping' : this.getCWEName(cwe);
+          lines.push(`#### ${capitalizedCwe}: ${cweName} - ${cweAlerts.length} alert${cweAlerts.length === 1 ? '' : 's'}`);
           lines.push('');
 
           // Group alerts by repository
@@ -312,7 +314,7 @@ export class ReportingEngine {
           for (const [repoName, repoAlerts] of Object.entries(repoToAlerts)) {
             lines.push(`**${repoName}:**`);
             for (const alert of repoAlerts) {
-              lines.push(`  - [${alert.rule.name}](${alert.html_url})`);
+              lines.push(`  - [${alert.rule.name}](${alert.html_url}) - ${alert.rule.description}`);
             }
             lines.push('');
           }
@@ -328,5 +330,27 @@ export class ReportingEngine {
    */
   getSummaryText(): string {
     return this.summaryText;
+  }
+
+  /**
+   * Get CWE name from mappings
+   */
+  private getCWEName(cwe: string): string {
+    // Search in SANS mappings first (most complete names)
+    for (const mapping of Object.values(SANS_TOP_25_MAPPINGS)) {
+      if (mapping.cwe === cwe) {
+        return mapping.name;
+      }
+    }
+
+    // Search in MITRE KEV mappings
+    for (const mapping of Object.values(MITRE_KEV_MAPPINGS)) {
+      if (mapping.cwe === cwe) {
+        return mapping.name;
+      }
+    }
+
+    // If not found in specific mappings, return a generic name
+    return 'Unknown CWE Type';
   }
 }
