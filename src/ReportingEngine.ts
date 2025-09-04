@@ -318,7 +318,6 @@ export class ReportingEngine {
           for (const [repoName, repoAlerts] of Object.entries(repoToAlerts)) {
             lines.push(`  **${repoName}:**`);
             for (const alert of repoAlerts) {
-              console.debug(`${alert}`);
               lines.push(`- ${alert.rule.description} - [${alert.rule.name} (#${alert.number})](${alert.html_url})`);
             }
             lines.push('');
@@ -345,61 +344,13 @@ export class ReportingEngine {
    * Get CWE name from mappings
    */
   private getCWEName(cwe: string): string {
-    // Create a comprehensive CWE name mapping
-    const cweNames: Record<string, string> = {
-      // From SANS Top 25
-      'CWE-787': 'Out-of-bounds Write',
-      'CWE-79': 'Improper Neutralization of Input During Web Page Generation (Cross-site Scripting)',
-      'CWE-89': 'Improper Neutralization of Special Elements used in an SQL Command (SQL Injection)',
-      'CWE-416': 'Use After Free',
-      'CWE-78': 'Improper Neutralization of Special Elements used in an OS Command (OS Command Injection)',
-      'CWE-20': 'Improper Input Validation',
-      'CWE-125': 'Out-of-bounds Read',
-      'CWE-22': 'Improper Limitation of a Pathname to a Restricted Directory (Path Traversal)',
-      'CWE-352': 'Cross-Site Request Forgery (CSRF)',
-      'CWE-434': 'Unrestricted Upload of File with Dangerous Type',
-      'CWE-862': 'Missing Authorization',
-      'CWE-476': 'NULL Pointer Dereference',
-      'CWE-287': 'Improper Authentication',
-      'CWE-190': 'Integer Overflow or Wraparound',
-      'CWE-502': 'Deserialization of Untrusted Data',
-      'CWE-77': 'Improper Neutralization of Special Elements used in a Command (Command Injection)',
-      'CWE-119': 'Improper Restriction of Operations within the Bounds of a Memory Buffer',
-      'CWE-798': 'Use of Hard-coded Credentials',
-      'CWE-918': 'Server-Side Request Forgery (SSRF)',
-      'CWE-306': 'Missing Authentication for Critical Function',
-      'CWE-362': 'Concurrent Execution using Shared Resource with Improper Synchronization (Race Condition)',
-      'CWE-269': 'Improper Privilege Management',
-      'CWE-94': 'Improper Control of Generation of Code (Code Injection)',
-      'CWE-863': 'Incorrect Authorization',
-      'CWE-276': 'Incorrect Default Permissions',
-
-      // From MITRE KEV (additional ones not in SANS)
-      'CWE-843': 'Access of Resource Using Incompatible Type (Type Confusion)',
-
-      // From OWASP Top 10 (additional common ones)
-      'CWE-113': 'Improper Neutralization of CRLF Sequences in HTTP Headers (HTTP Response Splitting)',
-      'CWE-200': 'Exposure of Sensitive Information to an Unauthorized Actor',
-      'CWE-284': 'Improper Access Control',
-      'CWE-285': 'Improper Authorization',
-      'CWE-319': 'Cleartext Transmission of Sensitive Information',
-      'CWE-327': 'Use of a Broken or Risky Cryptographic Algorithm',
-      'CWE-601': 'URL Redirection to Untrusted Site (Open Redirect)',
-      'CWE-74': 'Improper Neutralization of Special Elements in Output Used by a Downstream Component (Injection)',
-      'CWE-259': 'Use of Hard-coded Password',
-      'CWE-116': 'Improper Encoding or Escaping of Output',
-      'CWE-209': 'Generation of Error Message Containing Sensitive Information',
-      'CWE-311': 'Missing Encryption of Sensitive Data',
-      'CWE-330': 'Use of Insufficiently Random Values',
-      'CWE-522': 'Insufficiently Protected Credentials',
-      'CWE-611': 'Improper Restriction of XML External Entity Reference',
-      'CWE-117': 'Improper Output Neutralization for Logs',
-      'CWE-532': 'Insertion of Sensitive Information into Log File'
-    };
-
-    // Search in comprehensive mapping first
-    if (cweNames[cwe]) {
-      return cweNames[cwe];
+    // Search in OWASP mappings first (most comprehensive)
+    for (const category of Object.values(OWASP_TOP_10_MAPPINGS)) {
+      for (const cweInfo of category.cwes) {
+        if (cweInfo.cwe === cwe) {
+          return cweInfo.name;
+        }
+      }
     }
 
     // Search in SANS mappings
