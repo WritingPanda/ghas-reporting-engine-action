@@ -264,7 +264,9 @@ export class ReportingEngine {
 
     // Add detailed alert listings by CWE for each framework
     for (const report of reports) {
-      lines.push(`### Detailed Alerts for ${report.framework}`);
+      lines.push(`<details>`);
+      lines.push(`<summary><h3>📋 Detailed Alerts for ${report.framework} (Click to expand)</h3></summary>`);
+      lines.push('');
       for (const mapping of report.mappings) {
         if (mapping.alertCount === 0) continue;
         // Group alerts by CWE
@@ -299,7 +301,9 @@ export class ReportingEngine {
         for (const [cwe, cweAlerts] of Object.entries(cweToAlerts)) {
           const capitalizedCwe = cwe === 'Unmapped' ? 'Unmapped' : cwe.toUpperCase();
           const cweName = cwe === 'Unmapped' ? 'Alerts without CWE mapping' : this.getCWEName(cwe);
-          lines.push(`#### ${capitalizedCwe}: ${cweName} - ${cweAlerts.length} alert${cweAlerts.length === 1 ? '' : 's'}`);
+
+          lines.push(`<details>`);
+          lines.push(`<summary><strong>${capitalizedCwe}: ${cweName}</strong> - ${cweAlerts.length} alert${cweAlerts.length === 1 ? '' : 's'}</summary>`);
           lines.push('');
 
           // Group alerts by repository
@@ -314,12 +318,17 @@ export class ReportingEngine {
           for (const [repoName, repoAlerts] of Object.entries(repoToAlerts)) {
             lines.push(`  **${repoName}:**`);
             for (const alert of repoAlerts) {
-              lines.push(`    - ${alert.rule.description} - [${alert.rule.name} (${alert.rule.id})](${alert.html_url})`);
+              console.debug(`${alert}`);
+              lines.push(`- ${alert.rule.description} - [${alert.rule.name} (#${alert.number})](${alert.html_url})`);
             }
             lines.push('');
           }
+          lines.push(`</details>`);
+          lines.push('');
         }
       }
+      lines.push(`</details>`);
+      lines.push('');
     }
 
     this.summaryText = lines.join('\n');
