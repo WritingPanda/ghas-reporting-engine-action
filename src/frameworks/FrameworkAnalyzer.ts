@@ -24,13 +24,13 @@ export class OWASPAnalyzer extends FrameworkAnalyzer {
     for (const [category, info] of Object.entries(OWASP_TOP_10_MAPPINGS)) {
       const categoryAlerts = alerts.filter(alert => {
         const alertCWEs = CWEExtractor.extractCWEs(alert);
-        return alertCWEs.some(cwe => info.cwes.includes(cwe));
+        return alertCWEs.some(cwe => info.cwes.some(cweInfo => cweInfo.cwe === cwe));
       });
 
       mappings.push({
         framework: 'OWASP',
         category: `${category} - ${info.name}`,
-        cwes: info.cwes,
+        cwes: info.cwes.map(cweInfo => cweInfo.cwe),
         alertCount: categoryAlerts.length,
         alerts: categoryAlerts
       });
