@@ -1,0 +1,5 @@
+
+> ghas-reporting-engine@0.1.0 build
+> tsc && echo 'TypeScript compilation complete'
+
+TypeScript compilation complete

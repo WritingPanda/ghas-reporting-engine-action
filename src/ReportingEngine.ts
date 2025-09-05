@@ -3,6 +3,7 @@ import { GitHubClient } from './github/GitHubClient';
 import { FrameworkAnalyzerFactory } from './frameworks/FrameworkAnalyzer';
 import { ReportGeneratorFactory } from './reports/ReportGenerator';
 import { Logger } from './utils/Logger';
+import { CWEExtractor } from './utils/CWEExtractor';
 import { OWASP_TOP_10_MAPPINGS, SANS_TOP_25_MAPPINGS, MITRE_KEV_MAPPINGS } from './frameworks/mappings';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -272,23 +273,8 @@ export class ReportingEngine {
         // Group alerts by CWE
         const cweToAlerts: Record<string, CodeQLAlert[]> = {};
         for (const alert of mapping.alerts) {
-          // Extract CWEs for this alert
-          const cwes = alert.rule.tags?.filter(tag => tag.match(/CWE-\d+/i))?.map(tag => tag.match(/CWE-\d+/i)?.[0]) || [];
-          // Fallback to extracting from name/description/classifications
-          if (cwes.length === 0 && alert.rule.name) {
-            const matches = alert.rule.name.match(/CWE-\d+/gi);
-            if (matches) cwes.push(...matches);
-          }
-          if (cwes.length === 0 && alert.rule.description) {
-            const matches = alert.rule.description.match(/CWE-\d+/gi);
-            if (matches) cwes.push(...matches);
-          }
-          if (cwes.length === 0 && alert.most_recent_instance.classifications) {
-            for (const classification of alert.most_recent_instance.classifications) {
-              const match = classification.match(/CWE-\d+/i);
-              if (match) cwes.push(match[0]);
-            }
-          }
+          // Use CWEExtractor for consistent CWE extraction
+          const cwes = CWEExtractor.extractCWEs(alert);
           // If no CWE found, group under 'Unmapped'
           if (cwes.length === 0) cwes.push('Unmapped');
           for (const cweRaw of cwes) {
@@ -344,10 +330,13 @@ export class ReportingEngine {
    * Get CWE name from mappings
    */
   private getCWEName(cwe: string): string {
+    // Normalize CWE format - remove leading zeros from numbers
+    const normalizedCwe = cwe.replace(/CWE-0+(\d+)/i, 'CWE-$1');
+
     // Search in OWASP mappings first (most comprehensive)
     for (const category of Object.values(OWASP_TOP_10_MAPPINGS)) {
       for (const cweInfo of category.cwes) {
-        if (cweInfo.cwe === cwe) {
+        if (cweInfo.cwe === normalizedCwe) {
           return cweInfo.name;
         }
       }
@@ -355,14 +344,14 @@ export class ReportingEngine {
 
     // Search in SANS mappings
     for (const mapping of Object.values(SANS_TOP_25_MAPPINGS)) {
-      if (mapping.cwe === cwe) {
+      if (mapping.cwe === normalizedCwe) {
         return mapping.name;
       }
     }
 
     // Search in MITRE KEV mappings
     for (const mapping of Object.values(MITRE_KEV_MAPPINGS)) {
-      if (mapping.cwe === cwe) {
+      if (mapping.cwe === normalizedCwe) {
         return mapping.name;
       }
     }
