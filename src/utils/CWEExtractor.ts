@@ -1,5 +1,15 @@
 import { CodeQLAlert } from '../types';
 
+
+function normalizeCWE(cwe: string): string {
+  const match = cwe.match(/CWE-(\d+)/);
+  if (match) {
+    const number = parseInt(match[1], 10);
+    return `CWE-${number.toString().padStart(3, '0')}`;
+  }
+  return cwe;
+}
+
 /**
  * Utility class for extracting CWE information from CodeQL alerts
  */

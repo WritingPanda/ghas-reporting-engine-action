@@ -3,10 +3,10 @@
 The following is a list of the OWASP Top and the associated CWEs for each vulnerability type.
 
 - A01:2021 Broken Access Control
-  - CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
-  - CWE-23 Relative Path Traversal
-  - CWE-35 Path Traversal: '.../...//'
-  - CWE-59 Improper Link Resolution Before File Access ('Link Following')
+  - CWE-022 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
+  - CWE-023 Relative Path Traversal
+  - CWE-035 Path Traversal: '.../...//'
+  - CWE-059 Improper Link Resolution Before File Access ('Link Following')
   - CWE-200 Exposure of Sensitive Information to an Unauthorized Actor
   - CWE-201 Exposure of Sensitive Information Through Sent Data
   - CWE-219 Storage of File with Sensitive Data Under Web Root
@@ -71,26 +71,26 @@ The following is a list of the OWASP Top and the associated CWEs for each vulner
   - CWE-916 Use of Password Hash With Insufficient Computational Effort
 
 - A03:2021 Injection
-  - CWE-20 Improper Input Validation
-  - CWE-74 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')
-  - CWE-75 Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)
-  - CWE-77 Improper Neutralization of Special Elements used in a Command ('Command Injection')
-  - CWE-78 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')
-  - CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
-  - CWE-80 Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)
-  - CWE-83 Improper Neutralization of Script in Attributes in a Web Page
-  - CWE-87 Improper Neutralization of Alternate XSS Syntax
-  - CWE-88 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')
-  - CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
-  - CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')
-  - CWE-91 XML Injection (aka Blind XPath Injection)
-  - CWE-93 Improper Neutralization of CRLF Sequences ('CRLF Injection')
-  - CWE-94 Improper Control of Generation of Code ('Code Injection')
-  - CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')
-  - CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')
-  - CWE-97 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page
-  - CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')
-  - CWE-99 Improper Control of Resource Identifiers ('Resource Injection')
+  - CWE-020 Improper Input Validation
+  - CWE-074 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')
+  - CWE-075 Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)
+  - CWE-077 Improper Neutralization of Special Elements used in a Command ('Command Injection')
+  - CWE-078 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')
+  - CWE-079 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+  - CWE-080 Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)
+  - CWE-083 Improper Neutralization of Script in Attributes in a Web Page
+  - CWE-087 Improper Neutralization of Alternate XSS Syntax
+  - CWE-088 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')
+  - CWE-089 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+  - CWE-090 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')
+  - CWE-091 XML Injection (aka Blind XPath Injection)
+  - CWE-093 Improper Neutralization of CRLF Sequences ('CRLF Injection')
+  - CWE-094 Improper Control of Generation of Code ('Code Injection')
+  - CWE-095 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')
+  - CWE-096 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')
+  - CWE-097 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page
+  - CWE-098 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')
+  - CWE-099 Improper Control of Resource Identifiers ('Resource Injection')
   - CWE-100 Deprecated: Was catch-all for input validation issues
   - CWE-113 Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')
   - CWE-116 Improper Encoding or Escaping of Output
@@ -106,7 +106,7 @@ The following is a list of the OWASP Top and the associated CWEs for each vulner
   - CWE-917 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')
 
 - A04:2021 Insecure Design
-  - CWE-73 External Control of File Name or Path
+  - CWE-073 External Control of File Name or Path
   - CWE-183 Permissive List of Allowed Inputs
   - CWE-209 Generation of Error Message Containing Sensitive Information
   - CWE-213 Exposure of Sensitive Information Due to Incompatible Policies
@@ -148,11 +148,11 @@ The following is a list of the OWASP Top and the associated CWEs for each vulner
   - CWE-1173 Improper Use of Validation Framework
 
 - A05:2021 Security Misconfiguration
-  - CWE-2 7PK - Environment
-  - CWE-11 ASP.NET Misconfiguration: Creating Debug Binary
-  - CWE-13 ASP.NET Misconfiguration: Password in Configuration File
-  - CWE-15 External Control of System or Configuration Setting
-  - CWE-16 Configuration
+  - CWE-002 7PK - Environment
+  - CWE-011 ASP.NET Misconfiguration: Creating Debug Binary
+  - CWE-013 ASP.NET Misconfiguration: Password in Configuration File
+  - CWE-015 External Control of System or Configuration Setting
+  - CWE-016 Configuration
   - CWE-260 Password in Configuration File
   - CWE-315 Cleartext Storage of Sensitive Information in a Cookie
   - CWE-520 .NET Misconfiguration: Use of Impersonation
@@ -223,5 +223,4 @@ The following is a list of the OWASP Top and the associated CWEs for each vulner
 
 Raw CWE List:
 
-CWE-22, CWE-23, CWE-35, CWE-59, CWE-200, CWE-201, CWE-219, CWE-264, CWE-275, CWE-276, CWE-284, CWE-285, CWE-352, CWE-359, CWE-377, CWE-402, CWE-425, CWE-441, CWE-497, CWE-538, CWE-540, CWE-548, CWE-552, CWE-566, CWE-601, CWE-639, CWE-651, CWE-668, CWE-706, CWE-862, CWE-863, CWE-913, CWE-922, CWE-1275, CWE-259, CWE-261, CWE-296, CWE-310, CWE-319, CWE-321, CWE-322, CWE-323, CWE-324, CWE-325, CWE-326, CWE-327, CWE-328, CWE-329, CWE-330, CWE-331, CWE-335, CWE-336, CWE-337, CWE-338, CWE-340, CWE-347, CWE-523, CWE-720, CWE-757, CWE-759, CWE-760, CWE-780, CWE-818, CWE-916, CWE-20, CWE-74, CWE-75, CWE-77, CWE-78, CWE-79, CWE-80, CWE-83, CWE-87, CWE-88, CWE-89, CWE-90, CWE-91, CWE-93, CWE-94, CWE-95, CWE-96, CWE-97, CWE-98, CWE-99, CWE-100, CWE-113, CWE-116, CWE-138, CWE-184, CWE-470, CWE-471, CWE-564, CWE-610, CWE-643, CWE-644, CWE-652, CWE-917, CWE-73, CWE-183, CWE-209, CWE-213, CWE-235, CWE-256, CWE-257, CWE-266, CWE-269, CWE-280, CWE-311, CWE-312, CWE-313, CWE-316, CWE-419, CWE-430, CWE-434, CWE-444, CWE-451, CWE-472, CWE-501, CWE-522, CWE-525, CWE-539, CWE-579, CWE-598, CWE-602, CWE-642, CWE-646, CWE-650, CWE-653, CWE-656, CWE-657, CWE-799, CWE-807, CWE-840, CWE-841, CWE-927, CWE-1021, CWE-1173, CWE-2, CWE-11, CWE-13, CWE-15, CWE-16, CWE-260, CWE-315, CWE-520, CWE-526, CWE-537, CWE-541, CWE-547, CWE-611, CWE-614, CWE-756, CWE-776, CWE-942, CWE-1004, CWE-1032, CWE-1174, CWE-937, CWE-1035, CWE-1104, CWE-255, CWE-288, CWE-290, CWE-294, CWE-295, CWE-297, CWE-300, CWE-302, CWE-304, CWE-306, CWE-307, CWE-346, CWE-384, CWE-521, CWE-613, CWE-620, CWE-640, CWE-798, CWE-940, CWE-1216, CWE-345, CWE-353, CWE-426, CWE-494, CWE-502, CWE-565, CWE-784, CWE-829, CWE-830, CWE-915, CWE-117, CWE-223, CWE-532, CWE-778, CWE-918
-
+CWE-022, CWE-023, CWE-035, CWE-059, CWE-200, CWE-201, CWE-219, CWE-264, CWE-275, CWE-276, CWE-284, CWE-285, CWE-352, CWE-359, CWE-377, CWE-402, CWE-425, CWE-441, CWE-497, CWE-538, CWE-540, CWE-548, CWE-552, CWE-566, CWE-601, CWE-639, CWE-651, CWE-668, CWE-706, CWE-862, CWE-863, CWE-913, CWE-922, CWE-1275, CWE-259, CWE-261, CWE-296, CWE-310, CWE-319, CWE-321, CWE-322, CWE-323, CWE-324, CWE-325, CWE-326, CWE-327, CWE-328, CWE-329, CWE-330, CWE-331, CWE-335, CWE-336, CWE-337, CWE-338, CWE-340, CWE-347, CWE-523, CWE-720, CWE-757, CWE-759, CWE-760, CWE-780, CWE-818, CWE-916, CWE-020, CWE-074, CWE-075, CWE-077, CWE-078, CWE-079, CWE-080, CWE-083, CWE-087, CWE-088, CWE-089, CWE-090, CWE-091, CWE-093, CWE-094, CWE-095, CWE-096, CWE-097, CWE-098, CWE-099, CWE-100, CWE-113, CWE-116, CWE-138, CWE-184, CWE-470, CWE-471, CWE-564, CWE-610, CWE-643, CWE-644, CWE-652, CWE-917, CWE-073, CWE-183, CWE-209, CWE-213, CWE-235, CWE-256, CWE-257, CWE-266, CWE-269, CWE-280, CWE-311, CWE-312, CWE-313, CWE-316, CWE-419, CWE-430, CWE-434, CWE-444, CWE-451, CWE-472, CWE-501, CWE-522, CWE-525, CWE-539, CWE-579, CWE-598, CWE-602, CWE-642, CWE-646, CWE-650, CWE-653, CWE-656, CWE-657, CWE-799, CWE-807, CWE-840, CWE-841, CWE-927, CWE-1021, CWE-1173, CWE-002, CWE-011, CWE-013, CWE-015, CWE-016, CWE-260, CWE-315, CWE-520, CWE-526, CWE-537, CWE-541, CWE-547, CWE-611, CWE-614, CWE-756, CWE-776, CWE-942, CWE-1004, CWE-1032, CWE-1174, CWE-937, CWE-1035, CWE-1104, CWE-255, CWE-288, CWE-290, CWE-294, CWE-295, CWE-297, CWE-300, CWE-302, CWE-304, CWE-306, CWE-307, CWE-346, CWE-384, CWE-521, CWE-613, CWE-620, CWE-640, CWE-798, CWE-940, CWE-1216, CWE-345, CWE-353, CWE-426, CWE-494, CWE-502, CWE-565, CWE-784, CWE-829, CWE-830, CWE-915, CWE-117, CWE-223, CWE-532, CWE-778, CWE-918

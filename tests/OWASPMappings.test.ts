@@ -1,5 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { OWASP_TOP_10_MAPPINGS } from '../src/frameworks/mappings';
+import { mockCodeQLAlert } from './mockCodeQLAlert';
+import { CodeQLAlert } from '../src/types';
+import { CWEExtractor } from '../src/utils/CWEExtractor';
+
+const mockAlert: CodeQLAlert = mockCodeQLAlert;
 
 describe('OWASP Top 10 Mappings', () => {
   it('should have all 10 OWASP categories', () => {
@@ -111,5 +116,58 @@ describe('OWASP Top 10 Mappings', () => {
     // A06:2021 Vulnerable and Outdated Components should have the fewest CWEs
     const vulnerableComponentsCwes = OWASP_TOP_10_MAPPINGS['A06:2021'].cwes;
     expect(vulnerableComponentsCwes.length).toBeLessThanOrEqual(5); // Should be a small category
+  });
+
+  it('should correctly match CWEs from mock CodeQL alert to OWASP categories', () => {
+    // Extract CWEs from the mock alert
+    const extractedCwes = CWEExtractor.extractCWEs(mockAlert);
+
+    // Normalize CWE format (remove leading zeros for comparison)
+    const normalizeCWE = (cwe: string): string => {
+      const match = cwe.match(/CWE-(\d+)/);
+      return match ? `CWE-${parseInt(match[1], 10)}` : cwe;
+    };
+
+    const normalizedCwes = extractedCwes.map(normalizeCWE);
+
+    // The mock alert should contain these CWEs: CWE-22, CWE-79, CWE-89
+    expect(normalizedCwes).toContain('CWE-22');
+    expect(normalizedCwes).toContain('CWE-79');
+    expect(normalizedCwes).toContain('CWE-89');
+
+    // Function to find which OWASP category a CWE belongs to
+    const findOwaspCategory = (cweId: string): string | null => {
+      for (const [categoryId, categoryInfo] of Object.entries(OWASP_TOP_10_MAPPINGS)) {
+        if (categoryInfo.cwes.some(cwe => cwe.cwe === cweId)) {
+          return categoryId;
+        }
+      }
+      return null;
+    };
+
+    // Test that CWE-22 (Path Traversal) maps to A01:2021 (Broken Access Control)
+    const cwe22Category = findOwaspCategory('CWE-22');
+    expect(cwe22Category).toBe('A01:2021');
+    expect(OWASP_TOP_10_MAPPINGS['A01:2021'].name).toBe('Broken Access Control');
+
+    // Test that CWE-79 (XSS) maps to A03:2021 (Injection)
+    const cwe79Category = findOwaspCategory('CWE-79');
+    expect(cwe79Category).toBe('A03:2021');
+    expect(OWASP_TOP_10_MAPPINGS['A03:2021'].name).toBe('Injection');
+
+    // Test that CWE-89 (SQL Injection) maps to A03:2021 (Injection)
+    const cwe89Category = findOwaspCategory('CWE-89');
+    expect(cwe89Category).toBe('A03:2021');
+    expect(OWASP_TOP_10_MAPPINGS['A03:2021'].name).toBe('Injection');
+
+    // Verify that all extracted CWEs have corresponding OWASP mappings
+    const mappedCategories = normalizedCwes.map(cwe => findOwaspCategory(cwe)).filter(Boolean);
+    expect(mappedCategories.length).toBe(3); // All 3 CWEs should be mapped
+
+    // Verify that we get both A01:2021 and A03:2021 categories
+    const uniqueCategories = [...new Set(mappedCategories)];
+    expect(uniqueCategories).toContain('A01:2021');
+    expect(uniqueCategories).toContain('A03:2021');
+    expect(uniqueCategories.length).toBe(2); // Should map to exactly 2 categories
   });
 });
