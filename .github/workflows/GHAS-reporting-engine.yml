@@ -39,7 +39,7 @@ jobs:
         id: generate-reports
         uses: ./
         with:
-          organization: ${{ github.event.inputs.organization || github.repository_owner || '' }}
+          organization: ${{ github.event.inputs.organization || github.repository_owner || 'ORG-NAME' }}
           frameworks: ${{ github.event.inputs.frameworks || 'owasp,sans,kev' }}
           output_format: 'markdown'
           include_empty: true
