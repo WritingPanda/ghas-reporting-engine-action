@@ -19,7 +19,7 @@ jobs:
       contents: write
     steps:
       - name: Generate GHAS Compliance Report
-        uses: Pandante-Central/GHAS-Reporting-Engine@v1
+        uses: WritingPanda/ghas-reporting-engine-action@v0.1.1
         with:
           organization: 'your-org-name'
           frameworks: 'owasp,sans,kev'
@@ -59,7 +59,7 @@ jobs:
       contents: write
     steps:
       - name: Generate Enterprise Compliance Report
-        uses: Pandante-Central/GHAS-Reporting-Engine@v1
+        uses: WritingPanda/ghas-reporting-engine-action@v0.1.1
         with:
           enterprise: 'your-enterprise-name'
           frameworks: 'owasp,sans,kev'
@@ -97,7 +97,7 @@ jobs:
       contents: read
     steps:
       - name: Focus on Critical Applications
-        uses: Pandante-Central/GHAS-Reporting-Engine@v1
+        uses: WritingPanda/ghas-reporting-engine-action@v0.1.1
         with:
           organization: 'your-org-name'
           repositories: 'payment-service,user-auth,data-processor,admin-panel'
@@ -142,7 +142,7 @@ jobs:
         framework: [owasp, sans, kev]
     steps:
       - name: Generate ${{ matrix.framework }} Report (${{ matrix.format }})
-        uses: Pandante-Central/GHAS-Reporting-Engine@v1
+        uses: WritingPanda/ghas-reporting-engine-action@v0.1.1
         with:
           organization: ${{ github.event.inputs.target_org }}
           frameworks: ${{ matrix.framework }}

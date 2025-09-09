@@ -32,8 +32,7 @@ jobs:
       contents: read
     steps:
       - name: Generate GHAS Compliance Report
-        uses: Pandante-Central/GHAS-Reporting-Engine@v1
-        with:
+        uses: WritingPanda/ghas-reporting-engine-action@v0.1.1
           organization: 'your-org-name'
           frameworks: 'owasp,sans,kev'
           output_format: 'markdown'
@@ -50,7 +49,7 @@ jobs:
 
 ```yaml
 - name: Generate Detailed Compliance Report
-  uses: Pandante-Central/GHAS-Reporting-Engine@v1
+  uses: WritingPanda/ghas-reporting-engine-action@v0.1.1
   with:
     organization: 'your-org-name'
     frameworks: 'owasp,sans,kev'
