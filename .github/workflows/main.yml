@@ -1,8 +1,12 @@
 name: GHAS Reporting Engine
 on:
   push:
+    branches:
+      - main
   pull_request:
     types: [opened, reopened, synchronize]
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       organization:
@@ -32,14 +36,13 @@ jobs:
       
       - name: Build action
         run: |
-          npm run build
           npm run bundle
 
       - name: Generate Report
         id: generate-reports
         uses: ./
         with:
-          organization: ${{ github.event.inputs.organization || github.repository_owner || '' }}
+          organization: ${{ github.event.inputs.organization || github.repository_owner || 'ORG-NAME' }}
           frameworks: ${{ github.event.inputs.frameworks || 'owasp,sans,kev' }}
           output_format: 'markdown'
           include_empty: true

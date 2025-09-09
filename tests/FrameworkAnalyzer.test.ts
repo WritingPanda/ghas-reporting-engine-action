@@ -1,40 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { OWASPAnalyzer, SANSAnalyzer, MITREKEVAnalyzer, FrameworkAnalyzerFactory } from '../src/frameworks/FrameworkAnalyzer';
 import { CodeQLAlert } from '../src/types';
+import { mockCodeQLAlert } from './mockCodeQLAlert';
 
 describe('FrameworkAnalyzers', () => {
-  const mockAlert: CodeQLAlert = {
-    number: 1,
-    rule: {
-      id: 'test-rule',
-      name: 'SQL Injection Test',
-      description: 'Detects SQL injection vulnerabilities',
-      tags: ['external/cwe/cwe-89']
-    },
-    tool: { name: 'CodeQL' },
-    most_recent_instance: {
-      ref: 'main',
-      analysis_key: 'test',
-      environment: 'default',
-      category: 'security',
-      state: 'open',
-      commit_sha: 'abc123',
-      message: { text: 'Test message' },
-      location: {
-        path: 'test.js',
-        start_line: 1,
-        end_line: 1,
-        start_column: 1,
-        end_column: 10
-      }
-    },
-    state: 'open',
-    created_at: '2024-01-01T00:00:00Z',
-    updated_at: '2024-01-01T00:00:00Z',
-    url: 'https://api.github.com/test',
-    html_url: 'https://github.com/test',
-    instances_url: 'https://api.github.com/test/instances'
-  };
+  const mockAlert: CodeQLAlert = mockCodeQLAlert;
 
   describe('OWASPAnalyzer', () => {
     it('should create OWASP analyzer', () => {
@@ -49,7 +19,111 @@ describe('FrameworkAnalyzers', () => {
       const injectionMapping = mappings.find(m => m.category.includes('A03:2021'));
       expect(injectionMapping).toBeDefined();
       expect(injectionMapping?.alertCount).toBe(1);
-      expect(injectionMapping?.cwes).toContain('CWE-89');
+      expect(injectionMapping?.cwes).toContain('CWE-089');
+    });
+
+    it('should handle multiple CWEs in different categories', () => {
+      const analyzer = new OWASPAnalyzer();
+
+      // Create alerts for different OWASP categories
+      const xssAlert: CodeQLAlert = {
+        ...mockAlert,
+        number: 2,
+        rule: {
+          ...mockAlert.rule,
+          name: 'XSS Test',
+          description: 'Cross-site scripting vulnerability',
+          tags: ['external/cwe/cwe-79']
+        }
+      };
+
+      const accessControlAlert: CodeQLAlert = {
+        ...mockAlert,
+        number: 3,
+        rule: {
+          ...mockAlert.rule,
+          name: 'Path Traversal Test',
+          description: 'Path traversal vulnerability',
+          tags: ['external/cwe/cwe-22']
+        }
+      };
+
+      const mappings = analyzer.analyzeAlerts([mockAlert, xssAlert, accessControlAlert]);
+
+      // Check A03:2021 Injection (should have 2 alerts: SQL injection + XSS)
+      const injectionMapping = mappings.find(m => m.category.includes('A03:2021'));
+      expect(injectionMapping).toBeDefined();
+      expect(injectionMapping?.alertCount).toBe(2);
+      expect(injectionMapping?.cwes).toContain('CWE-089');
+      expect(injectionMapping?.cwes).toContain('CWE-079');
+
+      // Check A01:2021 Broken Access Control (should have 2 alerts: mockAlert + accessControlAlert)
+      const accessControlMapping = mappings.find(m => m.category.includes('A01:2021'));
+      expect(accessControlMapping).toBeDefined();
+      expect(accessControlMapping?.alertCount).toBe(2);
+      expect(accessControlMapping?.cwes).toContain('CWE-022');
+    });
+
+    it('should return empty mappings for unmatched CWEs', () => {
+      const analyzer = new OWASPAnalyzer();
+
+      const unmatchedAlert: CodeQLAlert = {
+        ...mockAlert,
+        rule: {
+          ...mockAlert.rule,
+          name: 'Unmatched CWE Test',
+          description: 'This should not match any OWASP category',
+          tags: ['external/cwe/cwe-9999'] // Non-existent CWE
+        }
+      };
+
+      const mappings = analyzer.analyzeAlerts([unmatchedAlert]);
+
+      // All mappings should have 0 alerts
+      mappings.forEach(mapping => {
+        expect(mapping.alertCount).toBe(0);
+      });
+    });
+
+    it('should extract CWE names correctly from new mappings structure', () => {
+      const analyzer = new OWASPAnalyzer();
+      const mappings = analyzer.analyzeAlerts([]);
+
+      // Find the A03:2021 mapping and verify it contains the expected CWEs
+      const injectionMapping = mappings.find(m => m.category.includes('A03:2021'));
+      expect(injectionMapping).toBeDefined();
+      expect(injectionMapping?.cwes).toContain('CWE-089'); // SQL Injection
+      expect(injectionMapping?.cwes).toContain('CWE-079'); // XSS
+      expect(injectionMapping?.cwes).toContain('CWE-113'); // HTTP Response Splitting
+      expect(injectionMapping?.cwes).toContain('CWE-077'); // Command Injection
+
+      // Verify CWEs are strings, not objects
+      injectionMapping?.cwes.forEach(cwe => {
+        expect(typeof cwe).toBe('string');
+        expect(cwe).toMatch(/^CWE-\d+$/);
+      });
+    });
+
+    it('should sort mappings by alert count descending', () => {
+      const analyzer = new OWASPAnalyzer();
+
+      // Create multiple alerts for different categories
+      const alerts = [
+        mockAlert, // CWE-089 -> A03:2021
+        { ...mockAlert, number: 2, rule: { ...mockAlert.rule, tags: ['external/cwe/cwe-79'] } }, // CWE-079 -> A03:2021
+        { ...mockAlert, number: 3, rule: { ...mockAlert.rule, tags: ['external/cwe/cwe-22'] } }, // CWE-22 -> A01:2021
+      ];
+
+      const mappings = analyzer.analyzeAlerts(alerts);
+
+      // Both A03:2021 and A01:2021 should have 2 alerts each
+      const injectionMapping = mappings.find(m => m.category.includes('A03:2021'));
+      const accessControlMapping = mappings.find(m => m.category.includes('A01:2021'));
+
+      expect(injectionMapping).toBeDefined();
+      expect(accessControlMapping).toBeDefined();
+      expect(injectionMapping?.alertCount).toBe(2);
+      expect(accessControlMapping?.alertCount).toBe(2);
     });
   });
 
@@ -66,7 +140,7 @@ describe('FrameworkAnalyzers', () => {
       const sqlMapping = mappings.find(m => m.rank === 3);
       expect(sqlMapping).toBeDefined();
       expect(sqlMapping?.alertCount).toBe(1);
-      expect(sqlMapping?.cwes).toContain('CWE-89');
+      expect(sqlMapping?.cwes).toContain('CWE-089');
     });
 
     it('should sort by rank', () => {
@@ -94,7 +168,7 @@ describe('FrameworkAnalyzers', () => {
       const sqlMapping = mappings.find(m => m.rank === 8);
       expect(sqlMapping).toBeDefined();
       expect(sqlMapping?.alertCount).toBe(1);
-      expect(sqlMapping?.cwes).toContain('CWE-89');
+      expect(sqlMapping?.cwes).toContain('CWE-089');
     });
   });
 

@@ -1,5 +1,6 @@
 import { CodeQLAlert } from '../types';
 
+
 /**
  * Utility class for extracting CWE information from CodeQL alerts
  */

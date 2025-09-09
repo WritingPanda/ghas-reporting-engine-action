@@ -3,6 +3,7 @@ import { GitHubClient } from './github/GitHubClient';
 import { FrameworkAnalyzerFactory } from './frameworks/FrameworkAnalyzer';
 import { ReportGeneratorFactory } from './reports/ReportGenerator';
 import { Logger } from './utils/Logger';
+import { CWEExtractor } from './utils/CWEExtractor';
 import { OWASP_TOP_10_MAPPINGS, SANS_TOP_25_MAPPINGS, MITRE_KEV_MAPPINGS } from './frameworks/mappings';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -262,6 +263,16 @@ export class ReportingEngine {
     lines.push('3. Set up regular monitoring to track progress over time');
     lines.push('');
 
+    // Track which alerts have been included in framework reports
+    const mappedAlerts = new Set<number>();
+    for (const report of reports) {
+      for (const mapping of report.mappings) {
+        for (const alert of mapping.alerts) {
+          mappedAlerts.add(alert.number);
+        }
+      }
+    }
+
     // Add detailed alert listings by CWE for each framework
     for (const report of reports) {
       lines.push(`<details>`);
@@ -272,35 +283,25 @@ export class ReportingEngine {
         // Group alerts by CWE
         const cweToAlerts: Record<string, CodeQLAlert[]> = {};
         for (const alert of mapping.alerts) {
-          // Extract CWEs for this alert
-          const cwes = alert.rule.tags?.filter(tag => tag.match(/CWE-\d+/i))?.map(tag => tag.match(/CWE-\d+/i)?.[0]) || [];
-          // Fallback to extracting from name/description/classifications
-          if (cwes.length === 0 && alert.rule.name) {
-            const matches = alert.rule.name.match(/CWE-\d+/gi);
-            if (matches) cwes.push(...matches);
-          }
-          if (cwes.length === 0 && alert.rule.description) {
-            const matches = alert.rule.description.match(/CWE-\d+/gi);
-            if (matches) cwes.push(...matches);
-          }
-          if (cwes.length === 0 && alert.most_recent_instance.classifications) {
-            for (const classification of alert.most_recent_instance.classifications) {
-              const match = classification.match(/CWE-\d+/i);
-              if (match) cwes.push(match[0]);
-            }
-          }
-          // If no CWE found, group under 'Unmapped'
-          if (cwes.length === 0) cwes.push('Unmapped');
+          // Use CWEExtractor for consistent CWE extraction
+          const cwes = CWEExtractor.extractCWEs(alert);
+          // Only process alerts that have CWEs mapped to this framework
+          if (cwes.length === 0) continue;
           for (const cweRaw of cwes) {
-            const cwe = typeof cweRaw === 'string' && cweRaw ? cweRaw : 'Unmapped';
-            if (!cweToAlerts[cwe]) cweToAlerts[cwe] = [];
-            cweToAlerts[cwe].push(alert);
+            const cwe = typeof cweRaw === 'string' && cweRaw ? cweRaw : '';
+            if (!cwe) continue;
+
+            // Check if this CWE is actually mapped to the current framework
+            if (this.isCWEMappedToFramework(cwe, report.framework)) {
+              if (!cweToAlerts[cwe]) cweToAlerts[cwe] = [];
+              cweToAlerts[cwe].push(alert);
+            }
           }
         }
         // Output each CWE and its alerts grouped by repository
         for (const [cwe, cweAlerts] of Object.entries(cweToAlerts)) {
-          const capitalizedCwe = cwe === 'Unmapped' ? 'Unmapped' : cwe.toUpperCase();
-          const cweName = cwe === 'Unmapped' ? 'Alerts without CWE mapping' : this.getCWEName(cwe);
+          const capitalizedCwe = cwe.toUpperCase();
+          const cweName = this.getCWEName(cwe);
 
           lines.push(`<details>`);
           lines.push(`<summary><strong>${capitalizedCwe}: ${cweName}</strong> - ${cweAlerts.length} alert${cweAlerts.length === 1 ? '' : 's'}</summary>`);
@@ -318,7 +319,6 @@ export class ReportingEngine {
           for (const [repoName, repoAlerts] of Object.entries(repoToAlerts)) {
             lines.push(`  **${repoName}:**`);
             for (const alert of repoAlerts) {
-              console.debug(`${alert}`);
               lines.push(`- ${alert.rule.description} - [${alert.rule.name} (#${alert.number})](${alert.html_url})`);
             }
             lines.push('');
@@ -326,6 +326,42 @@ export class ReportingEngine {
           lines.push(`</details>`);
           lines.push('');
         }
+      }
+      lines.push(`</details>`);
+      lines.push('');
+    }
+
+    // Add section for alerts not represented in any framework
+    const unmappedAlerts = alerts.filter(alert => !mappedAlerts.has(alert.number));
+    if (unmappedAlerts.length > 0) {
+      lines.push(`<details>`);
+      lines.push(`<summary><h3>🔍 Additional Alerts Not Represented in Frameworks (Click to expand)</h3></summary>`);
+      lines.push('');
+      lines.push(`**${unmappedAlerts.length} alert${unmappedAlerts.length === 1 ? '' : 's'} found that do${unmappedAlerts.length === 1 ? 'es' : ''} not map to any of the analyzed frameworks (${this.config.frameworks.join(', ').toUpperCase()})**`);
+      lines.push('');
+      lines.push('These alerts may represent:');
+      lines.push('- Security issues with CWEs not covered by the selected frameworks');
+      lines.push('- Custom or newer security rules without established framework mappings');
+      lines.push('- Language-specific vulnerabilities outside standard categories');
+      lines.push('');
+
+      // Group unmapped alerts by repository
+      const repoToUnmappedAlerts: Record<string, CodeQLAlert[]> = {};
+      for (const alert of unmappedAlerts) {
+        const repoName = alert.repository?.full_name || 'unknown';
+        if (!repoToUnmappedAlerts[repoName]) repoToUnmappedAlerts[repoName] = [];
+        repoToUnmappedAlerts[repoName].push(alert);
+      }
+
+      // Output unmapped alerts grouped by repository
+      for (const [repoName, repoAlerts] of Object.entries(repoToUnmappedAlerts)) {
+        lines.push(`**${repoName}:** (${repoAlerts.length} alert${repoAlerts.length === 1 ? '' : 's'})`);
+        for (const alert of repoAlerts) {
+          const cwes = CWEExtractor.extractCWEs(alert);
+          const cweText = cwes.length > 0 ? ` [${cwes.join(', ')}]` : ' [No CWE]';
+          lines.push(`- ${alert.rule.description}${cweText} - [${alert.rule.name} (#${alert.number})](${alert.html_url})`);
+        }
+        lines.push('');
       }
       lines.push(`</details>`);
       lines.push('');
@@ -342,81 +378,100 @@ export class ReportingEngine {
   }
 
   /**
-   * Get CWE name from mappings
+   * Get CWE name from mappings - only for CWEs that are mapped to frameworks
    */
   private getCWEName(cwe: string): string {
-    // Create a comprehensive CWE name mapping
-    const cweNames: Record<string, string> = {
-      // From SANS Top 25
-      'CWE-787': 'Out-of-bounds Write',
-      'CWE-79': 'Improper Neutralization of Input During Web Page Generation (Cross-site Scripting)',
-      'CWE-89': 'Improper Neutralization of Special Elements used in an SQL Command (SQL Injection)',
-      'CWE-416': 'Use After Free',
-      'CWE-78': 'Improper Neutralization of Special Elements used in an OS Command (OS Command Injection)',
-      'CWE-20': 'Improper Input Validation',
-      'CWE-125': 'Out-of-bounds Read',
-      'CWE-22': 'Improper Limitation of a Pathname to a Restricted Directory (Path Traversal)',
-      'CWE-352': 'Cross-Site Request Forgery (CSRF)',
-      'CWE-434': 'Unrestricted Upload of File with Dangerous Type',
-      'CWE-862': 'Missing Authorization',
-      'CWE-476': 'NULL Pointer Dereference',
-      'CWE-287': 'Improper Authentication',
-      'CWE-190': 'Integer Overflow or Wraparound',
-      'CWE-502': 'Deserialization of Untrusted Data',
-      'CWE-77': 'Improper Neutralization of Special Elements used in a Command (Command Injection)',
-      'CWE-119': 'Improper Restriction of Operations within the Bounds of a Memory Buffer',
-      'CWE-798': 'Use of Hard-coded Credentials',
-      'CWE-918': 'Server-Side Request Forgery (SSRF)',
-      'CWE-306': 'Missing Authentication for Critical Function',
-      'CWE-362': 'Concurrent Execution using Shared Resource with Improper Synchronization (Race Condition)',
-      'CWE-269': 'Improper Privilege Management',
-      'CWE-94': 'Improper Control of Generation of Code (Code Injection)',
-      'CWE-863': 'Incorrect Authorization',
-      'CWE-276': 'Incorrect Default Permissions',
-
-      // From MITRE KEV (additional ones not in SANS)
-      'CWE-843': 'Access of Resource Using Incompatible Type (Type Confusion)',
-
-      // From OWASP Top 10 (additional common ones)
-      'CWE-113': 'Improper Neutralization of CRLF Sequences in HTTP Headers (HTTP Response Splitting)',
-      'CWE-200': 'Exposure of Sensitive Information to an Unauthorized Actor',
-      'CWE-284': 'Improper Access Control',
-      'CWE-285': 'Improper Authorization',
-      'CWE-319': 'Cleartext Transmission of Sensitive Information',
-      'CWE-327': 'Use of a Broken or Risky Cryptographic Algorithm',
-      'CWE-601': 'URL Redirection to Untrusted Site (Open Redirect)',
-      'CWE-74': 'Improper Neutralization of Special Elements in Output Used by a Downstream Component (Injection)',
-      'CWE-259': 'Use of Hard-coded Password',
-      'CWE-116': 'Improper Encoding or Escaping of Output',
-      'CWE-209': 'Generation of Error Message Containing Sensitive Information',
-      'CWE-311': 'Missing Encryption of Sensitive Data',
-      'CWE-330': 'Use of Insufficiently Random Values',
-      'CWE-522': 'Insufficiently Protected Credentials',
-      'CWE-611': 'Improper Restriction of XML External Entity Reference',
-      'CWE-117': 'Improper Output Neutralization for Logs',
-      'CWE-532': 'Insertion of Sensitive Information into Log File'
+    // Normalize CWE format for comparison
+    const normalizeCWE = (cweId: string): string => {
+      const match = cweId.match(/CWE-(\d+)/i);
+      if (match) {
+        const number = parseInt(match[1], 10);
+        return `CWE-${number.toString().padStart(3, '0')}`;
+      }
+      return cweId;
     };
 
-    // Search in comprehensive mapping first
-    if (cweNames[cwe]) {
-      return cweNames[cwe];
+    const normalizedInputCwe = normalizeCWE(cwe);
+
+    // Search in OWASP mappings first (most comprehensive)
+    for (const category of Object.values(OWASP_TOP_10_MAPPINGS)) {
+      for (const cweInfo of category.cwes) {
+        const normalizedMappingCwe = normalizeCWE(cweInfo.cwe);
+        if (normalizedMappingCwe === normalizedInputCwe) {
+          return cweInfo.name;
+        }
+      }
     }
 
     // Search in SANS mappings
     for (const mapping of Object.values(SANS_TOP_25_MAPPINGS)) {
-      if (mapping.cwe === cwe) {
+      const normalizedMappingCwe = normalizeCWE(mapping.cwe);
+      if (normalizedMappingCwe === normalizedInputCwe) {
         return mapping.name;
       }
     }
 
     // Search in MITRE KEV mappings
     for (const mapping of Object.values(MITRE_KEV_MAPPINGS)) {
-      if (mapping.cwe === cwe) {
+      const normalizedMappingCwe = normalizeCWE(mapping.cwe);
+      if (normalizedMappingCwe === normalizedInputCwe) {
         return mapping.name;
       }
     }
 
     // If not found in any mappings, return a generic name
     return 'Security Vulnerability';
+  }
+
+  /**
+   * Check if a CWE is mapped to a specific framework
+   */
+  private isCWEMappedToFramework(cwe: string, framework: string): boolean {
+    // Normalize CWE format for comparison
+    const normalizeCWE = (cweId: string): string => {
+      const match = cweId.match(/CWE-(\d+)/i);
+      if (match) {
+        const number = parseInt(match[1], 10);
+        return `CWE-${number.toString().padStart(3, '0')}`;
+      }
+      return cweId;
+    };
+
+    const normalizedInputCwe = normalizeCWE(cwe);
+    const frameworkLower = framework.toLowerCase();
+
+    // Check OWASP mappings
+    if (frameworkLower.includes('owasp')) {
+      for (const category of Object.values(OWASP_TOP_10_MAPPINGS)) {
+        for (const cweInfo of category.cwes) {
+          const normalizedMappingCwe = normalizeCWE(cweInfo.cwe);
+          if (normalizedMappingCwe === normalizedInputCwe) {
+            return true;
+          }
+        }
+      }
+    }
+
+    // Check SANS mappings
+    if (frameworkLower.includes('sans')) {
+      for (const mapping of Object.values(SANS_TOP_25_MAPPINGS)) {
+        const normalizedMappingCwe = normalizeCWE(mapping.cwe);
+        if (normalizedMappingCwe === normalizedInputCwe) {
+          return true;
+        }
+      }
+    }
+
+    // Check MITRE KEV mappings
+    if (frameworkLower.includes('kev') || frameworkLower.includes('mitre')) {
+      for (const mapping of Object.values(MITRE_KEV_MAPPINGS)) {
+        const normalizedMappingCwe = normalizeCWE(mapping.cwe);
+        if (normalizedMappingCwe === normalizedInputCwe) {
+          return true;
+        }
+      }
+    }
+
+    return false;
   }
 }

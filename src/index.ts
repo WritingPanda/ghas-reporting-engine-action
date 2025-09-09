@@ -2,6 +2,7 @@ import * as core from '@actions/core';
 import { ReportingEngine } from './ReportingEngine';
 import { Logger } from './utils/Logger';
 
+
 /**
  * Main entry point for the GHAS Reporting Engine GitHub Action
  */

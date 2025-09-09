@@ -1,0 +1,44 @@
+# CODEOWNERS file for GHAS-Reporting-Engine
+# This file defines who owns and is responsible for code in this repository.
+# When someone opens a pull request, GitHub will automatically request
+# reviews from the code owners of files being changed.
+
+# Global ownership - default reviewers for everything in the repo
+* @Pandante-Central/maintainers @WritingPanda
+
+# Core source code - requires security and architecture review
+/src/ @Pandante-Central/maintainers @WritingPanda
+
+# Framework mappings - requires security expertise for OWASP, SANS, MITRE mappings
+/src/frameworks/ @Pandante-Central/security-team @WritingPanda
+
+# GitHub integration - requires GitHub API expertise  
+/src/github/ @Pandante-Central/github-experts @WritingPanda
+
+# Security utilities and CWE extraction - critical security components
+/src/utils/CWEExtractor.ts @Pandante-Central/security-team @WritingPanda
+/src/utils/SecurityUtils.ts @Pandante-Central/security-team @WritingPanda
+
+# Tests - all maintainers should review test changes
+/tests/ @Pandante-Central/maintainers @WritingPanda
+/src/tests/ @Pandante-Central/maintainers @WritingPanda
+
+# GitHub Actions and CI/CD
+/.github/ @Pandante-Central/devops @WritingPanda
+/action.yml @Pandante-Central/devops @WritingPanda
+
+# Documentation
+/README.md @Pandante-Central/docs @WritingPanda
+/examples/ @Pandante-Central/docs @WritingPanda
+
+# Configuration files
+/package.json @Pandante-Central/maintainers @WritingPanda
+/tsconfig.json @Pandante-Central/maintainers @WritingPanda
+/vitest.config.ts @Pandante-Central/maintainers @WritingPanda
+
+# Build and distribution
+/dist/ @Pandante-Central/maintainers @WritingPanda
+/build.sh @Pandante-Central/devops @WritingPanda
+
+# Scripts
+/scripts/ @Pandante-Central/maintainers @WritingPanda

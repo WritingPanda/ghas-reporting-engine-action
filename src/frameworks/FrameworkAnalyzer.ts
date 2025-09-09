@@ -3,6 +3,18 @@ import { CWEExtractor } from '../utils/CWEExtractor';
 import { OWASP_TOP_10_MAPPINGS, SANS_TOP_25_MAPPINGS, MITRE_KEV_MAPPINGS } from './mappings';
 
 /**
+ * Utility function to normalize CWE format to 3 digits (e.g., CWE-22 -> CWE-022)
+ */
+function normalizeCWE(cwe: string): string {
+  const match = cwe.match(/CWE-(\d+)/);
+  if (match) {
+    const number = parseInt(match[1], 10);
+    return `CWE-${number.toString().padStart(3, '0')}`;
+  }
+  return cwe;
+}
+
+/**
  * Base class for framework analyzers
  */
 export abstract class FrameworkAnalyzer {
@@ -23,14 +35,15 @@ export class OWASPAnalyzer extends FrameworkAnalyzer {
 
     for (const [category, info] of Object.entries(OWASP_TOP_10_MAPPINGS)) {
       const categoryAlerts = alerts.filter(alert => {
-        const alertCWEs = CWEExtractor.extractCWEs(alert);
-        return alertCWEs.some(cwe => info.cwes.includes(cwe));
+        const alertCWEs = CWEExtractor.extractCWEs(alert).map(normalizeCWE);
+        const mappingCWEs = info.cwes.map(cweInfo => normalizeCWE(cweInfo.cwe));
+        return alertCWEs.some(cwe => mappingCWEs.includes(cwe));
       });
 
       mappings.push({
         framework: 'OWASP',
         category: `${category} - ${info.name}`,
-        cwes: info.cwes,
+        cwes: info.cwes.map(cweInfo => normalizeCWE(cweInfo.cwe)),
         alertCount: categoryAlerts.length,
         alerts: categoryAlerts
       });
@@ -53,15 +66,16 @@ export class SANSAnalyzer extends FrameworkAnalyzer {
 
     for (const [rank, info] of Object.entries(SANS_TOP_25_MAPPINGS)) {
       const categoryAlerts = alerts.filter(alert => {
-        const alertCWEs = CWEExtractor.extractCWEs(alert);
-        return alertCWEs.includes(info.cwe);
+        const alertCWEs = CWEExtractor.extractCWEs(alert).map(normalizeCWE);
+        const normalizedMappingCWE = normalizeCWE(info.cwe);
+        return alertCWEs.includes(normalizedMappingCWE);
       });
 
       mappings.push({
         framework: 'SANS',
         category: `#${rank} - ${info.name}`,
         rank: parseInt(rank),
-        cwes: [info.cwe],
+        cwes: [normalizeCWE(info.cwe)],
         alertCount: categoryAlerts.length,
         alerts: categoryAlerts
       });
@@ -84,15 +98,16 @@ export class MITREKEVAnalyzer extends FrameworkAnalyzer {
 
     for (const [rank, info] of Object.entries(MITRE_KEV_MAPPINGS)) {
       const categoryAlerts = alerts.filter(alert => {
-        const alertCWEs = CWEExtractor.extractCWEs(alert);
-        return alertCWEs.includes(info.cwe);
+        const alertCWEs = CWEExtractor.extractCWEs(alert).map(normalizeCWE);
+        const normalizedMappingCWE = normalizeCWE(info.cwe);
+        return alertCWEs.includes(normalizedMappingCWE);
       });
 
       mappings.push({
         framework: 'MITRE KEV',
         category: `#${rank} - ${info.name} (Score: ${info.score})`,
         rank: parseInt(rank),
-        cwes: [info.cwe],
+        cwes: [normalizeCWE(info.cwe)],
         alertCount: categoryAlerts.length,
         alerts: categoryAlerts
       });

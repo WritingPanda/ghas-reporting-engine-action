@@ -156,41 +156,10 @@ jobs:
         with:
           name: ${{ matrix.framework }}-report-${{ matrix.format }}
           path: reports/
-```
-
-## Compliance Dashboard Integration
-
-```yaml
-name: Update Compliance Dashboard
-on:
-  schedule:
-    - cron: '0 */4 * * *' # Every 4 hours
-  workflow_dispatch:
-
-jobs:
-  update-dashboard:
-    runs-on: ubuntu-latest
-    permissions:
-      security-events: read
-      contents: read
-    steps:
-      - name: Generate JSON Reports for Dashboard
-        uses: Pandante-Central/GHAS-Reporting-Engine@v1
+          
+      - name: Download ${{ matrix.framework }} Report
+        uses: actions/download-artifact@v4
         with:
-          organization: 'your-org-name'
-          frameworks: 'owasp,sans,kev'
-          output_format: 'json'
-          include_empty: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: Send to Dashboard API
-        run: |
-          for report in reports/*.json; do
-            curl -X POST \
-              -H "Content-Type: application/json" \
-              -H "Authorization: Bearer ${{ secrets.DASHBOARD_API_TOKEN }}" \
-              -d @"$report" \
-              "https://dashboard.example.com/api/compliance/update"
-          done
+          name: ${{ matrix.framework }}-report-${{ matrix.format }}
+          path: reports/
 ```
