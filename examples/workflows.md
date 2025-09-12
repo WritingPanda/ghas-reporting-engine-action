@@ -136,17 +136,14 @@ jobs:
     permissions:
       security-events: read
       contents: write
-    strategy:
-      matrix:
-        format: [markdown, json]
-        framework: [owasp, sans, kev]
+
     steps:
       - name: Generate ${{ matrix.framework }} Report (${{ matrix.format }})
         uses: WritingPanda/ghas-reporting-engine-action@v0.1.1
         with:
-          organization: ${{ github.event.inputs.target_org }}
-          frameworks: ${{ matrix.framework }}
-          output_format: ${{ matrix.format }}
+          organization: 'your org name here'
+          frameworks: 'owasp, sans, kev'
+          output_format: 'markdown'
           since_date: ${{ steps.calculate-date.outputs.since_date }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -154,7 +151,7 @@ jobs:
       - name: Upload ${{ matrix.framework }} Report
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.framework }}-report-${{ matrix.format }}
+          name: ghas-report-${{ matrix.format }}
           path: reports/
           
       - name: Download ${{ matrix.framework }} Report
