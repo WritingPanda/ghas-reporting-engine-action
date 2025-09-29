@@ -1,55 +1,62 @@
-import * as core from '@actions/core';
-
 /**
- * Logger utility for consistent logging throughout the application
+ * Logging utility with different log levels
  */
+
+import { LogLevel } from '../types';
+
 export class Logger {
-  private static instance: Logger;
+  private logLevel: LogLevel;
 
-  constructor() {
-    if (Logger.instance) {
-      return Logger.instance;
+  constructor(logLevel: LogLevel = 'info') {
+    this.logLevel = logLevel;
+  }
+
+  private shouldLog(level: LogLevel): boolean {
+    const levels: Record<LogLevel, number> = {
+      debug: 0,
+      info: 1,
+      warn: 2,
+      error: 3,
+    };
+
+    return levels[level] >= levels[this.logLevel];
+  }
+
+  private formatMessage(level: LogLevel, message: string, context?: Record<string, unknown>): string {
+    const timestamp = new Date().toISOString();
+    const contextStr = context ? ` ${JSON.stringify(context)}` : '';
+    return `[${timestamp}] ${level.toUpperCase()}: ${message}${contextStr}`;
+  }
+
+  debug(message: string, context?: Record<string, unknown>): void {
+    if (this.shouldLog('debug')) {
+      console.debug(this.formatMessage('debug', message, context));
     }
-    Logger.instance = this;
   }
 
-  /**
-   * Log an info message
-   */
-  info(message: string): void {
-    core.info(message);
-    console.log(`[INFO] ${new Date().toISOString()}: ${message}`);
+  info(message: string, context?: Record<string, unknown>): void {
+    if (this.shouldLog('info')) {
+      console.info(this.formatMessage('info', message, context));
+    }
   }
 
-  /**
-   * Log a warning message
-   */
-  warn(message: string): void {
-    core.warning(message);
-    console.warn(`[WARN] ${new Date().toISOString()}: ${message}`);
+  warn(message: string, context?: Record<string, unknown>): void {
+    if (this.shouldLog('warn')) {
+      console.warn(this.formatMessage('warn', message, context));
+    }
   }
 
-  /**
-   * Log an error message
-   */
-  error(message: string): void {
-    core.error(message);
-    console.error(`[ERROR] ${new Date().toISOString()}: ${message}`);
+  error(message: string, error?: Error, context?: Record<string, unknown>): void {
+    if (this.shouldLog('error')) {
+      const errorContext = error ? { error: error.message, stack: error.stack, ...context } : context;
+      console.error(this.formatMessage('error', message, errorContext));
+    }
   }
 
-  /**
-   * Log a debug message
-   */
-  debug(message: string): void {
-    core.debug(message);
-    console.debug(`[DEBUG] ${new Date().toISOString()}: ${message}`);
-  }
-
-  /**
-   * Log a notice message
-   */
-  notice(message: string): void {
-    core.notice(message);
-    console.log(`[NOTICE] ${new Date().toISOString()}: ${message}`);
+  setLogLevel(level: LogLevel): void {
+    this.logLevel = level;
   }
 }
+
+// Export a default logger instance
+export const logger = new Logger();
