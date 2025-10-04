@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} - GHAS Security Report</title>
+  <style>
+    {{ css_content }}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="main-title">{{ title }}</h1>
+        <p class="subtitle">GitHub Advanced Security Compliance Report</p>
+        <div class="metadata">
+          <span class="metadata-item">
+            <strong>Target:</strong> {{ target_name }} ({{ target_type }})
+          </span>
+          <span class="metadata-item">
+            <strong>Generated:</strong> {{ generated_at | format_datetime }}
+          </span>
+          <span class="metadata-item">
+            <strong>Period:</strong> {{ report_period.days_back }} days
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Executive Summary -->
+    <section class="section">
+      <h2 class="section-title">Executive Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-number">{{ summary.total_alerts }}</div>
+          <div class="summary-label">Total Alerts</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-number">{{ summary.open_alerts }}</div>
+          <div class="summary-label">Open Alerts</div>
+        </div>
+        <div class="summary-card critical">
+          <div class="summary-number">{{ framework_data.total_mapped_alerts }}</div>
+          <div class="summary-label">{{ framework_type | title }} Mapped</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-number">{{ framework_data.coverage.coverage_percentage | round(1) }}%</div>
+          <div class="summary-label">Framework Coverage</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Charts Section -->
+    <section class="section">
+      <h2 class="section-title">Visual Analytics</h2>
+      <div class="charts-grid">
+        <div class="chart-container">
+          <canvas id="severityChart"></canvas>
+          <h3 class="chart-title">Severity Distribution</h3>
+        </div>
+        <div class="chart-container">
+          <canvas id="frameworkChart"></canvas>
+          <h3 class="chart-title">{{ framework_type | title }} Distribution</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Framework-Specific Content -->
+    {% block framework_content %}{% endblock %}
+
+    <!-- CWE Analysis -->
+    <section class="section">
+      <h2 class="section-title">Common Weakness Enumeration (CWE) Analysis</h2>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>CWE ID</th>
+              <th>Alert Count</th>
+              <th>Severity Distribution</th>
+              <th>Top Repository</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cwe, details in cwe_analysis.cwe_details.items() %}
+            <tr>
+              <td><code>{{ cwe }}</code></td>
+              <td>{{ details.total_alerts }}</td>
+              <td>
+                <div class="severity-bar">
+                  {% for severity, count in details.severity_distribution.items() %}
+                  <span class="severity-segment severity-{{ severity }}" style="flex: {{ count }};"
+                    title="{{ severity }}: {{ count }}"></span>
+                  {% endfor %}
+                </div>
+              </td>
+              <td>
+                {% if details.top_repositories %}
+                {{ details.top_repositories.items() | list | first | first }}
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Repository Analysis -->
+    <section class="section">
+      <h2 class="section-title">Repository Analysis</h2>
+      <div class="repository-grid">
+        {% for repo in repository_analysis.top_repositories_by_alerts %}
+        <div class="repository-card">
+          <h4 class="repository-name">{{ repo.name }}</h4>
+          <div class="repository-stats">
+            <span class="stat-item">{{ repo.count }} alerts</span>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Recommendations -->
+    <section class="section">
+      <h2 class="section-title">Recommendations</h2>
+      <div class="recommendations">
+        {% for recommendation in recommendations %}
+        <div class="recommendation-item">
+          <div class="recommendation-icon">💡</div>
+          <div class="recommendation-text">{{ recommendation }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Generated by GHAS Reporting Engine v0.1.0</p>
+      <p>Report generated on {{ generated_at | format_datetime }}</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript for Charts -->
+  <script>
+    // Severity Distribution Chart
+    const severityCtx = document.getElementById('severityChart').getContext('2d');
+    new Chart(severityCtx, {
+      type: 'doughnut',
+      data: {
+        labels: {{ severity_data.labels | safe_tojson }},
+      datasets: [{
+        data: {{ severity_data.values | safe_tojson }},
+      backgroundColor: {{ severity_data.colors | safe_tojson }},
+      borderWidth: 2,
+      borderColor: '#fff'
+                }]
+            },
+      options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+        });
+
+    // Framework Distribution Chart
+    const frameworkCtx = document.getElementById('frameworkChart').getContext('2d');
+    new Chart(frameworkCtx, {
+      type: 'bar',
+      data: {
+        labels: {{ framework_chart_data.labels | safe_tojson }},
+      datasets: [{
+        label: 'Alert Count',
+        data: {{ framework_chart_data.values | safe_tojson }},
+      backgroundColor: 'rgba(54, 162, 235, 0.8)',
+      borderColor: 'rgba(54, 162, 235, 1)',
+      borderWidth: 1
+                }]
+            },
+      options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+        });
+  </script>
+</body>
+
+</html>
