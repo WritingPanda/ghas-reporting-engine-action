@@ -6,7 +6,8 @@ This document provides instructions for building the GHAS reporting engine.
 
 This app will:
 
-- be written in Python and use the uv package manager
+- be written in Python
+- use the uv package manager
 - be a command-line interface (CLI) application that can be run as a GitHub Action or locally
 - interact with the GitHub API to fetch GitHub Advanced Security (GHAS) alert data
 - process and analyze the fetched data to generate reports based on compliance frameworks
@@ -42,8 +43,8 @@ The application must be a CLI app that can be run as a GitHub Action or locally.
 - GitHub token (for API access)
 - Organization or enterprise name
 - Report type (e.g., OWASP Top 10, SANS Top 25, MITRE Top 10)
-- Report format (e.g., JSON, CSV, HTML)
-- Time period for the report (e.g., last 7 days, last 30 days)
+- Report format (e.g., JSON, CSV, HTML, PDF)
+- Time period for the report (e.g., last 7 days, last 30 days) (optional)
 
 For the HTML report format, the application should generate a well-structured HTML file that includes:
 
@@ -57,6 +58,8 @@ For the HTML report format, the application should generate a well-structured HT
 - Visualizations (e.g., charts or graphs) to represent the data
 - The reports should be built as a template that can be easily updated or modified in the future and have data injected into it as needed
 
+The application must take the HTML report and convert it to PDF format when the user selects PDF as the report format.
+
 The application should be modular, with separate functions or classes for:
 
 - Fetching data from the GitHub API
@@ -67,7 +70,7 @@ The application should be modular, with separate functions or classes for:
 The GitHub Action workflow should be defined in a YAML file, specifying the steps to:
 
 - Checkout the repository
-- Set up the Node.js environment
+- Set up the Python environment
 - Install dependencies
 - Run the application with the provided inputs
 - Upload the generated report as an artifact and include it in the action summary
@@ -79,10 +82,6 @@ The application should include tests to validate its functionality, including:
 - Integration tests to ensure the application works as expected when run as a GitHub Action or a CLI app
 - Tests to verify that the reports are generated correctly and include the expected data
 
-## Ideal Output from Building the Application
-
-Ideally, there should be a binary or compiled version of the application that can be run directly without needing to set up a development environment. This binary should be included in the GitHub Action workflow, allowing users to run the action without needing to install dependencies or set up Node.js.
-
 ## Documentation
 
 The application should include comprehensive documentation, including:
@@ -90,3 +89,6 @@ The application should include comprehensive documentation, including:
 - A README file with an overview of the application, installation instructions, usage examples, and information on how to contribute
 - Inline comments in the code to explain the functionality of different sections
 - A CONTRIBUTING file with guidelines for contributing to the project
+- A LICENSE file specifying the open-source license for the project
+- A CODEOWNERS file to define code ownership and review requirements
+- Examples of generated reports in different formats (JSON, CSV, HTML, PDF)
