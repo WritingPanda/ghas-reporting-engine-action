@@ -31,14 +31,13 @@ dependencies = [
   "requests>=2.31.0",
   "pydantic>=2.5.0",
   "jinja2>=3.1.0",
-  "pandas>=2.1.0",
   "python-dateutil>=2.8.0",
   "rich>=13.0.0",
-  "plotly>=5.17.0",
-  "kaleido>=0.2.1",
+  "pygithub>=2.1.1",
 ]
 
 [project.optional-dependencies]
+pdf = ["weasyprint>=60.0"]
 dev = [
   "pytest>=7.4.0",
   "pytest-cov>=4.1.0",
@@ -52,7 +51,7 @@ dev = [
 build = ["pyinstaller>=6.0.0", "build>=1.0.0"]
 
 [project.scripts]
-ghas-report = "ghas_reporting_engine.cli:cli"
+ghas-report = "ghas_reporting_engine.cli:main"
 
 [project.urls]
 Homepage = "https://github.com/WritingPanda/ghas-reporting-engine-action"
@@ -62,6 +61,18 @@ Issues = "https://github.com/WritingPanda/ghas-reporting-engine-action/issues"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+  "pytest>=7.4.0",
+  "pytest-cov>=4.1.0",
+  "pytest-mock>=3.11.0",
+  "black>=23.0.0",
+  "ruff>=0.1.0",
+  "mypy>=1.7.0",
+  "types-requests>=2.31.0",
+  "types-python-dateutil>=2.8.0",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ghas_reporting_engine"]

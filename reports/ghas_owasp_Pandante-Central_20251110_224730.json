@@ -1,0 +1,1785 @@
+{
+  "metadata": {
+    "generated_at": "2025-11-10T22:47:30.758830Z",
+    "report_version": "1.0",
+    "target": "Pandante-Central",
+    "target_type": "organization",
+    "date_range": {
+      "since": "2024-11-10T22:47:30.758839+00:00",
+      "until": "2025-11-10T22:47:30.758843+00:00",
+      "days": 365
+    },
+    "frameworks": [
+      "owasp"
+    ],
+    "total_alerts": 340,
+    "alert_summary": {
+      "open": 242,
+      "dismissed": 0,
+      "fixed": 98
+    }
+  },
+  "summary": {
+    "total_alerts": 340,
+    "open_alerts": 242,
+    "dismissed_alerts": 0,
+    "fixed_alerts": 98
+  },
+  "severity_analysis": {
+    "severity_counts": {
+      "medium": 118,
+      "high": 188,
+      "critical": 34
+    },
+    "severity_percentages": {
+      "medium": 34.705882352941174,
+      "high": 55.294117647058826,
+      "critical": 10.0
+    },
+    "critical_and_high": 222,
+    "medium_and_low": 118
+  },
+  "cwe_analysis": {
+    "total_unique_cwes": 83,
+    "cwe_details": {
+      "CWE-1275": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "medium": 4
+        },
+        "state_distribution": {
+          "fixed": 1,
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/pygoat": 3,
+          "Pandante-Central/ghas-mcp-demo": 1
+        },
+        "first_seen": "2025-05-06T23:23:32+00:00",
+        "last_seen": "2025-06-19T20:32:00+00:00"
+      },
+      "CWE-1004": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "medium": 4
+        },
+        "state_distribution": {
+          "fixed": 1,
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/pygoat": 3,
+          "Pandante-Central/ghas-mcp-demo": 1
+        },
+        "first_seen": "2025-05-06T23:23:32+00:00",
+        "last_seen": "2025-06-19T20:32:00+00:00"
+      },
+      "CWE-915": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/api_tester": 1
+        },
+        "first_seen": "2025-05-20T07:25:45+00:00",
+        "last_seen": "2025-05-20T07:25:45+00:00"
+      },
+      "CWE-805": {
+        "total_alerts": 5,
+        "severity_distribution": {
+          "critical": 5
+        },
+        "state_distribution": {
+          "open": 4,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 4,
+          "Pandante-Central/cpp-windows-test": 1
+        },
+        "first_seen": "2025-06-04T19:48:33+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-190": {
+        "total_alerts": 34,
+        "severity_distribution": {
+          "high": 34
+        },
+        "state_distribution": {
+          "open": 1,
+          "fixed": 33
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 33,
+          "Pandante-Central/WebGoat": 1
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-07-07T16:45:26+00:00"
+      },
+      "CWE-253": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "high": 4
+        },
+        "state_distribution": {
+          "open": 4
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 4
+        },
+        "first_seen": "2025-09-09T16:42:38+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-020": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "high": 3
+        },
+        "state_distribution": {
+          "fixed": 1,
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/GHAS-Reporting-Engine": 1,
+          "Pandante-Central/WebGoat": 1,
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-09-02T20:34:49+00:00"
+      },
+      "CWE-200": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 1
+        },
+        "first_seen": "2025-09-09T16:40:43+00:00",
+        "last_seen": "2025-09-09T16:40:43+00:00"
+      },
+      "CWE-209": {
+        "total_alerts": 8,
+        "severity_distribution": {
+          "medium": 8
+        },
+        "state_distribution": {
+          "open": 8
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 5,
+          "Pandante-Central/hearts-github": 3
+        },
+        "first_seen": "2025-07-27T08:56:03+00:00",
+        "last_seen": "2025-10-07T10:26:07+00:00"
+      },
+      "CWE-327": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoatEight": 1,
+          "Pandante-Central/WebGoat": 1
+        },
+        "first_seen": "2025-07-07T16:45:26+00:00",
+        "last_seen": "2025-09-09T16:43:01+00:00"
+      },
+      "CWE-704": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 2
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-03-06T16:21:48+00:00"
+      },
+      "CWE-434": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "medium": 3
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 2,
+          "Pandante-Central/api_tester": 1
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-09-22T20:53:52+00:00"
+      },
+      "CWE-330": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 1
+        },
+        "first_seen": "2025-07-07T16:19:58+00:00",
+        "last_seen": "2025-07-07T16:19:58+00:00"
+      },
+      "CWE-078": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "medium": 2,
+          "critical": 1
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/tristan": 1,
+          "Pandante-Central/small-vulnerable-web-app": 1,
+          "Pandante-Central/api_tester": 1
+        },
+        "first_seen": "2025-05-20T07:25:45+00:00",
+        "last_seen": "2025-09-22T20:53:17+00:00"
+      },
+      "CWE-256": {
+        "total_alerts": 18,
+        "severity_distribution": {
+          "high": 18
+        },
+        "state_distribution": {
+          "fixed": 18
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 18
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-05-06T23:16:01+00:00"
+      },
+      "CWE-835": {
+        "total_alerts": 8,
+        "severity_distribution": {
+          "high": 8
+        },
+        "state_distribution": {
+          "fixed": 8
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 8
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-03-06T16:21:48+00:00"
+      },
+      "CWE-807": {
+        "total_alerts": 8,
+        "severity_distribution": {
+          "high": 8
+        },
+        "state_distribution": {
+          "open": 8
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 4,
+          "Pandante-Central/api_tester": 3,
+          "Pandante-Central/dvcsharp-api": 1
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-09-22T20:53:52+00:00"
+      },
+      "CWE-787": {
+        "total_alerts": 5,
+        "severity_distribution": {
+          "critical": 5
+        },
+        "state_distribution": {
+          "open": 4,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 4,
+          "Pandante-Central/cpp-windows-test": 1
+        },
+        "first_seen": "2025-06-04T19:48:33+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-476": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 2
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-03-06T16:21:48+00:00"
+      },
+      "CWE-095": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 2
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2024-12-20T13:52:10+00:00"
+      },
+      "CWE-275": {
+        "total_alerts": 43,
+        "severity_distribution": {
+          "medium": 43
+        },
+        "state_distribution": {
+          "open": 43
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 22,
+          "Pandante-Central/curl": 8,
+          "Pandante-Central/WebGoat": 5,
+          "Pandante-Central/go-test-bench": 3,
+          "Pandante-Central/Vulnerable-C-Program": 1
+        },
+        "first_seen": "2025-05-06T23:19:55+00:00",
+        "last_seen": "2025-09-22T20:53:08+00:00"
+      },
+      "CWE-827": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/small-vulnerable-web-app": 1,
+          "Pandante-Central/dvcsharp-api": 1
+        },
+        "first_seen": "2025-05-20T15:22:53+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-359": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "high": 3
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoatEight": 1,
+          "Pandante-Central/WebGoat": 1,
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2025-01-28T03:56:16+00:00",
+        "last_seen": "2025-09-09T16:41:50+00:00"
+      },
+      "CWE-197": {
+        "total_alerts": 33,
+        "severity_distribution": {
+          "high": 33
+        },
+        "state_distribution": {
+          "fixed": 33
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 33
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-03-06T16:21:48+00:00"
+      },
+      "CWE-250": {
+        "total_alerts": 7,
+        "severity_distribution": {
+          "high": 7
+        },
+        "state_distribution": {
+          "open": 7
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 5,
+          "Pandante-Central/api_tester": 2
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-09-22T20:53:52+00:00"
+      },
+      "CWE-307": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2024-12-20T13:52:10+00:00"
+      },
+      "CWE-676": {
+        "total_alerts": 7,
+        "severity_distribution": {
+          "critical": 7
+        },
+        "state_distribution": {
+          "open": 7
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 7
+        },
+        "first_seen": "2025-09-09T16:42:38+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-313": {
+        "total_alerts": 18,
+        "severity_distribution": {
+          "high": 18
+        },
+        "state_distribution": {
+          "fixed": 18
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 18
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-05-06T23:16:01+00:00"
+      },
+      "CWE-089": {
+        "total_alerts": 13,
+        "severity_distribution": {
+          "high": 13
+        },
+        "state_distribution": {
+          "open": 6,
+          "fixed": 7
+        },
+        "top_repositories": {
+          "Pandante-Central/ghas-mcp-demo": 7,
+          "Pandante-Central/small-vulnerable-web-app": 3,
+          "Pandante-Central/juice-shop": 3
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-116": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "high": 1,
+          "medium": 1,
+          "critical": 2
+        },
+        "state_distribution": {
+          "fixed": 1,
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 2,
+          "Pandante-Central/GHAS-Reporting-Engine": 1,
+          "Pandante-Central/dvpwa": 1
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2025-09-02T20:34:49+00:00"
+      },
+      "CWE-079": {
+        "total_alerts": 6,
+        "severity_distribution": {
+          "medium": 4,
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 5,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 2,
+          "Pandante-Central/small-vulnerable-web-app": 1,
+          "Pandante-Central/api_tester": 1,
+          "Pandante-Central/dvpwa": 1,
+          "Pandante-Central/endor-gh-demo": 1
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-502": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/dvcsharp-api": 1,
+          "Pandante-Central/small-vulnerable-web-app": 1
+        },
+        "first_seen": "2025-09-09T16:40:32+00:00",
+        "last_seen": "2025-09-12T03:56:29+00:00"
+      },
+      "CWE-290": {
+        "total_alerts": 7,
+        "severity_distribution": {
+          "high": 7
+        },
+        "state_distribution": {
+          "open": 7
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 4,
+          "Pandante-Central/api_tester": 3
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-09-22T20:53:52+00:00"
+      },
+      "CWE-611": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/small-vulnerable-web-app": 1,
+          "Pandante-Central/dvcsharp-api": 1
+        },
+        "first_seen": "2025-05-20T15:22:53+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-080": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/GHAS-Reporting-Engine": 1
+        },
+        "first_seen": "2025-09-02T20:34:49+00:00",
+        "last_seen": "2025-09-02T20:34:49+00:00"
+      },
+      "CWE-191": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 1,
+          "critical": 1
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 1,
+          "Pandante-Central/CnC_Generals_Zero_Hour": 1
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-07-07T16:45:26+00:00"
+      },
+      "CWE-367": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 1,
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-522": {
+        "total_alerts": 18,
+        "severity_distribution": {
+          "high": 18
+        },
+        "state_distribution": {
+          "fixed": 18
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 18
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-05-06T23:16:01+00:00"
+      },
+      "CWE-192": {
+        "total_alerts": 25,
+        "severity_distribution": {
+          "high": 25
+        },
+        "state_distribution": {
+          "fixed": 25
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 25
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-03-06T16:21:48+00:00"
+      },
+      "CWE-260": {
+        "total_alerts": 18,
+        "severity_distribution": {
+          "high": 18
+        },
+        "state_distribution": {
+          "fixed": 18
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 18
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-05-06T23:16:01+00:00"
+      },
+      "CWE-532": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "high": 3
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 2,
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2025-01-28T03:56:16+00:00",
+        "last_seen": "2025-07-07T16:45:26+00:00"
+      },
+      "CWE-770": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2024-12-20T13:52:10+00:00"
+      },
+      "CWE-094": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "medium": 1,
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 2,
+          "Pandante-Central/api_tester": 1
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2025-05-20T07:25:45+00:00"
+      },
+      "CWE-643": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "critical": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/small-vulnerable-web-app": 1
+        },
+        "first_seen": "2025-09-09T16:40:32+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-686": {
+        "total_alerts": 25,
+        "severity_distribution": {
+          "high": 25
+        },
+        "state_distribution": {
+          "fixed": 25
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 25
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-04-25T23:55:07+00:00"
+      },
+      "CWE-352": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 1
+        },
+        "first_seen": "2025-07-07T16:45:26+00:00",
+        "last_seen": "2025-07-07T16:45:26+00:00"
+      },
+      "CWE-681": {
+        "total_alerts": 25,
+        "severity_distribution": {
+          "high": 25
+        },
+        "state_distribution": {
+          "fixed": 25
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 25
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-03-06T16:21:48+00:00"
+      },
+      "CWE-489": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "fixed": 1,
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/ghas-mcp-demo": 1,
+          "Pandante-Central/beat-bot": 1
+        },
+        "first_seen": "2025-06-13T22:03:07+00:00",
+        "last_seen": "2025-06-19T20:32:00+00:00"
+      },
+      "CWE-312": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "high": 4
+        },
+        "state_distribution": {
+          "open": 4
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 1,
+          "Pandante-Central/WebGoatEight": 1,
+          "Pandante-Central/WebGoat": 1,
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2025-01-28T03:56:16+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-338": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 1
+        },
+        "first_seen": "2025-07-07T16:19:58+00:00",
+        "last_seen": "2025-07-07T16:19:58+00:00"
+      },
+      "CWE-022": {
+        "total_alerts": 9,
+        "severity_distribution": {
+          "high": 9
+        },
+        "state_distribution": {
+          "open": 8,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 4,
+          "Pandante-Central/small-vulnerable-web-app": 3,
+          "Pandante-Central/Vulnerable-C-Program": 1,
+          "Pandante-Central/ghas-mcp-demo": 1
+        },
+        "first_seen": "2025-06-19T20:32:00+00:00",
+        "last_seen": "2025-09-22T20:53:34+00:00"
+      },
+      "CWE-090": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "high": 3
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 3
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2024-12-20T13:52:10+00:00"
+      },
+      "CWE-247": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/dvcsharp-api": 1
+        },
+        "first_seen": "2025-05-20T15:22:53+00:00",
+        "last_seen": "2025-05-20T15:22:53+00:00"
+      },
+      "CWE-036": {
+        "total_alerts": 9,
+        "severity_distribution": {
+          "high": 9
+        },
+        "state_distribution": {
+          "open": 8,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 4,
+          "Pandante-Central/small-vulnerable-web-app": 3,
+          "Pandante-Central/Vulnerable-C-Program": 1,
+          "Pandante-Central/ghas-mcp-demo": 1
+        },
+        "first_seen": "2025-06-19T20:32:00+00:00",
+        "last_seen": "2025-09-22T20:53:34+00:00"
+      },
+      "CWE-215": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "fixed": 1,
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/ghas-mcp-demo": 1,
+          "Pandante-Central/beat-bot": 1
+        },
+        "first_seen": "2025-06-13T22:03:07+00:00",
+        "last_seen": "2025-06-19T20:32:00+00:00"
+      },
+      "CWE-113": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/small-vulnerable-web-app": 1
+        },
+        "first_seen": "2025-09-09T16:40:32+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-918": {
+        "total_alerts": 8,
+        "severity_distribution": {
+          "critical": 8
+        },
+        "state_distribution": {
+          "open": 3,
+          "fixed": 5
+        },
+        "top_repositories": {
+          "Pandante-Central/endor-gh-demo": 5,
+          "Pandante-Central/small-vulnerable-web-app": 2,
+          "Pandante-Central/WebGoat": 1
+        },
+        "first_seen": "2024-12-20T13:55:24+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-943": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "high": 3
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 3
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2024-12-20T13:52:10+00:00"
+      },
+      "CWE-497": {
+        "total_alerts": 5,
+        "severity_distribution": {
+          "medium": 5
+        },
+        "state_distribution": {
+          "open": 5
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 5
+        },
+        "first_seen": "2025-10-07T10:26:07+00:00",
+        "last_seen": "2025-10-07T10:26:07+00:00"
+      },
+      "CWE-730": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/small-vulnerable-web-app": 1
+        },
+        "first_seen": "2025-09-09T16:40:32+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-776": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "critical": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/dvcsharp-api": 1
+        },
+        "first_seen": "2025-05-20T15:22:53+00:00",
+        "last_seen": "2025-05-20T15:22:53+00:00"
+      },
+      "CWE-252": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 2
+        },
+        "first_seen": "2025-09-09T16:42:38+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-416": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/Vulnerable-C-Program": 1,
+          "Pandante-Central/CnC_Generals_Zero_Hour": 1
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-09-22T20:53:34+00:00"
+      },
+      "CWE-468": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "fixed": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/CnC_Generals_Zero_Hour": 2
+        },
+        "first_seen": "2025-03-06T16:21:48+00:00",
+        "last_seen": "2025-03-06T16:21:48+00:00"
+      },
+      "CWE-088": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "medium": 1,
+          "critical": 1
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/tristan": 1,
+          "Pandante-Central/small-vulnerable-web-app": 1
+        },
+        "first_seen": "2025-09-09T16:40:32+00:00",
+        "last_seen": "2025-09-22T20:53:17+00:00"
+      },
+      "CWE-023": {
+        "total_alerts": 9,
+        "severity_distribution": {
+          "high": 9
+        },
+        "state_distribution": {
+          "open": 8,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 4,
+          "Pandante-Central/small-vulnerable-web-app": 3,
+          "Pandante-Central/Vulnerable-C-Program": 1,
+          "Pandante-Central/ghas-mcp-demo": 1
+        },
+        "first_seen": "2025-06-19T20:32:00+00:00",
+        "last_seen": "2025-09-22T20:53:34+00:00"
+      },
+      "CWE-120": {
+        "total_alerts": 5,
+        "severity_distribution": {
+          "critical": 5
+        },
+        "state_distribution": {
+          "open": 4,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 4,
+          "Pandante-Central/cpp-windows-test": 1
+        },
+        "first_seen": "2025-06-04T19:48:33+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-112": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/dvcsharp-api": 1
+        },
+        "first_seen": "2025-05-20T15:22:53+00:00",
+        "last_seen": "2025-05-20T15:22:53+00:00"
+      },
+      "CWE-912": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "medium": 3
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 2,
+          "Pandante-Central/api_tester": 1
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-09-22T20:53:52+00:00"
+      },
+      "CWE-415": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "critical": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/Vulnerable-C-Program": 1
+        },
+        "first_seen": "2025-09-22T20:53:34+00:00",
+        "last_seen": "2025-09-22T20:53:34+00:00"
+      },
+      "CWE-074": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/Vulnerable-Flask-App": 2
+        },
+        "first_seen": "2025-01-11T07:38:33+00:00",
+        "last_seen": "2025-01-11T07:38:33+00:00"
+      },
+      "CWE-829": {
+        "total_alerts": 45,
+        "severity_distribution": {
+          "medium": 45
+        },
+        "state_distribution": {
+          "open": 44,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 15,
+          "Pandante-Central/app-java-demo": 10,
+          "Pandante-Central/endor-gh-demo": 10,
+          "Pandante-Central/curl": 3,
+          "Pandante-Central/api_tester": 2
+        },
+        "first_seen": "2024-12-20T13:55:24+00:00",
+        "last_seen": "2025-09-22T20:53:02+00:00"
+      },
+      "CWE-099": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "high": 4
+        },
+        "state_distribution": {
+          "open": 3,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/small-vulnerable-web-app": 3,
+          "Pandante-Central/ghas-mcp-demo": 1
+        },
+        "first_seen": "2025-06-19T20:32:00+00:00",
+        "last_seen": "2025-09-09T16:40:32+00:00"
+      },
+      "CWE-732": {
+        "total_alerts": 36,
+        "severity_distribution": {
+          "high": 36
+        },
+        "state_distribution": {
+          "open": 36
+        },
+        "top_repositories": {
+          "Pandante-Central/curl": 36
+        },
+        "first_seen": "2025-09-09T16:42:38+00:00",
+        "last_seen": "2025-09-09T16:42:38+00:00"
+      },
+      "CWE-315": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoatEight": 1,
+          "Pandante-Central/WebGoat": 1
+        },
+        "first_seen": "2025-08-09T19:37:25+00:00",
+        "last_seen": "2025-09-09T16:41:50+00:00"
+      },
+      "CWE-350": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/dvcsharp-api": 1
+        },
+        "first_seen": "2025-05-20T15:22:53+00:00",
+        "last_seen": "2025-05-20T15:22:53+00:00"
+      },
+      "CWE-400": {
+        "total_alerts": 10,
+        "severity_distribution": {
+          "high": 9,
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 10
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 6,
+          "Pandante-Central/api_tester": 3,
+          "Pandante-Central/small-vulnerable-web-app": 1
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2025-09-22T20:53:52+00:00"
+      },
+      "CWE-614": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "medium": 4
+        },
+        "state_distribution": {
+          "fixed": 1,
+          "open": 3
+        },
+        "top_repositories": {
+          "Pandante-Central/pygoat": 3,
+          "Pandante-Central/ghas-mcp-demo": 1
+        },
+        "first_seen": "2025-05-06T23:23:32+00:00",
+        "last_seen": "2025-06-19T20:32:00+00:00"
+      },
+      "CWE-471": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/api_tester": 1
+        },
+        "first_seen": "2025-05-20T07:25:45+00:00",
+        "last_seen": "2025-05-20T07:25:45+00:00"
+      },
+      "CWE-073": {
+        "total_alerts": 10,
+        "severity_distribution": {
+          "high": 9,
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 9,
+          "fixed": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoat": 4,
+          "Pandante-Central/small-vulnerable-web-app": 3,
+          "Pandante-Central/Vulnerable-C-Program": 1,
+          "Pandante-Central/tristan": 1,
+          "Pandante-Central/ghas-mcp-demo": 1
+        },
+        "first_seen": "2025-06-19T20:32:00+00:00",
+        "last_seen": "2025-09-22T20:53:34+00:00"
+      },
+      "CWE-328": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "top_repositories": {
+          "Pandante-Central/WebGoatEight": 1,
+          "Pandante-Central/WebGoat": 1
+        },
+        "first_seen": "2025-07-07T16:45:26+00:00",
+        "last_seen": "2025-09-09T16:43:01+00:00"
+      },
+      "CWE-601": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "top_repositories": {
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2024-12-20T13:52:10+00:00",
+        "last_seen": "2024-12-20T13:52:10+00:00"
+      },
+      "CWE-117": {
+        "total_alerts": 16,
+        "severity_distribution": {
+          "medium": 7,
+          "high": 9
+        },
+        "state_distribution": {
+          "open": 16
+        },
+        "top_repositories": {
+          "Pandante-Central/api_tester": 6,
+          "Pandante-Central/go-test-bench": 5,
+          "Pandante-Central/WebGoat": 4,
+          "Pandante-Central/juice-shop": 1
+        },
+        "first_seen": "2025-05-06T23:16:01+00:00",
+        "last_seen": "2025-09-22T20:53:52+00:00"
+      }
+    },
+    "top_cwes": {
+      "CWE-829": 45,
+      "CWE-275": 43,
+      "CWE-732": 36,
+      "CWE-190": 34,
+      "CWE-197": 33,
+      "CWE-686": 25,
+      "CWE-192": 25,
+      "CWE-681": 25,
+      "CWE-256": 18,
+      "CWE-260": 18
+    }
+  },
+  "repository_analysis": {
+    "total_repositories": 24,
+    "repository_details": {
+      "Pandante-Central/juice-shop": {
+        "total_alerts": 67,
+        "severity_distribution": {
+          "medium": 31,
+          "high": 34,
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 49,
+          "fixed": 18
+        },
+        "unique_cwes": 29,
+        "unique_rules": 14
+      },
+      "Pandante-Central/api_tester": {
+        "total_alerts": 16,
+        "severity_distribution": {
+          "high": 5,
+          "medium": 11
+        },
+        "state_distribution": {
+          "open": 16
+        },
+        "unique_cwes": 14,
+        "unique_rules": 7
+      },
+      "Pandante-Central/go-test-bench": {
+        "total_alerts": 9,
+        "severity_distribution": {
+          "high": 5,
+          "medium": 4
+        },
+        "state_distribution": {
+          "open": 9
+        },
+        "unique_cwes": 3,
+        "unique_rules": 3
+      },
+      "Pandante-Central/Vulnerable-C-Program": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "high": 1,
+          "critical": 2,
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 4
+        },
+        "unique_cwes": 7,
+        "unique_rules": 4
+      },
+      "Pandante-Central/tristan": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "unique_cwes": 3,
+        "unique_rules": 1
+      },
+      "Pandante-Central/app-java-demo": {
+        "total_alerts": 10,
+        "severity_distribution": {
+          "medium": 10
+        },
+        "state_distribution": {
+          "open": 10
+        },
+        "unique_cwes": 1,
+        "unique_rules": 1
+      },
+      "Pandante-Central/report-collection-repository": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "unique_cwes": 1,
+        "unique_rules": 1
+      },
+      "Pandante-Central/hearts-github": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "medium": 4
+        },
+        "state_distribution": {
+          "open": 4
+        },
+        "unique_cwes": 2,
+        "unique_rules": 2
+      },
+      "Pandante-Central/dvcsharp-api": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "critical": 2,
+          "medium": 1,
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 4
+        },
+        "unique_cwes": 8,
+        "unique_rules": 4
+      },
+      "Pandante-Central/WebGoatEight": {
+        "total_alerts": 3,
+        "severity_distribution": {
+          "high": 2,
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 3
+        },
+        "unique_cwes": 6,
+        "unique_rules": 3
+      },
+      "Pandante-Central/curl": {
+        "total_alerts": 65,
+        "severity_distribution": {
+          "high": 42,
+          "critical": 11,
+          "medium": 12
+        },
+        "state_distribution": {
+          "open": 65
+        },
+        "unique_cwes": 12,
+        "unique_rules": 10
+      },
+      "Pandante-Central/small-vulnerable-web-app": {
+        "total_alerts": 14,
+        "severity_distribution": {
+          "critical": 6,
+          "high": 7,
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 14
+        },
+        "unique_cwes": 17,
+        "unique_rules": 9
+      },
+      "Pandante-Central/terragoat": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "unique_cwes": 1,
+        "unique_rules": 1
+      },
+      "Pandante-Central/GHAS-Reporting-Engine": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "high": 1,
+          "medium": 1
+        },
+        "state_distribution": {
+          "fixed": 2
+        },
+        "unique_cwes": 4,
+        "unique_rules": 2
+      },
+      "Pandante-Central/WebGoat": {
+        "total_alerts": 37,
+        "severity_distribution": {
+          "high": 16,
+          "critical": 1,
+          "medium": 20
+        },
+        "state_distribution": {
+          "open": 36,
+          "fixed": 1
+        },
+        "unique_cwes": 20,
+        "unique_rules": 12
+      },
+      "Pandante-Central/ghas-mcp-demo": {
+        "total_alerts": 10,
+        "severity_distribution": {
+          "high": 9,
+          "medium": 1
+        },
+        "state_distribution": {
+          "fixed": 10
+        },
+        "unique_cwes": 11,
+        "unique_rules": 4
+      },
+      "Pandante-Central/beat-bot": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "high": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "unique_cwes": 2,
+        "unique_rules": 1
+      },
+      "Pandante-Central/cpp-windows-test": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "critical": 1
+        },
+        "state_distribution": {
+          "fixed": 1
+        },
+        "unique_cwes": 3,
+        "unique_rules": 1
+      },
+      "Pandante-Central/no-code": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "unique_cwes": 1,
+        "unique_rules": 1
+      },
+      "Pandante-Central/pygoat": {
+        "total_alerts": 4,
+        "severity_distribution": {
+          "medium": 4
+        },
+        "state_distribution": {
+          "open": 4
+        },
+        "unique_cwes": 4,
+        "unique_rules": 2
+      },
+      "Pandante-Central/CnC_Generals_Zero_Hour": {
+        "total_alerts": 66,
+        "severity_distribution": {
+          "high": 64,
+          "critical": 2
+        },
+        "state_distribution": {
+          "fixed": 60,
+          "open": 6
+        },
+        "unique_cwes": 11,
+        "unique_rules": 8
+      },
+      "Pandante-Central/dvpwa": {
+        "total_alerts": 1,
+        "severity_distribution": {
+          "medium": 1
+        },
+        "state_distribution": {
+          "open": 1
+        },
+        "unique_cwes": 2,
+        "unique_rules": 1
+      },
+      "Pandante-Central/Vulnerable-Flask-App": {
+        "total_alerts": 2,
+        "severity_distribution": {
+          "critical": 2
+        },
+        "state_distribution": {
+          "open": 2
+        },
+        "unique_cwes": 1,
+        "unique_rules": 1
+      },
+      "Pandante-Central/endor-gh-demo": {
+        "total_alerts": 16,
+        "severity_distribution": {
+          "medium": 11,
+          "critical": 5
+        },
+        "state_distribution": {
+          "open": 10,
+          "fixed": 6
+        },
+        "unique_cwes": 3,
+        "unique_rules": 3
+      }
+    },
+    "top_repositories_by_alerts": {
+      "Pandante-Central/juice-shop": 67,
+      "Pandante-Central/CnC_Generals_Zero_Hour": 66,
+      "Pandante-Central/curl": 65,
+      "Pandante-Central/WebGoat": 37,
+      "Pandante-Central/api_tester": 16,
+      "Pandante-Central/endor-gh-demo": 16,
+      "Pandante-Central/small-vulnerable-web-app": 14,
+      "Pandante-Central/app-java-demo": 10,
+      "Pandante-Central/ghas-mcp-demo": 10,
+      "Pandante-Central/go-test-bench": 9
+    }
+  },
+  "trend_analysis": {
+    "daily_counts": {
+      "2025-10-07": 5,
+      "2025-09-22": 41,
+      "2025-09-12": 1,
+      "2025-09-09": 83,
+      "2025-09-02": 2,
+      "2025-08-23": 6,
+      "2025-08-09": 1,
+      "2025-07-27": 3,
+      "2025-07-07": 30,
+      "2025-06-19": 10,
+      "2025-06-13": 1,
+      "2025-06-04": 1,
+      "2025-05-20": 4,
+      "2025-05-17": 1,
+      "2025-05-06": 58,
+      "2025-04-25": 1,
+      "2025-04-18": 1,
+      "2025-03-10": 1,
+      "2025-03-06": 64,
+      "2025-01-28": 1,
+      "2025-01-11": 2,
+      "2024-12-20": 23
+    },
+    "moving_averages_7day": {
+      "2025-04-25": 13.29,
+      "2025-05-06": 18.29,
+      "2025-05-17": 18.14,
+      "2025-05-20": 18.57,
+      "2025-06-04": 9.57,
+      "2025-06-13": 9.57,
+      "2025-06-19": 10.86,
+      "2025-07-07": 15.0,
+      "2025-07-27": 7.14,
+      "2025-08-09": 7.14,
+      "2025-08-23": 7.43,
+      "2025-09-02": 7.57,
+      "2025-09-09": 19.29,
+      "2025-09-12": 18.0,
+      "2025-09-22": 19.57,
+      "2025-10-07": 19.86
+    },
+    "total_days": 22,
+    "average_daily": 15.454545454545455,
+    "peak_day": [
+      "2025-09-09",
+      83
+    ]
+  },
+  "framework_mappings": {
+    "owasp": {
+      "summary": {
+        "framework": "OWASP Top 10 2021",
+        "version": "1.0",
+        "description": "OWASP Top 10 Web Application Security Risks",
+        "total_categories": 0,
+        "categories": []
+      },
+      "mappings": {},
+      "category_counts": {},
+      "category_alerts": {},
+      "total_mapped_alerts": 0
+    }
+  },
+  "unmapped_cwes": [
+    "CWE-020",
+    "CWE-022",
+    "CWE-023",
+    "CWE-036",
+    "CWE-073",
+    "CWE-074",
+    "CWE-078",
+    "CWE-079",
+    "CWE-080",
+    "CWE-088",
+    "CWE-089",
+    "CWE-090",
+    "CWE-094",
+    "CWE-095",
+    "CWE-099",
+    "CWE-1004",
+    "CWE-112",
+    "CWE-113",
+    "CWE-116",
+    "CWE-117",
+    "CWE-120",
+    "CWE-1275",
+    "CWE-190",
+    "CWE-191",
+    "CWE-192",
+    "CWE-197",
+    "CWE-200",
+    "CWE-209",
+    "CWE-215",
+    "CWE-247",
+    "CWE-250",
+    "CWE-252",
+    "CWE-253",
+    "CWE-256",
+    "CWE-260",
+    "CWE-275",
+    "CWE-290",
+    "CWE-307",
+    "CWE-312",
+    "CWE-313",
+    "CWE-315",
+    "CWE-327",
+    "CWE-328",
+    "CWE-330",
+    "CWE-338",
+    "CWE-350",
+    "CWE-352",
+    "CWE-359",
+    "CWE-367",
+    "CWE-400",
+    "CWE-415",
+    "CWE-416",
+    "CWE-434",
+    "CWE-468",
+    "CWE-471",
+    "CWE-476",
+    "CWE-489",
+    "CWE-497",
+    "CWE-502",
+    "CWE-522",
+    "CWE-532",
+    "CWE-601",
+    "CWE-611",
+    "CWE-614",
+    "CWE-643",
+    "CWE-676",
+    "CWE-681",
+    "CWE-686",
+    "CWE-704",
+    "CWE-730",
+    "CWE-732",
+    "CWE-770",
+    "CWE-776",
+    "CWE-787",
+    "CWE-805",
+    "CWE-807",
+    "CWE-827",
+    "CWE-829",
+    "CWE-835",
+    "CWE-912",
+    "CWE-915",
+    "CWE-918",
+    "CWE-943"
+  ],
+  "recommendations": [
+    "Consider implementing automated alert triaging to manage the high volume of findings.",
+    "Prioritize fixing 222 critical and high severity vulnerabilities immediately.",
+    "Repository 'Pandante-Central/juice-shop' has the most alerts (67) - consider focused security review.",
+    "83 CWEs don't map to compliance frameworks - consider custom analysis."
+  ]
+}

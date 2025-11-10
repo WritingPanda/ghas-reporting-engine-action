@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GHAS Security Report - {{ metadata.target }}</title>
+  <link rel="stylesheet" href="{{ css_file_path }}">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="report-header">
+      <h1>GitHub Advanced Security Report</h1>
+      <div class="metadata">
+        <p><strong>Target:</strong> {{ metadata.target }} ({{ metadata.target_type }})</p>
+        <p><strong>Generated:</strong> {{ metadata.generated_at }}</p>
+        {% if metadata.date_range.since %}
+        <p><strong>Date Range:</strong> {{ metadata.date_range.since }} to {{ metadata.date_range.until }} ({{
+          metadata.date_range.days }} days)</p>
+        {% endif %}
+        <p><strong>Frameworks:</strong> {{ metadata.frameworks|join(', ')|upper }}</p>
+      </div>
+    </header>
+
+    <!-- Executive Summary -->
+    <section class="section">
+      <h2>Executive Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-card">
+          <h3>{{ summary.total_alerts }}</h3>
+          <p>Total Alerts</p>
+        </div>
+        <div class="summary-card open">
+          <h3>{{ summary.open_alerts }}</h3>
+          <p>Open</p>
+        </div>
+        <div class="summary-card dismissed">
+          <h3>{{ summary.dismissed_alerts }}</h3>
+          <p>Dismissed</p>
+        </div>
+        <div class="summary-card fixed">
+          <h3>{{ summary.fixed_alerts }}</h3>
+          <p>Fixed</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Severity Analysis -->
+    {% if severity_analysis %}
+    <section class="section">
+      <h2>Severity Distribution</h2>
+      <div class="severity-grid">
+        {% for severity, count in severity_analysis.severity_counts.items() %}
+        <div class="severity-card {{ severity }}">
+          <h3>{{ count }}</h3>
+          <p>{{ severity|capitalize }}</p>
+          <span class="percentage">{{ "%.1f"|format(severity_analysis.severity_percentages[severity]) }}%</span>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- Framework Mappings -->
+    {% if framework_mappings %}
+    <section class="section">
+      <h2>Compliance Framework Mappings</h2>
+
+      <!-- OWASP Top 10 -->
+      {% if 'owasp' in framework_mappings %}
+      <div class="framework-section">
+        <h3>OWASP Top 10 2021</h3>
+        <p class="framework-description">{{ framework_mappings.owasp.summary.description }}</p>
+        <p><strong>Total Mapped Alerts:</strong> {{ framework_mappings.owasp.total_mapped_alerts }}</p>
+
+        {% if framework_mappings.owasp.category_alerts %}
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Alert Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for category, count in framework_mappings.owasp.category_alerts.items() %}
+            <tr>
+              <td>{{ category }}</td>
+              <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- SANS Top 25 -->
+      {% if 'sans' in framework_mappings %}
+      <div class="framework-section">
+        <h3>SANS Top 25 CWEs</h3>
+        <p class="framework-description">{{ framework_mappings.sans.summary.description }}</p>
+        <p><strong>Total Mapped Alerts:</strong> {{ framework_mappings.sans.total_mapped_alerts }}</p>
+
+        {% if framework_mappings.sans.top_5_cwes %}
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>CWE</th>
+              <th>Rank</th>
+              <th>Alert Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cwe, count in framework_mappings.sans.top_5_cwes.items() %}
+            <tr>
+              <td>{{ cwe }}</td>
+              <td>{{ framework_mappings.sans.mappings[cwe].rank }}</td>
+              <td>{{ count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <!-- MITRE KEV -->
+      {% if 'mitre' in framework_mappings %}
+      <div class="framework-section">
+        <h3>MITRE Top 10 KEV</h3>
+        <p class="framework-description">{{ framework_mappings.mitre.summary.description }}</p>
+        <p><strong>Total Mapped Alerts:</strong> {{ framework_mappings.mitre.total_mapped_alerts }}</p>
+
+        {% if framework_mappings.mitre.critical_vulnerabilities %}
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>CWE</th>
+              <th>Rank</th>
+              <th>Alert Count</th>
+              <th>KEV Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cwe, count in framework_mappings.mitre.critical_vulnerabilities.items() %}
+            <tr>
+              <td>{{ cwe }}</td>
+              <td>{{ framework_mappings.mitre.mappings[cwe].rank }}</td>
+              <td>{{ count }}</td>
+              <td>{{ framework_mappings.mitre.mappings[cwe].vulnerability_count }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </div>
+      {% endif %}
+    </section>
+    {% endif %}
+
+    <!-- Repository Analysis -->
+    {% if repository_analysis and repository_analysis.repository_details %}
+    <section class="section">
+      <h2>Repository Analysis</h2>
+      <p><strong>Total Repositories:</strong> {{ repository_analysis.total_repositories }}</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Repository</th>
+            <th>Total Alerts</th>
+            <th>Unique CWEs</th>
+            <th>Unique Rules</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for repo, details in repository_analysis.top_repositories_by_alerts.items() %}
+          <tr>
+            <td><code>{{ repo }}</code></td>
+            <td>{{ details }}</td>
+            <td>{{ repository_analysis.repository_details[repo].unique_cwes }}</td>
+            <td>{{ repository_analysis.repository_details[repo].unique_rules }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    {% endif %}
+
+    <!-- Top CWEs -->
+    {% if cwe_analysis and cwe_analysis.top_cwes %}
+    <section class="section">
+      <h2>Top CWEs</h2>
+      <p><strong>Total Unique CWEs:</strong> {{ cwe_analysis.total_unique_cwes }}</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>CWE</th>
+            <th>Alert Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cwe, count in cwe_analysis.top_cwes.items() %}
+          <tr>
+            <td><code>{{ cwe }}</code></td>
+            <td>{{ count }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+    {% endif %}
+
+    <!-- Recommendations -->
+    {% if recommendations %}
+    <section class="section">
+      <h2>Recommendations</h2>
+      <ul class="recommendations-list">
+        {% for recommendation in recommendations %}
+        <li>{{ recommendation }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer class="report-footer">
+      <p>Generated by GHAS Reporting Engine v{{ metadata.report_version }}</p>
+    </footer>
+  </div>
+</body>
+
+</html>

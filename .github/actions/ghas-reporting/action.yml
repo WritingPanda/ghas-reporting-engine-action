@@ -21,9 +21,9 @@ inputs:
     required: false
     default: "owasp,sans,mitre"
   report-formats:
-    description: "Comma-separated list of report formats (json,csv,html)"
+    description: "Comma-separated list of report formats (json,csv,html,pdf)"
     required: false
-    default: "json,html"
+    default: "json,html,pdf"
   days-back:
     description: "Number of days to look back for alerts"
     required: false
@@ -39,6 +39,10 @@ inputs:
   severity-filter:
     description: "Filter alerts by severity (critical,high,medium,low)"
     required: false
+  upload-pdf:
+    description: "Upload PDF to Code Scanning"
+    required: false
+    default: "true"
 
 outputs:
   reports-path:
@@ -53,20 +57,27 @@ outputs:
   mapped-alerts:
     description: "Number of alerts mapped to compliance frameworks"
     value: ${{ steps.ghas-report.outputs.mapped-alerts }}
+  pdf-path:
+    description: "Path to generated PDF report"
+    value: ${{ steps.ghas-report.outputs.pdf-path }}
 
 runs:
   using: "composite"
   steps:
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Install uv
+      uses: astral-sh/setup-uv@v2
       with:
-        python-version: "3.11"
+        enable-cache: true
+
+    - name: Set up Python
+      shell: bash
+      run: uv python install 3.11
 
     - name: Install GHAS Reporting Engine
       shell: bash
       run: |
-        python -m pip install --upgrade pip
-        pip install -e ${{ github.action_path }}/../../
+        cd ${{ github.action_path }}/../../
+        uv sync
 
     - name: Run GHAS Reporting Engine
       shell: bash
@@ -111,7 +122,8 @@ runs:
 
         # Run the CLI
         echo "Running: ghas-report $args"
-        eval "ghas-report $args" | tee ghas_output.log
+        cd ${{ github.action_path }}/../../
+        eval "uv run ghas-report $args" | tee ghas_output.log
 
         # Extract summary information
         if [ -d "${{ inputs.output-path || './reports' }}" ]; then
@@ -139,6 +151,38 @@ runs:
             echo "summary=Target: $target_name, Alerts: $total_alerts, Open: $open_alerts" >> $GITHUB_OUTPUT
           fi
         fi
+
+        # Find PDF report for upload
+        pdf_report=$(find "${{ inputs.output-path || './reports' }}" -name "*.pdf" | head -1)
+        if [ -f "$pdf_report" ]; then
+          echo "pdf-path=$pdf_report" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Upload PDF to Code Scanning
+      shell: bash
+      if: inputs.upload-pdf == 'true' && steps.ghas-report.outputs.pdf-path != ''
+      run: |
+        pdf_path="${{ steps.ghas-report.outputs.pdf-path }}"
+
+        if [ -f "$pdf_path" ]; then
+          echo "Uploading PDF report to Code Scanning..."
+          
+          # Create a Code Scanning attachment
+          gh api \
+            --method POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "/repos/${{ github.repository }}/code-scanning/analyses" \
+            -f "commit_sha=${{ github.sha }}" \
+            -f "ref=${{ github.ref }}" \
+            -f "tool_name=GHAS Reporting Engine" \
+            -f "category=security-report" \
+            -F "sarif=@$pdf_path" || echo "Warning: Failed to upload PDF to Code Scanning"
+          
+          echo "✅ PDF report available in Code Scanning" >> $GITHUB_STEP_SUMMARY
+        fi
+      env:
+        GH_TOKEN: ${{ inputs.github-token }}
 
     - name: Upload Reports as Artifacts
       uses: actions/upload-artifact@v3
