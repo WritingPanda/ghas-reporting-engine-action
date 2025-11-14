@@ -29,12 +29,12 @@ This app will:
 
 Review the following files for additional context and data to help build this application:
 
-- [CodeQL CWE Coverage CSV](./codeql_cwe_coverage.csv)
-- [CodeQL CWE Coverage Instructions](./codeqlcwecoverage.instructions.md)
-- [MITRE KEV Mapping and Instructions](./mitrekev.instructions.md)
-- [OWASP Top 10 Mapping and Instructions](./owasptop10.instructions.md)
-- [SANS Top 25 Mapping and Instructions](./sanstop25.instructions.md)
-- [CodeQL Alert Sample Data](./sample-output.instructions.json)
+- [CodeQL CWE Coverage CSV](../instructions/codeql_cwe_coverage.csv)
+- [CodeQL CWE Coverage Instructions](../instructions/codeqlcwecoverage.instructions.md)
+- [MITRE KEV Mapping and Instructions](../instructions/mitrekev.instructions.md)
+- [OWASP Top 10 Mapping and Instructions](../instructions/owasptop10.instructions.md)
+- [SANS Top 25 Mapping and Instructions](../instructions/sanstop25.instructions.md)
+- [CodeQL Alert Sample Data](../instructions/sample-output.instructions.json)
 
 ## Application Design
 
