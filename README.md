@@ -12,6 +12,7 @@ A powerful CLI tool and GitHub Action that generates compliance reports from Git
 - **Multiple Output Formats**: Generate reports in JSON, CSV, and HTML formats
 - **GitHub Action Integration**: Run as part of your CI/CD pipeline
 - **Comprehensive Analysis**: Detailed insights, trends, and recommendations grouped by repository
+- **Active Alert Drilldowns**: Per-repository views of every open alert with severity, CWEs, and direct links for triage
 - **Professional Reports**: Modern, well-formatted HTML reports with executive summaries
 - **Flexible Filtering**: Filter by severity, date range, and alert state
 - **Enterprise Ready**: Support for both GitHub organizations and enterprises
@@ -248,9 +249,16 @@ Structured data perfect for integration with other tools and systems.
 }
 ```
 
+Key sections include:
+
+- `summary` and `severity_analysis` for quick KPI rollups
+- `repository_analysis` for aggregate metrics
+- `active_alerts_by_repository` for the raw list of open alerts per repository (alert number, severity, CWEs, URL)
+- `framework_mapping` blocks for OWASP/SANS/MITRE context
+
 ### CSV Reports
 
-Tabular data ideal for spreadsheet analysis and reporting.
+Tabular data ideal for spreadsheet analysis and reporting, including a dedicated **Active Alerts by Repository** section that captures alert number, severity, CWEs, opened timestamp, and quick links for every open finding.
 
 ### HTML Reports
 
@@ -259,6 +267,7 @@ Rich, interactive reports with:
 - Executive summary with key metrics
 - Professional, modern design
 - Detailed tables grouped by repository
+- Scrollable per-repository active-alert tables with sticky headers for large datasets
 - Framework breakdown visualizations
 - Actionable recommendations
 
