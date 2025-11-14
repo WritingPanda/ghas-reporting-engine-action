@@ -174,6 +174,7 @@ class GitHubClient:
         states = ["open"]
         if self.config.include_dismissed:
             states.append("dismissed")
+        params["state"] = ",".join(states)
 
         while True:
             params["page"] = page
@@ -240,9 +241,58 @@ class GitHubClient:
 
     def _fetch_enterprise_via_orgs(self, enterprise_name: str) -> List[Alert]:
         """Fetch enterprise alerts by getting all organizations."""
-        # This is a simplified fallback - in practice, you'd need proper enterprise API access
-        logger.warning("Enterprise API not fully implemented - using organization fallback")
-        return []
+        org_names = self._list_enterprise_orgs(enterprise_name)
+        if not org_names:
+            raise GitHubAPIError(
+                message=(
+                    "Unable to enumerate organizations for the enterprise. Ensure the token has "
+                    "enterprise administration privileges or specify --organization instead."
+                ),
+                status_code=404,
+            )
+
+        logger.info(
+            "Falling back to organization-level fetching for enterprise '%s' (%d orgs)",
+            enterprise_name,
+            len(org_names),
+        )
+
+        all_alerts: List[Alert] = []
+        for org in org_names:
+            all_alerts.extend(self.fetch_organization_alerts(org))
+
+        return all_alerts
+
+    def _list_enterprise_orgs(self, enterprise_name: str) -> List[str]:
+        """List organizations that belong to an enterprise."""
+        org_names: List[str] = []
+        page = 1
+        per_page = 100
+
+        while True:
+            params = {"per_page": per_page, "page": page}
+            logger.debug(
+                "Listing enterprise organizations for %s (page %d)", enterprise_name, page
+            )
+            response = self._make_request(
+                "GET", f"/enterprises/{enterprise_name}/organizations", params=params
+            )
+            data = response.json()
+
+            if not data:
+                break
+
+            for org in data:
+                login = org.get("login")
+                if login:
+                    org_names.append(login)
+
+            if len(data) < per_page:
+                break
+
+            page += 1
+
+        return org_names
 
     def fetch_alerts(self) -> List[Alert]:
         """Fetch alerts based on configuration."""

@@ -6,7 +6,7 @@ Generates CSV reports of GHAS analysis results.
 
 import csv
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 from ..processors.data_analyzer import AnalysisResult
 from ..utils.logger import get_logger
@@ -18,7 +18,7 @@ logger = get_logger("csv_reporter")
 class CSVReporter(BaseReporter):
     """Generate CSV format reports."""
 
-    def generate(self, analysis_result: AnalysisResult, output_path: Path) -> Path:
+    def generate(self, analysis_result: AnalysisResult, framework: str, output_path: Path) -> Path:
         """Generate CSV report."""
         logger.info(f"Generating CSV report: {output_path}")
 
@@ -44,8 +44,14 @@ class CSVReporter(BaseReporter):
                 # Write blank line
                 writer.writerow([])
 
+                # Write active alerts per repository
+                wrote_active_alerts = self._write_active_alerts_section(writer, analysis_result)
+
+                if wrote_active_alerts:
+                    writer.writerow([])
+
                 # Write framework mappings section
-                self._write_framework_section(writer, analysis_result)
+                self._write_framework_section(writer, analysis_result, framework)
 
             logger.info(f"CSV report generated successfully: {output_path}")
             return output_path
@@ -115,51 +121,86 @@ class CSVReporter(BaseReporter):
                 ]
             )
 
+    def _write_active_alerts_section(self, writer, analysis_result: AnalysisResult) -> bool:
+        """Write the active alerts grouped by repository if available."""
+        active_alerts = analysis_result.active_alerts_by_repository
+        if not active_alerts:
+            return False
+
+        writer.writerow(["ACTIVE ALERTS BY REPOSITORY"])
+        writer.writerow(
+            [
+                "Repository",
+                "Alert Number",
+                "Severity",
+                "Rule Name",
+                "CWEs",
+                "Opened",
+                "Alert URL",
+            ]
+        )
+
+        for repo, alerts in sorted(active_alerts.items()):
+            for alert in alerts:
+                writer.writerow(
+                    [
+                        repo,
+                        alert.get("number"),
+                        alert.get("severity", "").capitalize(),
+                        alert.get("rule_name"),
+                        ", ".join(alert.get("cwes", [])),
+                        alert.get("created_at"),
+                        alert.get("html_url"),
+                    ]
+                )
+            writer.writerow([])
+
+        return True
+
     def _write_framework_section(
-        self, writer, analysis_result: AnalysisResult
+        self, writer, analysis_result: AnalysisResult, framework: str
     ) -> None:
         """Write framework mappings section to CSV."""
         writer.writerow(["FRAMEWORK MAPPINGS"])
 
-        frameworks = analysis_result.framework_mappings
+        framework_data = analysis_result.framework_mappings.get(framework, {})
+        if not framework_data:
+            writer.writerow(["No mappings available for", framework])
+            return
 
-        # OWASP
-        if "owasp" in frameworks:
+        if framework == "owasp":
             writer.writerow([])
             writer.writerow(["OWASP Top 10 2021"])
             writer.writerow(["Category", "Alert Count"])
 
-            owasp_data = frameworks["owasp"]
-            category_counts = owasp_data.get("category_alerts", {})
-
+            category_counts = framework_data.get("category_alerts", {})
             for category, count in category_counts.items():
                 writer.writerow([category, count])
 
-        # SANS
-        if "sans" in frameworks:
+        elif framework == "sans":
             writer.writerow([])
             writer.writerow(["SANS Top 25"])
             writer.writerow(["CWE", "Alert Count", "Rank"])
 
-            sans_data = frameworks["sans"]
-            mappings = sans_data.get("mappings", {})
-            cwe_counts = sans_data.get("cwe_counts", {})
+            mappings = framework_data.get("mappings", {})
+            cwe_counts = framework_data.get("cwe_counts", {})
 
             for cwe, count in cwe_counts.items():
                 rank = mappings.get(cwe, {}).get("rank", "N/A")
                 writer.writerow([cwe, count, rank])
 
-        # MITRE KEV
-        if "mitre" in frameworks:
+        elif framework == "mitre":
             writer.writerow([])
             writer.writerow(["MITRE Top 10 KEV"])
             writer.writerow(["CWE", "Alert Count", "Rank", "Vulnerability Count"])
 
-            mitre_data = frameworks["mitre"]
-            mappings = mitre_data.get("mappings", {})
-            cwe_counts = mitre_data.get("cwe_counts", {})
+            mappings = framework_data.get("mappings", {})
+            cwe_counts = framework_data.get("cwe_counts", {})
 
             for cwe, count in cwe_counts.items():
                 rank = mappings.get(cwe, {}).get("rank", "N/A")
                 vuln_count = mappings.get(cwe, {}).get("vulnerability_count", "N/A")
                 writer.writerow([cwe, count, rank, vuln_count])
+
+        writer.writerow([])
+        writer.writerow(["Total mapped alerts", framework_data.get("total_mapped_alerts", 0)])

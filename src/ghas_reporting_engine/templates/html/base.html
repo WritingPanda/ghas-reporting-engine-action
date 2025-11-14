@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GHAS Security Report - {{ metadata.target }}</title>
-  <link rel="stylesheet" href="{{ css_file_path }}">
+  <title>GHAS Security Report - {{ metadata.target }} - {{ metadata.framework|upper }}</title>
+  {{ inline_css_tag | safe }}
 </head>
 
 <body>
@@ -20,7 +20,10 @@
         <p><strong>Date Range:</strong> {{ metadata.date_range.since }} to {{ metadata.date_range.until }} ({{
           metadata.date_range.days }} days)</p>
         {% endif %}
-        <p><strong>Frameworks:</strong> {{ metadata.frameworks|join(', ')|upper }}</p>
+        <p><strong>Framework:</strong> {{ metadata.framework|upper }}</p>
+        {% if metadata.frameworks_requested|length > 1 %}
+        <p><strong>Requested Frameworks:</strong> {{ metadata.frameworks_requested|join(', ')|upper }}</p>
+        {% endif %}
       </div>
     </header>
 
@@ -64,18 +67,17 @@
     {% endif %}
 
     <!-- Framework Mappings -->
-    {% if framework_mappings %}
+    {% if framework_data %}
     <section class="section">
-      <h2>Compliance Framework Mappings</h2>
+      <h2>Compliance Framework Mapping ({{ metadata.framework|upper }})</h2>
 
-      <!-- OWASP Top 10 -->
-      {% if 'owasp' in framework_mappings %}
-      <div class="framework-section">
+      {% if metadata.framework == 'owasp' %}
+      <div class="framework-section" data-framework="owasp">
         <h3>OWASP Top 10 2021</h3>
-        <p class="framework-description">{{ framework_mappings.owasp.summary.description }}</p>
-        <p><strong>Total Mapped Alerts:</strong> {{ framework_mappings.owasp.total_mapped_alerts }}</p>
+        <p class="framework-description">{{ framework_data.summary.description }}</p>
+        <p><strong>Total Mapped Alerts:</strong> {{ framework_data.total_mapped_alerts }}</p>
 
-        {% if framework_mappings.owasp.category_alerts %}
+        {% if framework_data.category_alerts %}
         <table class="data-table">
           <thead>
             <tr>
@@ -84,7 +86,7 @@
             </tr>
           </thead>
           <tbody>
-            {% for category, count in framework_mappings.owasp.category_alerts.items() %}
+            {% for category, count in framework_data.category_alerts.items() %}
             <tr>
               <td>{{ category }}</td>
               <td>{{ count }}</td>
@@ -94,16 +96,14 @@
         </table>
         {% endif %}
       </div>
-      {% endif %}
-
-      <!-- SANS Top 25 -->
-      {% if 'sans' in framework_mappings %}
-      <div class="framework-section">
+      {% elif metadata.framework == 'sans' %}
+      <div class="framework-section" data-framework="sans">
         <h3>SANS Top 25 CWEs</h3>
-        <p class="framework-description">{{ framework_mappings.sans.summary.description }}</p>
-        <p><strong>Total Mapped Alerts:</strong> {{ framework_mappings.sans.total_mapped_alerts }}</p>
+        <p class="framework-description">{{ framework_data.summary.description }}</p>
+        <p><strong>Total Mapped Alerts:</strong> {{ framework_data.total_mapped_alerts }}</p>
 
-        {% if framework_mappings.sans.top_5_cwes %}
+        {% set sans_rows = framework_data.top_5_cwes or framework_data.cwe_counts %}
+        {% if sans_rows %}
         <table class="data-table">
           <thead>
             <tr>
@@ -113,10 +113,10 @@
             </tr>
           </thead>
           <tbody>
-            {% for cwe, count in framework_mappings.sans.top_5_cwes.items() %}
+            {% for cwe, count in sans_rows.items() %}
             <tr>
               <td>{{ cwe }}</td>
-              <td>{{ framework_mappings.sans.mappings[cwe].rank }}</td>
+              <td>{{ framework_data.mappings[cwe].rank }}</td>
               <td>{{ count }}</td>
             </tr>
             {% endfor %}
@@ -124,16 +124,14 @@
         </table>
         {% endif %}
       </div>
-      {% endif %}
-
-      <!-- MITRE KEV -->
-      {% if 'mitre' in framework_mappings %}
-      <div class="framework-section">
+      {% elif metadata.framework == 'mitre' %}
+      <div class="framework-section" data-framework="mitre">
         <h3>MITRE Top 10 KEV</h3>
-        <p class="framework-description">{{ framework_mappings.mitre.summary.description }}</p>
-        <p><strong>Total Mapped Alerts:</strong> {{ framework_mappings.mitre.total_mapped_alerts }}</p>
+        <p class="framework-description">{{ framework_data.summary.description }}</p>
+        <p><strong>Total Mapped Alerts:</strong> {{ framework_data.total_mapped_alerts }}</p>
 
-        {% if framework_mappings.mitre.critical_vulnerabilities %}
+        {% set kev_rows = framework_data.critical_vulnerabilities or framework_data.cwe_counts %}
+        {% if kev_rows %}
         <table class="data-table">
           <thead>
             <tr>
@@ -144,12 +142,12 @@
             </tr>
           </thead>
           <tbody>
-            {% for cwe, count in framework_mappings.mitre.critical_vulnerabilities.items() %}
+            {% for cwe, count in kev_rows.items() %}
             <tr>
               <td>{{ cwe }}</td>
-              <td>{{ framework_mappings.mitre.mappings[cwe].rank }}</td>
+              <td>{{ framework_data.mappings[cwe].rank }}</td>
               <td>{{ count }}</td>
-              <td>{{ framework_mappings.mitre.mappings[cwe].vulnerability_count }}</td>
+              <td>{{ framework_data.mappings[cwe].vulnerability_count }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -186,6 +184,55 @@
           {% endfor %}
         </tbody>
       </table>
+    </section>
+    {% endif %}
+
+    {% if active_alerts_by_repository %}
+    <section class="section">
+      <h2>Active Alerts by Repository</h2>
+      {% for repo, alerts in active_alerts_by_repository.items() %}
+      <div class="active-alerts-repo">
+        <h3><code>{{ repo }}</code> ({{ alerts|length }} active)</h3>
+        <div class="active-alerts-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Alert</th>
+                <th>Severity</th>
+                <th>Rule</th>
+                <th>CWEs</th>
+                <th>Opened</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for alert in alerts %}
+              <tr>
+                <td>#{{ alert.number }}</td>
+                <td>{{ alert.severity|capitalize }}</td>
+                <td>{{ alert.rule_name }}</td>
+                <td>
+                  {% if alert.cwes %}
+                  {{ alert.cwes|join(', ') }}
+                  {% else %}
+                  &mdash;
+                  {% endif %}
+                </td>
+                <td>{{ alert.created_at }}</td>
+                <td>
+                  {% if alert.html_url %}
+                  <a href="{{ alert.html_url }}" target="_blank" rel="noopener noreferrer">View alert</a>
+                  {% else %}
+                  N/A
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endfor %}
     </section>
     {% endif %}
 

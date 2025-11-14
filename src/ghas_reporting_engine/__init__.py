@@ -4,7 +4,7 @@ GHAS Reporting Engine - A CLI tool to generate compliance reports from GitHub Ad
 This package provides functionality to:
 - Fetch GHAS alerts from GitHub organizations and enterprises
 - Map alerts to compliance frameworks (OWASP Top 10, SANS Top 25, MITRE KEV)
-- Generate reports in multiple formats (JSON, CSV, HTML, PDF)
+- Generate reports in multiple formats (JSON, CSV, HTML)
 - Run as a CLI tool or GitHub Action
 """
 

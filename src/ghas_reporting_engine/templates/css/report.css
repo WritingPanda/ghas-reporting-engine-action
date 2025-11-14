@@ -246,6 +246,50 @@ body {
   margin-right: 8px;
 }
 
+/* Active Alerts */
+.active-alerts-repo {
+  background-color: #fdfdfd;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+.active-alerts-repo h3 {
+  display: flex;
+  align-items: center;
+  font-size: 1.2em;
+  margin-bottom: 15px;
+}
+
+.active-alerts-repo h3 code {
+  margin-right: 8px;
+}
+
+.active-alerts-table-wrapper {
+  max-height: 350px;
+  overflow: auto;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+}
+
+.active-alerts-table-wrapper table {
+  margin: 0;
+  border-radius: 0;
+}
+
+.active-alerts-table-wrapper thead th {
+  position: sticky;
+  top: 0;
+  background-color: #024ea2;
+  z-index: 1;
+}
+
+.active-alerts-table-wrapper tbody tr:nth-child(odd) {
+  background-color: #fbfbfb;
+}
+
 /* Footer */
 .report-footer {
   margin-top: 50px;

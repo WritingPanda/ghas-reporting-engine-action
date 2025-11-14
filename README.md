@@ -9,10 +9,10 @@ A powerful CLI tool and GitHub Action that generates compliance reports from Git
 ## ✨ Features
 
 - **Multi-Framework Support**: Map GHAS alerts to OWASP Top 10 2021, SANS Top 25, and MITRE KEV
-- **Multiple Output Formats**: Generate reports in JSON, CSV, HTML, and PDF formats
-- **GitHub Action Integration**: Run as part of your CI/CD pipeline with PDF upload to Code Scanning
+- **Multiple Output Formats**: Generate reports in JSON, CSV, and HTML formats
+- **GitHub Action Integration**: Run as part of your CI/CD pipeline
 - **Comprehensive Analysis**: Detailed insights, trends, and recommendations grouped by repository
-- **Professional Reports**: Modern, well-formatted HTML and PDF reports with executive summaries
+- **Professional Reports**: Modern, well-formatted HTML reports with executive summaries
 - **Flexible Filtering**: Filter by severity, date range, and alert state
 - **Enterprise Ready**: Support for both GitHub organizations and enterprises
 
@@ -28,9 +28,6 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 git clone https://github.com/WritingPanda/ghas-reporting-engine-action.git
 cd ghas-reporting-engine-action
 uv sync
-
-# For PDF support, install system dependencies first (see Prerequisites section)
-# then run: uv sync --extra pdf
 
 # Generate reports for your organization
 uv run ghas-report \
@@ -65,7 +62,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           organization: ${{ github.repository_owner }}
           report-types: 'owasp,sans,mitre'
-          report-formats: 'html,pdf,json'
+          report-formats: 'html,json'
           days-back: '30'
 ```
 
@@ -77,30 +74,6 @@ jobs:
   - `repo` scope for private repositories
   - `security_events` scope for code scanning alerts
   - Organization or enterprise access as needed
-
-### System Dependencies for PDF Generation
-
-PDF generation requires additional system libraries. Install them based on your OS:
-
-**macOS (using Homebrew):**
-
-```bash
-brew install pango cairo gdk-pixbuf libffi
-```
-
-**Ubuntu/Debian:**
-
-```bash
-sudo apt-get install libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev
-```
-
-**Fedora/RHEL:**
-
-```bash
-sudo dnf install pango cairo gdk-pixbuf2 libffi-devel
-```
-
-> **Note**: If you only need JSON, CSV, or HTML reports, you can skip PDF dependencies by using `--report-formats json,csv,html` (without `pdf`).
 
 ## 🛠️ Installation
 
@@ -114,11 +87,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 git clone https://github.com/WritingPanda/ghas-reporting-engine-action.git
 cd ghas-reporting-engine-action
 
-# Sync dependencies (without PDF support)
+# Sync dependencies
 uv sync
-
-# OR: Sync with PDF support (requires system dependencies - see Prerequisites)
-uv sync --extra pdf
 ```
 
 ### Development Installation
@@ -128,9 +98,6 @@ uv sync --extra pdf
 git clone https://github.com/WritingPanda/ghas-reporting-engine-action.git
 cd ghas-reporting-engine-action
 uv sync --dev
-
-# Include PDF support for development
-uv sync --dev --extra pdf
 ```
 
 ## 📖 Usage
@@ -154,7 +121,7 @@ uv run ghas-report \
   --token $GITHUB_TOKEN \
   --organization my-org \
   --report-types owasp,sans,mitre \
-  --report-formats json,csv,html,pdf \
+  --report-formats json,csv,html \
   --days-back 90 \
   --output-dir ./security-reports \
   --include-dismissed \
@@ -170,7 +137,7 @@ uv run ghas-report \
 | `--organization` | GitHub organization name | None |
 | `--enterprise` | GitHub enterprise name | None |
 | `--report-types` | Comma-separated: `owasp,sans,mitre` | `owasp,sans,mitre` |
-| `--report-formats` | Comma-separated: `json,csv,html,pdf` | `json,html` |
+| `--report-formats` | Comma-separated: `json,csv,html` | `json,html` |
 | `--days-back` | Number of days to look back (1-365) | `30` |
 | `--output-dir` | Output directory for reports | `./reports` |
 | `--include-dismissed` | Include dismissed alerts | `False` |
@@ -187,12 +154,11 @@ uv run ghas-report \
 | `organization` | GitHub organization name | | |
 | `enterprise` | GitHub enterprise name | | |
 | `report-types` | Report types to generate | | `owasp,sans,mitre` |
-| `report-formats` | Output formats | | `json,html,pdf` |
+| `report-formats` | Output formats | | `json,html` |
 | `days-back` | Days to look back | | `30` |
 | `output-path` | Output path for reports | | `./reports` |
 | `include-dismissed` | Include dismissed alerts | | `false` |
 | `severity-filter` | Severity filter | | |
-| `upload-pdf` | Upload PDF to Code Scanning | | `true` |
 
 #### Outputs
 
@@ -202,11 +168,10 @@ uv run ghas-report \
 | `summary` | Brief analysis summary |
 | `total-alerts` | Total number of alerts |
 | `mapped-alerts` | Alerts mapped to frameworks |
-| `pdf-path` | Path to generated PDF (if enabled) |
 
 #### Example Workflows
 
-##### Weekly Security Report with PDF Upload
+##### Weekly Security Report
 
 ```yaml
 name: Weekly Security Report
@@ -230,9 +195,8 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           organization: ${{ github.repository_owner }}
           report-types: 'owasp,sans,mitre'
-          report-formats: 'html,pdf'
+          report-formats: 'html,json'
           days-back: '7'
-          upload-pdf: 'true'
 ```
 
 ##### Pull Request Security Check
@@ -260,7 +224,6 @@ jobs:
           report-formats: 'json'
           days-back: '30'
           severity-filter: 'critical,high'
-          upload-pdf: 'false'
 ```
 
 ## 📊 Report Formats
@@ -299,16 +262,6 @@ Rich, interactive reports with:
 - Framework breakdown visualizations
 - Actionable recommendations
 
-### PDF Reports
-
-Publication-ready PDF documents with:
-
-- Professional formatting
-- Executive summary
-- Repository-grouped findings
-- Charts and visualizations
-- Automatic upload to Code Scanning (when used as GitHub Action)
-
 ## 🔍 Compliance Frameworks
 
 ### OWASP Top 10 2021
@@ -325,7 +278,7 @@ Maps alerts to MITRE's Top 10 Known Exploited Vulnerabilities, highlighting acti
 
 ## 🏗️ Architecture
 
-```
+```text
 src/ghas_reporting_engine/
 ├── cli.py                  # Command-line interface
 ├── config.py               # Configuration management
@@ -342,9 +295,8 @@ src/ghas_reporting_engine/
 ├── reports/
 │   ├── json_reporter.py    # JSON report generation
 │   ├── csv_reporter.py     # CSV report generation
-│   ├── html_reporter.py    # HTML report generation
-│   └── pdf_reporter.py     # PDF report generation
-└── templates/              # HTML/PDF templates and assets
+│   └── html_reporter.py    # HTML report generation
+└── templates/              # HTML templates and assets
 ```
 
 ## 🧪 Testing
@@ -412,7 +364,7 @@ uv run ghas-report \
   --token $GITHUB_TOKEN \
   --organization microsoft \
   --report-types owasp,sans,mitre \
-  --report-formats html,pdf \
+  --report-formats html,json \
   --days-back 90 \
   --severity-filter critical,high \
   --output-dir ./microsoft-security-report
@@ -424,7 +376,7 @@ uv run ghas-report \
 uv run ghas-report \
   --token $GITHUB_TOKEN \
   --enterprise my-enterprise \
-  --report-formats html,pdf \
+  --report-formats html,json \
   --days-back 30 \
   --include-dismissed \
   --output-dir ./enterprise-dashboard
@@ -432,7 +384,7 @@ uv run ghas-report \
 
 ### Continuous Monitoring
 
-Set up GitHub Actions to run weekly reports and track security posture over time, with automatic PDF uploads to Code Scanning for easy access.
+Set up GitHub Actions to run weekly reports and track security posture over time.
 
 ## 🔧 Configuration
 
@@ -474,11 +426,6 @@ OUTPUT_DIR=./reports
 - The tool automatically handles GitHub API rate limits
 - For large organizations, consider running during off-peak hours
 - Use `--days-back` to limit the time range
-
-#### PDF Generation Issues
-
-- Ensure WeasyPrint dependencies are installed
-- On some systems, you may need to install additional system libraries
 
 #### Permission Errors
 

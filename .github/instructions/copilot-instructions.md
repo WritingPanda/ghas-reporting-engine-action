@@ -7,7 +7,7 @@ This is a Python-based application that serves dual purposes:
 1. A GitHub Action for automated security reporting in CI/CD pipelines
 2. A standalone CLI tool for local report generation
 
-The application pulls CodeQL analysis results from GitHub and maps them to security frameworks (SANS Top 25, OWASP Top 10, MITRE Top 10 KEV), then generates formatted reports in multiple formats, such as Markdown, HTML, JSON, and PDF.
+The application pulls CodeQL analysis results from GitHub and maps them to security frameworks (SANS Top 25, OWASP Top 10, MITRE Top 10 KEV), then generates formatted reports in multiple formats, such as JSON, CSV, and HTML.
 
 ## Architecture Guidelines
 
@@ -15,7 +15,7 @@ The application pulls CodeQL analysis results from GitHub and maps them to secur
 
 - **Data Fetcher**: Retrieve CodeQL results via GitHub REST/GraphQL API
 - **Framework Mapper**: Align CodeQL findings to security frameworks (SANS/OWASP/MITRE)
-- **Report Generator**: Create reports in Markdown, HTML, JSON, and PDF formats
+- **Report Generator**: Create reports in JSON, CSV, and HTML formats
 - **CLI Interface**: Click or argparse-based command-line interface
 - **GitHub Action Wrapper**: YAML action definition with inputs/outputs
 
@@ -24,10 +24,9 @@ The application pulls CodeQL analysis results from GitHub and maps them to secur
 - **CLI Framework**: Click
 - **API Client**: PyGithub or requests + GraphQL
 - **Report Generation**: 
-  - Markdown: Built-in Python
   - HTML: Jinja2 templates
   - JSON: Built-in Python
-  - PDF: WeasyPrint or ReportLab
+  - CSV: Python `csv` module
 - **Configuration**: YAML or JSON for framework mappings
 - **Testing**: pytest with fixtures for API mocking
 
@@ -53,8 +52,7 @@ src/ghas_reporting_engine/
 │   ├── base_reporter.py     # Abstract base class
 │   ├── json_reporter.py     # JSON output
 │   ├── csv_reporter.py      # CSV output
-│   ├── html_reporter.py     # HTML output
-│   └── pdf_reporter.py      # PDF output (future)
+│   └── html_reporter.py     # HTML output
 ├── templates/               # Report templates
 │   ├── html/                # HTML Jinja2 templates
 │   └── css/                 # Stylesheets
@@ -154,7 +152,7 @@ inputs:
     required: false
     default: 'sans,owasp,mitre'
   output-format:
-    description: 'Output format: json,csv,html,pdf'
+    description: 'Output format: json,csv,html'
     required: false
     default: 'json,html'
   output-path:
@@ -197,7 +195,7 @@ ghas-report generate \
 ghas-report generate \
   --token $GITHUB_TOKEN \
   --output ./reports \
-  --format pdf
+  --format html
 ```
 
 ### CLI Design Principles
@@ -301,7 +299,6 @@ Store framework mappings in `data/cwe_mappings/`:
 - Sortable/filterable tables
 - Severity-based color coding
 - Framework breakdown charts
-- Export to PDF capability
 
 ### CSV Report Columns
 

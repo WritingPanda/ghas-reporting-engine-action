@@ -21,7 +21,6 @@ from .processors.data_analyzer import DataAnalyzer
 from .reports.csv_reporter import CSVReporter
 from .reports.html_reporter import HTMLReporter
 from .reports.json_reporter import JSONReporter
-from .reports.pdf_reporter import PDFReporter
 from .utils.logger import setup_logging
 
 console = Console()
@@ -53,7 +52,7 @@ logger = logging.getLogger(__name__)
 @click.option(
     "--report-formats",
     default="json,html",
-    help="Comma-separated list of report formats (json,csv,html,pdf)",
+    help="Comma-separated list of report formats (json,csv,html)",
 )
 @click.option(
     "--days-back",
@@ -122,7 +121,7 @@ def main(
         sys.exit(1)
 
     # Validate report formats
-    valid_formats = {"json", "csv", "html", "pdf"}
+    valid_formats = {"json", "csv", "html"}
     invalid_formats = set(requested_formats) - valid_formats
     if invalid_formats:
         console.print(f"[red]Error: Invalid report formats: {', '.join(invalid_formats)}[/red]")
@@ -221,7 +220,6 @@ def main(
                 "json": JSONReporter,
                 "csv": CSVReporter,
                 "html": HTMLReporter,
-                "pdf": PDFReporter,
             }
 
             # Generate reports for each requested format

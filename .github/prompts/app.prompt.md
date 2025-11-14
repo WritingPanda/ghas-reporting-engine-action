@@ -43,7 +43,7 @@ The application must be a CLI app that can be run as a GitHub Action or locally.
 - GitHub token (for API access)
 - Organization or enterprise name
 - Report type (e.g., OWASP Top 10, SANS Top 25, MITRE Top 10)
-- Report format (e.g., JSON, CSV, HTML, PDF)
+- Report format (e.g., JSON, CSV, HTML)
 - Time period for the report (e.g., last 7 days, last 30 days) (optional)
 
 For the HTML report format, the application should generate a well-structured HTML file that includes:
@@ -57,8 +57,6 @@ For the HTML report format, the application should generate a well-structured HT
 - Links to the relevant compliance framework sections
 - Visualizations (e.g., charts or graphs) to represent the data
 - The reports should be built as a template that can be easily updated or modified in the future and have data injected into it as needed
-
-The application must take the HTML report and convert it to PDF format when the user selects PDF as the report format.
 
 The application should be modular, with separate functions or classes for:
 
@@ -91,4 +89,4 @@ The application should include comprehensive documentation, including:
 - A CONTRIBUTING file with guidelines for contributing to the project
 - A LICENSE file specifying the open-source license for the project
 - A CODEOWNERS file to define code ownership and review requirements
-- Examples of generated reports in different formats (JSON, CSV, HTML, PDF)
+- Examples of generated reports in different formats (JSON, CSV, HTML)

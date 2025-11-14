@@ -8,11 +8,13 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import List, Optional
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class Config(BaseModel):
     """Configuration model for GHAS Reporting Engine."""
+
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
     # GitHub settings
     github_token: str = Field(..., description="GitHub API token")
@@ -40,11 +42,6 @@ class Config(BaseModel):
         default=30, ge=5, le=300, description="API request timeout in seconds"
     )
 
-    class Config:
-        """Pydantic configuration."""
-
-        arbitrary_types_allowed = True
-
     @field_validator("report_types")
     @classmethod
     def validate_report_types(cls, v: List[str]) -> List[str]:
@@ -59,7 +56,7 @@ class Config(BaseModel):
     @classmethod
     def validate_report_formats(cls, v: List[str]) -> List[str]:
         """Validate report formats."""
-        valid_formats = {"json", "csv", "html", "pdf"}
+        valid_formats = {"json", "csv", "html"}
         invalid_formats = set(v) - valid_formats
         if invalid_formats:
             raise ValueError(f"Invalid report formats: {', '.join(invalid_formats)}")

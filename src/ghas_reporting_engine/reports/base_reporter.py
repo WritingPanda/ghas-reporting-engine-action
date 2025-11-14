@@ -5,7 +5,7 @@ Provides common functionality for all report generators.
 """
 
 from abc import ABC, abstractmethod
-from datetime import datetime
+import datetime as dtime
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -24,8 +24,8 @@ class BaseReporter(ABC):
         self.config = config
 
     @abstractmethod
-    def generate(self, analysis_result: AnalysisResult, output_path: Path) -> Path:
-        """Generate the report and return the path to the generated file."""
+    def generate(self, analysis_result: AnalysisResult, framework: str, output_path: Path) -> Path:
+        """Generate the report for a single framework and return the generated file path."""
         pass
 
     def generate_reports(self, analysis_result: AnalysisResult) -> List[Path]:
@@ -41,7 +41,7 @@ class BaseReporter(ABC):
             report_path = self.config.get_report_path(framework, self._get_format_extension())
             
             try:
-                output_path = self.generate(analysis_result, report_path)
+                output_path = self.generate(analysis_result, framework, report_path)
                 generated_reports.append(output_path)
                 logger.info(f"Generated {framework} report: {output_path}")
             except Exception as e:
@@ -65,23 +65,24 @@ class BaseReporter(ABC):
         else:
             return "txt"
 
-    def _get_common_metadata(self, analysis_result: AnalysisResult) -> Dict[str, Any]:
+    def _get_common_metadata(self, analysis_result: AnalysisResult, framework: str) -> Dict[str, Any]:
         """Get common metadata for all reports."""
         return {
-            "generated_at": datetime.utcnow().isoformat() + "Z",
+            "generated_at": dtime.datetime.now(tz=dtime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
             "report_version": "1.0",
             "target": self.config.target_name,
             "target_type": self.config.target_type,
             "date_range": {
-                "since": self.config.since_date.isoformat() if self.config.since_date else None,
-                "until": self.config.until_date.isoformat() if self.config.until_date else None,
-                "days": self.config.days_back,
+            "since": self.config.since_date.strftime("%Y-%m-%d") if self.config.since_date else None,
+            "until": self.config.until_date.strftime("%Y-%m-%d") if self.config.until_date else None,
+            "days": self.config.days_back,
             },
-            "frameworks": self.config.report_types,
+            "framework": framework,
+            "frameworks_requested": self.config.report_types,
             "total_alerts": analysis_result.summary.get("total_alerts", 0),
             "alert_summary": {
-                "open": analysis_result.summary.get("open_alerts", 0),
-                "dismissed": analysis_result.summary.get("dismissed_alerts", 0),
-                "fixed": analysis_result.summary.get("fixed_alerts", 0),
+            "open": analysis_result.summary.get("open_alerts", 0),
+            "dismissed": analysis_result.summary.get("dismissed_alerts", 0),
+            "fixed": analysis_result.summary.get("fixed_alerts", 0),
             },
         }

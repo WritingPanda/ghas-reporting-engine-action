@@ -33,6 +33,7 @@ class AnalysisResult:
         self.repository_analysis: Dict[str, Any] = {}
         self.trend_analysis: Dict[str, Any] = {}
         self.severity_analysis: Dict[str, Any] = {}
+        self.active_alerts_by_repository: Dict[str, List[Dict[str, Any]]] = {}
         self.unmapped_cwes: List[str] = []
         self.recommendations: List[str] = []
 
@@ -70,6 +71,9 @@ class DataAnalyzer:
 
         # Repository analysis
         result.repository_analysis = self._analyze_repositories(alerts)
+        result.active_alerts_by_repository = result.repository_analysis.get(
+            "active_alerts_by_repository", {}
+        )
 
         # Severity analysis
         result.severity_analysis = self._analyze_severity(alerts)
@@ -219,6 +223,20 @@ class DataAnalyzer:
             "top_cwes": dict(Counter(cwe for alert in alerts for cwe in alert.cwes).most_common(10)),
         }
 
+    def _format_active_alert(self, alert: Alert) -> Dict[str, Any]:
+        """Project the minimal fields required for active alert reporting."""
+        return {
+            "repository": alert.repository.full_name,
+            "number": alert.number,
+            "rule_id": alert.rule.id,
+            "rule_name": alert.rule.name,
+            "severity": alert.severity_level,
+            "state": alert.state,
+            "created_at": alert.created_at.isoformat(),
+            "html_url": alert.html_url,
+            "cwes": alert.cwes,
+        }
+
     def _analyze_repositories(self, alerts: List[Alert]) -> Dict[str, Any]:
         """Analyze alerts by repository."""
         repo_analysis: Dict[str, Any] = defaultdict(
@@ -228,6 +246,7 @@ class DataAnalyzer:
                 "state_distribution": defaultdict(int),
                 "unique_cwes": set(),
                 "unique_rules": set(),
+                "active_alerts": [],
             }
         )
 
@@ -240,13 +259,27 @@ class DataAnalyzer:
             repo_data["state_distribution"][alert.state] += 1
             repo_data["unique_cwes"].update(alert.cwes)
             repo_data["unique_rules"].add(alert.rule.id)
+            if alert.is_open:
+                repo_data["active_alerts"].append(self._format_active_alert(alert))
+
+        severity_priority = {"critical": 0, "high": 1, "medium": 2, "low": 3}
+        active_alerts_by_repo: Dict[str, List[Dict[str, Any]]] = {}
 
         # Convert sets to counts for JSON serialization
-        for repo_data in repo_analysis.values():
+        for repo_name, repo_data in repo_analysis.items():
             repo_data["unique_cwes"] = len(repo_data["unique_cwes"])
             repo_data["unique_rules"] = len(repo_data["unique_rules"])
             repo_data["severity_distribution"] = dict(repo_data["severity_distribution"])
             repo_data["state_distribution"] = dict(repo_data["state_distribution"])
+            repo_data["active_alerts"].sort(
+                key=lambda alert: (
+                    severity_priority.get(alert["severity"], len(severity_priority)),
+                    alert["created_at"],
+                )
+            )
+            repo_data["active_alert_count"] = len(repo_data["active_alerts"])
+            if repo_data["active_alerts"]:
+                active_alerts_by_repo[repo_name] = repo_data["active_alerts"]
 
         return {
             "total_repositories": len(repo_analysis),
@@ -254,6 +287,7 @@ class DataAnalyzer:
             "top_repositories_by_alerts": dict(
                 Counter(alert.repository.full_name for alert in alerts).most_common(10)
             ),
+            "active_alerts_by_repository": active_alerts_by_repo,
         }
 
     def _analyze_severity(self, alerts: List[Alert]) -> Dict[str, Any]:
