@@ -1,0 +1,66 @@
+{
+  "framework": "MITRE Top 10 Known Exploited Vulnerabilities (KEV)",
+  "version": "2024",
+  "top_10_kev": [
+    {
+      "rank": 1,
+      "cwe": "CWE-787",
+      "name": "Out-of-bounds Write",
+      "cve_count": 18
+    },
+    {
+      "rank": 2,
+      "cwe": "CWE-843",
+      "name": "Access of Resource Using Incompatible Type ('Type Confusion')",
+      "cve_count": 6
+    },
+    {
+      "rank": 3,
+      "cwe": "CWE-78",
+      "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+      "cve_count": 6
+    },
+    {
+      "rank": 4,
+      "cwe": "CWE-94",
+      "name": "Improper Control of Generation of Code ('Code Injection')",
+      "cve_count": 7
+    },
+    {
+      "rank": 5,
+      "cwe": "CWE-502",
+      "name": "Deserialization of Untrusted Data",
+      "cve_count": 5
+    },
+    {
+      "rank": 6,
+      "cwe": "CWE-22",
+      "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "cve_count": 5
+    },
+    {
+      "rank": 7,
+      "cwe": "CWE-306",
+      "name": "Missing Authentication for Critical Function",
+      "cve_count": 6
+    },
+    {
+      "rank": 8,
+      "cwe": "CWE-89",
+      "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+      "cve_count": 4
+    },
+    {
+      "rank": 9,
+      "cwe": "CWE-416",
+      "name": "Use After Free",
+      "cve_count": 5
+    },
+    {
+      "rank": 10,
+      "cwe": "CWE-77",
+      "name": "Improper Neutralization of Special Elements used in a Command ('Command Injection')",
+      "cve_count": 4
+    }
+  ]
+}

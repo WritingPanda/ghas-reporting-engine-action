@@ -6,8 +6,7 @@ This document provides instructions for building the GHAS reporting engine.
 
 This app will:
 
-- be written in Python
-- use the uv package manager
+- be written in Go
 - be a command-line interface (CLI) application that can be run as a GitHub Action or locally
 - interact with the GitHub API to fetch GitHub Advanced Security (GHAS) alert data
 - process and analyze the fetched data to generate reports based on compliance frameworks
@@ -21,7 +20,7 @@ This app will:
 
 ### Links for Compliance Frameworks
 
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [OWASP Top 10](https://owasp.org/Top10/2025/)
 - [SANS Top 25](https://www.sans.org/top25-software-errors/)
 - [MITRE Top 10 Known Exploited Vulnerabilities](https://cwe.mitre.org/top25/archive/2024/2024_kev_list.html)
 
@@ -43,7 +42,7 @@ The application must be a CLI app that can be run as a GitHub Action or locally.
 - GitHub token (for API access)
 - Organization or enterprise name
 - Report type (e.g., OWASP Top 10, SANS Top 25, MITRE Top 10)
-- Report format (e.g., JSON, CSV, HTML)
+- Report format (HTML only)
 - Time period for the report (e.g., last 7 days, last 30 days) (optional)
 
 For the HTML report format, the application should generate a well-structured HTML file that includes:
@@ -62,7 +61,7 @@ The application should be modular, with separate functions or classes for:
 
 - Fetching data from the GitHub API
 - Processing and analyzing the data
-- Generating reports in different formats
+- Generating reports
 - Handling errors and logging
 
 The GitHub Action workflow should be defined in a YAML file, specifying the steps to:
@@ -89,4 +88,4 @@ The application should include comprehensive documentation, including:
 - A CONTRIBUTING file with guidelines for contributing to the project
 - A LICENSE file specifying the open-source license for the project
 - A CODEOWNERS file to define code ownership and review requirements
-- Examples of generated reports in different formats (JSON, CSV, HTML)
+- Examples of generated reports (HTML)

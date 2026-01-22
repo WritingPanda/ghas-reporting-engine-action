@@ -7,7 +7,7 @@ This is a Python-based application that serves dual purposes:
 1. A GitHub Action for automated security reporting in CI/CD pipelines
 2. A standalone CLI tool for local report generation
 
-The application pulls CodeQL analysis results from GitHub and maps them to security frameworks (SANS Top 25, OWASP Top 10, MITRE Top 10 KEV), then generates formatted reports in multiple formats, such as JSON, CSV, and HTML.
+The application pulls CodeQL analysis results from GitHub and maps them to security frameworks (SANS Top 25, OWASP Top 10, MITRE Top 10 KEV), then generates formatted HTML reports.
 
 ## Architecture Guidelines
 
@@ -15,52 +15,18 @@ The application pulls CodeQL analysis results from GitHub and maps them to secur
 
 - **Data Fetcher**: Retrieve CodeQL results via GitHub REST/GraphQL API
 - **Framework Mapper**: Align CodeQL findings to security frameworks (SANS/OWASP/MITRE)
-- **Report Generator**: Create reports in JSON, CSV, and HTML formats
+- **Report Generator**: Create HTML reports
 - **CLI Interface**: Click or argparse-based command-line interface
 - **GitHub Action Wrapper**: YAML action definition with inputs/outputs
 
 ### Technology Stack
-- **Language**: Python 3.9+
-- **CLI Framework**: Click
-- **API Client**: PyGithub or requests + GraphQL
+- **Language**: Go
+- **CLI Framework**: Cobra
+- **API Client**: Go GitHub client or GraphQL
 - **Report Generation**: 
-  - HTML: Jinja2 templates
-  - JSON: Built-in Python
-  - CSV: Python `csv` module
+  - HTML: Go templates
 - **Configuration**: YAML or JSON for framework mappings
-- **Testing**: pytest with fixtures for API mocking
-
-## Code Structure
-
-```
-src/ghas_reporting_engine/
-├── __init__.py              # Package initialization
-├── __main__.py              # Entry point for `python -m` execution
-├── cli.py                   # CLI commands and argument parsing
-├── config.py                # Configuration management
-├── api/                     # GitHub API interaction
-│   ├── github_client.py     # API client wrapper
-│   └── models.py            # Data models for API responses
-├── frameworks/              # Security framework mappings
-│   ├── sans_top25.py        # SANS Top 25 mapping logic
-│   ├── owasp_top10.py       # OWASP Top 10 mapping logic
-│   └── mitre_kev.py         # MITRE KEV mapping logic
-├── processors/              # Data processing
-│   ├── cwe_mapper.py        # CWE to framework mapping
-│   └── data_analyzer.py     # Analysis and statistics
-├── reports/                 # Report generation
-│   ├── base_reporter.py     # Abstract base class
-│   ├── json_reporter.py     # JSON output
-│   ├── csv_reporter.py      # CSV output
-│   └── html_reporter.py     # HTML output
-├── templates/               # Report templates
-│   ├── html/                # HTML Jinja2 templates
-│   └── css/                 # Stylesheets
-└── utils/                   # Helper utilities
-    ├── logger.py            # Logging configuration
-    ├── validation.py        # Input validation
-    └── date_utils.py        # Date/time utilities
-```
+- **Testing**: Go testing framework
 
 ## Development Guidelines
 
@@ -152,9 +118,9 @@ inputs:
     required: false
     default: 'sans,owasp,mitre'
   output-format:
-    description: 'Output format: json,csv,html'
+    description: 'Output format: html'
     required: false
-    default: 'json,html'
+    default: 'html'
   output-path:
     description: 'Directory for report output'
     required: false
@@ -174,7 +140,7 @@ steps:
     with:
       github-token: ${{ secrets.GITHUB_TOKEN }}
       frameworks: 'sans,owasp'
-      output-format: 'html,json'
+      output-format: 'html'
 ```
 
 ## CLI Usage Patterns
@@ -188,19 +154,17 @@ ghas-report generate --token $GITHUB_TOKEN
 ghas-report generate \
   --repository owner/repo \
   --token $GITHUB_TOKEN \
-  --frameworks sans,owasp \
-  --format html,json
+  --frameworks sans,owasp
 
 # Output to specific directory
 ghas-report generate \
   --token $GITHUB_TOKEN \
-  --output ./reports \
-  --format html
+  --output ./reports
 ```
 
 ### CLI Design Principles
 - Use subcommands for different operations (`generate`, `validate`, `update-mappings`)
-- Provide sensible defaults (current repo, all frameworks, JSON output)
+- Provide sensible defaults (current repo, all frameworks, HTML output)
 - Support both environment variables and CLI flags for configuration
 - Include verbose/debug mode for troubleshooting
 - Show progress indicators for long-running operations
@@ -237,14 +201,13 @@ mitre_mapping = mitre_mapper.map(cwe_id)
 
 ### 4. Report Generation
 ```python
-# Generate reports in requested formats
-for format in output_formats:
-    reporter = get_reporter(format)
-    reporter.generate(
-        alerts=enriched_alerts,
-        mappings=framework_mappings,
-        output_path=output_dir
-    )
+# Generate HTML report
+reporter = get_reporter("html")
+reporter.generate(
+  alerts=enriched_alerts,
+  mappings=framework_mappings,
+  output_path=output_dir
+)
 ```
 
 ## Configuration Management
@@ -270,28 +233,7 @@ Store framework mappings in `data/cwe_mappings/`:
 }
 ```
 
-## Report Output Formats
-
-### JSON Report Structure
-
-```json
-{
-  "metadata": {
-    "repository": "owner/repo",
-    "generated_at": "2024-01-15T10:30:00Z",
-    "alert_count": 42
-  },
-  "frameworks": {
-    "sans_top25": {
-      "total_mapped": 35,
-      "categories": [...]
-    },
-    "owasp_top10": {...},
-    "mitre_kev": {...}
-  },
-  "alerts": [...]
-}
-```
+## Report Output Format
 
 ### HTML Report Features
 
@@ -299,12 +241,6 @@ Store framework mappings in `data/cwe_mappings/`:
 - Sortable/filterable tables
 - Severity-based color coding
 - Framework breakdown charts
-
-### CSV Report Columns
-
-```
-Alert ID, Rule ID, CWE, Severity, State, Location, SANS Category, OWASP Category, MITRE KEV
-```
 
 ## Performance Optimization
 
@@ -351,12 +287,10 @@ When implementing new features:
    - Update CLI to include new framework option
    - Add tests in `tests/unit/test_new_framework.py`
 
-2. **Adding a New Report Format**
-   - Create `src/ghas_reporting_engine/reports/new_format_reporter.py`
-   - Inherit from `BaseReporter`
-   - Implement `generate()` method
-   - Add template if needed
-   - Update CLI format options
+2. **Enhancing the HTML Report**
+  - Update `internal/reporters/templates/report.html`
+  - Adjust `internal/reporters/html.go` data shaping
+  - Add styling or layout improvements as needed
 
 3. **Updating Mappings**
    - Provide CLI command: `ghas-report update-mappings --framework sans`

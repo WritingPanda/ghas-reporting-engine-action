@@ -1,0 +1,156 @@
+{
+  "framework": "SANS Top 25 Software Errors",
+  "version": "2023",
+  "rankings": [
+    {
+      "rank": 1,
+      "cwe": "CWE-787",
+      "name": "Out-of-bounds Write",
+      "url": "https://cwe.mitre.org/data/definitions/787.html"
+    },
+    {
+      "rank": 2,
+      "cwe": "CWE-79",
+      "name": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+      "url": "https://cwe.mitre.org/data/definitions/79.html"
+    },
+    {
+      "rank": 3,
+      "cwe": "CWE-89",
+      "name": "Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')",
+      "url": "https://cwe.mitre.org/data/definitions/89.html"
+    },
+    {
+      "rank": 4,
+      "cwe": "CWE-416",
+      "name": "Use After Free",
+      "url": "https://cwe.mitre.org/data/definitions/416.html"
+    },
+    {
+      "rank": 5,
+      "cwe": "CWE-78",
+      "name": "Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')",
+      "url": "https://cwe.mitre.org/data/definitions/78.html"
+    },
+    {
+      "rank": 6,
+      "cwe": "CWE-20",
+      "name": "Improper Input Validation",
+      "url": "https://cwe.mitre.org/data/definitions/20.html"
+    },
+    {
+      "rank": 7,
+      "cwe": "CWE-125",
+      "name": "Out-of-bounds Read",
+      "url": "https://cwe.mitre.org/data/definitions/125.html"
+    },
+    {
+      "rank": 8,
+      "cwe": "CWE-22",
+      "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')",
+      "url": "https://cwe.mitre.org/data/definitions/22.html"
+    },
+    {
+      "rank": 9,
+      "cwe": "CWE-352",
+      "name": "Cross-Site Request Forgery (CSRF)",
+      "url": "https://cwe.mitre.org/data/definitions/352.html"
+    },
+    {
+      "rank": 10,
+      "cwe": "CWE-434",
+      "name": "Unrestricted Upload of File with Dangerous Type",
+      "url": "https://cwe.mitre.org/data/definitions/434.html"
+    },
+    {
+      "rank": 11,
+      "cwe": "CWE-862",
+      "name": "Missing Authorization",
+      "url": "https://cwe.mitre.org/data/definitions/862.html"
+    },
+    {
+      "rank": 12,
+      "cwe": "CWE-476",
+      "name": "NULL Pointer Dereference",
+      "url": "https://cwe.mitre.org/data/definitions/476.html"
+    },
+    {
+      "rank": 13,
+      "cwe": "CWE-287",
+      "name": "Improper Authentication",
+      "url": "https://cwe.mitre.org/data/definitions/287.html"
+    },
+    {
+      "rank": 14,
+      "cwe": "CWE-190",
+      "name": "Integer Overflow or Wraparound",
+      "url": "https://cwe.mitre.org/data/definitions/190.html"
+    },
+    {
+      "rank": 15,
+      "cwe": "CWE-502",
+      "name": "Deserialization of Untrusted Data",
+      "url": "https://cwe.mitre.org/data/definitions/502.html"
+    },
+    {
+      "rank": 16,
+      "cwe": "CWE-77",
+      "name": "Improper Neutralization of Special Elements used in a Command ('Command Injection')",
+      "url": "https://cwe.mitre.org/data/definitions/77.html"
+    },
+    {
+      "rank": 17,
+      "cwe": "CWE-119",
+      "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "url": "https://cwe.mitre.org/data/definitions/119.html"
+    },
+    {
+      "rank": 18,
+      "cwe": "CWE-798",
+      "name": "Use of Hard-coded Credentials",
+      "url": "https://cwe.mitre.org/data/definitions/798.html"
+    },
+    {
+      "rank": 19,
+      "cwe": "CWE-918",
+      "name": "Server-Side Request Forgery (SSRF)",
+      "url": "https://cwe.mitre.org/data/definitions/918.html"
+    },
+    {
+      "rank": 20,
+      "cwe": "CWE-306",
+      "name": "Missing Authentication for Critical Function",
+      "url": "https://cwe.mitre.org/data/definitions/306.html"
+    },
+    {
+      "rank": 21,
+      "cwe": "CWE-362",
+      "name": "Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')",
+      "url": "https://cwe.mitre.org/data/definitions/362.html"
+    },
+    {
+      "rank": 22,
+      "cwe": "CWE-269",
+      "name": "Improper Privilege Management",
+      "url": "https://cwe.mitre.org/data/definitions/269.html"
+    },
+    {
+      "rank": 23,
+      "cwe": "CWE-94",
+      "name": "Improper Control of Generation of Code ('Code Injection')",
+      "url": "https://cwe.mitre.org/data/definitions/94.html"
+    },
+    {
+      "rank": 24,
+      "cwe": "CWE-863",
+      "name": "Incorrect Authorization",
+      "url": "https://cwe.mitre.org/data/definitions/863.html"
+    },
+    {
+      "rank": 25,
+      "cwe": "CWE-276",
+      "name": "Incorrect Default Permissions",
+      "url": "https://cwe.mitre.org/data/definitions/276.html"
+    }
+  ]
+}

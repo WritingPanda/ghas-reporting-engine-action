@@ -79,6 +79,5 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           organization: "microsoft" # Use a known public org for testing
           report-types: "owasp"
-          report-formats: "json"
           days-back: "7"
         continue-on-error: true # Allow failure for demo purposes

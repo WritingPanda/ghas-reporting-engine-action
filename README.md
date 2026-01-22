@@ -9,7 +9,7 @@ A powerful CLI tool and GitHub Action that generates compliance reports from Git
 ## ✨ Features
 
 - **Multi-Framework Support**: Map GHAS alerts to OWASP Top 10 2021, SANS Top 25, and MITRE KEV
-- **Multiple Output Formats**: Generate reports in JSON, CSV, and HTML formats
+- **HTML Reports**: Generate professional, modern HTML reports
 - **GitHub Action Integration**: Run as part of your CI/CD pipeline
 - **Comprehensive Analysis**: Detailed insights, trends, and recommendations grouped by repository
 - **Active Alert Drilldowns**: Per-repository views of every open alert with severity, CWEs, and direct links for triage
@@ -35,7 +35,6 @@ uv run ghas-report \
   --token $GITHUB_TOKEN \
   --organization your-org \
   --report-types owasp,sans,mitre \
-  --report-formats html,json \
   --days-back 30
 ```
 
@@ -63,7 +62,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           organization: ${{ github.repository_owner }}
           report-types: 'owasp,sans,mitre'
-          report-formats: 'html,json'
           days-back: '30'
 ```
 
@@ -122,7 +120,6 @@ uv run ghas-report \
   --token $GITHUB_TOKEN \
   --organization my-org \
   --report-types owasp,sans,mitre \
-  --report-formats json,csv,html \
   --days-back 90 \
   --output-dir ./security-reports \
   --include-dismissed \
@@ -133,12 +130,11 @@ uv run ghas-report \
 #### CLI Options
 
 | Option | Description | Default |
-|--------|-------------|---------|
+| -------- | ------------- | --------- |
 | `--token` | GitHub token (or set `GITHUB_TOKEN` env var) | Required |
 | `--organization` | GitHub organization name | None |
 | `--enterprise` | GitHub enterprise name | None |
 | `--report-types` | Comma-separated: `owasp,sans,mitre` | `owasp,sans,mitre` |
-| `--report-formats` | Comma-separated: `json,csv,html` | `json,html` |
 | `--days-back` | Number of days to look back (1-365) | `30` |
 | `--output-dir` | Output directory for reports | `./reports` |
 | `--include-dismissed` | Include dismissed alerts | `False` |
@@ -150,12 +146,11 @@ uv run ghas-report \
 #### Inputs
 
 | Input | Description | Required | Default |
-|-------|-------------|----------|---------|
+| ------- | ------------- | ---------- | --------- |
 | `github-token` | GitHub token for API access | ✅ | |
 | `organization` | GitHub organization name | | |
 | `enterprise` | GitHub enterprise name | | |
 | `report-types` | Report types to generate | | `owasp,sans,mitre` |
-| `report-formats` | Output formats | | `json,html` |
 | `days-back` | Days to look back | | `30` |
 | `output-path` | Output path for reports | | `./reports` |
 | `include-dismissed` | Include dismissed alerts | | `false` |
@@ -164,7 +159,7 @@ uv run ghas-report \
 #### Outputs
 
 | Output | Description |
-|--------|-------------|
+| -------- | ------------- |
 | `reports-path` | Path to generated reports |
 | `summary` | Brief analysis summary |
 | `total-alerts` | Total number of alerts |
@@ -196,7 +191,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           organization: ${{ github.repository_owner }}
           report-types: 'owasp,sans,mitre'
-          report-formats: 'html,json'
           days-back: '7'
 ```
 
@@ -222,43 +216,11 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           organization: ${{ github.repository_owner }}
           report-types: 'mitre'
-          report-formats: 'json'
           days-back: '30'
           severity-filter: 'critical,high'
 ```
 
-## 📊 Report Formats
-
-### JSON Reports
-
-Structured data perfect for integration with other tools and systems.
-
-```json
-{
-  "framework": "OWASP Top 10 2021",
-  "total_alerts": 150,
-  "mapped_alerts": 120,
-  "repositories": {
-    "org/repo-1": {
-      "total_alerts": 45,
-      "severity_distribution": {...}
-    }
-  },
-  "categories": {...},
-  "recommendations": [...]
-}
-```
-
-Key sections include:
-
-- `summary` and `severity_analysis` for quick KPI rollups
-- `repository_analysis` for aggregate metrics
-- `active_alerts_by_repository` for the raw list of open alerts per repository (alert number, severity, CWEs, URL)
-- `framework_mapping` blocks for OWASP/SANS/MITRE context
-
-### CSV Reports
-
-Tabular data ideal for spreadsheet analysis and reporting, including a dedicated **Active Alerts by Repository** section that captures alert number, severity, CWEs, opened timestamp, and quick links for every open finding.
+## 📊 Report Format
 
 ### HTML Reports
 
@@ -302,8 +264,6 @@ src/ghas_reporting_engine/
 │   ├── sans_top25.py       # SANS-specific processing
 │   └── mitre_kev.py        # MITRE KEV processing
 ├── reports/
-│   ├── json_reporter.py    # JSON report generation
-│   ├── csv_reporter.py     # CSV report generation
 │   └── html_reporter.py    # HTML report generation
 └── templates/              # HTML templates and assets
 ```
@@ -373,7 +333,6 @@ uv run ghas-report \
   --token $GITHUB_TOKEN \
   --organization microsoft \
   --report-types owasp,sans,mitre \
-  --report-formats html,json \
   --days-back 90 \
   --severity-filter critical,high \
   --output-dir ./microsoft-security-report
@@ -385,7 +344,6 @@ uv run ghas-report \
 uv run ghas-report \
   --token $GITHUB_TOKEN \
   --enterprise my-enterprise \
-  --report-formats html,json \
   --days-back 30 \
   --include-dismissed \
   --output-dir ./enterprise-dashboard

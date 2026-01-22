@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>GHAS Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+
+    h1 {
+      color: #0b5394;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th {
+      background: #0b5394;
+      color: white;
+      text-align: left;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      padding: 12px;
+      background: #f3f6fb;
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+    }
+
+    details {
+      border: 1px solid #d0d7de;
+      border-radius: 6px;
+      background: #fff;
+      margin-top: 12px;
+      padding: 8px 12px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: #0b5394;
+    }
+
+    .alert-list {
+      margin: 8px 0 0 0;
+      padding-left: 18px;
+    }
+
+    .alert-meta {
+      color: #57606a;
+      font-size: 0.9rem;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #1d4ed8;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>GHAS Report - {{.Metadata.Target}} ({{.Metadata.Framework | upper}})</h1>
+  <div class="grid">
+    <div class="card"><strong>Total Alerts</strong><br>{{.Summary.total_alerts}}</div>
+    <div class="card"><strong>Open</strong><br>{{.Summary.open_alerts}}</div>
+    <div class="card"><strong>Dismissed</strong><br>{{.Summary.dismissed_alerts}}</div>
+    <div class="card"><strong>Fixed</strong><br>{{.Summary.fixed_alerts}}</div>
+  </div>
+
+  {{if .Framework}}
+  <h2>Framework Mapping ({{.Metadata.Framework | upper}})</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{range $k,$v := .Framework}}
+      <tr>
+        <td>{{$k}}</td>
+        <td>{{$v}}</td>
+      </tr>
+      {{end}}
+    </tbody>
+  </table>
+  {{end}}
+
+  <h2>Top CWEs</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>CWE</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{range $c,$n := .CWEAnalysis.top_cwes}}
+      <tr>
+        <td>{{$c}}</td>
+        <td>{{$n}}</td>
+      </tr>
+      {{end}}
+    </tbody>
+  </table>
+
+  <h2>Alerts by CWE</h2>
+  {{range .CWEGroups}}
+  <details>
+    <summary>{{.CWE}} ({{.Count}})</summary>
+    <ul class="alert-list">
+      {{range .Alerts}}
+      <li>
+        <a href="{{.URL}}" target="_blank" rel="noopener noreferrer">Alert #{{.Number}}</a>
+        <span class="alert-meta">{{.Repo}} • {{.RuleID}} {{if .RuleName}}({{.RuleName}}){{end}}</span>
+        <div class="alert-meta">
+          <span class="pill">{{.Severity}}</span>
+          <span class="pill">{{.State}}</span>
+        </div>
+      </li>
+      {{end}}
+    </ul>
+  </details>
+  {{else}}
+  <p>No alerts found.</p>
+  {{end}}
+
+  <h2>Recommendations</h2>
+  <ul>
+    {{range .Recommendations}}
+    <li>{{.}}</li>
+    {{else}}
+    <li>No recommendations generated.</li>
+    {{end}}
+  </ul>
+</body>
+
+</html>
