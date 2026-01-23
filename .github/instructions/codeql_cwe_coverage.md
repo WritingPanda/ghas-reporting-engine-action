@@ -1,0 +1,4804 @@
+# CodeQ
+
+| CWE | Language | Query id | Query name |
+| --- | --- | --- | --- |
+| CWE-11 | C# | cs/web/debug-binary | Creating an ASP.NET debug binary may reveal sensitive information |
+| CWE-12 | C# | cs/web/missing-global-error-handler | Missing global error handler |
+| CWE-13 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-14 | C/C++ | cpp/memset-may-be-deleted | Call to memset may be deleted |
+| CWE-20 | GitHub Actions | actions/composite-action-sinks | Composite Action Sinks |
+| CWE-20 | GitHub Actions | actions/composite-action-sources | Composite Action Sources |
+| CWE-20 | GitHub Actions | actions/composite-action-summaries | Composite Action Summaries |
+| CWE-20 | GitHub Actions | actions/reusable-workflow-sinks | Reusable Workflow Sinks |
+| CWE-20 | GitHub Actions | actions/reusable-workflow-sources | Reusable Workflow Sources |
+| CWE-20 | GitHub Actions | actions/reusable-workflow-summaries | Reusable Workflows Summaries |
+| CWE-20 | GitHub Actions | actions/envpath-injection/critical | PATH environment variable built from user-controlled sources |
+| CWE-20 | GitHub Actions | actions/envpath-injection/medium | PATH environment variable built from user-controlled sources |
+| CWE-20 | GitHub Actions | actions/envvar-injection/critical | Environment variable built from user-controlled sources |
+| CWE-20 | GitHub Actions | actions/envvar-injection/medium | Environment variable built from user-controlled sources |
+| CWE-20 | C/C++ | cpp/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-20 | C/C++ | cpp/count-untrusted-data-external-api-ir | Frequency counts for external APIs that are used with untrusted data |
+| CWE-20 | C/C++ | cpp/untrusted-data-to-external-api-ir | Untrusted data passed to external API |
+| CWE-20 | C/C++ | cpp/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-20 | C/C++ | cpp/uncontrolled-process-operation | Uncontrolled process operation |
+| CWE-20 | C/C++ | cpp/unclear-array-index-validation | Unclear validation of array index |
+| CWE-20 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-20 | C/C++ | cpp/late-check-of-function-argument | Late Check Of Function Argument |
+| CWE-20 | C/C++ | cpp/linux-kernel-no-check-before-unsafe-put-user | Linux kernel no check before unsafe_put_user vulnerability detection |
+| CWE-20 | C# | cs/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-20 | C# | cs/serialization-check-bypass | Serialization check bypass |
+| CWE-20 | C# | cs/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-20 | C# | cs/xml/missing-validation | Missing XML validation |
+| CWE-20 | C# | cs/assembly-path-injection | Assembly path injection |
+| CWE-20 | Go | go/constant-length-comparison | Constant length comparison |
+| CWE-20 | Go | go/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-20 | Go | go/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-20 | Go | go/incomplete-url-scheme-check | Incomplete URL scheme check |
+| CWE-20 | Go | go/regex/missing-regexp-anchor | Missing regular expression anchor |
+| CWE-20 | Go | go/suspicious-character-in-regex | Suspicious characters in a regular expression |
+| CWE-20 | Go | go/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-20 | Go | go/untrusted-data-to-unknown-external-api | Untrusted data passed to unknown external API |
+| CWE-20 | Java/Kotlin | java/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-20 | Java/Kotlin | java/overly-large-range | Overly permissive regular expression range |
+| CWE-20 | Java/Kotlin | java/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-20 | Java/Kotlin | java/improper-validation-of-array-construction | Improper validation of user-provided size used for array construction |
+| CWE-20 | Java/Kotlin | java/improper-validation-of-array-construction-code-specified | Improper validation of code-specified size used for array construction |
+| CWE-20 | Java/Kotlin | java/improper-validation-of-array-index | Improper validation of user-provided array index |
+| CWE-20 | Java/Kotlin | java/improper-validation-of-array-index-code-specified | Improper validation of code-specified array index |
+| CWE-20 | Java/Kotlin | java/log4j-injection | Potential Log4J LDAP JNDI injection (CVE-2021-44228) |
+| CWE-20 | JavaScript/TypeScript | js/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-20 | JavaScript/TypeScript | js/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-20 | JavaScript/TypeScript | js/incomplete-url-scheme-check | Incomplete URL scheme check |
+| CWE-20 | JavaScript/TypeScript | js/incomplete-url-substring-sanitization | Incomplete URL substring sanitization |
+| CWE-20 | JavaScript/TypeScript | js/incorrect-suffix-check | Incorrect suffix check |
+| CWE-20 | JavaScript/TypeScript | js/missing-origin-check | Missing origin verification in postMessage handler |
+| CWE-20 | JavaScript/TypeScript | js/regex/missing-regexp-anchor | Missing regular expression anchor |
+| CWE-20 | JavaScript/TypeScript | js/overly-large-range | Overly permissive regular expression range |
+| CWE-20 | JavaScript/TypeScript | js/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-20 | JavaScript/TypeScript | js/useless-regexp-character-escape | Useless regular-expression character escape |
+| CWE-20 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-20 | JavaScript/TypeScript | js/double-escaping | Double escaping or unescaping |
+| CWE-20 | JavaScript/TypeScript | js/incomplete-html-attribute-sanitization | Incomplete HTML attribute sanitization |
+| CWE-20 | JavaScript/TypeScript | js/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-20 | JavaScript/TypeScript | js/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-20 | JavaScript/TypeScript | js/untrusted-data-to-external-api-more-sources | Untrusted data passed to external API with additional heuristic sources |
+| CWE-20 | Python | py/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-20 | Python | py/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-20 | Python | py/cookie-injection | Construction of a cookie using user-supplied input |
+| CWE-20 | Python | py/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-20 | Python | py/incomplete-url-substring-sanitization | Incomplete URL substring sanitization |
+| CWE-20 | Python | py/overly-large-range | Overly permissive regular expression range |
+| CWE-20 | Python | py/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-20 | Ruby | rb/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-20 | Ruby | rb/incomplete-url-substring-sanitization | Incomplete URL substring sanitization |
+| CWE-20 | Ruby | rb/regex/badly-anchored-regexp | Badly anchored regular expression |
+| CWE-20 | Ruby | rb/regex/missing-regexp-anchor | Missing regular expression anchor |
+| CWE-20 | Ruby | rb/overly-large-range | Overly permissive regular expression range |
+| CWE-20 | Ruby | rb/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-20 | Ruby | rb/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-20 | Ruby | rb/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-20 | Rust | rust/regex-injection | Regular expression injection |
+| CWE-20 | Rust | rust/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-20 | Swift | swift/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-20 | Swift | swift/missing-regexp-anchor | Missing regular expression anchor |
+| CWE-20 | Swift | swift/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-22 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-22 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-22 | C# | cs/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-22 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-22 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-22 | Go | go/unsafe-unzip-symlink | Arbitrary file write extracting an archive containing symbolic links |
+| CWE-22 | Go | go/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-22 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-22 | Java/Kotlin | java/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-22 | Java/Kotlin | java/partial-path-traversal | Partial path traversal vulnerability |
+| CWE-22 | Java/Kotlin | java/partial-path-traversal-from-remote | Partial path traversal vulnerability from remote |
+| CWE-22 | Java/Kotlin | java/openstream-called-on-tainted-url | openStream called on URLs created from remote source |
+| CWE-22 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-22 | JavaScript/TypeScript | js/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-22 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-22 | Python | py/tarslip | Arbitrary file write during tarfile extraction |
+| CWE-22 | Python | py/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-22 | Python | py/tarslip-extended | Arbitrary file write during tarfile extraction |
+| CWE-22 | Python | py/unsafe-unpacking | Arbitrary file write during a tarball extraction from a user controlled source |
+| CWE-22 | Ruby | rb/zip-slip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-22 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-22 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-22 | Swift | swift/unsafe-unpacking | Arbitrary file write during a zip extraction from a user controlled source |
+| CWE-22 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-23 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | Java/Kotlin | java/partial-path-traversal | Partial path traversal vulnerability |
+| CWE-23 | Java/Kotlin | java/partial-path-traversal-from-remote | Partial path traversal vulnerability from remote |
+| CWE-23 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-23 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-36 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | Java/Kotlin | java/openstream-called-on-tainted-url | openStream called on URLs created from remote source |
+| CWE-36 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-36 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-73 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | Java/Kotlin | java/file-path-injection | File Path Injection |
+| CWE-73 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-73 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-73 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-73 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-73 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-73 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-73 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-74 | GitHub Actions | actions/envpath-injection/critical | PATH environment variable built from user-controlled sources |
+| CWE-74 | GitHub Actions | actions/envpath-injection/medium | PATH environment variable built from user-controlled sources |
+| CWE-74 | GitHub Actions | actions/envvar-injection/critical | Environment variable built from user-controlled sources |
+| CWE-74 | GitHub Actions | actions/envvar-injection/medium | Environment variable built from user-controlled sources |
+| CWE-74 | GitHub Actions | actions/code-injection/critical | Code injection |
+| CWE-74 | GitHub Actions | actions/code-injection/medium | Code injection |
+| CWE-74 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-74 | GitHub Actions | actions/output-clobbering/high | Output Clobbering |
+| CWE-74 | GitHub Actions | actions/command-injection/critical | Command built from user-controlled sources |
+| CWE-74 | GitHub Actions | actions/command-injection/medium | Command built from user-controlled sources |
+| CWE-74 | GitHub Actions | actions/argument-injection/critical | Argument injection |
+| CWE-74 | GitHub Actions | actions/argument-injection/medium | Argument injection |
+| CWE-74 | C/C++ | cpp/non-constant-format | Non-constant format string |
+| CWE-74 | C/C++ | cpp/command-line-injection | Uncontrolled data used in OS command |
+| CWE-74 | C/C++ | cpp/cgi-xss | CGI script vulnerable to cross-site scripting |
+| CWE-74 | C/C++ | cpp/sql-injection | Uncontrolled data in SQL query |
+| CWE-74 | C/C++ | cpp/tainted-format-string | Uncontrolled format string |
+| CWE-74 | C/C++ | cpp/wordexp-injection | Uncontrolled data used in wordexp command |
+| CWE-74 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-74 | C# | cs/command-line-injection | Uncontrolled command line |
+| CWE-74 | C# | cs/web/xss | Cross-site scripting |
+| CWE-74 | C# | cs/sql-injection | SQL query built from user-controlled sources |
+| CWE-74 | C# | cs/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-74 | C# | cs/xml-injection | XML injection |
+| CWE-74 | C# | cs/code-injection | Improper control of generation of code |
+| CWE-74 | C# | cs/resource-injection | Resource injection |
+| CWE-74 | C# | cs/uncontrolled-format-string | Uncontrolled format string |
+| CWE-74 | C# | cs/xml/xpath-injection | XPath injection |
+| CWE-74 | C# | cs/web/disabled-header-checking | Header checking disabled |
+| CWE-74 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-74 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-74 | Go | go/command-injection | Command built from user-controlled sources |
+| CWE-74 | Go | go/stored-command | Command built from stored data |
+| CWE-74 | Go | go/html-template-escaping-bypass-xss | Cross-site scripting via HTML template escaping bypass |
+| CWE-74 | Go | go/reflected-xss | Reflected cross-site scripting |
+| CWE-74 | Go | go/stored-xss | Stored cross-site scripting |
+| CWE-74 | Go | go/sql-injection | Database query built from user-controlled sources |
+| CWE-74 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-74 | Go | go/xml/xpath-injection | XPath injection |
+| CWE-74 | Go | go/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-74 | Go | go/dsn-injection | SQL Data-source URI built from user-controlled sources |
+| CWE-74 | Go | go/dsn-injection-local | SQL Data-source URI built from local user-controlled sources |
+| CWE-74 | Java/Kotlin | java/jndi-injection | JNDI lookup with user-controlled name |
+| CWE-74 | Java/Kotlin | java/xslt-injection | XSLT transformation with user-controlled stylesheet |
+| CWE-74 | Java/Kotlin | java/relative-path-command | Executing a command with a relative path |
+| CWE-74 | Java/Kotlin | java/command-line-injection | Uncontrolled command line |
+| CWE-74 | Java/Kotlin | java/exec-tainted-environment | Building a command with an injected environment variable |
+| CWE-74 | Java/Kotlin | java/concatenated-command-line | Building a command line with string concatenation |
+| CWE-74 | Java/Kotlin | java/android/webview-addjavascriptinterface | Access Java object methods through JavaScript exposure |
+| CWE-74 | Java/Kotlin | java/android/websettings-javascript-enabled | Android WebView JavaScript settings |
+| CWE-74 | Java/Kotlin | java/xss | Cross-site scripting |
+| CWE-74 | Java/Kotlin | java/concatenated-sql-query | Query built by concatenation with a possibly-untrusted string |
+| CWE-74 | Java/Kotlin | java/sql-injection | Query built from user-controlled sources |
+| CWE-74 | Java/Kotlin | java/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-74 | Java/Kotlin | java/android/arbitrary-apk-installation | Android APK installation |
+| CWE-74 | Java/Kotlin | java/groovy-injection | Groovy Language injection |
+| CWE-74 | Java/Kotlin | java/insecure-bean-validation | Insecure Bean Validation |
+| CWE-74 | Java/Kotlin | java/jexl-expression-injection | Expression language injection (JEXL) |
+| CWE-74 | Java/Kotlin | java/mvel-expression-injection | Expression language injection (MVEL) |
+| CWE-74 | Java/Kotlin | java/spel-expression-injection | Expression language injection (Spring) |
+| CWE-74 | Java/Kotlin | java/server-side-template-injection | Server-side template injection |
+| CWE-74 | Java/Kotlin | java/netty-http-request-or-response-splitting | Disabled Netty HTTP header validation |
+| CWE-74 | Java/Kotlin | java/http-response-splitting | HTTP response splitting |
+| CWE-74 | Java/Kotlin | java/tainted-format-string | Use of externally-controlled format string |
+| CWE-74 | Java/Kotlin | java/xml/xpath-injection | XPath injection |
+| CWE-74 | Java/Kotlin | java/android/unsafe-android-webview-fetch | Unsafe resource fetching in Android WebView |
+| CWE-74 | Java/Kotlin | java/ognl-injection | OGNL Expression Language statement with user-controlled input |
+| CWE-74 | Java/Kotlin | java/log4j-injection | Potential Log4J LDAP JNDI injection (CVE-2021-44228) |
+| CWE-74 | Java/Kotlin | java/command-line-injection-extra | Command Injection into Runtime.exec() with dangerous command |
+| CWE-74 | Java/Kotlin | java/command-line-injection-extra-local | Command Injection into Runtime.exec() with dangerous command |
+| CWE-74 | Java/Kotlin | java/command-line-injection-experimental | Uncontrolled command line (experimental sinks) |
+| CWE-74 | Java/Kotlin | java/mybatis-annotation-sql-injection | SQL injection in MyBatis annotation |
+| CWE-74 | Java/Kotlin | java/mybatis-xml-sql-injection | SQL injection in MyBatis Mapper XML |
+| CWE-74 | Java/Kotlin | java/beanshell-injection | BeanShell injection |
+| CWE-74 | Java/Kotlin | java/android-insecure-dex-loading | Insecure loading of an Android Dex File |
+| CWE-74 | Java/Kotlin | java/jshell-injection | JShell injection |
+| CWE-74 | Java/Kotlin | java/javaee-expression-injection | Jakarta Expression Language injection |
+| CWE-74 | Java/Kotlin | java/jython-injection | Injection in Jython |
+| CWE-74 | Java/Kotlin | java/unsafe-eval | Injection in Java Script Engine |
+| CWE-74 | Java/Kotlin | java/spring-view-manipulation-implicit | Spring Implicit View Manipulation |
+| CWE-74 | Java/Kotlin | java/spring-view-manipulation | Spring View Manipulation |
+| CWE-74 | Java/Kotlin | java/xquery-injection | XQuery query built from user-controlled sources |
+| CWE-74 | JavaScript/TypeScript | js/disabling-electron-websecurity | Disabling Electron webSecurity |
+| CWE-74 | JavaScript/TypeScript | js/enabling-electron-renderer-node-integration | Enabling Node.js integration for Electron web content renderers |
+| CWE-74 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-74 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-74 | JavaScript/TypeScript | js/command-line-injection | Uncontrolled command line |
+| CWE-74 | JavaScript/TypeScript | js/indirect-command-line-injection | Indirect uncontrolled command line |
+| CWE-74 | JavaScript/TypeScript | js/second-order-command-line-injection | Second order command injection |
+| CWE-74 | JavaScript/TypeScript | js/shell-command-injection-from-environment | Shell command built from environment values |
+| CWE-74 | JavaScript/TypeScript | js/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-74 | JavaScript/TypeScript | js/unnecessary-use-of-cat | Unnecessary use of cat process |
+| CWE-74 | JavaScript/TypeScript | js/xss-through-exception | Exception text reinterpreted as HTML |
+| CWE-74 | JavaScript/TypeScript | js/reflected-xss | Reflected cross-site scripting |
+| CWE-74 | JavaScript/TypeScript | js/stored-xss | Stored cross-site scripting |
+| CWE-74 | JavaScript/TypeScript | js/html-constructed-from-input | Unsafe HTML constructed from library input |
+| CWE-74 | JavaScript/TypeScript | js/unsafe-jquery-plugin | Unsafe jQuery plugin |
+| CWE-74 | JavaScript/TypeScript | js/xss | Client-side cross-site scripting |
+| CWE-74 | JavaScript/TypeScript | js/xss-through-dom | DOM text reinterpreted as HTML |
+| CWE-74 | JavaScript/TypeScript | js/sql-injection | Database query built from user-controlled sources |
+| CWE-74 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-74 | JavaScript/TypeScript | js/bad-code-sanitization | Improper code sanitization |
+| CWE-74 | JavaScript/TypeScript | js/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-74 | JavaScript/TypeScript | js/unsafe-dynamic-method-access | Unsafe dynamic method access |
+| CWE-74 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-74 | JavaScript/TypeScript | js/incomplete-html-attribute-sanitization | Incomplete HTML attribute sanitization |
+| CWE-74 | JavaScript/TypeScript | js/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-74 | JavaScript/TypeScript | js/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-74 | JavaScript/TypeScript | js/unsafe-html-expansion | Unsafe expansion of self-closing HTML tag |
+| CWE-74 | JavaScript/TypeScript | js/tainted-format-string | Use of externally-controlled format string |
+| CWE-74 | JavaScript/TypeScript | js/client-side-unvalidated-url-redirection | Client-side URL redirect |
+| CWE-74 | JavaScript/TypeScript | js/xpath-injection | XPath injection |
+| CWE-74 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-74 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-74 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-74 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-74 | JavaScript/TypeScript | js/env-key-and-value-injection | User controlled arbitrary environment variable injection |
+| CWE-74 | JavaScript/TypeScript | js/env-value-injection | User controlled environment variable value injection |
+| CWE-74 | JavaScript/TypeScript | js/command-line-injection-more-sources | Uncontrolled command line with additional heuristic sources |
+| CWE-74 | JavaScript/TypeScript | js/xss-more-sources | Client-side cross-site scripting with additional heuristic sources |
+| CWE-74 | JavaScript/TypeScript | js/sql-injection-more-sources | Database query built from user-controlled sources with additional heuristic sources |
+| CWE-74 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-74 | JavaScript/TypeScript | js/tainted-format-string-more-sources | Use of externally-controlled format string with additional heuristic sources |
+| CWE-74 | JavaScript/TypeScript | js/xpath-injection-more-sources | XPath injection with additional heuristic sources |
+| CWE-74 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-74 | Python | py/use-of-input | 'input' function used in Python 2 |
+| CWE-74 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-74 | Python | py/template-injection | Server Side Template Injection |
+| CWE-74 | Python | py/command-line-injection | Uncontrolled command line |
+| CWE-74 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-74 | Python | py/jinja2/autoescape-false | Jinja2 templating with autoescape=False |
+| CWE-74 | Python | py/reflective-xss | Reflected server-side cross-site scripting |
+| CWE-74 | Python | py/sql-injection | SQL query built from user-controlled sources |
+| CWE-74 | Python | py/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-74 | Python | py/code-injection | Code injection |
+| CWE-74 | Python | py/http-response-splitting | HTTP Response Splitting |
+| CWE-74 | Python | py/xpath-injection | XPath query built from user-controlled sources |
+| CWE-74 | Python | py/nosql-injection | NoSQL Injection |
+| CWE-74 | Python | py/paramiko-command-injection | Command execution on a secondary remote server |
+| CWE-74 | Python | py/reflective-xss-email | Reflected server-side cross-site scripting |
+| CWE-74 | Python | py/xslt-injection | XSLT query built from user-controlled sources |
+| CWE-74 | Python | py/js2py-rce | JavaScript code execution |
+| CWE-74 | Ruby | rb/ldap-injection | LDAP Injection |
+| CWE-74 | Ruby | rb/server-side-template-injection | Server-side template injection |
+| CWE-74 | Ruby | rb/xpath-injection | XPath query built from user-controlled sources |
+| CWE-74 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-74 | Ruby | rb/command-line-injection | Uncontrolled command line |
+| CWE-74 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-74 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-74 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-74 | Ruby | rb/reflected-xss | Reflected server-side cross-site scripting |
+| CWE-74 | Ruby | rb/stored-xss | Stored cross-site scripting |
+| CWE-74 | Ruby | rb/html-constructed-from-input | Unsafe HTML constructed from library input |
+| CWE-74 | Ruby | rb/sql-injection | SQL query built from user-controlled sources |
+| CWE-74 | Ruby | rb/code-injection | Code injection |
+| CWE-74 | Ruby | rb/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-74 | Ruby | rb/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-74 | Ruby | rb/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-74 | Ruby | rb/tainted-format-string | Use of externally-controlled format string |
+| CWE-74 | Rust | rust/regex-injection | Regular expression injection |
+| CWE-74 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-74 | Rust | rust/xss | Cross-site scripting |
+| CWE-74 | Rust | rust/sql-injection | Database query built from user-controlled sources |
+| CWE-74 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-74 | Swift | swift/command-line-injection | System command built from user-controlled sources |
+| CWE-74 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-74 | Swift | swift/sql-injection | Database query built from user-controlled sources |
+| CWE-74 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-74 | Swift | swift/uncontrolled-format-string | Uncontrolled format string |
+| CWE-74 | Swift | swift/predicate-injection | Predicate built from user-controlled sources |
+| CWE-77 | GitHub Actions | actions/envpath-injection/critical | PATH environment variable built from user-controlled sources |
+| CWE-77 | GitHub Actions | actions/envpath-injection/medium | PATH environment variable built from user-controlled sources |
+| CWE-77 | GitHub Actions | actions/envvar-injection/critical | Environment variable built from user-controlled sources |
+| CWE-77 | GitHub Actions | actions/envvar-injection/medium | Environment variable built from user-controlled sources |
+| CWE-77 | GitHub Actions | actions/command-injection/critical | Command built from user-controlled sources |
+| CWE-77 | GitHub Actions | actions/command-injection/medium | Command built from user-controlled sources |
+| CWE-77 | GitHub Actions | actions/argument-injection/critical | Argument injection |
+| CWE-77 | GitHub Actions | actions/argument-injection/medium | Argument injection |
+| CWE-77 | C/C++ | cpp/command-line-injection | Uncontrolled data used in OS command |
+| CWE-77 | C/C++ | cpp/wordexp-injection | Uncontrolled data used in wordexp command |
+| CWE-77 | C# | cs/command-line-injection | Uncontrolled command line |
+| CWE-77 | Go | go/command-injection | Command built from user-controlled sources |
+| CWE-77 | Go | go/stored-command | Command built from stored data |
+| CWE-77 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-77 | Java/Kotlin | java/relative-path-command | Executing a command with a relative path |
+| CWE-77 | Java/Kotlin | java/command-line-injection | Uncontrolled command line |
+| CWE-77 | Java/Kotlin | java/exec-tainted-environment | Building a command with an injected environment variable |
+| CWE-77 | Java/Kotlin | java/concatenated-command-line | Building a command line with string concatenation |
+| CWE-77 | Java/Kotlin | java/ognl-injection | OGNL Expression Language statement with user-controlled input |
+| CWE-77 | Java/Kotlin | java/command-line-injection-extra | Command Injection into Runtime.exec() with dangerous command |
+| CWE-77 | Java/Kotlin | java/command-line-injection-extra-local | Command Injection into Runtime.exec() with dangerous command |
+| CWE-77 | Java/Kotlin | java/command-line-injection-experimental | Uncontrolled command line (experimental sinks) |
+| CWE-77 | JavaScript/TypeScript | js/command-line-injection | Uncontrolled command line |
+| CWE-77 | JavaScript/TypeScript | js/indirect-command-line-injection | Indirect uncontrolled command line |
+| CWE-77 | JavaScript/TypeScript | js/second-order-command-line-injection | Second order command injection |
+| CWE-77 | JavaScript/TypeScript | js/shell-command-injection-from-environment | Shell command built from environment values |
+| CWE-77 | JavaScript/TypeScript | js/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-77 | JavaScript/TypeScript | js/unnecessary-use-of-cat | Unnecessary use of cat process |
+| CWE-77 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-77 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-77 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-77 | JavaScript/TypeScript | js/command-line-injection-more-sources | Uncontrolled command line with additional heuristic sources |
+| CWE-77 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-77 | Python | py/command-line-injection | Uncontrolled command line |
+| CWE-77 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-77 | Ruby | rb/command-line-injection | Uncontrolled command line |
+| CWE-77 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-77 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-77 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-77 | Swift | swift/command-line-injection | System command built from user-controlled sources |
+| CWE-78 | GitHub Actions | actions/command-injection/critical | Command built from user-controlled sources |
+| CWE-78 | GitHub Actions | actions/command-injection/medium | Command built from user-controlled sources |
+| CWE-78 | C/C++ | cpp/command-line-injection | Uncontrolled data used in OS command |
+| CWE-78 | C/C++ | cpp/wordexp-injection | Uncontrolled data used in wordexp command |
+| CWE-78 | C# | cs/command-line-injection | Uncontrolled command line |
+| CWE-78 | Go | go/command-injection | Command built from user-controlled sources |
+| CWE-78 | Go | go/stored-command | Command built from stored data |
+| CWE-78 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-78 | Java/Kotlin | java/relative-path-command | Executing a command with a relative path |
+| CWE-78 | Java/Kotlin | java/command-line-injection | Uncontrolled command line |
+| CWE-78 | Java/Kotlin | java/exec-tainted-environment | Building a command with an injected environment variable |
+| CWE-78 | Java/Kotlin | java/concatenated-command-line | Building a command line with string concatenation |
+| CWE-78 | Java/Kotlin | java/command-line-injection-extra | Command Injection into Runtime.exec() with dangerous command |
+| CWE-78 | Java/Kotlin | java/command-line-injection-extra-local | Command Injection into Runtime.exec() with dangerous command |
+| CWE-78 | Java/Kotlin | java/command-line-injection-experimental | Uncontrolled command line (experimental sinks) |
+| CWE-78 | JavaScript/TypeScript | js/command-line-injection | Uncontrolled command line |
+| CWE-78 | JavaScript/TypeScript | js/indirect-command-line-injection | Indirect uncontrolled command line |
+| CWE-78 | JavaScript/TypeScript | js/second-order-command-line-injection | Second order command injection |
+| CWE-78 | JavaScript/TypeScript | js/shell-command-injection-from-environment | Shell command built from environment values |
+| CWE-78 | JavaScript/TypeScript | js/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-78 | JavaScript/TypeScript | js/unnecessary-use-of-cat | Unnecessary use of cat process |
+| CWE-78 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-78 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-78 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-78 | JavaScript/TypeScript | js/command-line-injection-more-sources | Uncontrolled command line with additional heuristic sources |
+| CWE-78 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-78 | Python | py/command-line-injection | Uncontrolled command line |
+| CWE-78 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-78 | Ruby | rb/command-line-injection | Uncontrolled command line |
+| CWE-78 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-78 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-78 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-78 | Swift | swift/command-line-injection | System command built from user-controlled sources |
+| CWE-79 | C/C++ | cpp/cgi-xss | CGI script vulnerable to cross-site scripting |
+| CWE-79 | C# | cs/web/xss | Cross-site scripting |
+| CWE-79 | Go | go/html-template-escaping-bypass-xss | Cross-site scripting via HTML template escaping bypass |
+| CWE-79 | Go | go/reflected-xss | Reflected cross-site scripting |
+| CWE-79 | Go | go/stored-xss | Stored cross-site scripting |
+| CWE-79 | Java/Kotlin | java/android/webview-addjavascriptinterface | Access Java object methods through JavaScript exposure |
+| CWE-79 | Java/Kotlin | java/android/websettings-javascript-enabled | Android WebView JavaScript settings |
+| CWE-79 | Java/Kotlin | java/xss | Cross-site scripting |
+| CWE-79 | Java/Kotlin | java/android/unsafe-android-webview-fetch | Unsafe resource fetching in Android WebView |
+| CWE-79 | JavaScript/TypeScript | js/disabling-electron-websecurity | Disabling Electron webSecurity |
+| CWE-79 | JavaScript/TypeScript | js/xss-through-exception | Exception text reinterpreted as HTML |
+| CWE-79 | JavaScript/TypeScript | js/reflected-xss | Reflected cross-site scripting |
+| CWE-79 | JavaScript/TypeScript | js/stored-xss | Stored cross-site scripting |
+| CWE-79 | JavaScript/TypeScript | js/html-constructed-from-input | Unsafe HTML constructed from library input |
+| CWE-79 | JavaScript/TypeScript | js/unsafe-jquery-plugin | Unsafe jQuery plugin |
+| CWE-79 | JavaScript/TypeScript | js/xss | Client-side cross-site scripting |
+| CWE-79 | JavaScript/TypeScript | js/xss-through-dom | DOM text reinterpreted as HTML |
+| CWE-79 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-79 | JavaScript/TypeScript | js/bad-code-sanitization | Improper code sanitization |
+| CWE-79 | JavaScript/TypeScript | js/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-79 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-79 | JavaScript/TypeScript | js/incomplete-html-attribute-sanitization | Incomplete HTML attribute sanitization |
+| CWE-79 | JavaScript/TypeScript | js/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-79 | JavaScript/TypeScript | js/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-79 | JavaScript/TypeScript | js/unsafe-html-expansion | Unsafe expansion of self-closing HTML tag |
+| CWE-79 | JavaScript/TypeScript | js/client-side-unvalidated-url-redirection | Client-side URL redirect |
+| CWE-79 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-79 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-79 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-79 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-79 | JavaScript/TypeScript | js/xss-more-sources | Client-side cross-site scripting with additional heuristic sources |
+| CWE-79 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-79 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-79 | Python | py/jinja2/autoescape-false | Jinja2 templating with autoescape=False |
+| CWE-79 | Python | py/reflective-xss | Reflected server-side cross-site scripting |
+| CWE-79 | Python | py/http-response-splitting | HTTP Response Splitting |
+| CWE-79 | Python | py/reflective-xss-email | Reflected server-side cross-site scripting |
+| CWE-79 | Ruby | rb/reflected-xss | Reflected server-side cross-site scripting |
+| CWE-79 | Ruby | rb/stored-xss | Stored cross-site scripting |
+| CWE-79 | Ruby | rb/html-constructed-from-input | Unsafe HTML constructed from library input |
+| CWE-79 | Ruby | rb/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-79 | Ruby | rb/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-79 | Ruby | rb/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-79 | Rust | rust/xss | Cross-site scripting |
+| CWE-79 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-80 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-80 | JavaScript/TypeScript | js/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-80 | JavaScript/TypeScript | js/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-80 | Ruby | rb/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-80 | Ruby | rb/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-88 | GitHub Actions | actions/argument-injection/critical | Argument injection |
+| CWE-88 | GitHub Actions | actions/argument-injection/medium | Argument injection |
+| CWE-88 | C/C++ | cpp/command-line-injection | Uncontrolled data used in OS command |
+| CWE-88 | C# | cs/command-line-injection | Uncontrolled command line |
+| CWE-88 | Java/Kotlin | java/relative-path-command | Executing a command with a relative path |
+| CWE-88 | Java/Kotlin | java/command-line-injection | Uncontrolled command line |
+| CWE-88 | Java/Kotlin | java/exec-tainted-environment | Building a command with an injected environment variable |
+| CWE-88 | Java/Kotlin | java/concatenated-command-line | Building a command line with string concatenation |
+| CWE-88 | Java/Kotlin | java/command-line-injection-experimental | Uncontrolled command line (experimental sinks) |
+| CWE-88 | JavaScript/TypeScript | js/command-line-injection | Uncontrolled command line |
+| CWE-88 | JavaScript/TypeScript | js/indirect-command-line-injection | Indirect uncontrolled command line |
+| CWE-88 | JavaScript/TypeScript | js/second-order-command-line-injection | Second order command injection |
+| CWE-88 | JavaScript/TypeScript | js/shell-command-injection-from-environment | Shell command built from environment values |
+| CWE-88 | JavaScript/TypeScript | js/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-88 | JavaScript/TypeScript | js/command-line-injection-more-sources | Uncontrolled command line with additional heuristic sources |
+| CWE-88 | Python | py/command-line-injection | Uncontrolled command line |
+| CWE-88 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-88 | Ruby | rb/command-line-injection | Uncontrolled command line |
+| CWE-88 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-88 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-88 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-88 | Swift | swift/command-line-injection | System command built from user-controlled sources |
+| CWE-89 | C/C++ | cpp/sql-injection | Uncontrolled data in SQL query |
+| CWE-89 | C# | cs/sql-injection | SQL query built from user-controlled sources |
+| CWE-89 | Go | go/sql-injection | Database query built from user-controlled sources |
+| CWE-89 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-89 | Java/Kotlin | java/concatenated-sql-query | Query built by concatenation with a possibly-untrusted string |
+| CWE-89 | Java/Kotlin | java/sql-injection | Query built from user-controlled sources |
+| CWE-89 | Java/Kotlin | java/mybatis-annotation-sql-injection | SQL injection in MyBatis annotation |
+| CWE-89 | Java/Kotlin | java/mybatis-xml-sql-injection | SQL injection in MyBatis Mapper XML |
+| CWE-89 | JavaScript/TypeScript | js/sql-injection | Database query built from user-controlled sources |
+| CWE-89 | JavaScript/TypeScript | js/env-key-and-value-injection | User controlled arbitrary environment variable injection |
+| CWE-89 | JavaScript/TypeScript | js/env-value-injection | User controlled environment variable value injection |
+| CWE-89 | JavaScript/TypeScript | js/sql-injection-more-sources | Database query built from user-controlled sources with additional heuristic sources |
+| CWE-89 | Python | py/sql-injection | SQL query built from user-controlled sources |
+| CWE-89 | Ruby | rb/sql-injection | SQL query built from user-controlled sources |
+| CWE-89 | Rust | rust/sql-injection | Database query built from user-controlled sources |
+| CWE-89 | Swift | swift/sql-injection | Database query built from user-controlled sources |
+| CWE-90 | C# | cs/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-90 | Go | go/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-90 | Java/Kotlin | java/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-90 | JavaScript/TypeScript | js/sql-injection | Database query built from user-controlled sources |
+| CWE-90 | JavaScript/TypeScript | js/sql-injection-more-sources | Database query built from user-controlled sources with additional heuristic sources |
+| CWE-90 | Python | py/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-90 | Ruby | rb/ldap-injection | LDAP Injection |
+| CWE-91 | C# | cs/xml-injection | XML injection |
+| CWE-91 | C# | cs/xml/xpath-injection | XPath injection |
+| CWE-91 | Go | go/xml/xpath-injection | XPath injection |
+| CWE-91 | Java/Kotlin | java/xml/xpath-injection | XPath injection |
+| CWE-91 | Java/Kotlin | java/xquery-injection | XQuery query built from user-controlled sources |
+| CWE-91 | JavaScript/TypeScript | js/xpath-injection | XPath injection |
+| CWE-91 | JavaScript/TypeScript | js/xpath-injection-more-sources | XPath injection with additional heuristic sources |
+| CWE-91 | Python | py/xpath-injection | XPath query built from user-controlled sources |
+| CWE-91 | Python | py/xslt-injection | XSLT query built from user-controlled sources |
+| CWE-91 | Ruby | rb/xpath-injection | XPath query built from user-controlled sources |
+| CWE-93 | C# | cs/web/disabled-header-checking | Header checking disabled |
+| CWE-93 | Java/Kotlin | java/netty-http-request-or-response-splitting | Disabled Netty HTTP header validation |
+| CWE-93 | Java/Kotlin | java/http-response-splitting | HTTP response splitting |
+| CWE-93 | Python | py/http-response-splitting | HTTP Response Splitting |
+| CWE-94 | GitHub Actions | actions/code-injection/critical | Code injection |
+| CWE-94 | GitHub Actions | actions/code-injection/medium | Code injection |
+| CWE-94 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-94 | C# | cs/code-injection | Improper control of generation of code |
+| CWE-94 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-94 | Java/Kotlin | java/android/arbitrary-apk-installation | Android APK installation |
+| CWE-94 | Java/Kotlin | java/groovy-injection | Groovy Language injection |
+| CWE-94 | Java/Kotlin | java/insecure-bean-validation | Insecure Bean Validation |
+| CWE-94 | Java/Kotlin | java/jexl-expression-injection | Expression language injection (JEXL) |
+| CWE-94 | Java/Kotlin | java/mvel-expression-injection | Expression language injection (MVEL) |
+| CWE-94 | Java/Kotlin | java/spel-expression-injection | Expression language injection (Spring) |
+| CWE-94 | Java/Kotlin | java/server-side-template-injection | Server-side template injection |
+| CWE-94 | Java/Kotlin | java/beanshell-injection | BeanShell injection |
+| CWE-94 | Java/Kotlin | java/android-insecure-dex-loading | Insecure loading of an Android Dex File |
+| CWE-94 | Java/Kotlin | java/jshell-injection | JShell injection |
+| CWE-94 | Java/Kotlin | java/javaee-expression-injection | Jakarta Expression Language injection |
+| CWE-94 | Java/Kotlin | java/jython-injection | Injection in Jython |
+| CWE-94 | Java/Kotlin | java/unsafe-eval | Injection in Java Script Engine |
+| CWE-94 | Java/Kotlin | java/spring-view-manipulation-implicit | Spring Implicit View Manipulation |
+| CWE-94 | Java/Kotlin | java/spring-view-manipulation | Spring View Manipulation |
+| CWE-94 | JavaScript/TypeScript | js/enabling-electron-renderer-node-integration | Enabling Node.js integration for Electron web content renderers |
+| CWE-94 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-94 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-94 | JavaScript/TypeScript | js/bad-code-sanitization | Improper code sanitization |
+| CWE-94 | JavaScript/TypeScript | js/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-94 | JavaScript/TypeScript | js/unsafe-dynamic-method-access | Unsafe dynamic method access |
+| CWE-94 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-94 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-94 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-94 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-94 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-94 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-94 | Python | py/use-of-input | 'input' function used in Python 2 |
+| CWE-94 | Python | py/code-injection | Code injection |
+| CWE-94 | Python | py/js2py-rce | JavaScript code execution |
+| CWE-94 | Ruby | rb/server-side-template-injection | Server-side template injection |
+| CWE-94 | Ruby | rb/code-injection | Code injection |
+| CWE-94 | Ruby | rb/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-94 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-94 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-95 | GitHub Actions | actions/code-injection/critical | Code injection |
+| CWE-95 | GitHub Actions | actions/code-injection/medium | Code injection |
+| CWE-95 | C# | cs/code-injection | Improper control of generation of code |
+| CWE-95 | Java/Kotlin | java/jython-injection | Injection in Jython |
+| CWE-95 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-95 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-95 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-95 | Python | py/use-of-input | 'input' function used in Python 2 |
+| CWE-95 | Python | py/code-injection | Code injection |
+| CWE-95 | Ruby | rb/code-injection | Code injection |
+| CWE-95 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-95 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-96 | C# | cs/code-injection | Improper control of generation of code |
+| CWE-99 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-99 | C# | cs/resource-injection | Resource injection |
+| CWE-99 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-99 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-99 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-99 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-99 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-99 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-99 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-112 | C# | cs/xml/missing-validation | Missing XML validation |
+| CWE-113 | C# | cs/web/disabled-header-checking | Header checking disabled |
+| CWE-113 | Java/Kotlin | java/netty-http-request-or-response-splitting | Disabled Netty HTTP header validation |
+| CWE-113 | Java/Kotlin | java/http-response-splitting | HTTP response splitting |
+| CWE-113 | Python | py/http-response-splitting | HTTP Response Splitting |
+| CWE-114 | C/C++ | cpp/uncontrolled-process-operation | Uncontrolled process operation |
+| CWE-114 | C# | cs/assembly-path-injection | Assembly path injection |
+| CWE-116 | GitHub Actions | actions/code-injection/critical | Code injection |
+| CWE-116 | GitHub Actions | actions/code-injection/medium | Code injection |
+| CWE-116 | C# | cs/web/xss | Cross-site scripting |
+| CWE-116 | C# | cs/log-forging | Log entries created from user input |
+| CWE-116 | C# | cs/inappropriate-encoding | Inappropriate encoding |
+| CWE-116 | Go | go/html-template-escaping-bypass-xss | Cross-site scripting via HTML template escaping bypass |
+| CWE-116 | Go | go/reflected-xss | Reflected cross-site scripting |
+| CWE-116 | Go | go/stored-xss | Stored cross-site scripting |
+| CWE-116 | Go | go/log-injection | Log entries created from user input |
+| CWE-116 | Java/Kotlin | java/log-injection | Log Injection |
+| CWE-116 | JavaScript/TypeScript | js/angular/disabling-sce | Disabling SCE |
+| CWE-116 | JavaScript/TypeScript | js/identity-replacement | Replacement of a substring with itself |
+| CWE-116 | JavaScript/TypeScript | js/xss-through-exception | Exception text reinterpreted as HTML |
+| CWE-116 | JavaScript/TypeScript | js/reflected-xss | Reflected cross-site scripting |
+| CWE-116 | JavaScript/TypeScript | js/stored-xss | Stored cross-site scripting |
+| CWE-116 | JavaScript/TypeScript | js/html-constructed-from-input | Unsafe HTML constructed from library input |
+| CWE-116 | JavaScript/TypeScript | js/unsafe-jquery-plugin | Unsafe jQuery plugin |
+| CWE-116 | JavaScript/TypeScript | js/xss | Client-side cross-site scripting |
+| CWE-116 | JavaScript/TypeScript | js/xss-through-dom | DOM text reinterpreted as HTML |
+| CWE-116 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-116 | JavaScript/TypeScript | js/bad-code-sanitization | Improper code sanitization |
+| CWE-116 | JavaScript/TypeScript | js/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-116 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-116 | JavaScript/TypeScript | js/double-escaping | Double escaping or unescaping |
+| CWE-116 | JavaScript/TypeScript | js/incomplete-html-attribute-sanitization | Incomplete HTML attribute sanitization |
+| CWE-116 | JavaScript/TypeScript | js/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-116 | JavaScript/TypeScript | js/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-116 | JavaScript/TypeScript | js/unsafe-html-expansion | Unsafe expansion of self-closing HTML tag |
+| CWE-116 | JavaScript/TypeScript | js/log-injection | Log injection |
+| CWE-116 | JavaScript/TypeScript | js/client-side-unvalidated-url-redirection | Client-side URL redirect |
+| CWE-116 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-116 | JavaScript/TypeScript | js/xss-more-sources | Client-side cross-site scripting with additional heuristic sources |
+| CWE-116 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-116 | JavaScript/TypeScript | js/log-injection-more-sources | Log injection with additional heuristic sources |
+| CWE-116 | Python | py/reflective-xss | Reflected server-side cross-site scripting |
+| CWE-116 | Python | py/code-injection | Code injection |
+| CWE-116 | Python | py/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-116 | Python | py/log-injection | Log Injection |
+| CWE-116 | Python | py/reflective-xss-email | Reflected server-side cross-site scripting |
+| CWE-116 | Ruby | rb/reflected-xss | Reflected server-side cross-site scripting |
+| CWE-116 | Ruby | rb/stored-xss | Stored cross-site scripting |
+| CWE-116 | Ruby | rb/html-constructed-from-input | Unsafe HTML constructed from library input |
+| CWE-116 | Ruby | rb/code-injection | Code injection |
+| CWE-116 | Ruby | rb/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-116 | Ruby | rb/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-116 | Ruby | rb/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-116 | Ruby | rb/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-116 | Ruby | rb/log-injection | Log injection |
+| CWE-116 | Rust | rust/xss | Cross-site scripting |
+| CWE-116 | Rust | rust/log-injection | Log injection |
+| CWE-116 | Swift | swift/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-117 | C# | cs/log-forging | Log entries created from user input |
+| CWE-117 | Go | go/log-injection | Log entries created from user input |
+| CWE-117 | Java/Kotlin | java/log-injection | Log Injection |
+| CWE-117 | JavaScript/TypeScript | js/log-injection | Log injection |
+| CWE-117 | JavaScript/TypeScript | js/log-injection-more-sources | Log injection with additional heuristic sources |
+| CWE-117 | Python | py/log-injection | Log Injection |
+| CWE-117 | Ruby | rb/log-injection | Log injection |
+| CWE-117 | Rust | rust/log-injection | Log injection |
+| CWE-118 | C/C++ | cpp/offset-use-before-range-check | Array offset used before range check |
+| CWE-118 | C/C++ | cpp/double-free | Potential double free |
+| CWE-118 | C/C++ | cpp/late-negative-test | Pointer offset used before it is checked |
+| CWE-118 | C/C++ | cpp/missing-negativity-test | Unchecked return value used as offset |
+| CWE-118 | C/C++ | cpp/overflow-calculated | Buffer not sufficient for string |
+| CWE-118 | C/C++ | cpp/overflow-destination | Copy function using source size |
+| CWE-118 | C/C++ | cpp/static-buffer-overflow | Static array access may cause overflow |
+| CWE-118 | C/C++ | cpp/allocation-too-small | Not enough memory allocated for pointer type |
+| CWE-118 | C/C++ | cpp/suspicious-allocation-size | Not enough memory allocated for array of pointer type |
+| CWE-118 | C/C++ | cpp/use-after-free | Potential use after free |
+| CWE-118 | C/C++ | cpp/upcast-array-pointer-arithmetic | Upcast array used in pointer arithmetic |
+| CWE-118 | C/C++ | cpp/return-stack-allocated-memory | Returning stack-allocated memory |
+| CWE-118 | C/C++ | cpp/bad-strncpy-size | Possibly wrong buffer size in string copy |
+| CWE-118 | C/C++ | cpp/unsafe-strncat | Potentially unsafe call to strncat |
+| CWE-118 | C/C++ | cpp/unsafe-strcat | Potentially unsafe use of strcat |
+| CWE-118 | C/C++ | cpp/using-expired-stack-address | Use of expired stack-address |
+| CWE-118 | C/C++ | cpp/overflow-buffer | Call to memory access function may overflow buffer |
+| CWE-118 | C/C++ | cpp/overrun-write | Overrunning write |
+| CWE-118 | C/C++ | cpp/badly-bounded-write | Badly bounded write |
+| CWE-118 | C/C++ | cpp/overrunning-write | Potentially overrunning write |
+| CWE-118 | C/C++ | cpp/overrunning-write-with-float | Potentially overrunning write with float to string conversion |
+| CWE-118 | C/C++ | cpp/unbounded-write | Unbounded write |
+| CWE-118 | C/C++ | cpp/very-likely-overrunning-write | Likely overrunning write |
+| CWE-118 | C/C++ | cpp/unterminated-variadic-call | Unterminated variadic call |
+| CWE-118 | C/C++ | cpp/no-space-for-terminator | No space for zero terminator |
+| CWE-118 | C/C++ | cpp/invalid-pointer-deref | Invalid pointer dereference |
+| CWE-118 | C/C++ | cpp/openssl-heartbleed | Use of a version of OpenSSL with Heartbleed |
+| CWE-118 | C/C++ | cpp/iterator-to-expired-container | Iterator to expired container |
+| CWE-118 | C/C++ | cpp/use-of-string-after-lifetime-ends | Use of string after lifetime ends |
+| CWE-118 | C/C++ | cpp/use-of-unique-pointer-after-lifetime-ends | Use of unique pointer after lifetime ends |
+| CWE-118 | C/C++ | cpp/memory-unsafe-function-scan | Scanf function without a specified length |
+| CWE-118 | C/C++ | cpp/dangerous-use-convert-function | Dangerous use convert function |
+| CWE-118 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-118 | C/C++ | cpp/use-after-expired-lifetime | Use of object after its lifetime has ended |
+| CWE-118 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-118 | C/C++ | cpp/sign-conversion-pointer-arithmetic | unsigned to signed used in pointer arithmetic |
+| CWE-118 | C/C++ | cpp/access-memory-location-after-end-buffer-strlen | Access Of Memory Location After End Of Buffer |
+| CWE-118 | C/C++ | cpp/buffer-access-with-incorrect-length-value | Buffer access with incorrect length value |
+| CWE-118 | C# | cs/unvalidated-local-pointer-arithmetic | Unvalidated local pointer arithmetic |
+| CWE-118 | Go | go/wrong-usage-of-unsafe | Wrong usage of package unsafe |
+| CWE-118 | Rust | rust/access-after-lifetime-ended | Access of a pointer after its lifetime has ended |
+| CWE-118 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-119 | C/C++ | cpp/offset-use-before-range-check | Array offset used before range check |
+| CWE-119 | C/C++ | cpp/double-free | Potential double free |
+| CWE-119 | C/C++ | cpp/late-negative-test | Pointer offset used before it is checked |
+| CWE-119 | C/C++ | cpp/missing-negativity-test | Unchecked return value used as offset |
+| CWE-119 | C/C++ | cpp/overflow-calculated | Buffer not sufficient for string |
+| CWE-119 | C/C++ | cpp/overflow-destination | Copy function using source size |
+| CWE-119 | C/C++ | cpp/static-buffer-overflow | Static array access may cause overflow |
+| CWE-119 | C/C++ | cpp/allocation-too-small | Not enough memory allocated for pointer type |
+| CWE-119 | C/C++ | cpp/suspicious-allocation-size | Not enough memory allocated for array of pointer type |
+| CWE-119 | C/C++ | cpp/use-after-free | Potential use after free |
+| CWE-119 | C/C++ | cpp/upcast-array-pointer-arithmetic | Upcast array used in pointer arithmetic |
+| CWE-119 | C/C++ | cpp/return-stack-allocated-memory | Returning stack-allocated memory |
+| CWE-119 | C/C++ | cpp/bad-strncpy-size | Possibly wrong buffer size in string copy |
+| CWE-119 | C/C++ | cpp/unsafe-strncat | Potentially unsafe call to strncat |
+| CWE-119 | C/C++ | cpp/unsafe-strcat | Potentially unsafe use of strcat |
+| CWE-119 | C/C++ | cpp/using-expired-stack-address | Use of expired stack-address |
+| CWE-119 | C/C++ | cpp/overflow-buffer | Call to memory access function may overflow buffer |
+| CWE-119 | C/C++ | cpp/overrun-write | Overrunning write |
+| CWE-119 | C/C++ | cpp/badly-bounded-write | Badly bounded write |
+| CWE-119 | C/C++ | cpp/overrunning-write | Potentially overrunning write |
+| CWE-119 | C/C++ | cpp/overrunning-write-with-float | Potentially overrunning write with float to string conversion |
+| CWE-119 | C/C++ | cpp/unbounded-write | Unbounded write |
+| CWE-119 | C/C++ | cpp/very-likely-overrunning-write | Likely overrunning write |
+| CWE-119 | C/C++ | cpp/unterminated-variadic-call | Unterminated variadic call |
+| CWE-119 | C/C++ | cpp/no-space-for-terminator | No space for zero terminator |
+| CWE-119 | C/C++ | cpp/invalid-pointer-deref | Invalid pointer dereference |
+| CWE-119 | C/C++ | cpp/openssl-heartbleed | Use of a version of OpenSSL with Heartbleed |
+| CWE-119 | C/C++ | cpp/iterator-to-expired-container | Iterator to expired container |
+| CWE-119 | C/C++ | cpp/use-of-string-after-lifetime-ends | Use of string after lifetime ends |
+| CWE-119 | C/C++ | cpp/use-of-unique-pointer-after-lifetime-ends | Use of unique pointer after lifetime ends |
+| CWE-119 | C/C++ | cpp/memory-unsafe-function-scan | Scanf function without a specified length |
+| CWE-119 | C/C++ | cpp/dangerous-use-convert-function | Dangerous use convert function |
+| CWE-119 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-119 | C/C++ | cpp/use-after-expired-lifetime | Use of object after its lifetime has ended |
+| CWE-119 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-119 | C/C++ | cpp/sign-conversion-pointer-arithmetic | unsigned to signed used in pointer arithmetic |
+| CWE-119 | C/C++ | cpp/access-memory-location-after-end-buffer-strlen | Access Of Memory Location After End Of Buffer |
+| CWE-119 | C/C++ | cpp/buffer-access-with-incorrect-length-value | Buffer access with incorrect length value |
+| CWE-119 | C# | cs/unvalidated-local-pointer-arithmetic | Unvalidated local pointer arithmetic |
+| CWE-119 | Go | go/wrong-usage-of-unsafe | Wrong usage of package unsafe |
+| CWE-119 | Rust | rust/access-after-lifetime-ended | Access of a pointer after its lifetime has ended |
+| CWE-119 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-120 | C/C++ | cpp/offset-use-before-range-check | Array offset used before range check |
+| CWE-120 | C/C++ | cpp/overflow-calculated | Buffer not sufficient for string |
+| CWE-120 | C/C++ | cpp/unsafe-strcat | Potentially unsafe use of strcat |
+| CWE-120 | C/C++ | cpp/badly-bounded-write | Badly bounded write |
+| CWE-120 | C/C++ | cpp/overrunning-write | Potentially overrunning write |
+| CWE-120 | C/C++ | cpp/overrunning-write-with-float | Potentially overrunning write with float to string conversion |
+| CWE-120 | C/C++ | cpp/unbounded-write | Unbounded write |
+| CWE-120 | C/C++ | cpp/very-likely-overrunning-write | Likely overrunning write |
+| CWE-120 | C/C++ | cpp/no-space-for-terminator | No space for zero terminator |
+| CWE-120 | C/C++ | cpp/memory-unsafe-function-scan | Scanf function without a specified length |
+| CWE-120 | C# | cs/unvalidated-local-pointer-arithmetic | Unvalidated local pointer arithmetic |
+| CWE-121 | C/C++ | cpp/overflow-buffer | Call to memory access function may overflow buffer |
+| CWE-121 | C/C++ | cpp/unterminated-variadic-call | Unterminated variadic call |
+| CWE-122 | C/C++ | cpp/allocation-too-small | Not enough memory allocated for pointer type |
+| CWE-122 | C/C++ | cpp/suspicious-allocation-size | Not enough memory allocated for array of pointer type |
+| CWE-122 | C/C++ | cpp/overflow-buffer | Call to memory access function may overflow buffer |
+| CWE-122 | C/C++ | cpp/no-space-for-terminator | No space for zero terminator |
+| CWE-122 | C# | cs/unvalidated-local-pointer-arithmetic | Unvalidated local pointer arithmetic |
+| CWE-125 | C/C++ | cpp/offset-use-before-range-check | Array offset used before range check |
+| CWE-125 | C/C++ | cpp/overflow-buffer | Call to memory access function may overflow buffer |
+| CWE-125 | C/C++ | cpp/invalid-pointer-deref | Invalid pointer dereference |
+| CWE-125 | C/C++ | cpp/dangerous-use-convert-function | Dangerous use convert function |
+| CWE-125 | Go | go/wrong-usage-of-unsafe | Wrong usage of package unsafe |
+| CWE-126 | C/C++ | cpp/overflow-buffer | Call to memory access function may overflow buffer |
+| CWE-126 | Go | go/wrong-usage-of-unsafe | Wrong usage of package unsafe |
+| CWE-128 | C/C++ | cpp/signed-overflow-check | Signed overflow check |
+| CWE-128 | C/C++ | cpp/multiplication-overflow-in-alloc | Multiplication result may overflow and be used in allocation |
+| CWE-129 | C/C++ | cpp/unclear-array-index-validation | Unclear validation of array index |
+| CWE-129 | Go | go/constant-length-comparison | Constant length comparison |
+| CWE-129 | Java/Kotlin | java/improper-validation-of-array-construction | Improper validation of user-provided size used for array construction |
+| CWE-129 | Java/Kotlin | java/improper-validation-of-array-construction-code-specified | Improper validation of code-specified size used for array construction |
+| CWE-129 | Java/Kotlin | java/improper-validation-of-array-index | Improper validation of user-provided array index |
+| CWE-129 | Java/Kotlin | java/improper-validation-of-array-index-code-specified | Improper validation of code-specified array index |
+| CWE-131 | C/C++ | cpp/overflow-calculated | Buffer not sufficient for string |
+| CWE-131 | C/C++ | cpp/overflow-destination | Copy function using source size |
+| CWE-131 | C/C++ | cpp/static-buffer-overflow | Static array access may cause overflow |
+| CWE-131 | C/C++ | cpp/allocation-too-small | Not enough memory allocated for pointer type |
+| CWE-131 | C/C++ | cpp/suspicious-allocation-size | Not enough memory allocated for array of pointer type |
+| CWE-131 | C/C++ | cpp/overrun-write | Overrunning write |
+| CWE-131 | C/C++ | cpp/no-space-for-terminator | No space for zero terminator |
+| CWE-134 | C/C++ | cpp/non-constant-format | Non-constant format string |
+| CWE-134 | C/C++ | cpp/tainted-format-string | Uncontrolled format string |
+| CWE-134 | C# | cs/uncontrolled-format-string | Uncontrolled format string |
+| CWE-134 | Java/Kotlin | java/tainted-format-string | Use of externally-controlled format string |
+| CWE-134 | JavaScript/TypeScript | js/tainted-format-string | Use of externally-controlled format string |
+| CWE-134 | JavaScript/TypeScript | js/tainted-format-string-more-sources | Use of externally-controlled format string with additional heuristic sources |
+| CWE-134 | Ruby | rb/tainted-format-string | Use of externally-controlled format string |
+| CWE-134 | Swift | swift/uncontrolled-format-string | Uncontrolled format string |
+| CWE-135 | Swift | swift/string-length-conflation | String length conflation |
+| CWE-170 | C/C++ | cpp/improper-null-termination | Potential improper null termination |
+| CWE-170 | C/C++ | cpp/user-controlled-null-termination-tainted | User-controlled data may not be null terminated |
+| CWE-172 | Python | py/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-172 | Ruby | rb/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-176 | Python | py/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-176 | Ruby | rb/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-178 | JavaScript/TypeScript | js/case-sensitive-middleware-path | Case-sensitive middleware path |
+| CWE-179 | Python | py/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-179 | Ruby | rb/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-180 | Python | py/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-180 | Ruby | rb/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-183 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-183 | JavaScript/TypeScript | js/angular/insecure-url-whitelist | Insecure URL whitelist |
+| CWE-183 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-183 | JavaScript/TypeScript | js/cors-permissive-configuration | Permissive CORS configuration |
+| CWE-183 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-183 | Python | py/cors-misconfiguration-with-credentials | Cors misconfiguration with credentials |
+| CWE-184 | JavaScript/TypeScript | js/incomplete-url-scheme-check | Incomplete URL scheme check |
+| CWE-184 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-185 | Java/Kotlin | java/permissive-dot-regex | URL matched by permissive . in a regular expression |
+| CWE-185 | JavaScript/TypeScript | js/angular/insecure-url-whitelist | Insecure URL whitelist |
+| CWE-185 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-185 | Python | py/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-185 | Ruby | rb/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-185 | Swift | swift/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-186 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-186 | Python | py/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-186 | Ruby | rb/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-186 | Swift | swift/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-190 | C/C++ | cpp/ambiguously-signed-bit-field | Ambiguously signed bit-field member |
+| CWE-190 | C/C++ | cpp/bad-addition-overflow-check | Bad check for overflow of integer addition |
+| CWE-190 | C/C++ | cpp/integer-multiplication-cast-to-long | Multiplication result converted to larger type |
+| CWE-190 | C/C++ | cpp/signed-overflow-check | Signed overflow check |
+| CWE-190 | C/C++ | cpp/overflowing-snprintf | Potentially overflowing call to snprintf |
+| CWE-190 | C/C++ | cpp/tainted-arithmetic | User-controlled data in arithmetic expression |
+| CWE-190 | C/C++ | cpp/uncontrolled-arithmetic | Uncontrolled data in arithmetic expression |
+| CWE-190 | C/C++ | cpp/arithmetic-with-extreme-values | Use of extreme values in arithmetic expression |
+| CWE-190 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-190 | C/C++ | cpp/integer-overflow-tainted | Potential integer arithmetic overflow |
+| CWE-190 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-190 | C/C++ | cpp/multiplication-overflow-in-alloc | Multiplication result may overflow and be used in allocation |
+| CWE-190 | C/C++ | cpp/dangerous-use-of-transformation-after-operation | Dangerous use of transformation after operation |
+| CWE-190 | C/C++ | cpp/signed-bit-field | Possible signed bit-field member |
+| CWE-190 | C# | cs/loss-of-precision | Possible loss of precision |
+| CWE-190 | Go | go/allocation-size-overflow | Size computation for allocation may overflow |
+| CWE-190 | Go | go/incorrect-integer-conversion | Incorrect conversion between integer types |
+| CWE-190 | Java/Kotlin | java/implicit-cast-in-compound-assignment | Implicit narrowing conversion in compound assignment |
+| CWE-190 | Java/Kotlin | java/integer-multiplication-cast-to-long | Result of multiplication cast to wider type |
+| CWE-190 | Java/Kotlin | java/tainted-arithmetic | User-controlled data in arithmetic expression |
+| CWE-190 | Java/Kotlin | java/uncontrolled-arithmetic | Uncontrolled data in arithmetic expression |
+| CWE-190 | Java/Kotlin | java/extreme-value-arithmetic | Use of extreme values in arithmetic expression |
+| CWE-190 | Java/Kotlin | java/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-191 | C/C++ | cpp/tainted-arithmetic | User-controlled data in arithmetic expression |
+| CWE-191 | C/C++ | cpp/uncontrolled-arithmetic | Uncontrolled data in arithmetic expression |
+| CWE-191 | C/C++ | cpp/arithmetic-with-extreme-values | Use of extreme values in arithmetic expression |
+| CWE-191 | C/C++ | cpp/unsigned-difference-expression-compared-zero | Unsigned difference expression compared to zero |
+| CWE-191 | Java/Kotlin | java/tainted-arithmetic | User-controlled data in arithmetic expression |
+| CWE-191 | Java/Kotlin | java/uncontrolled-arithmetic | Uncontrolled data in arithmetic expression |
+| CWE-191 | Java/Kotlin | java/extreme-value-arithmetic | Use of extreme values in arithmetic expression |
+| CWE-193 | C/C++ | cpp/invalid-pointer-deref | Invalid pointer dereference |
+| CWE-193 | C# | cs/index-out-of-bounds | Off-by-one comparison against container length |
+| CWE-193 | Go | go/index-out-of-bounds | Off-by-one comparison against length |
+| CWE-193 | Java/Kotlin | java/index-out-of-bounds | Array index out of bounds |
+| CWE-193 | JavaScript/TypeScript | js/index-out-of-bounds | Off-by-one comparison against length |
+| CWE-197 | C/C++ | cpp/integer-multiplication-cast-to-long | Multiplication result converted to larger type |
+| CWE-197 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-197 | C/C++ | cpp/integer-overflow-tainted | Potential integer arithmetic overflow |
+| CWE-197 | C# | cs/loss-of-precision | Possible loss of precision |
+| CWE-197 | Go | go/shift-out-of-range | Shift out of range |
+| CWE-197 | Java/Kotlin | java/implicit-cast-in-compound-assignment | Implicit narrowing conversion in compound assignment |
+| CWE-197 | Java/Kotlin | java/integer-multiplication-cast-to-long | Result of multiplication cast to wider type |
+| CWE-197 | Java/Kotlin | java/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-197 | Java/Kotlin | java/tainted-numeric-cast | User-controlled data in numeric cast |
+| CWE-197 | JavaScript/TypeScript | js/shift-out-of-range | Shift out of range |
+| CWE-200 | GitHub Actions | actions/secret-exfiltration | Secret exfiltration |
+| CWE-200 | C/C++ | cpp/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-200 | C/C++ | cpp/system-data-exposure | Exposure of system data to an unauthorized control sphere |
+| CWE-200 | C/C++ | cpp/potential-system-data-exposure | Potential exposure of sensitive system data to an unauthorized control sphere |
+| CWE-200 | C/C++ | cpp/work-with-file-without-permissions-rights | Writing to a file without setting permissions |
+| CWE-200 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-200 | C/C++ | cpp/private-cleartext-write | Exposure of private information |
+| CWE-200 | C# | cs/web/debug-binary | Creating an ASP.NET debug binary may reveal sensitive information |
+| CWE-200 | C# | cs/sensitive-data-transmission | Information exposure through transmitted data |
+| CWE-200 | C# | cs/information-exposure-through-exception | Information exposure through an exception |
+| CWE-200 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-200 | C# | cs/exposure-of-sensitive-information | Exposure of private information |
+| CWE-200 | C# | cs/web/directory-browse-enabled | ASP.NET config file enables directory browsing |
+| CWE-200 | C# | cs/web/persistent-cookie | Cookie security: persistent cookie |
+| CWE-200 | Go | go/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-200 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-200 | Go | go/timing-attack | Timing attacks due to comparison of sensitive secrets |
+| CWE-200 | Java/Kotlin | java/android/sensitive-notification | Exposure of sensitive information to notifications |
+| CWE-200 | Java/Kotlin | java/android/sensitive-text | Exposure of sensitive information to UI text views |
+| CWE-200 | Java/Kotlin | java/android/websettings-allow-content-access | Android WebView settings allows access to content links |
+| CWE-200 | Java/Kotlin | java/android/websettings-file-access | Android WebSettings file access |
+| CWE-200 | Java/Kotlin | java/spring-boot-exposed-actuators | Exposed Spring Boot actuators |
+| CWE-200 | Java/Kotlin | java/spring-boot-exposed-actuators-config | Exposed Spring Boot actuators in configuration file |
+| CWE-200 | Java/Kotlin | java/local-temp-file-or-directory-information-disclosure | Local information disclosure in a temporary directory |
+| CWE-200 | Java/Kotlin | java/error-message-exposure | Information exposure through an error message |
+| CWE-200 | Java/Kotlin | java/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-200 | Java/Kotlin | java/android/sensitive-keyboard-cache | Android sensitive keyboard cache |
+| CWE-200 | Java/Kotlin | java/sensitive-log | Insertion of sensitive information into log files |
+| CWE-200 | Java/Kotlin | java/insecure-webview-resource-response | Insecure Android WebView Resource Response |
+| CWE-200 | Java/Kotlin | java/sensitive-android-file-leak | Leaking sensitive Android file |
+| CWE-200 | Java/Kotlin | java/possible-timing-attack-against-signature | Possible timing attack against signature validation |
+| CWE-200 | Java/Kotlin | java/timing-attack-against-headers-value | Timing attack against header value |
+| CWE-200 | Java/Kotlin | java/timing-attack-against-signature | Timing attack against signature validation |
+| CWE-200 | Java/Kotlin | java/server-directory-listing | Directories and files exposure |
+| CWE-200 | Java/Kotlin | java/sensitive-query-with-get | Sensitive GET Query |
+| CWE-200 | JavaScript/TypeScript | js/unsafe-external-link | Potentially unsafe external link |
+| CWE-200 | JavaScript/TypeScript | js/file-access-to-http | File data in outbound network request |
+| CWE-200 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-200 | JavaScript/TypeScript | js/cross-window-information-leak | Cross-window communication with unrestricted target origin |
+| CWE-200 | JavaScript/TypeScript | js/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-200 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-200 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-200 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-200 | JavaScript/TypeScript | js/sensitive-get-query | Sensitive data read from GET request |
+| CWE-200 | Python | py/bind-socket-all-network-interfaces | Binding a socket to all network interfaces |
+| CWE-200 | Python | py/stack-trace-exposure | Information exposure through an exception |
+| CWE-200 | Python | py/flask-debug | Flask app is run in debug mode |
+| CWE-200 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-200 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-200 | Python | py/possible-timing-attack-against-hash | Timing attack against Hash |
+| CWE-200 | Python | py/timing-attack-against-hash | Timing attack against Hash |
+| CWE-200 | Python | py/timing-attack-against-header-value | Timing attack against header value |
+| CWE-200 | Python | py/possible-timing-attack-sensitive-info | Timing attack against secret |
+| CWE-200 | Python | py/timing-attack-sensitive-info | Timing attack against secret |
+| CWE-200 | Ruby | rb/unsafe-hmac-comparison | Unsafe HMAC Comparison |
+| CWE-200 | Ruby | rb/stack-trace-exposure | Information exposure through an exception |
+| CWE-200 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-200 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-200 | Ruby | rb/sensitive-get-query | Sensitive data read from GET request |
+| CWE-200 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-200 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-201 | C# | cs/sensitive-data-transmission | Information exposure through transmitted data |
+| CWE-201 | JavaScript/TypeScript | js/cross-window-information-leak | Cross-window communication with unrestricted target origin |
+| CWE-203 | Go | go/timing-attack | Timing attacks due to comparison of sensitive secrets |
+| CWE-203 | Java/Kotlin | java/possible-timing-attack-against-signature | Possible timing attack against signature validation |
+| CWE-203 | Java/Kotlin | java/timing-attack-against-headers-value | Timing attack against header value |
+| CWE-203 | Java/Kotlin | java/timing-attack-against-signature | Timing attack against signature validation |
+| CWE-203 | Python | py/possible-timing-attack-against-hash | Timing attack against Hash |
+| CWE-203 | Python | py/timing-attack-against-hash | Timing attack against Hash |
+| CWE-203 | Python | py/timing-attack-against-header-value | Timing attack against header value |
+| CWE-203 | Python | py/possible-timing-attack-sensitive-info | Timing attack against secret |
+| CWE-203 | Python | py/timing-attack-sensitive-info | Timing attack against secret |
+| CWE-203 | Ruby | rb/unsafe-hmac-comparison | Unsafe HMAC Comparison |
+| CWE-208 | Java/Kotlin | java/possible-timing-attack-against-signature | Possible timing attack against signature validation |
+| CWE-208 | Java/Kotlin | java/timing-attack-against-headers-value | Timing attack against header value |
+| CWE-208 | Java/Kotlin | java/timing-attack-against-signature | Timing attack against signature validation |
+| CWE-208 | Python | py/possible-timing-attack-against-hash | Timing attack against Hash |
+| CWE-208 | Python | py/timing-attack-against-hash | Timing attack against Hash |
+| CWE-208 | Python | py/timing-attack-against-header-value | Timing attack against header value |
+| CWE-208 | Python | py/possible-timing-attack-sensitive-info | Timing attack against secret |
+| CWE-208 | Python | py/timing-attack-sensitive-info | Timing attack against secret |
+| CWE-208 | Ruby | rb/unsafe-hmac-comparison | Unsafe HMAC Comparison |
+| CWE-209 | C# | cs/information-exposure-through-exception | Information exposure through an exception |
+| CWE-209 | Go | go/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-209 | Java/Kotlin | java/error-message-exposure | Information exposure through an error message |
+| CWE-209 | Java/Kotlin | java/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-209 | JavaScript/TypeScript | js/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-209 | Python | py/stack-trace-exposure | Information exposure through an exception |
+| CWE-209 | Ruby | rb/stack-trace-exposure | Information exposure through an exception |
+| CWE-215 | C# | cs/web/debug-binary | Creating an ASP.NET debug binary may reveal sensitive information |
+| CWE-215 | Python | py/flask-debug | Flask app is run in debug mode |
+| CWE-216 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-219 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-221 | C# | cs/catch-of-all-exceptions | Generic catch clause |
+| CWE-221 | C# | cs/web/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-221 | Java/Kotlin | java/overly-general-catch | Overly-general catch clause |
+| CWE-221 | JavaScript/TypeScript | js/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-221 | Python | py/catch-base-exception | Except block handles 'BaseException' |
+| CWE-227 | C/C++ | cpp/double-free | Potential double free |
+| CWE-227 | C/C++ | cpp/incorrectly-checked-scanf | Incorrect return-value check for a 'scanf'-like function |
+| CWE-227 | C/C++ | cpp/missing-check-scanf | Missing return-value check for a 'scanf'-like function |
+| CWE-227 | C/C++ | cpp/overflowing-snprintf | Potentially overflowing call to snprintf |
+| CWE-227 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-227 | C/C++ | cpp/wrong-type-format-argument | Wrong type of arguments to formatting function |
+| CWE-227 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-227 | C/C++ | cpp/ignore-return-value-sal | SAL requires inspecting return value |
+| CWE-227 | C/C++ | cpp/hresult-boolean-conversion | Cast between HRESULT and a Boolean type |
+| CWE-227 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-227 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-227 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-227 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-227 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-227 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-227 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-227 | C/C++ | cpp/double-release | Errors When Double Release |
+| CWE-227 | C# | cs/inconsistent-equals-and-gethashcode | Inconsistent Equals(object) and GetHashCode() |
+| CWE-227 | C# | cs/invalid-dynamic-call | Bad dynamic call |
+| CWE-227 | C# | cs/web/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-227 | Java/Kotlin | java/ejb/container-interference | EJB interferes with container operation |
+| CWE-227 | Java/Kotlin | java/ejb/file-io | EJB uses file input/output |
+| CWE-227 | Java/Kotlin | java/ejb/graphics | EJB uses graphics |
+| CWE-227 | Java/Kotlin | java/ejb/native-code | EJB uses native code |
+| CWE-227 | Java/Kotlin | java/ejb/reflection | EJB uses reflection |
+| CWE-227 | Java/Kotlin | java/ejb/security-configuration-access | EJB accesses security configuration |
+| CWE-227 | Java/Kotlin | java/ejb/substitution-in-serialization | EJB uses substitution in serialization |
+| CWE-227 | Java/Kotlin | java/ejb/socket-or-stream-handler-factory | EJB sets socket factory or URL stream handler factory |
+| CWE-227 | Java/Kotlin | java/ejb/server-socket | EJB uses server socket |
+| CWE-227 | Java/Kotlin | java/ejb/non-final-static-field | EJB uses non-final static field |
+| CWE-227 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-227 | Java/Kotlin | java/ejb/this | EJB uses 'this' as argument or result |
+| CWE-227 | Java/Kotlin | java/ejb/threads | EJB uses threads |
+| CWE-227 | Java/Kotlin | java/missing-call-to-super-clone | Missing super clone |
+| CWE-227 | Java/Kotlin | java/inconsistent-equals-and-hashcode | Inconsistent equals and hashCode |
+| CWE-227 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-227 | Java/Kotlin | java/missing-super-finalize | Finalizer inconsistency |
+| CWE-227 | Java/Kotlin | java/missing-format-argument | Missing format argument |
+| CWE-227 | Java/Kotlin | java/unused-format-argument | Unused format argument |
+| CWE-227 | Java/Kotlin | java/static-initialization-vector | Using a static initialization vector for encryption |
+| CWE-227 | Java/Kotlin | java/empty-finalizer | Empty body of finalizer |
+| CWE-227 | Java/Kotlin | java/do-not-call-finalize | Do not call finalize() |
+| CWE-227 | JavaScript/TypeScript | js/superfluous-trailing-arguments | Superfluous trailing arguments |
+| CWE-227 | JavaScript/TypeScript | js/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-227 | Python | py/equals-hash-mismatch | Inconsistent equality and hashing |
+| CWE-227 | Python | py/call/wrong-named-class-argument | Wrong name for an argument in a class instantiation |
+| CWE-227 | Python | py/call/wrong-number-class-arguments | Wrong number of arguments in a class instantiation |
+| CWE-227 | Python | py/super-not-enclosing-class | First argument to super() is not enclosing class |
+| CWE-227 | Python | py/call/wrong-named-argument | Wrong name for an argument in a call |
+| CWE-227 | Python | py/percent-format/wrong-arguments | Wrong number of arguments for format |
+| CWE-227 | Python | py/call/wrong-arguments | Wrong number of arguments in a call |
+| CWE-227 | Swift | swift/static-initialization-vector | Static initialization vector for encryption |
+| CWE-228 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-228 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-233 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-233 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-234 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-234 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-242 | C/C++ | cpp/dangerous-function-overflow | Use of dangerous function |
+| CWE-243 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-247 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-247 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-248 | C/C++ | cpp/operator-find-incorrectly-used-exceptions | Operator Find Incorrectly Used Exceptions |
+| CWE-248 | C# | cs/web/missing-global-error-handler | Missing global error handler |
+| CWE-248 | Go | go/redundant-recover | Redundant call to recover |
+| CWE-248 | Java/Kotlin | java/uncaught-number-format-exception | Missing catch of NumberFormatException |
+| CWE-248 | Java/Kotlin | java/uncaught-servlet-exception | Uncaught Servlet Exception |
+| CWE-248 | JavaScript/TypeScript | js/server-crash | Server crash |
+| CWE-250 | JavaScript/TypeScript | js/remote-property-injection | Remote property injection |
+| CWE-250 | JavaScript/TypeScript | js/remote-property-injection-more-sources | Remote property injection with additional heuristic sources |
+| CWE-252 | C/C++ | cpp/missing-check-scanf | Missing return-value check for a 'scanf'-like function |
+| CWE-252 | C/C++ | cpp/return-value-ignored | Return value of a function is ignored |
+| CWE-252 | C/C++ | cpp/inconsistent-call-on-result | Inconsistent operation on return value |
+| CWE-252 | C/C++ | cpp/ignore-return-value-sal | SAL requires inspecting return value |
+| CWE-252 | C/C++ | cpp/incorrect-allocation-error-handling | Incorrect allocation-error handling |
+| CWE-252 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-252 | C# | cs/unchecked-return-value | Unchecked return value |
+| CWE-252 | Go | go/missing-error-check | Missing error check |
+| CWE-252 | Go | go/unhandled-writable-file-close | Writable file handle closed without error handling |
+| CWE-252 | Java/Kotlin | java/inconsistent-call-on-result | Inconsistent operation on return value |
+| CWE-252 | Java/Kotlin | java/return-value-ignored | Method result ignored |
+| CWE-252 | Python | py/ignored-return-value | Ignored return value |
+| CWE-253 | C/C++ | cpp/incorrectly-checked-scanf | Incorrect return-value check for a 'scanf'-like function |
+| CWE-253 | C/C++ | cpp/missing-check-scanf | Missing return-value check for a 'scanf'-like function |
+| CWE-253 | C/C++ | cpp/overflowing-snprintf | Potentially overflowing call to snprintf |
+| CWE-253 | C/C++ | cpp/hresult-boolean-conversion | Cast between HRESULT and a Boolean type |
+| CWE-256 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-256 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-256 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-256 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-258 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-258 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-259 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-259 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-259 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-259 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-259 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-259 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-259 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-259 | Swift | swift/constant-password | Constant password |
+| CWE-260 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-260 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-260 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-260 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-260 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-260 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-260 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-266 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-266 | Java/Kotlin | java/android/intent-uri-permission-manipulation | Intent URI permission manipulation |
+| CWE-269 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-269 | C/C++ | cpp/drop-linux-privileges-outoforder | LinuxPrivilegeDroppingOutoforder |
+| CWE-269 | Java/Kotlin | java/android/intent-uri-permission-manipulation | Intent URI permission manipulation |
+| CWE-269 | Java/Kotlin | java/unsafe-cert-trust | Unsafe certificate trust |
+| CWE-269 | JavaScript/TypeScript | js/remote-property-injection | Remote property injection |
+| CWE-269 | JavaScript/TypeScript | js/remote-property-injection-more-sources | Remote property injection with additional heuristic sources |
+| CWE-271 | C/C++ | cpp/drop-linux-privileges-outoforder | LinuxPrivilegeDroppingOutoforder |
+| CWE-271 | Java/Kotlin | java/unsafe-cert-trust | Unsafe certificate trust |
+| CWE-273 | C/C++ | cpp/drop-linux-privileges-outoforder | LinuxPrivilegeDroppingOutoforder |
+| CWE-273 | Java/Kotlin | java/unsafe-cert-trust | Unsafe certificate trust |
+| CWE-284 | GitHub Actions | actions/improper-access-control | Improper Access Control |
+| CWE-284 | GitHub Actions | actions/pr-on-self-hosted-runner | Pull Request code execution on self-hosted runner |
+| CWE-284 | C/C++ | cpp/user-controlled-bypass | Authentication bypass by spoofing |
+| CWE-284 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-284 | C/C++ | cpp/world-writable-file-creation | File created without restricting permissions |
+| CWE-284 | C/C++ | cpp/open-call-with-mode-argument | File opened with O_CREAT flag but without mode argument |
+| CWE-284 | C/C++ | cpp/unsafe-dacl-security-descriptor | Setting a DACL to NULL in a SECURITY_DESCRIPTOR |
+| CWE-284 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-284 | C/C++ | cpp/drop-linux-privileges-outoforder | LinuxPrivilegeDroppingOutoforder |
+| CWE-284 | C/C++ | cpp/pam-auth-bypass | PAM Authorization bypass |
+| CWE-284 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-284 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-284 | C# | cs/web/missing-function-level-access-control | Missing function level access control |
+| CWE-284 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-284 | C# | cs/session-reuse | Failure to abandon session |
+| CWE-284 | C# | cs/web/insecure-direct-object-reference | Insecure Direct Object Reference |
+| CWE-284 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-284 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-284 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-284 | C# | cs/web/broad-cookie-domain | Cookie security: overly broad domain |
+| CWE-284 | C# | cs/web/broad-cookie-path | Cookie security: overly broad path |
+| CWE-284 | Go | go/insecure-hostkeycallback | Use of insecure HostKeyCallback implementation |
+| CWE-284 | Go | go/email-injection | Email content injection |
+| CWE-284 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-284 | Go | go/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-284 | Go | go/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-284 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-284 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-284 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-284 | Java/Kotlin | java/local-temp-file-or-directory-information-disclosure | Local information disclosure in a temporary directory |
+| CWE-284 | Java/Kotlin | java/android/intent-uri-permission-manipulation | Intent URI permission manipulation |
+| CWE-284 | Java/Kotlin | java/unsafe-cert-trust | Unsafe certificate trust |
+| CWE-284 | Java/Kotlin | java/android/insecure-local-key-gen | Insecurely generated keys for local authentication |
+| CWE-284 | Java/Kotlin | java/android/insecure-local-authentication | Insecure local authentication |
+| CWE-284 | Java/Kotlin | java/insecure-smtp-ssl | Insecure JavaMail SSL Configuration |
+| CWE-284 | Java/Kotlin | java/unsafe-hostname-verification | Unsafe hostname verification |
+| CWE-284 | Java/Kotlin | java/socket-auth-race-condition | Race condition in socket authentication |
+| CWE-284 | Java/Kotlin | java/insecure-basic-auth | Insecure basic authentication |
+| CWE-284 | Java/Kotlin | java/insecure-ldap-auth | Insecure LDAP authentication |
+| CWE-284 | Java/Kotlin | java/world-writable-file-read | Reading from a world writable file |
+| CWE-284 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-284 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-284 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-284 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-284 | Java/Kotlin | java/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-284 | Java/Kotlin | java/tainted-permissions-check | User-controlled data used in permissions check |
+| CWE-284 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-284 | Java/Kotlin | java/improper-intent-verification | Improper verification of intent by broadcast receiver |
+| CWE-284 | Java/Kotlin | java/android/incomplete-provider-permissions | Missing read or write permission in a content provider |
+| CWE-284 | Java/Kotlin | java/android/implicitly-exported-component | Implicitly exported Android component |
+| CWE-284 | Java/Kotlin | java/android/implicit-pendingintents | Use of implicit PendingIntents |
+| CWE-284 | Java/Kotlin | java/android/sensitive-communication | Leaking sensitive information through an implicit Intent |
+| CWE-284 | Java/Kotlin | java/android/sensitive-result-receiver | Leaking sensitive information through a ResultReceiver |
+| CWE-284 | Java/Kotlin | java/android/intent-redirection | Android Intent redirection |
+| CWE-284 | Java/Kotlin | java/ignored-hostname-verification | Ignored result of hostname verification |
+| CWE-284 | Java/Kotlin | java/insecure-ldaps-endpoint | Insecure LDAPS Endpoint Configuration |
+| CWE-284 | Java/Kotlin | java/unvalidated-cors-origin-set | CORS is derived from untrusted input |
+| CWE-284 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-284 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-284 | Java/Kotlin | java/permissive-dot-regex | URL matched by permissive . in a regular expression |
+| CWE-284 | Java/Kotlin | java/incorrect-url-verification | Incorrect URL verification |
+| CWE-284 | JavaScript/TypeScript | js/missing-origin-check | Missing origin verification in postMessage handler |
+| CWE-284 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-284 | JavaScript/TypeScript | js/disabling-certificate-validation | Disabling certificate validation |
+| CWE-284 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-284 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-284 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-284 | JavaScript/TypeScript | js/session-fixation | Failure to abandon session |
+| CWE-284 | JavaScript/TypeScript | js/remote-property-injection | Remote property injection |
+| CWE-284 | JavaScript/TypeScript | js/host-header-forgery-in-email-generation | Host header poisoning in email generation |
+| CWE-284 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-284 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-284 | JavaScript/TypeScript | js/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-284 | JavaScript/TypeScript | js/different-kinds-comparison-bypass | Comparison of user-controlled data of different kinds |
+| CWE-284 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-284 | JavaScript/TypeScript | js/cors-permissive-configuration | Permissive CORS configuration |
+| CWE-284 | JavaScript/TypeScript | js/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-284 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-284 | JavaScript/TypeScript | js/remote-property-injection-more-sources | Remote property injection with additional heuristic sources |
+| CWE-284 | JavaScript/TypeScript | js/user-controlled-bypass-more-sources | User-controlled bypass of security check with additional heuristic sources |
+| CWE-284 | Python | py/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-284 | Python | py/overly-permissive-file | Overly permissive file permissions |
+| CWE-284 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-284 | Python | py/flask-constant-secret-key | Initializing SECRET_KEY of Flask application with Constant value |
+| CWE-284 | Python | py/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-284 | Python | py/insecure-ldap-auth | Python Insecure LDAP Authentication |
+| CWE-284 | Python | py/cors-misconfiguration-with-credentials | Cors misconfiguration with credentials |
+| CWE-284 | Ruby | rb/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-284 | Ruby | rb/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-284 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-284 | Ruby | rb/weak-cookie-configuration | Weak cookie configuration |
+| CWE-284 | Ruby | rb/overly-permissive-file | Overly permissive file permissions |
+| CWE-284 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-284 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-284 | Swift | swift/constant-password | Constant password |
+| CWE-284 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-285 | GitHub Actions | actions/improper-access-control | Improper Access Control |
+| CWE-285 | C/C++ | cpp/world-writable-file-creation | File created without restricting permissions |
+| CWE-285 | C/C++ | cpp/open-call-with-mode-argument | File opened with O_CREAT flag but without mode argument |
+| CWE-285 | C/C++ | cpp/unsafe-dacl-security-descriptor | Setting a DACL to NULL in a SECURITY_DESCRIPTOR |
+| CWE-285 | C/C++ | cpp/pam-auth-bypass | PAM Authorization bypass |
+| CWE-285 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-285 | C# | cs/web/missing-function-level-access-control | Missing function level access control |
+| CWE-285 | C# | cs/web/insecure-direct-object-reference | Insecure Direct Object Reference |
+| CWE-285 | Go | go/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-285 | Java/Kotlin | java/local-temp-file-or-directory-information-disclosure | Local information disclosure in a temporary directory |
+| CWE-285 | Java/Kotlin | java/android/intent-uri-permission-manipulation | Intent URI permission manipulation |
+| CWE-285 | Java/Kotlin | java/world-writable-file-read | Reading from a world writable file |
+| CWE-285 | Java/Kotlin | java/android/incomplete-provider-permissions | Missing read or write permission in a content provider |
+| CWE-285 | Java/Kotlin | java/android/implicitly-exported-component | Implicitly exported Android component |
+| CWE-285 | Java/Kotlin | java/android/implicit-pendingintents | Use of implicit PendingIntents |
+| CWE-285 | Java/Kotlin | java/android/sensitive-communication | Leaking sensitive information through an implicit Intent |
+| CWE-285 | Java/Kotlin | java/android/sensitive-result-receiver | Leaking sensitive information through a ResultReceiver |
+| CWE-285 | Java/Kotlin | java/android/intent-redirection | Android Intent redirection |
+| CWE-285 | Java/Kotlin | java/permissive-dot-regex | URL matched by permissive . in a regular expression |
+| CWE-285 | Java/Kotlin | java/incorrect-url-verification | Incorrect URL verification |
+| CWE-285 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-285 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-285 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-285 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-285 | Python | py/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-285 | Python | py/overly-permissive-file | Overly permissive file permissions |
+| CWE-285 | Ruby | rb/weak-cookie-configuration | Weak cookie configuration |
+| CWE-285 | Ruby | rb/overly-permissive-file | Overly permissive file permissions |
+| CWE-287 | C/C++ | cpp/user-controlled-bypass | Authentication bypass by spoofing |
+| CWE-287 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-287 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-287 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-287 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-287 | C# | cs/session-reuse | Failure to abandon session |
+| CWE-287 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-287 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-287 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-287 | C# | cs/web/broad-cookie-domain | Cookie security: overly broad domain |
+| CWE-287 | C# | cs/web/broad-cookie-path | Cookie security: overly broad path |
+| CWE-287 | Go | go/email-injection | Email content injection |
+| CWE-287 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-287 | Go | go/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-287 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-287 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-287 | Java/Kotlin | java/android/insecure-local-key-gen | Insecurely generated keys for local authentication |
+| CWE-287 | Java/Kotlin | java/android/insecure-local-authentication | Insecure local authentication |
+| CWE-287 | Java/Kotlin | java/insecure-basic-auth | Insecure basic authentication |
+| CWE-287 | Java/Kotlin | java/insecure-ldap-auth | Insecure LDAP authentication |
+| CWE-287 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-287 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-287 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-287 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-287 | Java/Kotlin | java/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-287 | Java/Kotlin | java/tainted-permissions-check | User-controlled data used in permissions check |
+| CWE-287 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-287 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-287 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-287 | JavaScript/TypeScript | js/session-fixation | Failure to abandon session |
+| CWE-287 | JavaScript/TypeScript | js/host-header-forgery-in-email-generation | Host header poisoning in email generation |
+| CWE-287 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-287 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-287 | JavaScript/TypeScript | js/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-287 | JavaScript/TypeScript | js/different-kinds-comparison-bypass | Comparison of user-controlled data of different kinds |
+| CWE-287 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-287 | JavaScript/TypeScript | js/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-287 | JavaScript/TypeScript | js/user-controlled-bypass-more-sources | User-controlled bypass of security check with additional heuristic sources |
+| CWE-287 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-287 | Python | py/flask-constant-secret-key | Initializing SECRET_KEY of Flask application with Constant value |
+| CWE-287 | Python | py/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-287 | Python | py/insecure-ldap-auth | Python Insecure LDAP Authentication |
+| CWE-287 | Ruby | rb/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-287 | Ruby | rb/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-287 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-287 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-287 | Swift | swift/constant-password | Constant password |
+| CWE-287 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-290 | C/C++ | cpp/user-controlled-bypass | Authentication bypass by spoofing |
+| CWE-290 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-290 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-290 | Java/Kotlin | java/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-290 | Java/Kotlin | java/tainted-permissions-check | User-controlled data used in permissions check |
+| CWE-290 | JavaScript/TypeScript | js/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-290 | JavaScript/TypeScript | js/different-kinds-comparison-bypass | Comparison of user-controlled data of different kinds |
+| CWE-290 | JavaScript/TypeScript | js/user-controlled-bypass-more-sources | User-controlled bypass of security check with additional heuristic sources |
+| CWE-290 | Ruby | rb/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-295 | C/C++ | cpp/certificate-result-conflation | Certificate result conflation |
+| CWE-295 | C/C++ | cpp/certificate-not-checked | Certificate not checked |
+| CWE-295 | C/C++ | cpp/curl-disabled-ssl | Disabled certifcate verification |
+| CWE-295 | Go | go/disabled-certificate-check | Disabled TLS certificate check |
+| CWE-295 | Java/Kotlin | java/android/missing-certificate-pinning | Android missing certificate pinning |
+| CWE-295 | Java/Kotlin | java/improper-webview-certificate-validation | Android WebView that accepts all certificates |
+| CWE-295 | Java/Kotlin | java/insecure-trustmanager | TrustManager that accepts all certificates |
+| CWE-295 | Java/Kotlin | java/insecure-smtp-ssl | Insecure JavaMail SSL Configuration |
+| CWE-295 | Java/Kotlin | java/unsafe-hostname-verification | Unsafe hostname verification |
+| CWE-295 | Java/Kotlin | java/jxbrowser/disabled-certificate-validation | JxBrowser with disabled certificate validation |
+| CWE-295 | Java/Kotlin | java/ignored-hostname-verification | Ignored result of hostname verification |
+| CWE-295 | Java/Kotlin | java/insecure-ldaps-endpoint | Insecure LDAPS Endpoint Configuration |
+| CWE-295 | Java/Kotlin | java/disabled-certificate-revocation-checking | Disabled certificate revocation checking |
+| CWE-295 | JavaScript/TypeScript | js/disabling-certificate-validation | Disabling certificate validation |
+| CWE-295 | Python | py/paramiko-missing-host-key-validation | Accepting unknown SSH host keys when using Paramiko |
+| CWE-295 | Python | py/request-without-cert-validation | Request without certificate validation |
+| CWE-295 | Ruby | rb/request-without-cert-validation | Request without certificate validation |
+| CWE-295 | Rust | rust/disabled-certificate-check | Disabled TLS certificate check |
+| CWE-297 | Java/Kotlin | java/insecure-smtp-ssl | Insecure JavaMail SSL Configuration |
+| CWE-297 | Java/Kotlin | java/unsafe-hostname-verification | Unsafe hostname verification |
+| CWE-297 | Java/Kotlin | java/ignored-hostname-verification | Ignored result of hostname verification |
+| CWE-297 | Java/Kotlin | java/insecure-ldaps-endpoint | Insecure LDAPS Endpoint Configuration |
+| CWE-297 | JavaScript/TypeScript | js/disabling-certificate-validation | Disabling certificate validation |
+| CWE-299 | Java/Kotlin | java/disabled-certificate-revocation-checking | Disabled certificate revocation checking |
+| CWE-300 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-300 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-300 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-307 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-311 | GitHub Actions | actions/excessive-secrets-exposure | Excessive Secrets Exposure |
+| CWE-311 | GitHub Actions | actions/secrets-in-artifacts | Storage of sensitive information in GitHub Actions artifact |
+| CWE-311 | GitHub Actions | actions/unmasked-secret-exposure | Unmasked Secret Exposure |
+| CWE-311 | C/C++ | cpp/cleartext-storage-buffer | Cleartext storage of sensitive information in buffer |
+| CWE-311 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-311 | C/C++ | cpp/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-311 | C/C++ | cpp/cleartext-storage-database | Cleartext storage of sensitive information in an SQLite database |
+| CWE-311 | C/C++ | cpp/non-https-url | Failure to use HTTPS URLs |
+| CWE-311 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-311 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-311 | C# | cs/web/cookie-secure-not-set | Cookie 'Secure' attribute is not set to true |
+| CWE-311 | C# | cs/web/requiressl-not-set | 'requireSSL' attribute is not set to true |
+| CWE-311 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-311 | Go | go/cookie-secure-not-set | Cookie 'Secure' attribute is not set to true |
+| CWE-311 | Java/Kotlin | java/android/backup-enabled | Application backup allowed |
+| CWE-311 | Java/Kotlin | java/android/cleartext-storage-database | Cleartext storage of sensitive information using a local database on Android |
+| CWE-311 | Java/Kotlin | java/android/cleartext-storage-filesystem | Cleartext storage of sensitive information in the Android filesystem |
+| CWE-311 | Java/Kotlin | java/cleartext-storage-in-class | Cleartext storage of sensitive information using storable class |
+| CWE-311 | Java/Kotlin | java/cleartext-storage-in-cookie | Cleartext storage of sensitive information in cookie |
+| CWE-311 | Java/Kotlin | java/cleartext-storage-in-properties | Cleartext storage of sensitive information using 'Properties' class |
+| CWE-311 | Java/Kotlin | java/android/cleartext-storage-shared-prefs | Cleartext storage of sensitive information using SharedPreferences on Android |
+| CWE-311 | Java/Kotlin | java/non-https-url | Failure to use HTTPS URLs |
+| CWE-311 | Java/Kotlin | java/non-ssl-connection | Failure to use SSL |
+| CWE-311 | Java/Kotlin | java/non-ssl-socket-factory | Failure to use SSL socket factories |
+| CWE-311 | Java/Kotlin | java/insecure-basic-auth | Insecure basic authentication |
+| CWE-311 | Java/Kotlin | java/insecure-ldap-auth | Insecure LDAP authentication |
+| CWE-311 | Java/Kotlin | java/insecure-cookie | Failure to use secure cookies |
+| CWE-311 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-311 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-311 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-311 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-311 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-311 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-311 | JavaScript/TypeScript | js/clear-text-cookie | Clear text transmission of sensitive cookie |
+| CWE-311 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-311 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-311 | Python | py/insecure-cookie | Failure to use secure cookies |
+| CWE-311 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-311 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-311 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-311 | Rust | rust/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-311 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-311 | Rust | rust/cleartext-storage-database | Cleartext storage of sensitive information in a database |
+| CWE-311 | Rust | rust/non-https-url | Failure to use HTTPS URLs |
+| CWE-311 | Rust | rust/insecure-cookie | 'Secure' attribute is not set to true |
+| CWE-311 | Swift | swift/cleartext-storage-database | Cleartext storage of sensitive information in a local database |
+| CWE-311 | Swift | swift/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-311 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-311 | Swift | swift/cleartext-storage-preferences | Cleartext storage of sensitive information in an application preference store |
+| CWE-312 | GitHub Actions | actions/excessive-secrets-exposure | Excessive Secrets Exposure |
+| CWE-312 | GitHub Actions | actions/secrets-in-artifacts | Storage of sensitive information in GitHub Actions artifact |
+| CWE-312 | GitHub Actions | actions/unmasked-secret-exposure | Unmasked Secret Exposure |
+| CWE-312 | C/C++ | cpp/cleartext-storage-buffer | Cleartext storage of sensitive information in buffer |
+| CWE-312 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-312 | C/C++ | cpp/cleartext-storage-database | Cleartext storage of sensitive information in an SQLite database |
+| CWE-312 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-312 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-312 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-312 | Java/Kotlin | java/android/backup-enabled | Application backup allowed |
+| CWE-312 | Java/Kotlin | java/android/cleartext-storage-database | Cleartext storage of sensitive information using a local database on Android |
+| CWE-312 | Java/Kotlin | java/android/cleartext-storage-filesystem | Cleartext storage of sensitive information in the Android filesystem |
+| CWE-312 | Java/Kotlin | java/cleartext-storage-in-class | Cleartext storage of sensitive information using storable class |
+| CWE-312 | Java/Kotlin | java/cleartext-storage-in-cookie | Cleartext storage of sensitive information in cookie |
+| CWE-312 | Java/Kotlin | java/cleartext-storage-in-properties | Cleartext storage of sensitive information using 'Properties' class |
+| CWE-312 | Java/Kotlin | java/android/cleartext-storage-shared-prefs | Cleartext storage of sensitive information using SharedPreferences on Android |
+| CWE-312 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-312 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-312 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-312 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-312 | JavaScript/TypeScript | js/clear-text-cookie | Clear text transmission of sensitive cookie |
+| CWE-312 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-312 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-312 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-312 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-312 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-312 | Rust | rust/cleartext-storage-database | Cleartext storage of sensitive information in a database |
+| CWE-312 | Swift | swift/cleartext-storage-database | Cleartext storage of sensitive information in a local database |
+| CWE-312 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-312 | Swift | swift/cleartext-storage-preferences | Cleartext storage of sensitive information in an application preference store |
+| CWE-313 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-313 | C/C++ | cpp/cleartext-storage-database | Cleartext storage of sensitive information in an SQLite database |
+| CWE-313 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-313 | Java/Kotlin | java/cleartext-storage-in-properties | Cleartext storage of sensitive information using 'Properties' class |
+| CWE-313 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-315 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-315 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-315 | Java/Kotlin | java/cleartext-storage-in-cookie | Cleartext storage of sensitive information in cookie |
+| CWE-315 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-315 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-315 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-319 | C/C++ | cpp/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-319 | C/C++ | cpp/non-https-url | Failure to use HTTPS URLs |
+| CWE-319 | C# | cs/web/cookie-secure-not-set | Cookie 'Secure' attribute is not set to true |
+| CWE-319 | C# | cs/web/requiressl-not-set | 'requireSSL' attribute is not set to true |
+| CWE-319 | Java/Kotlin | java/non-https-url | Failure to use HTTPS URLs |
+| CWE-319 | Java/Kotlin | java/non-ssl-connection | Failure to use SSL |
+| CWE-319 | Java/Kotlin | java/non-ssl-socket-factory | Failure to use SSL socket factories |
+| CWE-319 | Java/Kotlin | java/insecure-basic-auth | Insecure basic authentication |
+| CWE-319 | Java/Kotlin | java/insecure-ldap-auth | Insecure LDAP authentication |
+| CWE-319 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-319 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-319 | JavaScript/TypeScript | js/clear-text-cookie | Clear text transmission of sensitive cookie |
+| CWE-319 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-319 | Rust | rust/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-319 | Rust | rust/non-https-url | Failure to use HTTPS URLs |
+| CWE-319 | Rust | rust/insecure-cookie | 'Secure' attribute is not set to true |
+| CWE-319 | Swift | swift/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-321 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-321 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-321 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-321 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-321 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-321 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-321 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-321 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-321 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-321 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-322 | Go | go/insecure-hostkeycallback | Use of insecure HostKeyCallback implementation |
+| CWE-326 | C/C++ | cpp/boost/tls-settings-misconfiguration | boost::asio TLS settings misconfiguration |
+| CWE-326 | C/C++ | cpp/insufficient-key-size | Use of a cryptographic algorithm with insufficient key size |
+| CWE-326 | C/C++ | cpp/unknown-asymmetric-key-gen-size | Unknown key generation key size |
+| CWE-326 | C/C++ | cpp/weak-asymmetric-key-gen-size | Weak asymmetric key generation key size (< 2048 bits) |
+| CWE-326 | C# | cs/insufficient-key-size | Weak encryption: Insufficient key size |
+| CWE-326 | Go | go/weak-crypto-key | Use of a weak cryptographic key |
+| CWE-326 | Go | go/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-326 | Go | go/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-326 | Java/Kotlin | java/insufficient-key-size | Use of a cryptographic algorithm with insufficient key size |
+| CWE-326 | Java/Kotlin | java/weak-cryptographic-algorithm | Use of a broken or risky cryptographic algorithm |
+| CWE-326 | Java/Kotlin | java/potentially-weak-cryptographic-algorithm | Use of a potentially broken or risky cryptographic algorithm |
+| CWE-326 | Java/Kotlin | java/weak-cryptographic-algorithm-new-model | Use of a broken or risky cryptographic algorithm |
+| CWE-326 | JavaScript/TypeScript | js/insufficient-key-size | Use of a weak cryptographic key |
+| CWE-326 | JavaScript/TypeScript | js/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-326 | Python | py/weak-crypto-key | Use of weak cryptographic key |
+| CWE-326 | Python | py/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-326 | Python | py/unknown-asymmetric-key-gen-size | Unknown key generation key size |
+| CWE-326 | Python | py/weak-asymmetric-key-gen-size | Weak key generation key size (< 2048 bits) |
+| CWE-326 | Ruby | rb/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-326 | Rust | rust/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-326 | Swift | swift/weak-password-hashing | Use of an inappropriate cryptographic hashing algorithm on passwords |
+| CWE-326 | Swift | swift/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-327 | C/C++ | cpp/boost/use-of-deprecated-hardcoded-security-protocol | boost::asio use of deprecated hardcoded protocol |
+| CWE-327 | C/C++ | cpp/weak-cryptographic-algorithm | Use of a broken or risky cryptographic algorithm |
+| CWE-327 | C/C++ | cpp/openssl-heartbleed | Use of a version of OpenSSL with Heartbleed |
+| CWE-327 | C/C++ | cpp/weak-block-mode | Weak block mode |
+| CWE-327 | C/C++ | cpp/weak-elliptic-curve | Weak elliptic curve |
+| CWE-327 | C/C++ | cpp/weak-crypto/banned-encryption-algorithms | Weak cryptography |
+| CWE-327 | C/C++ | cpp/weak-crypto/banned-hash-algorithms | Weak cryptography |
+| CWE-327 | C# | cs/adding-cert-to-root-store | Do not add certificates to the system root store |
+| CWE-327 | C# | cs/insecure-sql-connection | Insecure SQL connection |
+| CWE-327 | C# | cs/ecb-encryption | Encryption using ECB |
+| CWE-327 | C# | cs/inadequate-rsa-padding | Weak encryption: inadequate RSA padding |
+| CWE-327 | C# | cs/weak-encryption | Weak encryption |
+| CWE-327 | C# | cs/azure-storage/unsafe-usage-of-client-side-encryption-version | Unsafe usage of v1 version of Azure Storage client-side encryption (CVE-2022-30187) |
+| CWE-327 | C# | cs/hash-without-salt | Use of a hash function without a salt |
+| CWE-327 | Go | go/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-327 | Go | go/insecure-tls | Insecure TLS configuration |
+| CWE-327 | Go | go/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-327 | Java/Kotlin | java/weak-cryptographic-algorithm | Use of a broken or risky cryptographic algorithm |
+| CWE-327 | Java/Kotlin | java/potentially-weak-cryptographic-algorithm | Use of a potentially broken or risky cryptographic algorithm |
+| CWE-327 | Java/Kotlin | java/rsa-without-oaep | Use of RSA algorithm without OAEP |
+| CWE-327 | Java/Kotlin | java/azure-storage/unsafe-client-side-encryption-in-use | Unsafe usage of v1 version of Azure Storage client-side encryption (CVE-2022-30187) |
+| CWE-327 | Java/Kotlin | java/unsafe-tls-version | Unsafe TLS version |
+| CWE-327 | Java/Kotlin | java/hash-without-salt | Use of a hash function without a salt |
+| CWE-327 | Java/Kotlin | java/weak-cryptographic-algorithm-new-model | Use of a broken or risky cryptographic algorithm |
+| CWE-327 | Java/Kotlin | java/quantum/examples/weak-hash | Weak hashes |
+| CWE-327 | Java/Kotlin | java/quantum/examples/weak-ciphers | Weak symmetric ciphers |
+| CWE-327 | JavaScript/TypeScript | js/biased-cryptographic-random | Creating biased random numbers from a cryptographically secure source |
+| CWE-327 | JavaScript/TypeScript | js/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-327 | JavaScript/TypeScript | js/insufficient-password-hash | Use of password hash with insufficient computational effort |
+| CWE-327 | Python | py/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-327 | Python | py/insecure-default-protocol | Default version of SSL/TLS may be insecure |
+| CWE-327 | Python | py/insecure-protocol | Use of insecure SSL/TLS version |
+| CWE-327 | Python | py/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-327 | Python | py/azure-storage/unsafe-client-side-encryption-in-use | Unsafe usage of v1 version of Azure Storage client-side encryption |
+| CWE-327 | Python | py/weak-block-mode | Weak block mode |
+| CWE-327 | Python | py/weak-elliptic-curve | Weak elliptic curve |
+| CWE-327 | Python | py/weak-hashes | Weak hashes |
+| CWE-327 | Python | py/weak-symmetric-encryption | Weak symmetric encryption algorithm |
+| CWE-327 | Ruby | rb/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-327 | Ruby | rb/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-327 | Rust | rust/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-327 | Rust | rust/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-327 | Swift | swift/ecb-encryption | Encryption using ECB |
+| CWE-327 | Swift | swift/weak-password-hashing | Use of an inappropriate cryptographic hashing algorithm on passwords |
+| CWE-327 | Swift | swift/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-327 | Swift | swift/constant-salt | Use of constant salts |
+| CWE-327 | Swift | swift/insufficient-hash-iterations | Insufficient hash iterations |
+| CWE-328 | Go | go/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-328 | Go | go/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-328 | Java/Kotlin | java/weak-cryptographic-algorithm | Use of a broken or risky cryptographic algorithm |
+| CWE-328 | Java/Kotlin | java/potentially-weak-cryptographic-algorithm | Use of a potentially broken or risky cryptographic algorithm |
+| CWE-328 | Java/Kotlin | java/weak-cryptographic-algorithm-new-model | Use of a broken or risky cryptographic algorithm |
+| CWE-328 | JavaScript/TypeScript | js/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-328 | Python | py/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-328 | Ruby | rb/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-328 | Rust | rust/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-328 | Swift | swift/weak-password-hashing | Use of an inappropriate cryptographic hashing algorithm on passwords |
+| CWE-328 | Swift | swift/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-329 | Java/Kotlin | java/static-initialization-vector | Using a static initialization vector for encryption |
+| CWE-329 | Swift | swift/static-initialization-vector | Static initialization vector for encryption |
+| CWE-330 | C# | cs/random-used-once | Random used only once |
+| CWE-330 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-330 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-330 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-330 | C# | cs/insecure-randomness | Insecure randomness |
+| CWE-330 | Go | go/insecure-randomness | Use of insufficient randomness as the key of a cryptographic algorithm |
+| CWE-330 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-330 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-330 | Java/Kotlin | java/random-used-once | Random used only once |
+| CWE-330 | Java/Kotlin | java/static-initialization-vector | Using a static initialization vector for encryption |
+| CWE-330 | Java/Kotlin | java/insecure-randomness | Insecure randomness |
+| CWE-330 | Java/Kotlin | java/predictable-seed | Use of a predictable seed in a secure random number generator |
+| CWE-330 | Java/Kotlin | java/jhipster-prng | Detect JHipster Generator Vulnerability CVE-2019-16303 |
+| CWE-330 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-330 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-330 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-330 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-330 | JavaScript/TypeScript | js/insecure-randomness | Insecure randomness |
+| CWE-330 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-330 | JavaScript/TypeScript | js/predictable-token | Predictable token |
+| CWE-330 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-330 | Python | py/insecure-randomness | Insecure randomness |
+| CWE-330 | Python | py/predictable-token | Predictable token |
+| CWE-330 | Ruby | rb/insecure-randomness | Insecure randomness |
+| CWE-330 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-330 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-330 | Swift | swift/static-initialization-vector | Static initialization vector for encryption |
+| CWE-330 | Swift | swift/constant-password | Constant password |
+| CWE-330 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-335 | C# | cs/random-used-once | Random used only once |
+| CWE-335 | Java/Kotlin | java/random-used-once | Random used only once |
+| CWE-335 | Java/Kotlin | java/predictable-seed | Use of a predictable seed in a secure random number generator |
+| CWE-337 | Java/Kotlin | java/predictable-seed | Use of a predictable seed in a secure random number generator |
+| CWE-338 | C# | cs/insecure-randomness | Insecure randomness |
+| CWE-338 | Go | go/insecure-randomness | Use of insufficient randomness as the key of a cryptographic algorithm |
+| CWE-338 | Java/Kotlin | java/insecure-randomness | Insecure randomness |
+| CWE-338 | Java/Kotlin | java/jhipster-prng | Detect JHipster Generator Vulnerability CVE-2019-16303 |
+| CWE-338 | JavaScript/TypeScript | js/insecure-randomness | Insecure randomness |
+| CWE-338 | Python | py/insecure-randomness | Insecure randomness |
+| CWE-338 | Ruby | rb/insecure-randomness | Insecure randomness |
+| CWE-340 | JavaScript/TypeScript | js/predictable-token | Predictable token |
+| CWE-340 | Python | py/predictable-token | Predictable token |
+| CWE-344 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-344 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-344 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-344 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-344 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-344 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-344 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-344 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-344 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-344 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-344 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-344 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-344 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-344 | Swift | swift/constant-password | Constant password |
+| CWE-344 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-345 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-345 | GitHub Actions | actions/cache-poisoning/direct-cache | Cache Poisoning via caching of untrusted files |
+| CWE-345 | GitHub Actions | actions/cache-poisoning/poisonable-step | Cache Poisoning via execution of untrusted code |
+| CWE-345 | C/C++ | cpp/non-https-url | Failure to use HTTPS URLs |
+| CWE-345 | C# | cs/web/ambiguous-client-variable | Value shadowing |
+| CWE-345 | C# | cs/web/ambiguous-server-variable | Value shadowing: server variable |
+| CWE-345 | C# | cs/web/missing-token-validation | Missing cross-site request forgery token validation |
+| CWE-345 | Go | go/missing-jwt-signature-check | Missing JWT signature check |
+| CWE-345 | Go | go/constant-oauth2-state | Use of constant state value in OAuth 2.0 URL |
+| CWE-345 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-345 | Java/Kotlin | java/non-https-url | Failure to use HTTPS URLs |
+| CWE-345 | Java/Kotlin | java/missing-jwt-signature-check | Missing JWT signature check |
+| CWE-345 | Java/Kotlin | java/csrf-unprotected-request-type | HTTP request type unprotected from CSRF |
+| CWE-345 | Java/Kotlin | java/spring-disabled-csrf-protection | Disabled Spring CSRF protection |
+| CWE-345 | Java/Kotlin | java/unvalidated-cors-origin-set | CORS is derived from untrusted input |
+| CWE-345 | Java/Kotlin | java/missing-jwt-signature-check-auth0 | Missing JWT signature check |
+| CWE-345 | Java/Kotlin | java/ip-address-spoofing | IP address spoofing |
+| CWE-345 | Java/Kotlin | java/jsonp-injection | JSONP Injection |
+| CWE-345 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-345 | JavaScript/TypeScript | js/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-345 | JavaScript/TypeScript | js/missing-token-validation | Missing CSRF middleware |
+| CWE-345 | JavaScript/TypeScript | js/decode-jwt-without-verification | JWT missing secret or public key verification |
+| CWE-345 | JavaScript/TypeScript | js/decode-jwt-without-verification-local-source | JWT missing secret or public key verification |
+| CWE-345 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-345 | Python | py/csrf-protection-disabled | CSRF protection weakened or disabled |
+| CWE-345 | Python | py/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-345 | Python | py/ip-address-spoofing | IP address spoofing |
+| CWE-345 | Ruby | rb/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-345 | Ruby | rb/csrf-protection-disabled | CSRF protection weakened or disabled |
+| CWE-345 | Ruby | rb/csrf-protection-not-enabled | CSRF protection not enabled |
+| CWE-345 | Rust | rust/non-https-url | Failure to use HTTPS URLs |
+| CWE-346 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-346 | Java/Kotlin | java/unvalidated-cors-origin-set | CORS is derived from untrusted input |
+| CWE-346 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-346 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-347 | Go | go/missing-jwt-signature-check | Missing JWT signature check |
+| CWE-347 | Java/Kotlin | java/missing-jwt-signature-check | Missing JWT signature check |
+| CWE-347 | Java/Kotlin | java/missing-jwt-signature-check-auth0 | Missing JWT signature check |
+| CWE-347 | JavaScript/TypeScript | js/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-347 | JavaScript/TypeScript | js/decode-jwt-without-verification | JWT missing secret or public key verification |
+| CWE-347 | JavaScript/TypeScript | js/decode-jwt-without-verification-local-source | JWT missing secret or public key verification |
+| CWE-347 | Python | py/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-347 | Ruby | rb/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-348 | C# | cs/web/ambiguous-client-variable | Value shadowing |
+| CWE-348 | C# | cs/web/ambiguous-server-variable | Value shadowing: server variable |
+| CWE-348 | Java/Kotlin | java/ip-address-spoofing | IP address spoofing |
+| CWE-348 | Python | py/ip-address-spoofing | IP address spoofing |
+| CWE-349 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-349 | GitHub Actions | actions/cache-poisoning/direct-cache | Cache Poisoning via caching of untrusted files |
+| CWE-349 | GitHub Actions | actions/cache-poisoning/poisonable-step | Cache Poisoning via execution of untrusted code |
+| CWE-350 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-350 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-352 | C# | cs/web/missing-token-validation | Missing cross-site request forgery token validation |
+| CWE-352 | Go | go/constant-oauth2-state | Use of constant state value in OAuth 2.0 URL |
+| CWE-352 | Java/Kotlin | java/csrf-unprotected-request-type | HTTP request type unprotected from CSRF |
+| CWE-352 | Java/Kotlin | java/spring-disabled-csrf-protection | Disabled Spring CSRF protection |
+| CWE-352 | Java/Kotlin | java/jsonp-injection | JSONP Injection |
+| CWE-352 | JavaScript/TypeScript | js/missing-token-validation | Missing CSRF middleware |
+| CWE-352 | Python | py/csrf-protection-disabled | CSRF protection weakened or disabled |
+| CWE-352 | Ruby | rb/csrf-protection-disabled | CSRF protection weakened or disabled |
+| CWE-352 | Ruby | rb/csrf-protection-not-enabled | CSRF protection not enabled |
+| CWE-359 | C/C++ | cpp/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-359 | C/C++ | cpp/private-cleartext-write | Exposure of private information |
+| CWE-359 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-359 | C# | cs/exposure-of-sensitive-information | Exposure of private information |
+| CWE-359 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-359 | JavaScript/TypeScript | js/cross-window-information-leak | Cross-window communication with unrestricted target origin |
+| CWE-359 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-359 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-359 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-359 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-359 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-359 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-359 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-359 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-359 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-362 | GitHub Actions | actions/untrusted-checkout-toctou/critical | Untrusted Checkout TOCTOU |
+| CWE-362 | GitHub Actions | actions/untrusted-checkout-toctou/high | Untrusted Checkout TOCTOU |
+| CWE-362 | C/C++ | cpp/toctou-race-condition | Time-of-check time-of-use filesystem race condition |
+| CWE-362 | C/C++ | cpp/linux-kernel-double-fetch-vulnerability | Linux kernel double-fetch vulnerability detection |
+| CWE-362 | C# | cs/unsafe-sync-on-field | Futile synchronization on field |
+| CWE-362 | C# | cs/unsynchronized-static-access | Unsynchronized access to static collection member in non-static context |
+| CWE-362 | C# | cs/thread-unsafe-icryptotransform-field-in-class | Thread-unsafe use of a static ICryptoTransform field |
+| CWE-362 | C# | cs/thread-unsafe-icryptotransform-captured-in-lambda | Thread-unsafe capturing of an ICryptoTransform object |
+| CWE-362 | Java/Kotlin | java/toctou-race-condition | Time-of-check time-of-use race condition |
+| CWE-362 | Java/Kotlin | java/socket-auth-race-condition | Race condition in socket authentication |
+| CWE-362 | JavaScript/TypeScript | js/file-system-race | Potential file system race condition |
+| CWE-366 | C# | cs/unsafe-sync-on-field | Futile synchronization on field |
+| CWE-367 | GitHub Actions | actions/untrusted-checkout-toctou/critical | Untrusted Checkout TOCTOU |
+| CWE-367 | GitHub Actions | actions/untrusted-checkout-toctou/high | Untrusted Checkout TOCTOU |
+| CWE-367 | C/C++ | cpp/toctou-race-condition | Time-of-check time-of-use filesystem race condition |
+| CWE-367 | Java/Kotlin | java/toctou-race-condition | Time-of-check time-of-use race condition |
+| CWE-367 | JavaScript/TypeScript | js/file-system-race | Potential file system race condition |
+| CWE-369 | C/C++ | cpp/divide-by-zero-using-return-value | Divide by zero using return value |
+| CWE-369 | Go | go/divide-by-zero | Divide by zero |
+| CWE-377 | C/C++ | cpp/insecure-generation-of-filename | Insecure generation of filenames |
+| CWE-377 | JavaScript/TypeScript | js/insecure-temporary-file | Insecure temporary file |
+| CWE-377 | Python | py/insecure-temporary-file | Insecure temporary file |
+| CWE-378 | JavaScript/TypeScript | js/insecure-temporary-file | Insecure temporary file |
+| CWE-382 | Java/Kotlin | java/ejb/container-interference | EJB interferes with container operation |
+| CWE-382 | Java/Kotlin | java/jvm-exit | Forcible JVM termination |
+| CWE-383 | Java/Kotlin | java/ejb/threads | EJB uses threads |
+| CWE-384 | C# | cs/session-reuse | Failure to abandon session |
+| CWE-384 | JavaScript/TypeScript | js/session-fixation | Failure to abandon session |
+| CWE-390 | C/C++ | cpp/operator-find-incorrectly-used-exceptions | Operator Find Incorrectly Used Exceptions |
+| CWE-390 | C# | cs/empty-catch-block | Poor error handling: empty catch block |
+| CWE-390 | Python | py/empty-except | Empty except |
+| CWE-391 | C# | cs/empty-catch-block | Poor error handling: empty catch block |
+| CWE-391 | Java/Kotlin | java/discarded-exception | Discarded exception |
+| CWE-391 | Java/Kotlin | java/ignored-error-status-of-call | Ignored error status of call |
+| CWE-395 | C# | cs/catch-nullreferenceexception | Poor error handling: catch of NullReferenceException |
+| CWE-396 | C# | cs/catch-of-all-exceptions | Generic catch clause |
+| CWE-396 | Java/Kotlin | java/overly-general-catch | Overly-general catch clause |
+| CWE-396 | Python | py/catch-base-exception | Except block handles 'BaseException' |
+| CWE-398 | C/C++ | cpp/unused-local-variable | Unused local variable |
+| CWE-398 | C/C++ | cpp/unused-static-function | Unused static function |
+| CWE-398 | C/C++ | cpp/unused-static-variable | Unused static variable |
+| CWE-398 | C/C++ | cpp/dead-code-condition | Branching condition always evaluates to same value |
+| CWE-398 | C/C++ | cpp/dead-code-function | Function is never called |
+| CWE-398 | C/C++ | cpp/dead-code-goto | Dead code due to goto or break statement |
+| CWE-398 | C/C++ | cpp/inconsistent-nullness-testing | Inconsistent null check of pointer |
+| CWE-398 | C/C++ | cpp/missing-null-test | Returned pointer not checked |
+| CWE-398 | C/C++ | cpp/unused-variable | Variable is assigned a value that is never read |
+| CWE-398 | C/C++ | cpp/fixme-comment | FIXME comment |
+| CWE-398 | C/C++ | cpp/todo-comment | TODO comment |
+| CWE-398 | C/C++ | cpp/inconsistent-null-check | Inconsistent nullness check |
+| CWE-398 | C/C++ | cpp/useless-expression | Expression has no effect |
+| CWE-398 | C/C++ | cpp/bad-strncpy-size | Possibly wrong buffer size in string copy |
+| CWE-398 | C/C++ | cpp/suspicious-call-to-memset | Suspicious call to memset |
+| CWE-398 | C/C++ | cpp/unsafe-strncat | Potentially unsafe call to strncat |
+| CWE-398 | C/C++ | cpp/unsafe-strcat | Potentially unsafe use of strcat |
+| CWE-398 | C/C++ | cpp/redundant-null-check-simple | Redundant null check due to previous dereference |
+| CWE-398 | C/C++ | cpp/incorrect-allocation-error-handling | Incorrect allocation-error handling |
+| CWE-398 | C/C++ | cpp/dangerous-function-overflow | Use of dangerous function |
+| CWE-398 | C/C++ | cpp/dangerous-cin | Dangerous use of 'cin' |
+| CWE-398 | C/C++ | cpp/potentially-dangerous-function | Use of potentially dangerous function |
+| CWE-398 | C/C++ | cpp/deref-null-result | Null dereference from a function result |
+| CWE-398 | C/C++ | cpp/redundant-null-check-param | Redundant null check or missing null check of parameter |
+| CWE-398 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-398 | C/C++ | cpp/operator-find-incorrectly-used-switch | Incorrect switch statement |
+| CWE-398 | C# | cs/call-to-obsolete-method | Call to obsolete method |
+| CWE-398 | C# | cs/todo-comment | TODO comment |
+| CWE-398 | C# | cs/dereferenced-value-is-always-null | Dereferenced variable is always null |
+| CWE-398 | C# | cs/dereferenced-value-may-be-null | Dereferenced variable may be null |
+| CWE-398 | C# | cs/unused-reftype | Dead reference types |
+| CWE-398 | C# | cs/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-398 | C# | cs/unused-field | Unused field |
+| CWE-398 | C# | cs/unused-method | Unused method |
+| CWE-398 | C# | cs/useless-cast-to-self | Cast to same type |
+| CWE-398 | C# | cs/useless-is-before-as | Useless 'is' before 'as' |
+| CWE-398 | C# | cs/coalesce-of-identical-expressions | Useless ?? expression |
+| CWE-398 | C# | cs/useless-type-test | Useless type test |
+| CWE-398 | C# | cs/useless-upcast | Useless upcast |
+| CWE-398 | C# | cs/empty-collection | Container contents are never initialized |
+| CWE-398 | C# | cs/unused-collection | Container contents are never accessed |
+| CWE-398 | C# | cs/empty-lock-statement | Empty lock statement |
+| CWE-398 | C# | cs/linq/useless-select | Redundant Select |
+| CWE-398 | Go | go/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-398 | Go | go/useless-assignment-to-field | Useless assignment to field |
+| CWE-398 | Go | go/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-398 | Go | go/duplicate-branches | Duplicate 'if' branches |
+| CWE-398 | Go | go/duplicate-condition | Duplicate 'if' condition |
+| CWE-398 | Go | go/duplicate-switch-case | Duplicate switch case |
+| CWE-398 | Go | go/useless-expression | Expression has no effect |
+| CWE-398 | Go | go/impossible-interface-nil-check | Impossible interface nil check |
+| CWE-398 | Go | go/negative-length-check | Redundant check for negative value |
+| CWE-398 | Go | go/redundant-operation | Identical operands |
+| CWE-398 | Go | go/redundant-assignment | Self assignment |
+| CWE-398 | Go | go/unreachable-statement | Unreachable statement |
+| CWE-398 | Go | go/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-398 | Java/Kotlin | java/deprecated-call | Deprecated method or constructor invocation |
+| CWE-398 | Java/Kotlin | java/dead-class | Dead class |
+| CWE-398 | Java/Kotlin | java/dead-enum-constant | Dead enum constant |
+| CWE-398 | Java/Kotlin | java/dead-field | Dead field |
+| CWE-398 | Java/Kotlin | java/dead-function | Dead method |
+| CWE-398 | Java/Kotlin | java/lines-of-dead-code | Lines of dead code in files |
+| CWE-398 | Java/Kotlin | java/unused-parameter | Useless parameter |
+| CWE-398 | Java/Kotlin | java/useless-null-check | Useless null check |
+| CWE-398 | Java/Kotlin | java/useless-type-test | Useless type test |
+| CWE-398 | Java/Kotlin | java/useless-upcast | Useless upcast |
+| CWE-398 | Java/Kotlin | java/empty-container | Container contents are never initialized |
+| CWE-398 | Java/Kotlin | java/unused-container | Container contents are never accessed |
+| CWE-398 | Java/Kotlin | java/equals-on-unrelated-types | Equals on incomparable types |
+| CWE-398 | Java/Kotlin | java/constant-comparison | Useless comparison test |
+| CWE-398 | Java/Kotlin | java/dereferenced-value-is-always-null | Dereferenced variable is always null |
+| CWE-398 | Java/Kotlin | java/dereferenced-expr-may-be-null | Dereferenced expression may be null |
+| CWE-398 | Java/Kotlin | java/dereferenced-value-may-be-null | Dereferenced variable may be null |
+| CWE-398 | Java/Kotlin | java/empty-synchronized-block | Empty synchronized block |
+| CWE-398 | Java/Kotlin | java/unreachable-catch-clause | Unreachable catch clause |
+| CWE-398 | Java/Kotlin | java/potentially-dangerous-function | Use of a potentially dangerous function |
+| CWE-398 | Java/Kotlin | java/todo-comment | TODO/FIXME comments |
+| CWE-398 | Java/Kotlin | java/unused-reference-type | Unused classes and interfaces |
+| CWE-398 | Java/Kotlin | java/overwritten-assignment-to-local | Assigned value is overwritten |
+| CWE-398 | Java/Kotlin | java/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-398 | Java/Kotlin | java/unused-initialized-local | Local variable is initialized but not used |
+| CWE-398 | Java/Kotlin | java/local-variable-is-never-read | Unread local variable |
+| CWE-398 | Java/Kotlin | java/unused-field | Unused field |
+| CWE-398 | Java/Kotlin | java/unused-label | Unused label |
+| CWE-398 | Java/Kotlin | java/unused-local-variable | Unused local variable |
+| CWE-398 | Java/Kotlin | java/switch-fall-through | Unterminated switch case |
+| CWE-398 | Java/Kotlin | java/redundant-cast | Unnecessary cast |
+| CWE-398 | Java/Kotlin | java/unused-import | Unnecessary import |
+| CWE-398 | JavaScript/TypeScript | js/todo-comment | TODO comment |
+| CWE-398 | JavaScript/TypeScript | js/eval-like-call | Call to eval-like DOM function |
+| CWE-398 | JavaScript/TypeScript | js/variable-initialization-conflict | Conflicting variable initialization |
+| CWE-398 | JavaScript/TypeScript | js/function-declaration-conflict | Conflicting function declarations |
+| CWE-398 | JavaScript/TypeScript | js/useless-assignment-to-global | Useless assignment to global variable |
+| CWE-398 | JavaScript/TypeScript | js/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-398 | JavaScript/TypeScript | js/overwritten-property | Overwritten property |
+| CWE-398 | JavaScript/TypeScript | js/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-398 | JavaScript/TypeScript | js/comparison-with-nan | Comparison with NaN |
+| CWE-398 | JavaScript/TypeScript | js/duplicate-condition | Duplicate 'if' condition |
+| CWE-398 | JavaScript/TypeScript | js/duplicate-property | Duplicate property |
+| CWE-398 | JavaScript/TypeScript | js/duplicate-switch-case | Duplicate switch case |
+| CWE-398 | JavaScript/TypeScript | js/useless-expression | Expression has no effect |
+| CWE-398 | JavaScript/TypeScript | js/comparison-between-incompatible-types | Comparison between inconvertible types |
+| CWE-398 | JavaScript/TypeScript | js/redundant-operation | Identical operands |
+| CWE-398 | JavaScript/TypeScript | js/redundant-assignment | Self assignment |
+| CWE-398 | JavaScript/TypeScript | js/call-to-non-callable | Invocation of non-function |
+| CWE-398 | JavaScript/TypeScript | js/property-access-on-non-object | Property access on null or undefined |
+| CWE-398 | JavaScript/TypeScript | js/unneeded-defensive-code | Unneeded defensive code |
+| CWE-398 | JavaScript/TypeScript | js/useless-type-test | Useless type test |
+| CWE-398 | JavaScript/TypeScript | js/eval-call | Use of eval |
+| CWE-398 | JavaScript/TypeScript | js/node/assignment-to-exports-variable | Assignment to exports variable |
+| CWE-398 | JavaScript/TypeScript | js/regex/unmatchable-caret | Unmatchable caret in regular expression |
+| CWE-398 | JavaScript/TypeScript | js/regex/unmatchable-dollar | Unmatchable dollar in regular expression |
+| CWE-398 | JavaScript/TypeScript | js/useless-assignment-in-return | Return statement assigns local variable |
+| CWE-398 | JavaScript/TypeScript | js/unreachable-statement | Unreachable statement |
+| CWE-398 | JavaScript/TypeScript | js/trivial-conditional | Useless conditional |
+| CWE-398 | Python | py/unreachable-except | Unreachable except block |
+| CWE-398 | Python | py/comparison-of-constants | Comparison of constants |
+| CWE-398 | Python | py/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-398 | Python | py/comparison-missing-self | Maybe missing 'self' in comparison |
+| CWE-398 | Python | py/redundant-comparison | Redundant comparison |
+| CWE-398 | Python | py/duplicate-key-dict-literal | Duplicate key in dict literal |
+| CWE-398 | Python | py/import-deprecated-module | Import of deprecated module |
+| CWE-398 | Python | py/constant-conditional-expression | Constant in conditional expression or statement |
+| CWE-398 | Python | py/redundant-assignment | Redundant assignment |
+| CWE-398 | Python | py/ineffectual-statement | Statement has no effect |
+| CWE-398 | Python | py/unreachable-statement | Unreachable code |
+| CWE-398 | Python | py/multiple-definition | Variable defined multiple times |
+| CWE-398 | Python | py/unused-local-variable | Unused local variable |
+| CWE-398 | Python | py/unused-global-variable | Unused global variable |
+| CWE-398 | Ruby | rb/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-398 | Ruby | rb/unused-parameter | Unused parameter |
+| CWE-398 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-400 | C/C++ | cpp/catch-missing-free | Leaky catch |
+| CWE-400 | C/C++ | cpp/descriptor-may-not-be-closed | Open descriptor may not be closed |
+| CWE-400 | C/C++ | cpp/descriptor-never-closed | Open descriptor never closed |
+| CWE-400 | C/C++ | cpp/file-may-not-be-closed | Open file may not be closed |
+| CWE-400 | C/C++ | cpp/file-never-closed | Open file is not closed |
+| CWE-400 | C/C++ | cpp/memory-may-not-be-freed | Memory may not be freed |
+| CWE-400 | C/C++ | cpp/memory-never-freed | Memory is never freed |
+| CWE-400 | C/C++ | cpp/new-free-mismatch | Mismatching new/free or malloc/delete |
+| CWE-400 | C/C++ | cpp/alloca-in-loop | Call to alloca in a loop |
+| CWE-400 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-400 | C/C++ | cpp/memory-leak-on-failed-call-to-realloc | Memory leak on failed call to realloc |
+| CWE-400 | C# | cs/redos | Denial of Service from comparison of user input against expensive regex |
+| CWE-400 | C# | cs/regex-injection | Regular expression injection |
+| CWE-400 | Go | go/uncontrolled-allocation-size | Slice memory allocation with excessive size value |
+| CWE-400 | Java/Kotlin | java/input-resource-leak | Potential input resource leak |
+| CWE-400 | Java/Kotlin | java/database-resource-leak | Potential database resource leak |
+| CWE-400 | Java/Kotlin | java/output-resource-leak | Potential output resource leak |
+| CWE-400 | Java/Kotlin | java/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-400 | Java/Kotlin | java/redos | Inefficient regular expression |
+| CWE-400 | Java/Kotlin | java/regex-injection | Regular expression injection |
+| CWE-400 | Java/Kotlin | java/log4j-injection | Potential Log4J LDAP JNDI injection (CVE-2021-44228) |
+| CWE-400 | Java/Kotlin | java/local-thread-resource-abuse | Uncontrolled thread resource consumption from local input source |
+| CWE-400 | Java/Kotlin | java/thread-resource-abuse | Uncontrolled thread resource consumption |
+| CWE-400 | JavaScript/TypeScript | js/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-400 | JavaScript/TypeScript | js/redos | Inefficient regular expression |
+| CWE-400 | JavaScript/TypeScript | js/resource-exhaustion-from-deep-object-traversal | Resources exhaustion from deep object traversal |
+| CWE-400 | JavaScript/TypeScript | js/remote-property-injection | Remote property injection |
+| CWE-400 | JavaScript/TypeScript | js/regex-injection | Regular expression injection |
+| CWE-400 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-400 | JavaScript/TypeScript | js/resource-exhaustion | Resource exhaustion |
+| CWE-400 | JavaScript/TypeScript | js/xml-bomb | XML internal entity expansion |
+| CWE-400 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-400 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-400 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-400 | JavaScript/TypeScript | js/remote-property-injection-more-sources | Remote property injection with additional heuristic sources |
+| CWE-400 | JavaScript/TypeScript | js/regex-injection-more-sources | Regular expression injection with additional heuristic sources |
+| CWE-400 | JavaScript/TypeScript | js/resource-exhaustion-more-sources | Resource exhaustion with additional heuristic sources |
+| CWE-400 | JavaScript/TypeScript | js/xml-bomb-more-sources | XML internal entity expansion with additional heuristic sources |
+| CWE-400 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-400 | Python | py/file-not-closed | File is not always closed |
+| CWE-400 | Python | py/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-400 | Python | py/redos | Inefficient regular expression |
+| CWE-400 | Python | py/regex-injection | Regular expression injection |
+| CWE-400 | Python | py/xml-bomb | XML internal entity expansion |
+| CWE-400 | Python | py/unicode-dos | Denial of Service using Unicode Characters |
+| CWE-400 | Ruby | rb/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-400 | Ruby | rb/redos | Inefficient regular expression |
+| CWE-400 | Ruby | rb/regexp-injection | Regular expression injection |
+| CWE-400 | Rust | rust/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-400 | Swift | swift/redos | Inefficient regular expression |
+| CWE-400 | Swift | swift/regex-injection | Regular expression injection |
+| CWE-401 | C/C++ | cpp/catch-missing-free | Leaky catch |
+| CWE-401 | C/C++ | cpp/memory-may-not-be-freed | Memory may not be freed |
+| CWE-401 | C/C++ | cpp/memory-never-freed | Memory is never freed |
+| CWE-401 | C/C++ | cpp/new-free-mismatch | Mismatching new/free or malloc/delete |
+| CWE-401 | C/C++ | cpp/memory-leak-on-failed-call-to-realloc | Memory leak on failed call to realloc |
+| CWE-404 | C/C++ | cpp/catch-missing-free | Leaky catch |
+| CWE-404 | C/C++ | cpp/descriptor-may-not-be-closed | Open descriptor may not be closed |
+| CWE-404 | C/C++ | cpp/descriptor-never-closed | Open descriptor never closed |
+| CWE-404 | C/C++ | cpp/file-may-not-be-closed | Open file may not be closed |
+| CWE-404 | C/C++ | cpp/file-never-closed | Open file is not closed |
+| CWE-404 | C/C++ | cpp/memory-may-not-be-freed | Memory may not be freed |
+| CWE-404 | C/C++ | cpp/memory-never-freed | Memory is never freed |
+| CWE-404 | C/C++ | cpp/new-free-mismatch | Mismatching new/free or malloc/delete |
+| CWE-404 | C/C++ | cpp/memory-leak-on-failed-call-to-realloc | Memory leak on failed call to realloc |
+| CWE-404 | C/C++ | cpp/resource-not-released-in-destructor | Resource not released in destructor |
+| CWE-404 | C# | cs/dispose-not-called-on-throw | Dispose may not be called if an exception is thrown during execution |
+| CWE-404 | C# | cs/member-not-disposed | Missing Dispose call |
+| CWE-404 | C# | cs/missing-dispose-method | Missing Dispose method |
+| CWE-404 | C# | cs/local-not-disposed | Missing Dispose call on local IDisposable |
+| CWE-404 | Java/Kotlin | java/missing-super-finalize | Finalizer inconsistency |
+| CWE-404 | Java/Kotlin | java/input-resource-leak | Potential input resource leak |
+| CWE-404 | Java/Kotlin | java/database-resource-leak | Potential database resource leak |
+| CWE-404 | Java/Kotlin | java/output-resource-leak | Potential output resource leak |
+| CWE-404 | Java/Kotlin | java/empty-finalizer | Empty body of finalizer |
+| CWE-404 | Java/Kotlin | java/disabled-certificate-revocation-checking | Disabled certificate revocation checking |
+| CWE-404 | Python | py/file-not-closed | File is not always closed |
+| CWE-405 | C/C++ | cpp/data-decompression-bomb | User-controlled file decompression |
+| CWE-405 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-405 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-405 | Go | go/uncontrolled-file-decompression | Uncontrolled file decompression |
+| CWE-405 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-405 | Java/Kotlin | java/uncontrolled-file-decompression | Uncontrolled file decompression |
+| CWE-405 | JavaScript/TypeScript | js/xml-bomb | XML internal entity expansion |
+| CWE-405 | JavaScript/TypeScript | js/xml-bomb-more-sources | XML internal entity expansion with additional heuristic sources |
+| CWE-405 | Python | py/xml-bomb | XML internal entity expansion |
+| CWE-405 | Python | py/decompression-bomb | Decompression Bomb |
+| CWE-405 | Python | py/simple-xml-rpc-server-dos | SimpleXMLRPCServer denial of service |
+| CWE-405 | Ruby | rb/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-405 | Ruby | rb/user-controlled-file-decompression | User-controlled file decompression |
+| CWE-405 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-405 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-409 | C/C++ | cpp/data-decompression-bomb | User-controlled file decompression |
+| CWE-409 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-409 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-409 | Go | go/uncontrolled-file-decompression | Uncontrolled file decompression |
+| CWE-409 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-409 | Java/Kotlin | java/uncontrolled-file-decompression | Uncontrolled file decompression |
+| CWE-409 | JavaScript/TypeScript | js/xml-bomb | XML internal entity expansion |
+| CWE-409 | JavaScript/TypeScript | js/xml-bomb-more-sources | XML internal entity expansion with additional heuristic sources |
+| CWE-409 | Python | py/xml-bomb | XML internal entity expansion |
+| CWE-409 | Python | py/decompression-bomb | Decompression Bomb |
+| CWE-409 | Python | py/simple-xml-rpc-server-dos | SimpleXMLRPCServer denial of service |
+| CWE-409 | Ruby | rb/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-409 | Ruby | rb/user-controlled-file-decompression | User-controlled file decompression |
+| CWE-409 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-409 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-413 | Java/Kotlin | java/unsynchronized-getter | Inconsistent synchronization of getter and setter |
+| CWE-415 | C/C++ | cpp/double-free | Potential double free |
+| CWE-415 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-415 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-416 | C/C++ | cpp/use-after-free | Potential use after free |
+| CWE-416 | C/C++ | cpp/iterator-to-expired-container | Iterator to expired container |
+| CWE-416 | C/C++ | cpp/use-of-string-after-lifetime-ends | Use of string after lifetime ends |
+| CWE-416 | C/C++ | cpp/use-of-unique-pointer-after-lifetime-ends | Use of unique pointer after lifetime ends |
+| CWE-416 | C/C++ | cpp/use-after-expired-lifetime | Use of object after its lifetime has ended |
+| CWE-420 | Java/Kotlin | java/socket-auth-race-condition | Race condition in socket authentication |
+| CWE-421 | Java/Kotlin | java/socket-auth-race-condition | Race condition in socket authentication |
+| CWE-428 | C/C++ | cpp/unsafe-create-process-call | NULL application name with an unquoted path in call to CreateProcess |
+| CWE-434 | C# | cs/web/file-upload | Use of file upload |
+| CWE-434 | JavaScript/TypeScript | js/http-to-file-access | Network data written to file |
+| CWE-434 | Ruby | rb/http-to-file-access | Network data written to file |
+| CWE-435 | C/C++ | cpp/memset-may-be-deleted | Call to memset may be deleted |
+| CWE-435 | JavaScript/TypeScript | js/insecure-http-parser | Insecure http parser |
+| CWE-436 | JavaScript/TypeScript | js/insecure-http-parser | Insecure http parser |
+| CWE-441 | GitHub Actions | actions/request-forgery | Uncontrolled data used in network request |
+| CWE-441 | C# | cs/request-forgery | Server-side request forgery |
+| CWE-441 | Go | go/request-forgery | Uncontrolled data used in network request |
+| CWE-441 | Go | go/ssrf | Uncontrolled data used in network request |
+| CWE-441 | Java/Kotlin | java/android/unsafe-content-uri-resolution | Uncontrolled data used in content resolution |
+| CWE-441 | Java/Kotlin | java/ssrf | Server-side request forgery |
+| CWE-441 | JavaScript/TypeScript | js/client-side-request-forgery | Client-side request forgery |
+| CWE-441 | JavaScript/TypeScript | js/request-forgery | Server-side request forgery |
+| CWE-441 | JavaScript/TypeScript | javascript/ssrf | Uncontrolled data used in network request |
+| CWE-441 | Python | py/full-ssrf | Full server-side request forgery |
+| CWE-441 | Python | py/partial-ssrf | Partial server-side request forgery |
+| CWE-441 | Ruby | rb/request-forgery | Server-side request forgery |
+| CWE-441 | Rust | rust/request-forgery | Server-side request forgery |
+| CWE-444 | JavaScript/TypeScript | js/insecure-http-parser | Insecure http parser |
+| CWE-451 | C# | cs/web/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-451 | JavaScript/TypeScript | js/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-454 | Java/Kotlin | java/exec-tainted-environment | Building a command with an injected environment variable |
+| CWE-456 | C/C++ | cpp/initialization-not-run | Initialization code not run |
+| CWE-457 | C/C++ | cpp/global-use-before-init | Global variable may be used before initialization |
+| CWE-457 | C/C++ | cpp/not-initialised | Variable not initialized before use |
+| CWE-457 | C/C++ | cpp/uninitialized-local | Potentially uninitialized local variable |
+| CWE-457 | C/C++ | cpp/conditionally-uninitialized-variable | Conditionally uninitialized variable |
+| CWE-457 | C# | cs/unassigned-field | Field is never assigned a non-default value |
+| CWE-457 | Java/Kotlin | java/unassigned-field | Field is never assigned a non-null value |
+| CWE-459 | C# | cs/dispose-not-called-on-throw | Dispose may not be called if an exception is thrown during execution |
+| CWE-459 | C# | cs/member-not-disposed | Missing Dispose call |
+| CWE-459 | C# | cs/missing-dispose-method | Missing Dispose method |
+| CWE-459 | C# | cs/local-not-disposed | Missing Dispose call on local IDisposable |
+| CWE-459 | Java/Kotlin | java/missing-super-finalize | Finalizer inconsistency |
+| CWE-459 | Java/Kotlin | java/empty-finalizer | Empty body of finalizer |
+| CWE-460 | C# | cs/dispose-not-called-on-throw | Dispose may not be called if an exception is thrown during execution |
+| CWE-460 | C# | cs/local-not-disposed | Missing Dispose call on local IDisposable |
+| CWE-467 | C/C++ | cpp/suspicious-sizeof | Suspicious 'sizeof' use |
+| CWE-468 | C/C++ | cpp/suspicious-pointer-scaling | Suspicious pointer scaling |
+| CWE-468 | C/C++ | cpp/incorrect-pointer-scaling-char | Suspicious pointer scaling to char |
+| CWE-468 | C/C++ | cpp/suspicious-pointer-scaling-void | Suspicious pointer scaling to void |
+| CWE-468 | C/C++ | cpp/suspicious-add-sizeof | Suspicious add with sizeof |
+| CWE-470 | Java/Kotlin | java/android/fragment-injection | Android fragment injection |
+| CWE-470 | Java/Kotlin | java/android/fragment-injection-preference-activity | Android fragment injection in PreferenceActivity |
+| CWE-470 | Java/Kotlin | java/android/unsafe-reflection | Load 3rd party classes or code ('unsafe reflection') without signature check |
+| CWE-470 | Java/Kotlin | java/unsafe-reflection | Use of externally-controlled input to select classes or code ('unsafe reflection') |
+| CWE-471 | C# | cs/web/html-hidden-input | Use of HTMLInputHidden |
+| CWE-471 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-471 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-471 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-471 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-472 | C# | cs/web/html-hidden-input | Use of HTMLInputHidden |
+| CWE-476 | C/C++ | cpp/inconsistent-nullness-testing | Inconsistent null check of pointer |
+| CWE-476 | C/C++ | cpp/missing-null-test | Returned pointer not checked |
+| CWE-476 | C/C++ | cpp/inconsistent-null-check | Inconsistent nullness check |
+| CWE-476 | C/C++ | cpp/redundant-null-check-simple | Redundant null check due to previous dereference |
+| CWE-476 | C/C++ | cpp/deref-null-result | Null dereference from a function result |
+| CWE-476 | C/C++ | cpp/redundant-null-check-param | Redundant null check or missing null check of parameter |
+| CWE-476 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-476 | C# | cs/dereferenced-value-is-always-null | Dereferenced variable is always null |
+| CWE-476 | C# | cs/dereferenced-value-may-be-null | Dereferenced variable may be null |
+| CWE-476 | Java/Kotlin | java/dereferenced-value-is-always-null | Dereferenced variable is always null |
+| CWE-476 | Java/Kotlin | java/dereferenced-expr-may-be-null | Dereferenced expression may be null |
+| CWE-476 | Java/Kotlin | java/dereferenced-value-may-be-null | Dereferenced variable may be null |
+| CWE-476 | JavaScript/TypeScript | js/call-to-non-callable | Invocation of non-function |
+| CWE-476 | JavaScript/TypeScript | js/property-access-on-non-object | Property access on null or undefined |
+| CWE-476 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-477 | C# | cs/call-to-obsolete-method | Call to obsolete method |
+| CWE-477 | Java/Kotlin | java/deprecated-call | Deprecated method or constructor invocation |
+| CWE-477 | Python | py/import-deprecated-module | Import of deprecated module |
+| CWE-478 | C/C++ | cpp/missing-case-in-switch | Missing enum case in switch |
+| CWE-478 | C/C++ | cpp/operator-find-incorrectly-used-switch | Incorrect switch statement |
+| CWE-478 | Java/Kotlin | java/missing-default-in-switch | Missing default case in switch |
+| CWE-478 | Java/Kotlin | java/missing-case-in-switch | Missing enum case in switch |
+| CWE-480 | C/C++ | cpp/assign-where-compare-meant | Assignment where comparison was intended |
+| CWE-480 | C/C++ | cpp/compare-where-assign-meant | Comparison where assignment was intended |
+| CWE-480 | C/C++ | cpp/incorrect-not-operator-usage | Incorrect 'not' operator usage |
+| CWE-480 | C/C++ | cpp/logical-operator-applied-to-flag | Short-circuiting operator applied to flag |
+| CWE-480 | C/C++ | cpp/operator-precedence-logic-error-when-use-bitwise-logical-operations | Operator Precedence Logic Error When Use Bitwise Or Logical Operations |
+| CWE-480 | C/C++ | cpp/operator-precedence-logic-error-when-use-bool-type | Operator Precedence Logic Error When Use Bool Type |
+| CWE-480 | C# | cs/non-short-circuit | Potentially dangerous use of non-short-circuit logic |
+| CWE-480 | Go | go/mistyped-exponentiation | Bitwise exclusive-or used like exponentiation |
+| CWE-480 | Go | go/useless-expression | Expression has no effect |
+| CWE-480 | Go | go/redundant-operation | Identical operands |
+| CWE-480 | Go | go/redundant-assignment | Self assignment |
+| CWE-480 | Java/Kotlin | java/assignment-in-boolean-expression | Assignment in Boolean expression |
+| CWE-480 | Java/Kotlin | java/reference-equality-on-strings | Reference equality test on strings |
+| CWE-480 | JavaScript/TypeScript | js/useless-expression | Expression has no effect |
+| CWE-480 | JavaScript/TypeScript | js/redundant-operation | Identical operands |
+| CWE-480 | JavaScript/TypeScript | js/redundant-assignment | Self assignment |
+| CWE-480 | JavaScript/TypeScript | js/deletion-of-non-property | Deleting non-property |
+| CWE-481 | C/C++ | cpp/assign-where-compare-meant | Assignment where comparison was intended |
+| CWE-481 | Java/Kotlin | java/assignment-in-boolean-expression | Assignment in Boolean expression |
+| CWE-482 | C/C++ | cpp/compare-where-assign-meant | Comparison where assignment was intended |
+| CWE-483 | JavaScript/TypeScript | js/misleading-indentation-of-dangling-else | Misleading indentation of dangling 'else' |
+| CWE-483 | JavaScript/TypeScript | js/misleading-indentation-after-control-statement | Misleading indentation after control statement |
+| CWE-484 | Java/Kotlin | java/switch-fall-through | Unterminated switch case |
+| CWE-485 | C# | cs/class-name-comparison | Erroneous class compare |
+| CWE-485 | C# | cs/cast-from-abstract-to-concrete-collection | Cast from abstract to concrete collection |
+| CWE-485 | C# | cs/expose-implementation | Exposing internal representation |
+| CWE-485 | C# | cs/web/debug-code | ASP.NET: leftover debug code |
+| CWE-485 | Java/Kotlin | java/missing-call-to-super-clone | Missing super clone |
+| CWE-485 | Java/Kotlin | java/cleartext-storage-in-class | Cleartext storage of sensitive information using storable class |
+| CWE-485 | Java/Kotlin | java/android/debuggable-attribute-enabled | Android debuggable attribute enabled |
+| CWE-485 | Java/Kotlin | java/android/webview-debugging-enabled | Android Webview debugging enabled |
+| CWE-485 | Java/Kotlin | java/trust-boundary-violation | Trust boundary violation |
+| CWE-485 | Java/Kotlin | java/android/unsafe-android-webview-fetch | Unsafe resource fetching in Android WebView |
+| CWE-485 | Java/Kotlin | java/abstract-to-concrete-cast | Cast from abstract to concrete collection |
+| CWE-485 | Java/Kotlin | java/internal-representation-exposure | Exposing internal representation |
+| CWE-485 | Java/Kotlin | java/main-method-in-enterprise-bean | Main Method in Enterprise Java Bean |
+| CWE-485 | Java/Kotlin | java/main-method-in-web-components | Main Method in Java EE Web Components |
+| CWE-485 | Java/Kotlin | java/struts-development-mode | Apache Struts development mode enabled |
+| CWE-485 | JavaScript/TypeScript | js/alert-call | Invocation of alert |
+| CWE-485 | JavaScript/TypeScript | js/debugger-statement | Use of debugger statement |
+| CWE-485 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-485 | Python | py/flask-debug | Flask app is run in debug mode |
+| CWE-485 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-485 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-486 | C# | cs/class-name-comparison | Erroneous class compare |
+| CWE-489 | C# | cs/web/debug-code | ASP.NET: leftover debug code |
+| CWE-489 | Java/Kotlin | java/android/debuggable-attribute-enabled | Android debuggable attribute enabled |
+| CWE-489 | Java/Kotlin | java/android/webview-debugging-enabled | Android Webview debugging enabled |
+| CWE-489 | Java/Kotlin | java/main-method-in-enterprise-bean | Main Method in Enterprise Java Bean |
+| CWE-489 | Java/Kotlin | java/main-method-in-web-components | Main Method in Java EE Web Components |
+| CWE-489 | Java/Kotlin | java/struts-development-mode | Apache Struts development mode enabled |
+| CWE-489 | JavaScript/TypeScript | js/alert-call | Invocation of alert |
+| CWE-489 | JavaScript/TypeScript | js/debugger-statement | Use of debugger statement |
+| CWE-489 | Python | py/flask-debug | Flask app is run in debug mode |
+| CWE-494 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-494 | JavaScript/TypeScript | js/enabling-electron-insecure-content | Enabling Electron allowRunningInsecureContent |
+| CWE-494 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-494 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-497 | C/C++ | cpp/system-data-exposure | Exposure of system data to an unauthorized control sphere |
+| CWE-497 | C/C++ | cpp/potential-system-data-exposure | Potential exposure of sensitive system data to an unauthorized control sphere |
+| CWE-497 | C# | cs/information-exposure-through-exception | Information exposure through an exception |
+| CWE-497 | Go | go/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-497 | Java/Kotlin | java/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-497 | JavaScript/TypeScript | js/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-497 | Python | py/stack-trace-exposure | Information exposure through an exception |
+| CWE-497 | Ruby | rb/stack-trace-exposure | Information exposure through an exception |
+| CWE-499 | Java/Kotlin | java/cleartext-storage-in-class | Cleartext storage of sensitive information using storable class |
+| CWE-501 | Java/Kotlin | java/trust-boundary-violation | Trust boundary violation |
+| CWE-502 | C# | cs/deserialized-delegate | Deserialized delegate |
+| CWE-502 | C# | cs/unsafe-deserialization | Unsafe deserializer |
+| CWE-502 | C# | cs/unsafe-deserialization-untrusted-input | Deserialization of untrusted data |
+| CWE-502 | Java/Kotlin | java/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-502 | Java/Kotlin | java/log4j-injection | Potential Log4J LDAP JNDI injection (CVE-2021-44228) |
+| CWE-502 | Java/Kotlin | java/unsafe-deserialization-rmi | Unsafe deserialization in a remotely callable method |
+| CWE-502 | Java/Kotlin | java/unsafe-deserialization-spring-exporter-in-configuration-class | Unsafe deserialization with Spring's remote service exporters |
+| CWE-502 | Java/Kotlin | java/unsafe-deserialization-spring-exporter-in-xml-configuration | Unsafe deserialization with Spring's remote service exporters |
+| CWE-502 | JavaScript/TypeScript | js/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-502 | JavaScript/TypeScript | js/unsafe-deserialization-more-sources | Deserialization of user-controlled data with additional heuristic sources |
+| CWE-502 | Python | py/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-502 | Ruby | rb/unsafe-unsafeyamldeserialization | Deserialization of user-controlled yaml data |
+| CWE-502 | Ruby | rb/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-506 | JavaScript/TypeScript | js/hardcoded-data-interpreted-as-code | Hard-coded data interpreted as code |
+| CWE-506 | Ruby | rb/hardcoded-data-interpreted-as-code | Hard-coded data interpreted as code |
+| CWE-521 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-521 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-522 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-522 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-522 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-522 | Java/Kotlin | java/insecure-basic-auth | Insecure basic authentication |
+| CWE-522 | Java/Kotlin | java/insecure-ldap-auth | Insecure LDAP authentication |
+| CWE-522 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-522 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-522 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-522 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-522 | JavaScript/TypeScript | js/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-522 | Python | py/insecure-ldap-auth | Python Insecure LDAP Authentication |
+| CWE-523 | Python | py/insecure-ldap-auth | Python Insecure LDAP Authentication |
+| CWE-524 | Java/Kotlin | java/android/sensitive-keyboard-cache | Android sensitive keyboard cache |
+| CWE-532 | C# | cs/web/debug-binary | Creating an ASP.NET debug binary may reveal sensitive information |
+| CWE-532 | Java/Kotlin | java/sensitive-log | Insertion of sensitive information into log files |
+| CWE-532 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-532 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-532 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-532 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-532 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-532 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-538 | C# | cs/web/debug-binary | Creating an ASP.NET debug binary may reveal sensitive information |
+| CWE-538 | C# | cs/web/directory-browse-enabled | ASP.NET config file enables directory browsing |
+| CWE-538 | C# | cs/web/persistent-cookie | Cookie security: persistent cookie |
+| CWE-538 | Java/Kotlin | java/sensitive-log | Insertion of sensitive information into log files |
+| CWE-538 | Java/Kotlin | java/server-directory-listing | Directories and files exposure |
+| CWE-538 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-538 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-538 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-538 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-538 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-538 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-538 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-539 | C# | cs/web/persistent-cookie | Cookie security: persistent cookie |
+| CWE-543 | Java/Kotlin | java/lazy-initialization | Incorrect lazy initialization of a static field |
+| CWE-546 | C/C++ | cpp/fixme-comment | FIXME comment |
+| CWE-546 | C/C++ | cpp/todo-comment | TODO comment |
+| CWE-546 | C# | cs/todo-comment | TODO comment |
+| CWE-546 | Java/Kotlin | java/todo-comment | TODO/FIXME comments |
+| CWE-546 | JavaScript/TypeScript | js/todo-comment | TODO comment |
+| CWE-548 | C# | cs/web/directory-browse-enabled | ASP.NET config file enables directory browsing |
+| CWE-548 | Java/Kotlin | java/server-directory-listing | Directories and files exposure |
+| CWE-548 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-552 | C# | cs/web/debug-binary | Creating an ASP.NET debug binary may reveal sensitive information |
+| CWE-552 | C# | cs/web/directory-browse-enabled | ASP.NET config file enables directory browsing |
+| CWE-552 | Java/Kotlin | java/sensitive-log | Insertion of sensitive information into log files |
+| CWE-552 | Java/Kotlin | java/unvalidated-url-forward | URL forward from a remote source |
+| CWE-552 | Java/Kotlin | java/server-directory-listing | Directories and files exposure |
+| CWE-552 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-552 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-552 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-552 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-552 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-552 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-552 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-555 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-555 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-560 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-561 | C/C++ | cpp/unused-static-function | Unused static function |
+| CWE-561 | C/C++ | cpp/dead-code-condition | Branching condition always evaluates to same value |
+| CWE-561 | C/C++ | cpp/dead-code-function | Function is never called |
+| CWE-561 | C/C++ | cpp/dead-code-goto | Dead code due to goto or break statement |
+| CWE-561 | C/C++ | cpp/useless-expression | Expression has no effect |
+| CWE-561 | C/C++ | cpp/incorrect-allocation-error-handling | Incorrect allocation-error handling |
+| CWE-561 | C/C++ | cpp/operator-find-incorrectly-used-switch | Incorrect switch statement |
+| CWE-561 | C# | cs/unused-reftype | Dead reference types |
+| CWE-561 | C# | cs/unused-field | Unused field |
+| CWE-561 | C# | cs/unused-method | Unused method |
+| CWE-561 | C# | cs/useless-cast-to-self | Cast to same type |
+| CWE-561 | C# | cs/useless-is-before-as | Useless 'is' before 'as' |
+| CWE-561 | C# | cs/coalesce-of-identical-expressions | Useless ?? expression |
+| CWE-561 | C# | cs/useless-type-test | Useless type test |
+| CWE-561 | C# | cs/useless-upcast | Useless upcast |
+| CWE-561 | C# | cs/empty-collection | Container contents are never initialized |
+| CWE-561 | C# | cs/unused-collection | Container contents are never accessed |
+| CWE-561 | C# | cs/linq/useless-select | Redundant Select |
+| CWE-561 | Go | go/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-561 | Go | go/duplicate-branches | Duplicate 'if' branches |
+| CWE-561 | Go | go/duplicate-condition | Duplicate 'if' condition |
+| CWE-561 | Go | go/duplicate-switch-case | Duplicate switch case |
+| CWE-561 | Go | go/useless-expression | Expression has no effect |
+| CWE-561 | Go | go/impossible-interface-nil-check | Impossible interface nil check |
+| CWE-561 | Go | go/negative-length-check | Redundant check for negative value |
+| CWE-561 | Go | go/redundant-operation | Identical operands |
+| CWE-561 | Go | go/redundant-assignment | Self assignment |
+| CWE-561 | Go | go/unreachable-statement | Unreachable statement |
+| CWE-561 | Go | go/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-561 | Java/Kotlin | java/dead-class | Dead class |
+| CWE-561 | Java/Kotlin | java/dead-enum-constant | Dead enum constant |
+| CWE-561 | Java/Kotlin | java/dead-field | Dead field |
+| CWE-561 | Java/Kotlin | java/dead-function | Dead method |
+| CWE-561 | Java/Kotlin | java/lines-of-dead-code | Lines of dead code in files |
+| CWE-561 | Java/Kotlin | java/unused-parameter | Useless parameter |
+| CWE-561 | Java/Kotlin | java/useless-null-check | Useless null check |
+| CWE-561 | Java/Kotlin | java/useless-type-test | Useless type test |
+| CWE-561 | Java/Kotlin | java/useless-upcast | Useless upcast |
+| CWE-561 | Java/Kotlin | java/empty-container | Container contents are never initialized |
+| CWE-561 | Java/Kotlin | java/unused-container | Container contents are never accessed |
+| CWE-561 | Java/Kotlin | java/equals-on-unrelated-types | Equals on incomparable types |
+| CWE-561 | Java/Kotlin | java/constant-comparison | Useless comparison test |
+| CWE-561 | Java/Kotlin | java/unreachable-catch-clause | Unreachable catch clause |
+| CWE-561 | Java/Kotlin | java/unused-reference-type | Unused classes and interfaces |
+| CWE-561 | Java/Kotlin | java/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-561 | Java/Kotlin | java/local-variable-is-never-read | Unread local variable |
+| CWE-561 | Java/Kotlin | java/unused-field | Unused field |
+| CWE-561 | Java/Kotlin | java/unused-label | Unused label |
+| CWE-561 | Java/Kotlin | java/redundant-cast | Unnecessary cast |
+| CWE-561 | Java/Kotlin | java/unused-import | Unnecessary import |
+| CWE-561 | JavaScript/TypeScript | js/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-561 | JavaScript/TypeScript | js/comparison-with-nan | Comparison with NaN |
+| CWE-561 | JavaScript/TypeScript | js/duplicate-condition | Duplicate 'if' condition |
+| CWE-561 | JavaScript/TypeScript | js/duplicate-switch-case | Duplicate switch case |
+| CWE-561 | JavaScript/TypeScript | js/useless-expression | Expression has no effect |
+| CWE-561 | JavaScript/TypeScript | js/comparison-between-incompatible-types | Comparison between inconvertible types |
+| CWE-561 | JavaScript/TypeScript | js/redundant-operation | Identical operands |
+| CWE-561 | JavaScript/TypeScript | js/redundant-assignment | Self assignment |
+| CWE-561 | JavaScript/TypeScript | js/unneeded-defensive-code | Unneeded defensive code |
+| CWE-561 | JavaScript/TypeScript | js/useless-type-test | Useless type test |
+| CWE-561 | JavaScript/TypeScript | js/regex/unmatchable-caret | Unmatchable caret in regular expression |
+| CWE-561 | JavaScript/TypeScript | js/regex/unmatchable-dollar | Unmatchable dollar in regular expression |
+| CWE-561 | JavaScript/TypeScript | js/unreachable-statement | Unreachable statement |
+| CWE-561 | JavaScript/TypeScript | js/trivial-conditional | Useless conditional |
+| CWE-561 | Python | py/unreachable-except | Unreachable except block |
+| CWE-561 | Python | py/comparison-of-constants | Comparison of constants |
+| CWE-561 | Python | py/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-561 | Python | py/comparison-missing-self | Maybe missing 'self' in comparison |
+| CWE-561 | Python | py/redundant-comparison | Redundant comparison |
+| CWE-561 | Python | py/duplicate-key-dict-literal | Duplicate key in dict literal |
+| CWE-561 | Python | py/constant-conditional-expression | Constant in conditional expression or statement |
+| CWE-561 | Python | py/ineffectual-statement | Statement has no effect |
+| CWE-561 | Python | py/unreachable-statement | Unreachable code |
+| CWE-563 | C/C++ | cpp/unused-local-variable | Unused local variable |
+| CWE-563 | C/C++ | cpp/unused-static-variable | Unused static variable |
+| CWE-563 | C/C++ | cpp/unused-variable | Variable is assigned a value that is never read |
+| CWE-563 | C# | cs/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-563 | Go | go/useless-assignment-to-field | Useless assignment to field |
+| CWE-563 | Go | go/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-563 | Java/Kotlin | java/overwritten-assignment-to-local | Assigned value is overwritten |
+| CWE-563 | Java/Kotlin | java/unused-initialized-local | Local variable is initialized but not used |
+| CWE-563 | Java/Kotlin | java/unused-local-variable | Unused local variable |
+| CWE-563 | JavaScript/TypeScript | js/variable-initialization-conflict | Conflicting variable initialization |
+| CWE-563 | JavaScript/TypeScript | js/function-declaration-conflict | Conflicting function declarations |
+| CWE-563 | JavaScript/TypeScript | js/useless-assignment-to-global | Useless assignment to global variable |
+| CWE-563 | JavaScript/TypeScript | js/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-563 | JavaScript/TypeScript | js/overwritten-property | Overwritten property |
+| CWE-563 | JavaScript/TypeScript | js/duplicate-property | Duplicate property |
+| CWE-563 | JavaScript/TypeScript | js/node/assignment-to-exports-variable | Assignment to exports variable |
+| CWE-563 | JavaScript/TypeScript | js/useless-assignment-in-return | Return statement assigns local variable |
+| CWE-563 | Python | py/redundant-assignment | Redundant assignment |
+| CWE-563 | Python | py/multiple-definition | Variable defined multiple times |
+| CWE-563 | Python | py/unused-local-variable | Unused local variable |
+| CWE-563 | Python | py/unused-global-variable | Unused global variable |
+| CWE-563 | Ruby | rb/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-563 | Ruby | rb/unused-parameter | Unused parameter |
+| CWE-564 | Java/Kotlin | java/concatenated-sql-query | Query built by concatenation with a possibly-untrusted string |
+| CWE-564 | Java/Kotlin | java/sql-injection | Query built from user-controlled sources |
+| CWE-567 | C# | cs/unsynchronized-static-access | Unsynchronized access to static collection member in non-static context |
+| CWE-568 | Java/Kotlin | java/missing-super-finalize | Finalizer inconsistency |
+| CWE-568 | Java/Kotlin | java/empty-finalizer | Empty body of finalizer |
+| CWE-570 | C/C++ | cpp/incorrect-allocation-error-handling | Incorrect allocation-error handling |
+| CWE-570 | Go | go/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-570 | Go | go/impossible-interface-nil-check | Impossible interface nil check |
+| CWE-570 | Java/Kotlin | java/constant-comparison | Useless comparison test |
+| CWE-570 | JavaScript/TypeScript | js/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-570 | JavaScript/TypeScript | js/comparison-with-nan | Comparison with NaN |
+| CWE-570 | JavaScript/TypeScript | js/comparison-between-incompatible-types | Comparison between inconvertible types |
+| CWE-570 | JavaScript/TypeScript | js/unneeded-defensive-code | Unneeded defensive code |
+| CWE-570 | JavaScript/TypeScript | js/useless-type-test | Useless type test |
+| CWE-570 | JavaScript/TypeScript | js/trivial-conditional | Useless conditional |
+| CWE-570 | Python | py/comparison-of-constants | Comparison of constants |
+| CWE-570 | Python | py/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-570 | Python | py/comparison-missing-self | Maybe missing 'self' in comparison |
+| CWE-570 | Python | py/redundant-comparison | Redundant comparison |
+| CWE-570 | Python | py/constant-conditional-expression | Constant in conditional expression or statement |
+| CWE-571 | Go | go/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-571 | Go | go/negative-length-check | Redundant check for negative value |
+| CWE-571 | Java/Kotlin | java/equals-on-unrelated-types | Equals on incomparable types |
+| CWE-571 | Java/Kotlin | java/constant-comparison | Useless comparison test |
+| CWE-571 | JavaScript/TypeScript | js/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-571 | JavaScript/TypeScript | js/comparison-with-nan | Comparison with NaN |
+| CWE-571 | JavaScript/TypeScript | js/comparison-between-incompatible-types | Comparison between inconvertible types |
+| CWE-571 | JavaScript/TypeScript | js/unneeded-defensive-code | Unneeded defensive code |
+| CWE-571 | JavaScript/TypeScript | js/useless-type-test | Useless type test |
+| CWE-571 | JavaScript/TypeScript | js/trivial-conditional | Useless conditional |
+| CWE-571 | Python | py/comparison-of-constants | Comparison of constants |
+| CWE-571 | Python | py/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-571 | Python | py/comparison-missing-self | Maybe missing 'self' in comparison |
+| CWE-571 | Python | py/redundant-comparison | Redundant comparison |
+| CWE-571 | Python | py/constant-conditional-expression | Constant in conditional expression or statement |
+| CWE-572 | Java/Kotlin | java/call-to-thread-run | Direct call to a run() method |
+| CWE-573 | C/C++ | cpp/double-free | Potential double free |
+| CWE-573 | C/C++ | cpp/incorrectly-checked-scanf | Incorrect return-value check for a 'scanf'-like function |
+| CWE-573 | C/C++ | cpp/missing-check-scanf | Missing return-value check for a 'scanf'-like function |
+| CWE-573 | C/C++ | cpp/overflowing-snprintf | Potentially overflowing call to snprintf |
+| CWE-573 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-573 | C/C++ | cpp/wrong-type-format-argument | Wrong type of arguments to formatting function |
+| CWE-573 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-573 | C/C++ | cpp/ignore-return-value-sal | SAL requires inspecting return value |
+| CWE-573 | C/C++ | cpp/hresult-boolean-conversion | Cast between HRESULT and a Boolean type |
+| CWE-573 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-573 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-573 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-573 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-573 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-573 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-573 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-573 | C/C++ | cpp/double-release | Errors When Double Release |
+| CWE-573 | C# | cs/inconsistent-equals-and-gethashcode | Inconsistent Equals(object) and GetHashCode() |
+| CWE-573 | C# | cs/invalid-dynamic-call | Bad dynamic call |
+| CWE-573 | Java/Kotlin | java/ejb/container-interference | EJB interferes with container operation |
+| CWE-573 | Java/Kotlin | java/ejb/file-io | EJB uses file input/output |
+| CWE-573 | Java/Kotlin | java/ejb/graphics | EJB uses graphics |
+| CWE-573 | Java/Kotlin | java/ejb/native-code | EJB uses native code |
+| CWE-573 | Java/Kotlin | java/ejb/reflection | EJB uses reflection |
+| CWE-573 | Java/Kotlin | java/ejb/security-configuration-access | EJB accesses security configuration |
+| CWE-573 | Java/Kotlin | java/ejb/substitution-in-serialization | EJB uses substitution in serialization |
+| CWE-573 | Java/Kotlin | java/ejb/socket-or-stream-handler-factory | EJB sets socket factory or URL stream handler factory |
+| CWE-573 | Java/Kotlin | java/ejb/server-socket | EJB uses server socket |
+| CWE-573 | Java/Kotlin | java/ejb/non-final-static-field | EJB uses non-final static field |
+| CWE-573 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-573 | Java/Kotlin | java/ejb/this | EJB uses 'this' as argument or result |
+| CWE-573 | Java/Kotlin | java/ejb/threads | EJB uses threads |
+| CWE-573 | Java/Kotlin | java/missing-call-to-super-clone | Missing super clone |
+| CWE-573 | Java/Kotlin | java/inconsistent-equals-and-hashcode | Inconsistent equals and hashCode |
+| CWE-573 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-573 | Java/Kotlin | java/missing-super-finalize | Finalizer inconsistency |
+| CWE-573 | Java/Kotlin | java/missing-format-argument | Missing format argument |
+| CWE-573 | Java/Kotlin | java/unused-format-argument | Unused format argument |
+| CWE-573 | Java/Kotlin | java/static-initialization-vector | Using a static initialization vector for encryption |
+| CWE-573 | Java/Kotlin | java/empty-finalizer | Empty body of finalizer |
+| CWE-573 | JavaScript/TypeScript | js/superfluous-trailing-arguments | Superfluous trailing arguments |
+| CWE-573 | Python | py/equals-hash-mismatch | Inconsistent equality and hashing |
+| CWE-573 | Python | py/call/wrong-named-class-argument | Wrong name for an argument in a class instantiation |
+| CWE-573 | Python | py/call/wrong-number-class-arguments | Wrong number of arguments in a class instantiation |
+| CWE-573 | Python | py/super-not-enclosing-class | First argument to super() is not enclosing class |
+| CWE-573 | Python | py/call/wrong-named-argument | Wrong name for an argument in a call |
+| CWE-573 | Python | py/percent-format/wrong-arguments | Wrong number of arguments for format |
+| CWE-573 | Python | py/call/wrong-arguments | Wrong number of arguments in a call |
+| CWE-573 | Swift | swift/static-initialization-vector | Static initialization vector for encryption |
+| CWE-574 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-575 | Java/Kotlin | java/ejb/graphics | EJB uses graphics |
+| CWE-576 | Java/Kotlin | java/ejb/file-io | EJB uses file input/output |
+| CWE-577 | Java/Kotlin | java/ejb/socket-or-stream-handler-factory | EJB sets socket factory or URL stream handler factory |
+| CWE-577 | Java/Kotlin | java/ejb/server-socket | EJB uses server socket |
+| CWE-578 | Java/Kotlin | java/ejb/container-interference | EJB interferes with container operation |
+| CWE-580 | Java/Kotlin | java/missing-call-to-super-clone | Missing super clone |
+| CWE-581 | C# | cs/inconsistent-equals-and-gethashcode | Inconsistent Equals(object) and GetHashCode() |
+| CWE-581 | Java/Kotlin | java/inconsistent-equals-and-hashcode | Inconsistent equals and hashCode |
+| CWE-581 | Python | py/equals-hash-mismatch | Inconsistent equality and hashing |
+| CWE-582 | C# | cs/static-array | Array constant vulnerable to change |
+| CWE-582 | Java/Kotlin | java/static-array | Array constant vulnerable to change |
+| CWE-584 | Java/Kotlin | java/abnormal-finally-completion | Finally block may not complete normally |
+| CWE-584 | JavaScript/TypeScript | js/exit-from-finally | Jump from finally |
+| CWE-584 | Python | py/exit-from-finally | 'break' or 'return' statement in finally |
+| CWE-585 | C# | cs/empty-lock-statement | Empty lock statement |
+| CWE-585 | Java/Kotlin | java/empty-synchronized-block | Empty synchronized block |
+| CWE-586 | Java/Kotlin | java/do-not-call-finalize | Do not call finalize() |
+| CWE-592 | C/C++ | cpp/user-controlled-bypass | Authentication bypass by spoofing |
+| CWE-592 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-592 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-592 | Java/Kotlin | java/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-592 | Java/Kotlin | java/tainted-permissions-check | User-controlled data used in permissions check |
+| CWE-592 | JavaScript/TypeScript | js/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-592 | JavaScript/TypeScript | js/different-kinds-comparison-bypass | Comparison of user-controlled data of different kinds |
+| CWE-592 | JavaScript/TypeScript | js/user-controlled-bypass-more-sources | User-controlled bypass of security check with additional heuristic sources |
+| CWE-592 | Ruby | rb/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-595 | C# | cs/reference-equality-with-object | Reference equality test on System.Object |
+| CWE-595 | C# | cs/reference-equality-on-valuetypes | Call to ReferenceEquals(...) on value type expressions |
+| CWE-595 | Java/Kotlin | java/reference-equality-with-object | Reference equality test on java.lang.Object |
+| CWE-595 | Java/Kotlin | java/reference-equality-of-boxed-types | Reference equality test of boxed types |
+| CWE-595 | Java/Kotlin | java/reference-equality-on-strings | Reference equality test on strings |
+| CWE-597 | Java/Kotlin | java/reference-equality-on-strings | Reference equality test on strings |
+| CWE-598 | Java/Kotlin | java/sensitive-query-with-get | Sensitive GET Query |
+| CWE-598 | JavaScript/TypeScript | js/sensitive-get-query | Sensitive data read from GET request |
+| CWE-598 | Ruby | rb/sensitive-get-query | Sensitive data read from GET request |
+| CWE-600 | Java/Kotlin | java/uncaught-servlet-exception | Uncaught Servlet Exception |
+| CWE-601 | C# | cs/web/unvalidated-url-redirection | URL redirection from remote source |
+| CWE-601 | Go | go/bad-redirect-check | Bad redirect check |
+| CWE-601 | Go | go/unvalidated-url-redirection | Open URL redirect |
+| CWE-601 | Java/Kotlin | java/unvalidated-url-redirection | URL redirection from remote source |
+| CWE-601 | Java/Kotlin | java/spring-unvalidated-url-redirection | Spring url redirection from remote source |
+| CWE-601 | JavaScript/TypeScript | js/client-side-unvalidated-url-redirection | Client-side URL redirect |
+| CWE-601 | JavaScript/TypeScript | js/server-side-unvalidated-url-redirection | Server-side URL redirect |
+| CWE-601 | Python | py/url-redirection | URL redirection from remote source |
+| CWE-601 | Ruby | rb/url-redirection | URL redirection from remote source |
+| CWE-609 | C# | cs/unsafe-double-checked-lock | Double-checked lock is not thread-safe |
+| CWE-609 | Java/Kotlin | java/unsafe-double-checked-locking | Double-checked locking is not thread-safe |
+| CWE-609 | Java/Kotlin | java/unsafe-double-checked-locking-init-order | Race condition in double-checked locking object initialization |
+| CWE-609 | Java/Kotlin | java/lazy-initialization | Incorrect lazy initialization of a static field |
+| CWE-610 | GitHub Actions | actions/request-forgery | Uncontrolled data used in network request |
+| CWE-610 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | C/C++ | cpp/external-entity-expansion | XML external entity expansion |
+| CWE-610 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | C# | cs/web/unvalidated-url-redirection | URL redirection from remote source |
+| CWE-610 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-610 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-610 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-610 | C# | cs/request-forgery | Server-side request forgery |
+| CWE-610 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | Go | go/bad-redirect-check | Bad redirect check |
+| CWE-610 | Go | go/unvalidated-url-redirection | Open URL redirect |
+| CWE-610 | Go | go/request-forgery | Uncontrolled data used in network request |
+| CWE-610 | Go | go/ssrf | Uncontrolled data used in network request |
+| CWE-610 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | Java/Kotlin | java/android/unsafe-content-uri-resolution | Uncontrolled data used in content resolution |
+| CWE-610 | Java/Kotlin | java/android/fragment-injection | Android fragment injection |
+| CWE-610 | Java/Kotlin | java/android/fragment-injection-preference-activity | Android fragment injection in PreferenceActivity |
+| CWE-610 | Java/Kotlin | java/unvalidated-url-redirection | URL redirection from remote source |
+| CWE-610 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-610 | Java/Kotlin | java/ssrf | Server-side request forgery |
+| CWE-610 | Java/Kotlin | java/file-path-injection | File Path Injection |
+| CWE-610 | Java/Kotlin | java/android/unsafe-reflection | Load 3rd party classes or code ('unsafe reflection') without signature check |
+| CWE-610 | Java/Kotlin | java/unsafe-reflection | Use of externally-controlled input to select classes or code ('unsafe reflection') |
+| CWE-610 | Java/Kotlin | java/spring-unvalidated-url-redirection | Spring url redirection from remote source |
+| CWE-610 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-610 | JavaScript/TypeScript | js/client-side-unvalidated-url-redirection | Client-side URL redirect |
+| CWE-610 | JavaScript/TypeScript | js/server-side-unvalidated-url-redirection | Server-side URL redirect |
+| CWE-610 | JavaScript/TypeScript | js/xxe | XML external entity expansion |
+| CWE-610 | JavaScript/TypeScript | js/client-side-request-forgery | Client-side request forgery |
+| CWE-610 | JavaScript/TypeScript | js/request-forgery | Server-side request forgery |
+| CWE-610 | JavaScript/TypeScript | javascript/ssrf | Uncontrolled data used in network request |
+| CWE-610 | JavaScript/TypeScript | js/xxe-more-sources | XML external entity expansion with additional heuristic sources |
+| CWE-610 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-610 | Python | py/url-redirection | URL redirection from remote source |
+| CWE-610 | Python | py/xxe | XML external entity expansion |
+| CWE-610 | Python | py/full-ssrf | Full server-side request forgery |
+| CWE-610 | Python | py/partial-ssrf | Partial server-side request forgery |
+| CWE-610 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-610 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-610 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-610 | Ruby | rb/url-redirection | URL redirection from remote source |
+| CWE-610 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-610 | Ruby | rb/request-forgery | Server-side request forgery |
+| CWE-610 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | Rust | rust/request-forgery | Server-side request forgery |
+| CWE-610 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-610 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-611 | C/C++ | cpp/external-entity-expansion | XML external entity expansion |
+| CWE-611 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-611 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-611 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-611 | JavaScript/TypeScript | js/xxe | XML external entity expansion |
+| CWE-611 | JavaScript/TypeScript | js/xxe-more-sources | XML external entity expansion with additional heuristic sources |
+| CWE-611 | Python | py/xxe | XML external entity expansion |
+| CWE-611 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-611 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-614 | C# | cs/web/cookie-secure-not-set | Cookie 'Secure' attribute is not set to true |
+| CWE-614 | C# | cs/web/requiressl-not-set | 'requireSSL' attribute is not set to true |
+| CWE-614 | Go | go/cookie-secure-not-set | Cookie 'Secure' attribute is not set to true |
+| CWE-614 | Java/Kotlin | java/insecure-cookie | Failure to use secure cookies |
+| CWE-614 | JavaScript/TypeScript | js/clear-text-cookie | Clear text transmission of sensitive cookie |
+| CWE-614 | Python | py/insecure-cookie | Failure to use secure cookies |
+| CWE-614 | Rust | rust/insecure-cookie | 'Secure' attribute is not set to true |
+| CWE-625 | Java/Kotlin | java/permissive-dot-regex | URL matched by permissive . in a regular expression |
+| CWE-625 | JavaScript/TypeScript | js/angular/insecure-url-whitelist | Insecure URL whitelist |
+| CWE-628 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-628 | C/C++ | cpp/wrong-type-format-argument | Wrong type of arguments to formatting function |
+| CWE-628 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-628 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-628 | C# | cs/invalid-dynamic-call | Bad dynamic call |
+| CWE-628 | Java/Kotlin | java/missing-format-argument | Missing format argument |
+| CWE-628 | Java/Kotlin | java/unused-format-argument | Unused format argument |
+| CWE-628 | JavaScript/TypeScript | js/superfluous-trailing-arguments | Superfluous trailing arguments |
+| CWE-628 | Python | py/call/wrong-named-class-argument | Wrong name for an argument in a class instantiation |
+| CWE-628 | Python | py/call/wrong-number-class-arguments | Wrong number of arguments in a class instantiation |
+| CWE-628 | Python | py/super-not-enclosing-class | First argument to super() is not enclosing class |
+| CWE-628 | Python | py/call/wrong-named-argument | Wrong name for an argument in a call |
+| CWE-628 | Python | py/percent-format/wrong-arguments | Wrong number of arguments for format |
+| CWE-628 | Python | py/call/wrong-arguments | Wrong number of arguments in a call |
+| CWE-639 | C# | cs/web/insecure-direct-object-reference | Insecure Direct Object Reference |
+| CWE-639 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-639 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-640 | Go | go/email-injection | Email content injection |
+| CWE-640 | JavaScript/TypeScript | js/host-header-forgery-in-email-generation | Host header poisoning in email generation |
+| CWE-642 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-642 | C# | cs/web/html-hidden-input | Use of HTMLInputHidden |
+| CWE-642 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-642 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-642 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-642 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-642 | Java/Kotlin | java/file-path-injection | File Path Injection |
+| CWE-642 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-642 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-642 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-642 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-642 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-642 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-642 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-642 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-642 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-642 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-643 | C# | cs/xml/xpath-injection | XPath injection |
+| CWE-643 | Go | go/xml/xpath-injection | XPath injection |
+| CWE-643 | Java/Kotlin | java/xml/xpath-injection | XPath injection |
+| CWE-643 | JavaScript/TypeScript | js/xpath-injection | XPath injection |
+| CWE-643 | JavaScript/TypeScript | js/xpath-injection-more-sources | XPath injection with additional heuristic sources |
+| CWE-643 | Python | py/xpath-injection | XPath query built from user-controlled sources |
+| CWE-643 | Python | py/xslt-injection | XSLT query built from user-controlled sources |
+| CWE-643 | Ruby | rb/xpath-injection | XPath query built from user-controlled sources |
+| CWE-652 | Java/Kotlin | java/xquery-injection | XQuery query built from user-controlled sources |
+| CWE-657 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-657 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-657 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-657 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-657 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-657 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-657 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-657 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-657 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-657 | JavaScript/TypeScript | js/remote-property-injection | Remote property injection |
+| CWE-657 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-657 | JavaScript/TypeScript | js/remote-property-injection-more-sources | Remote property injection with additional heuristic sources |
+| CWE-657 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-657 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-657 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-657 | Swift | swift/constant-password | Constant password |
+| CWE-657 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-662 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-662 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-662 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-662 | C# | cs/unsafe-sync-on-field | Futile synchronization on field |
+| CWE-662 | C# | cs/inconsistent-lock-sequence | Inconsistent lock sequence |
+| CWE-662 | C# | cs/lock-this | Locking the 'this' object in a lock statement |
+| CWE-662 | C# | cs/locked-wait | A lock is held during a wait |
+| CWE-662 | C# | cs/unsynchronized-getter | Inconsistently synchronized property |
+| CWE-662 | C# | cs/unsafe-double-checked-lock | Double-checked lock is not thread-safe |
+| CWE-662 | C# | cs/unsynchronized-static-access | Unsynchronized access to static collection member in non-static context |
+| CWE-662 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-662 | Java/Kotlin | java/wait-on-condition-interface | Wait on condition |
+| CWE-662 | Java/Kotlin | java/call-to-thread-run | Direct call to a run() method |
+| CWE-662 | Java/Kotlin | java/unsafe-double-checked-locking | Double-checked locking is not thread-safe |
+| CWE-662 | Java/Kotlin | java/unsafe-double-checked-locking-init-order | Race condition in double-checked locking object initialization |
+| CWE-662 | Java/Kotlin | java/unsafe-sync-on-field | Futile synchronization on field |
+| CWE-662 | Java/Kotlin | java/inconsistent-field-synchronization | Inconsistent synchronization for field |
+| CWE-662 | Java/Kotlin | java/lazy-initialization | Incorrect lazy initialization of a static field |
+| CWE-662 | Java/Kotlin | java/non-sync-override | Non-synchronized override of synchronized method |
+| CWE-662 | Java/Kotlin | java/notify-instead-of-notify-all | notify instead of notifyAll |
+| CWE-662 | Java/Kotlin | java/sleep-with-lock-held | Sleep with lock held |
+| CWE-662 | Java/Kotlin | java/sync-on-boxed-types | Synchronization on boxed types or strings |
+| CWE-662 | Java/Kotlin | java/unsynchronized-getter | Inconsistent synchronization of getter and setter |
+| CWE-662 | Java/Kotlin | java/inconsistent-sync-writeobject | Inconsistent synchronization for writeObject() |
+| CWE-662 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-662 | Java/Kotlin | java/wait-with-two-locks | Wait with two locks held |
+| CWE-662 | Java/Kotlin | java/lock-order-inconsistency | Lock order inconsistency |
+| CWE-664 | GitHub Actions | actions/code-injection/critical | Code injection |
+| CWE-664 | GitHub Actions | actions/code-injection/medium | Code injection |
+| CWE-664 | GitHub Actions | actions/improper-access-control | Improper Access Control |
+| CWE-664 | GitHub Actions | actions/excessive-secrets-exposure | Excessive Secrets Exposure |
+| CWE-664 | GitHub Actions | actions/secrets-in-artifacts | Storage of sensitive information in GitHub Actions artifact |
+| CWE-664 | GitHub Actions | actions/unmasked-secret-exposure | Unmasked Secret Exposure |
+| CWE-664 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-664 | GitHub Actions | actions/artifact-poisoning/critical | Artifact poisoning |
+| CWE-664 | GitHub Actions | actions/artifact-poisoning/medium | Artifact poisoning |
+| CWE-664 | GitHub Actions | actions/unpinned-tag | Unpinned tag for a non-immutable Action in workflow |
+| CWE-664 | GitHub Actions | actions/untrusted-checkout/critical | Checkout of untrusted code in a privileged context |
+| CWE-664 | GitHub Actions | actions/untrusted-checkout/high | Checkout of untrusted code in trusted context |
+| CWE-664 | GitHub Actions | actions/untrusted-checkout/medium | Checkout of untrusted code in trusted context |
+| CWE-664 | GitHub Actions | actions/secret-exfiltration | Secret exfiltration |
+| CWE-664 | GitHub Actions | actions/pr-on-self-hosted-runner | Pull Request code execution on self-hosted runner |
+| CWE-664 | GitHub Actions | actions/artifact-poisoning/path-traversal | Artifact Poisoning (Path Traversal) |
+| CWE-664 | GitHub Actions | actions/unversioned-immutable-action | Unversioned Immutable Action |
+| CWE-664 | GitHub Actions | actions/request-forgery | Uncontrolled data used in network request |
+| CWE-664 | C/C++ | cpp/catch-missing-free | Leaky catch |
+| CWE-664 | C/C++ | cpp/descriptor-may-not-be-closed | Open descriptor may not be closed |
+| CWE-664 | C/C++ | cpp/descriptor-never-closed | Open descriptor never closed |
+| CWE-664 | C/C++ | cpp/double-free | Potential double free |
+| CWE-664 | C/C++ | cpp/file-may-not-be-closed | Open file may not be closed |
+| CWE-664 | C/C++ | cpp/file-never-closed | Open file is not closed |
+| CWE-664 | C/C++ | cpp/global-use-before-init | Global variable may be used before initialization |
+| CWE-664 | C/C++ | cpp/initialization-not-run | Initialization code not run |
+| CWE-664 | C/C++ | cpp/memory-may-not-be-freed | Memory may not be freed |
+| CWE-664 | C/C++ | cpp/memory-never-freed | Memory is never freed |
+| CWE-664 | C/C++ | cpp/new-free-mismatch | Mismatching new/free or malloc/delete |
+| CWE-664 | C/C++ | cpp/not-initialised | Variable not initialized before use |
+| CWE-664 | C/C++ | cpp/use-after-free | Potential use after free |
+| CWE-664 | C/C++ | cpp/bad-addition-overflow-check | Bad check for overflow of integer addition |
+| CWE-664 | C/C++ | cpp/integer-multiplication-cast-to-long | Multiplication result converted to larger type |
+| CWE-664 | C/C++ | cpp/upcast-array-pointer-arithmetic | Upcast array used in pointer arithmetic |
+| CWE-664 | C/C++ | cpp/alloca-in-loop | Call to alloca in a loop |
+| CWE-664 | C/C++ | cpp/improper-null-termination | Potential improper null termination |
+| CWE-664 | C/C++ | cpp/return-stack-allocated-memory | Returning stack-allocated memory |
+| CWE-664 | C/C++ | cpp/uninitialized-local | Potentially uninitialized local variable |
+| CWE-664 | C/C++ | cpp/using-expired-stack-address | Use of expired stack-address |
+| CWE-664 | C/C++ | cpp/self-assignment-check | Self assignment check |
+| CWE-664 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-664 | C/C++ | cpp/integer-overflow-tainted | Potential integer arithmetic overflow |
+| CWE-664 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-664 | C/C++ | cpp/user-controlled-bypass | Authentication bypass by spoofing |
+| CWE-664 | C/C++ | cpp/cleartext-storage-buffer | Cleartext storage of sensitive information in buffer |
+| CWE-664 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-664 | C/C++ | cpp/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-664 | C/C++ | cpp/cleartext-storage-database | Cleartext storage of sensitive information in an SQLite database |
+| CWE-664 | C/C++ | cpp/iterator-to-expired-container | Iterator to expired container |
+| CWE-664 | C/C++ | cpp/use-of-string-after-lifetime-ends | Use of string after lifetime ends |
+| CWE-664 | C/C++ | cpp/use-of-unique-pointer-after-lifetime-ends | Use of unique pointer after lifetime ends |
+| CWE-664 | C/C++ | cpp/unsafe-create-process-call | NULL application name with an unquoted path in call to CreateProcess |
+| CWE-664 | C/C++ | cpp/conditionally-uninitialized-variable | Conditionally uninitialized variable |
+| CWE-664 | C/C++ | cpp/system-data-exposure | Exposure of system data to an unauthorized control sphere |
+| CWE-664 | C/C++ | cpp/potential-system-data-exposure | Potential exposure of sensitive system data to an unauthorized control sphere |
+| CWE-664 | C/C++ | cpp/external-entity-expansion | XML external entity expansion |
+| CWE-664 | C/C++ | cpp/incorrect-string-type-conversion | Cast from char to wchar_t |
+| CWE-664 | C/C++ | cpp/world-writable-file-creation | File created without restricting permissions |
+| CWE-664 | C/C++ | cpp/open-call-with-mode-argument | File opened with O_CREAT flag but without mode argument |
+| CWE-664 | C/C++ | cpp/unsafe-dacl-security-descriptor | Setting a DACL to NULL in a SECURITY_DESCRIPTOR |
+| CWE-664 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-664 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-664 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-664 | C/C++ | cpp/type-confusion | Type confusion |
+| CWE-664 | C/C++ | cpp/work-with-file-without-permissions-rights | Writing to a file without setting permissions |
+| CWE-664 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-664 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-664 | C/C++ | cpp/drop-linux-privileges-outoforder | LinuxPrivilegeDroppingOutoforder |
+| CWE-664 | C/C++ | cpp/pam-auth-bypass | PAM Authorization bypass |
+| CWE-664 | C/C++ | cpp/private-cleartext-write | Exposure of private information |
+| CWE-664 | C/C++ | cpp/insecure-generation-of-filename | Insecure generation of filenames |
+| CWE-664 | C/C++ | cpp/memory-leak-on-failed-call-to-realloc | Memory leak on failed call to realloc |
+| CWE-664 | C/C++ | cpp/data-decompression-bomb | User-controlled file decompression |
+| CWE-664 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-664 | C/C++ | cpp/use-after-expired-lifetime | Use of object after its lifetime has ended |
+| CWE-664 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-664 | C/C++ | cpp/double-release | Errors When Double Release |
+| CWE-664 | C/C++ | cpp/improper-check-return-value-scanf | Improper check of return value of scanf |
+| CWE-664 | C/C++ | cpp/resource-not-released-in-destructor | Resource not released in destructor |
+| CWE-664 | C# | cs/dispose-not-called-on-throw | Dispose may not be called if an exception is thrown during execution |
+| CWE-664 | C# | cs/member-not-disposed | Missing Dispose call |
+| CWE-664 | C# | cs/missing-dispose-method | Missing Dispose method |
+| CWE-664 | C# | cs/local-not-disposed | Missing Dispose call on local IDisposable |
+| CWE-664 | C# | cs/class-name-comparison | Erroneous class compare |
+| CWE-664 | C# | cs/cast-from-abstract-to-concrete-collection | Cast from abstract to concrete collection |
+| CWE-664 | C# | cs/expose-implementation | Exposing internal representation |
+| CWE-664 | C# | cs/static-array | Array constant vulnerable to change |
+| CWE-664 | C# | cs/web/debug-code | ASP.NET: leftover debug code |
+| CWE-664 | C# | cs/web/html-hidden-input | Use of HTMLInputHidden |
+| CWE-664 | C# | cs/unsafe-sync-on-field | Futile synchronization on field |
+| CWE-664 | C# | cs/inconsistent-lock-sequence | Inconsistent lock sequence |
+| CWE-664 | C# | cs/lock-this | Locking the 'this' object in a lock statement |
+| CWE-664 | C# | cs/locked-wait | A lock is held during a wait |
+| CWE-664 | C# | cs/unsynchronized-getter | Inconsistently synchronized property |
+| CWE-664 | C# | cs/unsafe-double-checked-lock | Double-checked lock is not thread-safe |
+| CWE-664 | C# | cs/unsynchronized-static-access | Unsynchronized access to static collection member in non-static context |
+| CWE-664 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-664 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-664 | C# | cs/unassigned-field | Field is never assigned a non-default value |
+| CWE-664 | C# | cs/web/file-upload | Use of file upload |
+| CWE-664 | C# | cs/catch-of-all-exceptions | Generic catch clause |
+| CWE-664 | C# | cs/loss-of-precision | Possible loss of precision |
+| CWE-664 | C# | cs/web/debug-binary | Creating an ASP.NET debug binary may reveal sensitive information |
+| CWE-664 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | C# | cs/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-664 | C# | cs/code-injection | Improper control of generation of code |
+| CWE-664 | C# | cs/sensitive-data-transmission | Information exposure through transmitted data |
+| CWE-664 | C# | cs/information-exposure-through-exception | Information exposure through an exception |
+| CWE-664 | C# | cs/web/missing-function-level-access-control | Missing function level access control |
+| CWE-664 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-664 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-664 | C# | cs/exposure-of-sensitive-information | Exposure of private information |
+| CWE-664 | C# | cs/session-reuse | Failure to abandon session |
+| CWE-664 | C# | cs/web/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-664 | C# | cs/deserialized-delegate | Deserialized delegate |
+| CWE-664 | C# | cs/unsafe-deserialization | Unsafe deserializer |
+| CWE-664 | C# | cs/unsafe-deserialization-untrusted-input | Deserialization of untrusted data |
+| CWE-664 | C# | cs/web/directory-browse-enabled | ASP.NET config file enables directory browsing |
+| CWE-664 | C# | cs/web/unvalidated-url-redirection | URL redirection from remote source |
+| CWE-664 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-664 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-664 | C# | cs/web/insecure-direct-object-reference | Insecure Direct Object Reference |
+| CWE-664 | C# | cs/redos | Denial of Service from comparison of user input against expensive regex |
+| CWE-664 | C# | cs/regex-injection | Regular expression injection |
+| CWE-664 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-664 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-664 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-664 | C# | cs/web/broad-cookie-domain | Cookie security: overly broad domain |
+| CWE-664 | C# | cs/web/broad-cookie-path | Cookie security: overly broad path |
+| CWE-664 | C# | cs/web/persistent-cookie | Cookie security: persistent cookie |
+| CWE-664 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-664 | C# | cs/request-forgery | Server-side request forgery |
+| CWE-664 | Go | go/shift-out-of-range | Shift out of range |
+| CWE-664 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | Go | go/unsafe-unzip-symlink | Arbitrary file write extracting an archive containing symbolic links |
+| CWE-664 | Go | go/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-664 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-664 | Go | go/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-664 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-664 | Go | go/insecure-hostkeycallback | Use of insecure HostKeyCallback implementation |
+| CWE-664 | Go | go/bad-redirect-check | Bad redirect check |
+| CWE-664 | Go | go/unvalidated-url-redirection | Open URL redirect |
+| CWE-664 | Go | go/email-injection | Email content injection |
+| CWE-664 | Go | go/incorrect-integer-conversion | Incorrect conversion between integer types |
+| CWE-664 | Go | go/uncontrolled-allocation-size | Slice memory allocation with excessive size value |
+| CWE-664 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-664 | Go | go/request-forgery | Uncontrolled data used in network request |
+| CWE-664 | Go | go/timing-attack | Timing attacks due to comparison of sensitive secrets |
+| CWE-664 | Go | go/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-664 | Go | go/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-664 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-664 | Go | go/uncontrolled-file-decompression | Uncontrolled file decompression |
+| CWE-664 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-664 | Go | go/ssrf | Uncontrolled data used in network request |
+| CWE-664 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-664 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-664 | Java/Kotlin | java/implicit-cast-in-compound-assignment | Implicit narrowing conversion in compound assignment |
+| CWE-664 | Java/Kotlin | java/integer-multiplication-cast-to-long | Result of multiplication cast to wider type |
+| CWE-664 | Java/Kotlin | java/missing-call-to-super-clone | Missing super clone |
+| CWE-664 | Java/Kotlin | java/wait-on-condition-interface | Wait on condition |
+| CWE-664 | Java/Kotlin | java/call-to-thread-run | Direct call to a run() method |
+| CWE-664 | Java/Kotlin | java/unsafe-double-checked-locking | Double-checked locking is not thread-safe |
+| CWE-664 | Java/Kotlin | java/unsafe-double-checked-locking-init-order | Race condition in double-checked locking object initialization |
+| CWE-664 | Java/Kotlin | java/unsafe-sync-on-field | Futile synchronization on field |
+| CWE-664 | Java/Kotlin | java/inconsistent-field-synchronization | Inconsistent synchronization for field |
+| CWE-664 | Java/Kotlin | java/lazy-initialization | Incorrect lazy initialization of a static field |
+| CWE-664 | Java/Kotlin | java/non-sync-override | Non-synchronized override of synchronized method |
+| CWE-664 | Java/Kotlin | java/notify-instead-of-notify-all | notify instead of notifyAll |
+| CWE-664 | Java/Kotlin | java/sleep-with-lock-held | Sleep with lock held |
+| CWE-664 | Java/Kotlin | java/sync-on-boxed-types | Synchronization on boxed types or strings |
+| CWE-664 | Java/Kotlin | java/unsynchronized-getter | Inconsistent synchronization of getter and setter |
+| CWE-664 | Java/Kotlin | java/inconsistent-sync-writeobject | Inconsistent synchronization for writeObject() |
+| CWE-664 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-664 | Java/Kotlin | java/wait-with-two-locks | Wait with two locks held |
+| CWE-664 | Java/Kotlin | java/missing-super-finalize | Finalizer inconsistency |
+| CWE-664 | Java/Kotlin | java/input-resource-leak | Potential input resource leak |
+| CWE-664 | Java/Kotlin | java/database-resource-leak | Potential database resource leak |
+| CWE-664 | Java/Kotlin | java/output-resource-leak | Potential output resource leak |
+| CWE-664 | Java/Kotlin | java/impossible-array-cast | Impossible array cast |
+| CWE-664 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | Java/Kotlin | java/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-664 | Java/Kotlin | java/partial-path-traversal | Partial path traversal vulnerability |
+| CWE-664 | Java/Kotlin | java/partial-path-traversal-from-remote | Partial path traversal vulnerability from remote |
+| CWE-664 | Java/Kotlin | java/exec-tainted-environment | Building a command with an injected environment variable |
+| CWE-664 | Java/Kotlin | java/android/arbitrary-apk-installation | Android APK installation |
+| CWE-664 | Java/Kotlin | java/groovy-injection | Groovy Language injection |
+| CWE-664 | Java/Kotlin | java/insecure-bean-validation | Insecure Bean Validation |
+| CWE-664 | Java/Kotlin | java/jexl-expression-injection | Expression language injection (JEXL) |
+| CWE-664 | Java/Kotlin | java/mvel-expression-injection | Expression language injection (MVEL) |
+| CWE-664 | Java/Kotlin | java/spel-expression-injection | Expression language injection (Spring) |
+| CWE-664 | Java/Kotlin | java/server-side-template-injection | Server-side template injection |
+| CWE-664 | Java/Kotlin | java/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-664 | Java/Kotlin | java/android/sensitive-notification | Exposure of sensitive information to notifications |
+| CWE-664 | Java/Kotlin | java/android/sensitive-text | Exposure of sensitive information to UI text views |
+| CWE-664 | Java/Kotlin | java/android/websettings-allow-content-access | Android WebView settings allows access to content links |
+| CWE-664 | Java/Kotlin | java/android/websettings-file-access | Android WebSettings file access |
+| CWE-664 | Java/Kotlin | java/spring-boot-exposed-actuators | Exposed Spring Boot actuators |
+| CWE-664 | Java/Kotlin | java/spring-boot-exposed-actuators-config | Exposed Spring Boot actuators in configuration file |
+| CWE-664 | Java/Kotlin | java/local-temp-file-or-directory-information-disclosure | Local information disclosure in a temporary directory |
+| CWE-664 | Java/Kotlin | java/error-message-exposure | Information exposure through an error message |
+| CWE-664 | Java/Kotlin | java/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-664 | Java/Kotlin | java/android/intent-uri-permission-manipulation | Intent URI permission manipulation |
+| CWE-664 | Java/Kotlin | java/unsafe-cert-trust | Unsafe certificate trust |
+| CWE-664 | Java/Kotlin | java/android/insecure-local-key-gen | Insecurely generated keys for local authentication |
+| CWE-664 | Java/Kotlin | java/android/insecure-local-authentication | Insecure local authentication |
+| CWE-664 | Java/Kotlin | java/insecure-smtp-ssl | Insecure JavaMail SSL Configuration |
+| CWE-664 | Java/Kotlin | java/unsafe-hostname-verification | Unsafe hostname verification |
+| CWE-664 | Java/Kotlin | java/android/backup-enabled | Application backup allowed |
+| CWE-664 | Java/Kotlin | java/android/cleartext-storage-database | Cleartext storage of sensitive information using a local database on Android |
+| CWE-664 | Java/Kotlin | java/android/cleartext-storage-filesystem | Cleartext storage of sensitive information in the Android filesystem |
+| CWE-664 | Java/Kotlin | java/cleartext-storage-in-class | Cleartext storage of sensitive information using storable class |
+| CWE-664 | Java/Kotlin | java/cleartext-storage-in-cookie | Cleartext storage of sensitive information in cookie |
+| CWE-664 | Java/Kotlin | java/cleartext-storage-in-properties | Cleartext storage of sensitive information using 'Properties' class |
+| CWE-664 | Java/Kotlin | java/android/cleartext-storage-shared-prefs | Cleartext storage of sensitive information using SharedPreferences on Android |
+| CWE-664 | Java/Kotlin | java/socket-auth-race-condition | Race condition in socket authentication |
+| CWE-664 | Java/Kotlin | java/android/unsafe-content-uri-resolution | Uncontrolled data used in content resolution |
+| CWE-664 | Java/Kotlin | java/android/fragment-injection | Android fragment injection |
+| CWE-664 | Java/Kotlin | java/android/fragment-injection-preference-activity | Android fragment injection in PreferenceActivity |
+| CWE-664 | Java/Kotlin | java/android/debuggable-attribute-enabled | Android debuggable attribute enabled |
+| CWE-664 | Java/Kotlin | java/android/webview-debugging-enabled | Android Webview debugging enabled |
+| CWE-664 | Java/Kotlin | java/trust-boundary-violation | Trust boundary violation |
+| CWE-664 | Java/Kotlin | java/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-664 | Java/Kotlin | java/insecure-basic-auth | Insecure basic authentication |
+| CWE-664 | Java/Kotlin | java/insecure-ldap-auth | Insecure LDAP authentication |
+| CWE-664 | Java/Kotlin | java/android/sensitive-keyboard-cache | Android sensitive keyboard cache |
+| CWE-664 | Java/Kotlin | java/sensitive-log | Insertion of sensitive information into log files |
+| CWE-664 | Java/Kotlin | java/unvalidated-url-forward | URL forward from a remote source |
+| CWE-664 | Java/Kotlin | java/unvalidated-url-redirection | URL redirection from remote source |
+| CWE-664 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-664 | Java/Kotlin | java/tainted-numeric-cast | User-controlled data in numeric cast |
+| CWE-664 | Java/Kotlin | java/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-664 | Java/Kotlin | java/redos | Inefficient regular expression |
+| CWE-664 | Java/Kotlin | java/regex-injection | Regular expression injection |
+| CWE-664 | Java/Kotlin | java/world-writable-file-read | Reading from a world writable file |
+| CWE-664 | Java/Kotlin | java/android/unsafe-android-webview-fetch | Unsafe resource fetching in Android WebView |
+| CWE-664 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-664 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-664 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-664 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-664 | Java/Kotlin | java/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-664 | Java/Kotlin | java/tainted-permissions-check | User-controlled data used in permissions check |
+| CWE-664 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-664 | Java/Kotlin | java/lock-order-inconsistency | Lock order inconsistency |
+| CWE-664 | Java/Kotlin | java/ssrf | Server-side request forgery |
+| CWE-664 | Java/Kotlin | java/improper-intent-verification | Improper verification of intent by broadcast receiver |
+| CWE-664 | Java/Kotlin | java/android/incomplete-provider-permissions | Missing read or write permission in a content provider |
+| CWE-664 | Java/Kotlin | java/android/implicitly-exported-component | Implicitly exported Android component |
+| CWE-664 | Java/Kotlin | java/android/implicit-pendingintents | Use of implicit PendingIntents |
+| CWE-664 | Java/Kotlin | java/android/sensitive-communication | Leaking sensitive information through an implicit Intent |
+| CWE-664 | Java/Kotlin | java/android/sensitive-result-receiver | Leaking sensitive information through a ResultReceiver |
+| CWE-664 | Java/Kotlin | java/android/intent-redirection | Android Intent redirection |
+| CWE-664 | Java/Kotlin | java/empty-finalizer | Empty body of finalizer |
+| CWE-664 | Java/Kotlin | java/unassigned-field | Field is never assigned a non-null value |
+| CWE-664 | Java/Kotlin | java/overly-general-catch | Overly-general catch clause |
+| CWE-664 | Java/Kotlin | java/abstract-to-concrete-cast | Cast from abstract to concrete collection |
+| CWE-664 | Java/Kotlin | java/internal-representation-exposure | Exposing internal representation |
+| CWE-664 | Java/Kotlin | java/static-array | Array constant vulnerable to change |
+| CWE-664 | Java/Kotlin | java/log4j-injection | Potential Log4J LDAP JNDI injection (CVE-2021-44228) |
+| CWE-664 | Java/Kotlin | java/openstream-called-on-tainted-url | openStream called on URLs created from remote source |
+| CWE-664 | Java/Kotlin | java/file-path-injection | File Path Injection |
+| CWE-664 | Java/Kotlin | java/beanshell-injection | BeanShell injection |
+| CWE-664 | Java/Kotlin | java/android-insecure-dex-loading | Insecure loading of an Android Dex File |
+| CWE-664 | Java/Kotlin | java/jshell-injection | JShell injection |
+| CWE-664 | Java/Kotlin | java/javaee-expression-injection | Jakarta Expression Language injection |
+| CWE-664 | Java/Kotlin | java/jython-injection | Injection in Jython |
+| CWE-664 | Java/Kotlin | java/unsafe-eval | Injection in Java Script Engine |
+| CWE-664 | Java/Kotlin | java/spring-view-manipulation-implicit | Spring Implicit View Manipulation |
+| CWE-664 | Java/Kotlin | java/spring-view-manipulation | Spring View Manipulation |
+| CWE-664 | Java/Kotlin | java/insecure-webview-resource-response | Insecure Android WebView Resource Response |
+| CWE-664 | Java/Kotlin | java/sensitive-android-file-leak | Leaking sensitive Android file |
+| CWE-664 | Java/Kotlin | java/possible-timing-attack-against-signature | Possible timing attack against signature validation |
+| CWE-664 | Java/Kotlin | java/timing-attack-against-headers-value | Timing attack against header value |
+| CWE-664 | Java/Kotlin | java/timing-attack-against-signature | Timing attack against signature validation |
+| CWE-664 | Java/Kotlin | java/ignored-hostname-verification | Ignored result of hostname verification |
+| CWE-664 | Java/Kotlin | java/insecure-ldaps-endpoint | Insecure LDAPS Endpoint Configuration |
+| CWE-664 | Java/Kotlin | java/disabled-certificate-revocation-checking | Disabled certificate revocation checking |
+| CWE-664 | Java/Kotlin | java/unvalidated-cors-origin-set | CORS is derived from untrusted input |
+| CWE-664 | Java/Kotlin | java/local-thread-resource-abuse | Uncontrolled thread resource consumption from local input source |
+| CWE-664 | Java/Kotlin | java/thread-resource-abuse | Uncontrolled thread resource consumption |
+| CWE-664 | Java/Kotlin | java/android/unsafe-reflection | Load 3rd party classes or code ('unsafe reflection') without signature check |
+| CWE-664 | Java/Kotlin | java/unsafe-reflection | Use of externally-controlled input to select classes or code ('unsafe reflection') |
+| CWE-664 | Java/Kotlin | java/main-method-in-enterprise-bean | Main Method in Enterprise Java Bean |
+| CWE-664 | Java/Kotlin | java/main-method-in-web-components | Main Method in Java EE Web Components |
+| CWE-664 | Java/Kotlin | java/struts-development-mode | Apache Struts development mode enabled |
+| CWE-664 | Java/Kotlin | java/unsafe-deserialization-rmi | Unsafe deserialization in a remotely callable method |
+| CWE-664 | Java/Kotlin | java/unsafe-deserialization-spring-exporter-in-configuration-class | Unsafe deserialization with Spring's remote service exporters |
+| CWE-664 | Java/Kotlin | java/unsafe-deserialization-spring-exporter-in-xml-configuration | Unsafe deserialization with Spring's remote service exporters |
+| CWE-664 | Java/Kotlin | java/uncontrolled-file-decompression | Uncontrolled file decompression |
+| CWE-664 | Java/Kotlin | java/server-directory-listing | Directories and files exposure |
+| CWE-664 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-664 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-664 | Java/Kotlin | java/sensitive-query-with-get | Sensitive GET Query |
+| CWE-664 | Java/Kotlin | java/spring-unvalidated-url-redirection | Spring url redirection from remote source |
+| CWE-664 | Java/Kotlin | java/permissive-dot-regex | URL matched by permissive . in a regular expression |
+| CWE-664 | Java/Kotlin | java/insecure-rmi-jmx-server-initialization | InsecureRmiJmxAuthenticationEnvironment |
+| CWE-664 | Java/Kotlin | java/incorrect-url-verification | Incorrect URL verification |
+| CWE-664 | JavaScript/TypeScript | js/alert-call | Invocation of alert |
+| CWE-664 | JavaScript/TypeScript | js/unsafe-external-link | Potentially unsafe external link |
+| CWE-664 | JavaScript/TypeScript | js/enabling-electron-insecure-content | Enabling Electron allowRunningInsecureContent |
+| CWE-664 | JavaScript/TypeScript | js/enabling-electron-renderer-node-integration | Enabling Node.js integration for Electron web content renderers |
+| CWE-664 | JavaScript/TypeScript | js/implicit-operand-conversion | Implicit operand conversion |
+| CWE-664 | JavaScript/TypeScript | js/shift-out-of-range | Shift out of range |
+| CWE-664 | JavaScript/TypeScript | js/debugger-statement | Use of debugger statement |
+| CWE-664 | JavaScript/TypeScript | js/invalid-prototype-value | Invalid prototype value |
+| CWE-664 | JavaScript/TypeScript | js/property-assignment-on-primitive | Assignment to property of primitive value |
+| CWE-664 | JavaScript/TypeScript | js/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-664 | JavaScript/TypeScript | js/redos | Inefficient regular expression |
+| CWE-664 | JavaScript/TypeScript | js/missing-origin-check | Missing origin verification in postMessage handler |
+| CWE-664 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | JavaScript/TypeScript | js/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-664 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-664 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-664 | JavaScript/TypeScript | js/bad-code-sanitization | Improper code sanitization |
+| CWE-664 | JavaScript/TypeScript | js/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-664 | JavaScript/TypeScript | js/unsafe-dynamic-method-access | Unsafe dynamic method access |
+| CWE-664 | JavaScript/TypeScript | js/case-sensitive-middleware-path | Case-sensitive middleware path |
+| CWE-664 | JavaScript/TypeScript | js/file-access-to-http | File data in outbound network request |
+| CWE-664 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-664 | JavaScript/TypeScript | js/cross-window-information-leak | Cross-window communication with unrestricted target origin |
+| CWE-664 | JavaScript/TypeScript | js/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-664 | JavaScript/TypeScript | js/disabling-certificate-validation | Disabling certificate validation |
+| CWE-664 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-664 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-664 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-664 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-664 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-664 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-664 | JavaScript/TypeScript | js/insecure-temporary-file | Insecure temporary file |
+| CWE-664 | JavaScript/TypeScript | js/session-fixation | Failure to abandon session |
+| CWE-664 | JavaScript/TypeScript | js/resource-exhaustion-from-deep-object-traversal | Resources exhaustion from deep object traversal |
+| CWE-664 | JavaScript/TypeScript | js/remote-property-injection | Remote property injection |
+| CWE-664 | JavaScript/TypeScript | js/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-664 | JavaScript/TypeScript | js/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-664 | JavaScript/TypeScript | js/sensitive-get-query | Sensitive data read from GET request |
+| CWE-664 | JavaScript/TypeScript | js/client-side-unvalidated-url-redirection | Client-side URL redirect |
+| CWE-664 | JavaScript/TypeScript | js/server-side-unvalidated-url-redirection | Server-side URL redirect |
+| CWE-664 | JavaScript/TypeScript | js/xxe | XML external entity expansion |
+| CWE-664 | JavaScript/TypeScript | js/clear-text-cookie | Clear text transmission of sensitive cookie |
+| CWE-664 | JavaScript/TypeScript | js/host-header-forgery-in-email-generation | Host header poisoning in email generation |
+| CWE-664 | JavaScript/TypeScript | js/regex-injection | Regular expression injection |
+| CWE-664 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-664 | JavaScript/TypeScript | js/resource-exhaustion | Resource exhaustion |
+| CWE-664 | JavaScript/TypeScript | js/xml-bomb | XML internal entity expansion |
+| CWE-664 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-664 | JavaScript/TypeScript | js/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-664 | JavaScript/TypeScript | js/different-kinds-comparison-bypass | Comparison of user-controlled data of different kinds |
+| CWE-664 | JavaScript/TypeScript | js/insecure-download | Download of sensitive file through insecure connection |
+| CWE-664 | JavaScript/TypeScript | js/functionality-from-untrusted-domain | Untrusted domain used in script or other content |
+| CWE-664 | JavaScript/TypeScript | js/functionality-from-untrusted-source | Inclusion of functionality from an untrusted source |
+| CWE-664 | JavaScript/TypeScript | js/type-confusion-through-parameter-tampering | Type confusion through parameter tampering |
+| CWE-664 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-664 | JavaScript/TypeScript | js/http-to-file-access | Network data written to file |
+| CWE-664 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-664 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-664 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-664 | JavaScript/TypeScript | js/client-side-request-forgery | Client-side request forgery |
+| CWE-664 | JavaScript/TypeScript | js/request-forgery | Server-side request forgery |
+| CWE-664 | JavaScript/TypeScript | js/cors-permissive-configuration | Permissive CORS configuration |
+| CWE-664 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-664 | JavaScript/TypeScript | js/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-664 | JavaScript/TypeScript | javascript/ssrf | Uncontrolled data used in network request |
+| CWE-664 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/remote-property-injection-more-sources | Remote property injection with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/unsafe-deserialization-more-sources | Deserialization of user-controlled data with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/xxe-more-sources | XML external entity expansion with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/regex-injection-more-sources | Regular expression injection with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/resource-exhaustion-more-sources | Resource exhaustion with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/xml-bomb-more-sources | XML internal entity expansion with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/user-controlled-bypass-more-sources | User-controlled bypass of security check with additional heuristic sources |
+| CWE-664 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-664 | Python | py/catch-base-exception | Except block handles 'BaseException' |
+| CWE-664 | Python | py/implicit-string-concatenation-in-list | Implicit string concatenation in a list |
+| CWE-664 | Python | py/use-of-input | 'input' function used in Python 2 |
+| CWE-664 | Python | py/file-not-closed | File is not always closed |
+| CWE-664 | Python | py/bind-socket-all-network-interfaces | Binding a socket to all network interfaces |
+| CWE-664 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | Python | py/tarslip | Arbitrary file write during tarfile extraction |
+| CWE-664 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-664 | Python | py/code-injection | Code injection |
+| CWE-664 | Python | py/stack-trace-exposure | Information exposure through an exception |
+| CWE-664 | Python | py/flask-debug | Flask app is run in debug mode |
+| CWE-664 | Python | py/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-664 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-664 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-664 | Python | py/insecure-temporary-file | Insecure temporary file |
+| CWE-664 | Python | py/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-664 | Python | py/url-redirection | URL redirection from remote source |
+| CWE-664 | Python | py/xxe | XML external entity expansion |
+| CWE-664 | Python | py/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-664 | Python | py/redos | Inefficient regular expression |
+| CWE-664 | Python | py/regex-injection | Regular expression injection |
+| CWE-664 | Python | py/overly-permissive-file | Overly permissive file permissions |
+| CWE-664 | Python | py/xml-bomb | XML internal entity expansion |
+| CWE-664 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-664 | Python | py/full-ssrf | Full server-side request forgery |
+| CWE-664 | Python | py/partial-ssrf | Partial server-side request forgery |
+| CWE-664 | Python | py/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-664 | Python | py/tarslip-extended | Arbitrary file write during tarfile extraction |
+| CWE-664 | Python | py/unsafe-unpacking | Arbitrary file write during a tarball extraction from a user controlled source |
+| CWE-664 | Python | py/js2py-rce | JavaScript code execution |
+| CWE-664 | Python | py/possible-timing-attack-against-hash | Timing attack against Hash |
+| CWE-664 | Python | py/timing-attack-against-hash | Timing attack against Hash |
+| CWE-664 | Python | py/timing-attack-against-header-value | Timing attack against header value |
+| CWE-664 | Python | py/possible-timing-attack-sensitive-info | Timing attack against secret |
+| CWE-664 | Python | py/timing-attack-sensitive-info | Timing attack against secret |
+| CWE-664 | Python | py/flask-constant-secret-key | Initializing SECRET_KEY of Flask application with Constant value |
+| CWE-664 | Python | py/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-664 | Python | py/decompression-bomb | Decompression Bomb |
+| CWE-664 | Python | py/insecure-ldap-auth | Python Insecure LDAP Authentication |
+| CWE-664 | Python | py/simple-xml-rpc-server-dos | SimpleXMLRPCServer denial of service |
+| CWE-664 | Python | py/unicode-dos | Denial of Service using Unicode Characters |
+| CWE-664 | Python | py/cors-misconfiguration-with-credentials | Cors misconfiguration with credentials |
+| CWE-664 | Ruby | rb/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-664 | Ruby | rb/zip-slip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-664 | Ruby | rb/unsafe-hmac-comparison | Unsafe HMAC Comparison |
+| CWE-664 | Ruby | rb/unsafe-unsafeyamldeserialization | Deserialization of user-controlled yaml data |
+| CWE-664 | Ruby | rb/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-664 | Ruby | rb/user-controlled-file-decompression | User-controlled file decompression |
+| CWE-664 | Ruby | rb/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-664 | Ruby | rb/server-side-template-injection | Server-side template injection |
+| CWE-664 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-664 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-664 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-664 | Ruby | rb/code-injection | Code injection |
+| CWE-664 | Ruby | rb/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-664 | Ruby | rb/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-664 | Ruby | rb/redos | Inefficient regular expression |
+| CWE-664 | Ruby | rb/regexp-injection | Regular expression injection |
+| CWE-664 | Ruby | rb/stack-trace-exposure | Information exposure through an exception |
+| CWE-664 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-664 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-664 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-664 | Ruby | rb/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-664 | Ruby | rb/sensitive-get-query | Sensitive data read from GET request |
+| CWE-664 | Ruby | rb/url-redirection | URL redirection from remote source |
+| CWE-664 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-664 | Ruby | rb/weak-cookie-configuration | Weak cookie configuration |
+| CWE-664 | Ruby | rb/overly-permissive-file | Overly permissive file permissions |
+| CWE-664 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-664 | Ruby | rb/insecure-download | Download of sensitive file through insecure connection |
+| CWE-664 | Ruby | rb/http-to-file-access | Network data written to file |
+| CWE-664 | Ruby | rb/insecure-mass-assignment | Insecure Mass Assignment |
+| CWE-664 | Ruby | rb/request-forgery | Server-side request forgery |
+| CWE-664 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-664 | Rust | rust/cleartext-storage-database | Cleartext storage of sensitive information in a database |
+| CWE-664 | Rust | rust/ctor-initialization | Bad 'ctor' initialization |
+| CWE-664 | Rust | rust/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-664 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-664 | Rust | rust/access-after-lifetime-ended | Access of a pointer after its lifetime has ended |
+| CWE-664 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-664 | Rust | rust/request-forgery | Server-side request forgery |
+| CWE-664 | Swift | swift/unsafe-unpacking | Arbitrary file write during a zip extraction from a user controlled source |
+| CWE-664 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-664 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-664 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-664 | Swift | swift/redos | Inefficient regular expression |
+| CWE-664 | Swift | swift/constant-password | Constant password |
+| CWE-664 | Swift | swift/cleartext-storage-database | Cleartext storage of sensitive information in a local database |
+| CWE-664 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-664 | Swift | swift/cleartext-storage-preferences | Cleartext storage of sensitive information in an application preference store |
+| CWE-664 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-664 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-664 | Swift | swift/regex-injection | Regular expression injection |
+| CWE-665 | C/C++ | cpp/global-use-before-init | Global variable may be used before initialization |
+| CWE-665 | C/C++ | cpp/initialization-not-run | Initialization code not run |
+| CWE-665 | C/C++ | cpp/not-initialised | Variable not initialized before use |
+| CWE-665 | C/C++ | cpp/alloca-in-loop | Call to alloca in a loop |
+| CWE-665 | C/C++ | cpp/improper-null-termination | Potential improper null termination |
+| CWE-665 | C/C++ | cpp/uninitialized-local | Potentially uninitialized local variable |
+| CWE-665 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-665 | C/C++ | cpp/conditionally-uninitialized-variable | Conditionally uninitialized variable |
+| CWE-665 | C# | cs/unassigned-field | Field is never assigned a non-default value |
+| CWE-665 | Go | go/uncontrolled-allocation-size | Slice memory allocation with excessive size value |
+| CWE-665 | Java/Kotlin | java/exec-tainted-environment | Building a command with an injected environment variable |
+| CWE-665 | Java/Kotlin | java/unassigned-field | Field is never assigned a non-null value |
+| CWE-665 | Java/Kotlin | java/insecure-rmi-jmx-server-initialization | InsecureRmiJmxAuthenticationEnvironment |
+| CWE-665 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-665 | JavaScript/TypeScript | js/resource-exhaustion | Resource exhaustion |
+| CWE-665 | JavaScript/TypeScript | js/resource-exhaustion-more-sources | Resource exhaustion with additional heuristic sources |
+| CWE-665 | Python | py/implicit-string-concatenation-in-list | Implicit string concatenation in a list |
+| CWE-665 | Python | py/unicode-dos | Denial of Service using Unicode Characters |
+| CWE-665 | Rust | rust/ctor-initialization | Bad 'ctor' initialization |
+| CWE-665 | Rust | rust/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-666 | C/C++ | cpp/double-free | Potential double free |
+| CWE-666 | C/C++ | cpp/use-after-free | Potential use after free |
+| CWE-666 | C/C++ | cpp/return-stack-allocated-memory | Returning stack-allocated memory |
+| CWE-666 | C/C++ | cpp/using-expired-stack-address | Use of expired stack-address |
+| CWE-666 | C/C++ | cpp/self-assignment-check | Self assignment check |
+| CWE-666 | C/C++ | cpp/iterator-to-expired-container | Iterator to expired container |
+| CWE-666 | C/C++ | cpp/use-of-string-after-lifetime-ends | Use of string after lifetime ends |
+| CWE-666 | C/C++ | cpp/use-of-unique-pointer-after-lifetime-ends | Use of unique pointer after lifetime ends |
+| CWE-666 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-666 | C/C++ | cpp/use-after-expired-lifetime | Use of object after its lifetime has ended |
+| CWE-666 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-666 | C/C++ | cpp/double-release | Errors When Double Release |
+| CWE-666 | Rust | rust/access-after-lifetime-ended | Access of a pointer after its lifetime has ended |
+| CWE-666 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-667 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-667 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-667 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-667 | C# | cs/locked-wait | A lock is held during a wait |
+| CWE-667 | C# | cs/unsafe-double-checked-lock | Double-checked lock is not thread-safe |
+| CWE-667 | Java/Kotlin | java/unsafe-double-checked-locking | Double-checked locking is not thread-safe |
+| CWE-667 | Java/Kotlin | java/unsafe-double-checked-locking-init-order | Race condition in double-checked locking object initialization |
+| CWE-667 | Java/Kotlin | java/lazy-initialization | Incorrect lazy initialization of a static field |
+| CWE-667 | Java/Kotlin | java/sleep-with-lock-held | Sleep with lock held |
+| CWE-667 | Java/Kotlin | java/unsynchronized-getter | Inconsistent synchronization of getter and setter |
+| CWE-667 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-667 | Java/Kotlin | java/wait-with-two-locks | Wait with two locks held |
+| CWE-667 | Java/Kotlin | java/lock-order-inconsistency | Lock order inconsistency |
+| CWE-668 | GitHub Actions | actions/secret-exfiltration | Secret exfiltration |
+| CWE-668 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-668 | C/C++ | cpp/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-668 | C/C++ | cpp/unsafe-create-process-call | NULL application name with an unquoted path in call to CreateProcess |
+| CWE-668 | C/C++ | cpp/system-data-exposure | Exposure of system data to an unauthorized control sphere |
+| CWE-668 | C/C++ | cpp/potential-system-data-exposure | Potential exposure of sensitive system data to an unauthorized control sphere |
+| CWE-668 | C/C++ | cpp/world-writable-file-creation | File created without restricting permissions |
+| CWE-668 | C/C++ | cpp/open-call-with-mode-argument | File opened with O_CREAT flag but without mode argument |
+| CWE-668 | C/C++ | cpp/unsafe-dacl-security-descriptor | Setting a DACL to NULL in a SECURITY_DESCRIPTOR |
+| CWE-668 | C/C++ | cpp/work-with-file-without-permissions-rights | Writing to a file without setting permissions |
+| CWE-668 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-668 | C/C++ | cpp/private-cleartext-write | Exposure of private information |
+| CWE-668 | C/C++ | cpp/insecure-generation-of-filename | Insecure generation of filenames |
+| CWE-668 | C# | cs/static-array | Array constant vulnerable to change |
+| CWE-668 | C# | cs/web/html-hidden-input | Use of HTMLInputHidden |
+| CWE-668 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-668 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-668 | C# | cs/web/debug-binary | Creating an ASP.NET debug binary may reveal sensitive information |
+| CWE-668 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | C# | cs/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-668 | C# | cs/sensitive-data-transmission | Information exposure through transmitted data |
+| CWE-668 | C# | cs/information-exposure-through-exception | Information exposure through an exception |
+| CWE-668 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-668 | C# | cs/exposure-of-sensitive-information | Exposure of private information |
+| CWE-668 | C# | cs/web/directory-browse-enabled | ASP.NET config file enables directory browsing |
+| CWE-668 | C# | cs/web/persistent-cookie | Cookie security: persistent cookie |
+| CWE-668 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-668 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | Go | go/unsafe-unzip-symlink | Arbitrary file write extracting an archive containing symbolic links |
+| CWE-668 | Go | go/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-668 | Go | go/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-668 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-668 | Go | go/timing-attack | Timing attacks due to comparison of sensitive secrets |
+| CWE-668 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-668 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | Java/Kotlin | java/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-668 | Java/Kotlin | java/partial-path-traversal | Partial path traversal vulnerability |
+| CWE-668 | Java/Kotlin | java/partial-path-traversal-from-remote | Partial path traversal vulnerability from remote |
+| CWE-668 | Java/Kotlin | java/android/sensitive-notification | Exposure of sensitive information to notifications |
+| CWE-668 | Java/Kotlin | java/android/sensitive-text | Exposure of sensitive information to UI text views |
+| CWE-668 | Java/Kotlin | java/android/websettings-allow-content-access | Android WebView settings allows access to content links |
+| CWE-668 | Java/Kotlin | java/android/websettings-file-access | Android WebSettings file access |
+| CWE-668 | Java/Kotlin | java/spring-boot-exposed-actuators | Exposed Spring Boot actuators |
+| CWE-668 | Java/Kotlin | java/spring-boot-exposed-actuators-config | Exposed Spring Boot actuators in configuration file |
+| CWE-668 | Java/Kotlin | java/local-temp-file-or-directory-information-disclosure | Local information disclosure in a temporary directory |
+| CWE-668 | Java/Kotlin | java/error-message-exposure | Information exposure through an error message |
+| CWE-668 | Java/Kotlin | java/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-668 | Java/Kotlin | java/insecure-basic-auth | Insecure basic authentication |
+| CWE-668 | Java/Kotlin | java/insecure-ldap-auth | Insecure LDAP authentication |
+| CWE-668 | Java/Kotlin | java/android/sensitive-keyboard-cache | Android sensitive keyboard cache |
+| CWE-668 | Java/Kotlin | java/sensitive-log | Insertion of sensitive information into log files |
+| CWE-668 | Java/Kotlin | java/unvalidated-url-forward | URL forward from a remote source |
+| CWE-668 | Java/Kotlin | java/world-writable-file-read | Reading from a world writable file |
+| CWE-668 | Java/Kotlin | java/android/implicit-pendingintents | Use of implicit PendingIntents |
+| CWE-668 | Java/Kotlin | java/android/sensitive-communication | Leaking sensitive information through an implicit Intent |
+| CWE-668 | Java/Kotlin | java/android/sensitive-result-receiver | Leaking sensitive information through a ResultReceiver |
+| CWE-668 | Java/Kotlin | java/static-array | Array constant vulnerable to change |
+| CWE-668 | Java/Kotlin | java/openstream-called-on-tainted-url | openStream called on URLs created from remote source |
+| CWE-668 | Java/Kotlin | java/file-path-injection | File Path Injection |
+| CWE-668 | Java/Kotlin | java/insecure-webview-resource-response | Insecure Android WebView Resource Response |
+| CWE-668 | Java/Kotlin | java/sensitive-android-file-leak | Leaking sensitive Android file |
+| CWE-668 | Java/Kotlin | java/possible-timing-attack-against-signature | Possible timing attack against signature validation |
+| CWE-668 | Java/Kotlin | java/timing-attack-against-headers-value | Timing attack against header value |
+| CWE-668 | Java/Kotlin | java/timing-attack-against-signature | Timing attack against signature validation |
+| CWE-668 | Java/Kotlin | java/server-directory-listing | Directories and files exposure |
+| CWE-668 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-668 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-668 | Java/Kotlin | java/sensitive-query-with-get | Sensitive GET Query |
+| CWE-668 | JavaScript/TypeScript | js/unsafe-external-link | Potentially unsafe external link |
+| CWE-668 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | JavaScript/TypeScript | js/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-668 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-668 | JavaScript/TypeScript | js/file-access-to-http | File data in outbound network request |
+| CWE-668 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-668 | JavaScript/TypeScript | js/cross-window-information-leak | Cross-window communication with unrestricted target origin |
+| CWE-668 | JavaScript/TypeScript | js/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-668 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-668 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-668 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-668 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-668 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-668 | JavaScript/TypeScript | js/insecure-temporary-file | Insecure temporary file |
+| CWE-668 | JavaScript/TypeScript | js/sensitive-get-query | Sensitive data read from GET request |
+| CWE-668 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-668 | JavaScript/TypeScript | js/cors-permissive-configuration | Permissive CORS configuration |
+| CWE-668 | JavaScript/TypeScript | js/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-668 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-668 | Python | py/bind-socket-all-network-interfaces | Binding a socket to all network interfaces |
+| CWE-668 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | Python | py/tarslip | Arbitrary file write during tarfile extraction |
+| CWE-668 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-668 | Python | py/stack-trace-exposure | Information exposure through an exception |
+| CWE-668 | Python | py/flask-debug | Flask app is run in debug mode |
+| CWE-668 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-668 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-668 | Python | py/insecure-temporary-file | Insecure temporary file |
+| CWE-668 | Python | py/overly-permissive-file | Overly permissive file permissions |
+| CWE-668 | Python | py/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-668 | Python | py/tarslip-extended | Arbitrary file write during tarfile extraction |
+| CWE-668 | Python | py/unsafe-unpacking | Arbitrary file write during a tarball extraction from a user controlled source |
+| CWE-668 | Python | py/possible-timing-attack-against-hash | Timing attack against Hash |
+| CWE-668 | Python | py/timing-attack-against-hash | Timing attack against Hash |
+| CWE-668 | Python | py/timing-attack-against-header-value | Timing attack against header value |
+| CWE-668 | Python | py/possible-timing-attack-sensitive-info | Timing attack against secret |
+| CWE-668 | Python | py/timing-attack-sensitive-info | Timing attack against secret |
+| CWE-668 | Python | py/insecure-ldap-auth | Python Insecure LDAP Authentication |
+| CWE-668 | Python | py/cors-misconfiguration-with-credentials | Cors misconfiguration with credentials |
+| CWE-668 | Ruby | rb/zip-slip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-668 | Ruby | rb/unsafe-hmac-comparison | Unsafe HMAC Comparison |
+| CWE-668 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-668 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-668 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-668 | Ruby | rb/stack-trace-exposure | Information exposure through an exception |
+| CWE-668 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-668 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-668 | Ruby | rb/sensitive-get-query | Sensitive data read from GET request |
+| CWE-668 | Ruby | rb/weak-cookie-configuration | Weak cookie configuration |
+| CWE-668 | Ruby | rb/overly-permissive-file | Overly permissive file permissions |
+| CWE-668 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-668 | Swift | swift/unsafe-unpacking | Arbitrary file write during a zip extraction from a user controlled source |
+| CWE-668 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-668 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-669 | GitHub Actions | actions/artifact-poisoning/critical | Artifact poisoning |
+| CWE-669 | GitHub Actions | actions/artifact-poisoning/medium | Artifact poisoning |
+| CWE-669 | GitHub Actions | actions/unpinned-tag | Unpinned tag for a non-immutable Action in workflow |
+| CWE-669 | GitHub Actions | actions/untrusted-checkout/critical | Checkout of untrusted code in a privileged context |
+| CWE-669 | GitHub Actions | actions/untrusted-checkout/high | Checkout of untrusted code in trusted context |
+| CWE-669 | GitHub Actions | actions/untrusted-checkout/medium | Checkout of untrusted code in trusted context |
+| CWE-669 | GitHub Actions | actions/artifact-poisoning/path-traversal | Artifact Poisoning (Path Traversal) |
+| CWE-669 | GitHub Actions | actions/unversioned-immutable-action | Unversioned Immutable Action |
+| CWE-669 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-669 | C# | cs/web/file-upload | Use of file upload |
+| CWE-669 | C# | cs/web/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-669 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-669 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-669 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-669 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-669 | JavaScript/TypeScript | js/enabling-electron-insecure-content | Enabling Electron allowRunningInsecureContent |
+| CWE-669 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-669 | JavaScript/TypeScript | js/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-669 | JavaScript/TypeScript | js/xxe | XML external entity expansion |
+| CWE-669 | JavaScript/TypeScript | js/insecure-download | Download of sensitive file through insecure connection |
+| CWE-669 | JavaScript/TypeScript | js/functionality-from-untrusted-domain | Untrusted domain used in script or other content |
+| CWE-669 | JavaScript/TypeScript | js/functionality-from-untrusted-source | Inclusion of functionality from an untrusted source |
+| CWE-669 | JavaScript/TypeScript | js/http-to-file-access | Network data written to file |
+| CWE-669 | JavaScript/TypeScript | js/xxe-more-sources | XML external entity expansion with additional heuristic sources |
+| CWE-669 | Python | py/xxe | XML external entity expansion |
+| CWE-669 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-669 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-669 | Ruby | rb/insecure-download | Download of sensitive file through insecure connection |
+| CWE-669 | Ruby | rb/http-to-file-access | Network data written to file |
+| CWE-669 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-670 | C/C++ | cpp/comma-before-misleading-indentation | Comma before misleading indentation |
+| CWE-670 | C/C++ | cpp/assign-where-compare-meant | Assignment where comparison was intended |
+| CWE-670 | C/C++ | cpp/compare-where-assign-meant | Comparison where assignment was intended |
+| CWE-670 | C/C++ | cpp/incorrect-not-operator-usage | Incorrect 'not' operator usage |
+| CWE-670 | C/C++ | cpp/logical-operator-applied-to-flag | Short-circuiting operator applied to flag |
+| CWE-670 | C/C++ | cpp/unsafe-use-of-this | Unsafe use of this in constructor |
+| CWE-670 | C/C++ | cpp/dangerous-use-of-ssl-shutdown | Dangerous use SSL_shutdown |
+| CWE-670 | C/C++ | cpp/operator-precedence-logic-error-when-use-bitwise-logical-operations | Operator Precedence Logic Error When Use Bitwise Or Logical Operations |
+| CWE-670 | C/C++ | cpp/operator-precedence-logic-error-when-use-bool-type | Operator Precedence Logic Error When Use Bool Type |
+| CWE-670 | C# | cs/non-short-circuit | Potentially dangerous use of non-short-circuit logic |
+| CWE-670 | Go | go/mistyped-exponentiation | Bitwise exclusive-or used like exponentiation |
+| CWE-670 | Go | go/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-670 | Go | go/useless-expression | Expression has no effect |
+| CWE-670 | Go | go/redundant-operation | Identical operands |
+| CWE-670 | Go | go/redundant-assignment | Self assignment |
+| CWE-670 | Java/Kotlin | java/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-670 | Java/Kotlin | java/assignment-in-boolean-expression | Assignment in Boolean expression |
+| CWE-670 | Java/Kotlin | java/reference-equality-on-strings | Reference equality test on strings |
+| CWE-670 | Java/Kotlin | java/switch-fall-through | Unterminated switch case |
+| CWE-670 | JavaScript/TypeScript | js/useless-expression | Expression has no effect |
+| CWE-670 | JavaScript/TypeScript | js/redundant-operation | Identical operands |
+| CWE-670 | JavaScript/TypeScript | js/redundant-assignment | Self assignment |
+| CWE-670 | JavaScript/TypeScript | js/unclear-operator-precedence | Unclear precedence of nested operators |
+| CWE-670 | JavaScript/TypeScript | js/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-670 | JavaScript/TypeScript | js/deletion-of-non-property | Deleting non-property |
+| CWE-670 | JavaScript/TypeScript | js/misleading-indentation-of-dangling-else | Misleading indentation of dangling 'else' |
+| CWE-670 | JavaScript/TypeScript | js/misleading-indentation-after-control-statement | Misleading indentation after control statement |
+| CWE-670 | Python | py/asserts-tuple | Asserting a tuple |
+| CWE-671 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-671 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-671 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-671 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-671 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-671 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-671 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-671 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-671 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-671 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-671 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-671 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-671 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-671 | Swift | swift/constant-password | Constant password |
+| CWE-671 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-672 | C/C++ | cpp/double-free | Potential double free |
+| CWE-672 | C/C++ | cpp/use-after-free | Potential use after free |
+| CWE-672 | C/C++ | cpp/return-stack-allocated-memory | Returning stack-allocated memory |
+| CWE-672 | C/C++ | cpp/using-expired-stack-address | Use of expired stack-address |
+| CWE-672 | C/C++ | cpp/iterator-to-expired-container | Iterator to expired container |
+| CWE-672 | C/C++ | cpp/use-of-string-after-lifetime-ends | Use of string after lifetime ends |
+| CWE-672 | C/C++ | cpp/use-of-unique-pointer-after-lifetime-ends | Use of unique pointer after lifetime ends |
+| CWE-672 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-672 | C/C++ | cpp/use-after-expired-lifetime | Use of object after its lifetime has ended |
+| CWE-672 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-672 | Rust | rust/access-after-lifetime-ended | Access of a pointer after its lifetime has ended |
+| CWE-672 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-674 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-674 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-674 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-674 | JavaScript/TypeScript | js/xml-bomb | XML internal entity expansion |
+| CWE-674 | JavaScript/TypeScript | js/xml-bomb-more-sources | XML internal entity expansion with additional heuristic sources |
+| CWE-674 | Python | py/xml-bomb | XML internal entity expansion |
+| CWE-674 | Python | py/simple-xml-rpc-server-dos | SimpleXMLRPCServer denial of service |
+| CWE-674 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-674 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-675 | C/C++ | cpp/double-free | Potential double free |
+| CWE-675 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-675 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-675 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-675 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-675 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-675 | C/C++ | cpp/double-release | Errors When Double Release |
+| CWE-675 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-676 | C/C++ | cpp/bad-strncpy-size | Possibly wrong buffer size in string copy |
+| CWE-676 | C/C++ | cpp/suspicious-call-to-memset | Suspicious call to memset |
+| CWE-676 | C/C++ | cpp/unsafe-strncat | Potentially unsafe call to strncat |
+| CWE-676 | C/C++ | cpp/unsafe-strcat | Potentially unsafe use of strcat |
+| CWE-676 | C/C++ | cpp/dangerous-function-overflow | Use of dangerous function |
+| CWE-676 | C/C++ | cpp/dangerous-cin | Dangerous use of 'cin' |
+| CWE-676 | C/C++ | cpp/potentially-dangerous-function | Use of potentially dangerous function |
+| CWE-676 | Java/Kotlin | java/potentially-dangerous-function | Use of a potentially dangerous function |
+| CWE-676 | JavaScript/TypeScript | js/eval-like-call | Call to eval-like DOM function |
+| CWE-676 | JavaScript/TypeScript | js/eval-call | Use of eval |
+| CWE-681 | C/C++ | cpp/bad-addition-overflow-check | Bad check for overflow of integer addition |
+| CWE-681 | C/C++ | cpp/integer-multiplication-cast-to-long | Multiplication result converted to larger type |
+| CWE-681 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-681 | C/C++ | cpp/integer-overflow-tainted | Potential integer arithmetic overflow |
+| CWE-681 | C# | cs/loss-of-precision | Possible loss of precision |
+| CWE-681 | Go | go/shift-out-of-range | Shift out of range |
+| CWE-681 | Go | go/incorrect-integer-conversion | Incorrect conversion between integer types |
+| CWE-681 | Java/Kotlin | java/implicit-cast-in-compound-assignment | Implicit narrowing conversion in compound assignment |
+| CWE-681 | Java/Kotlin | java/integer-multiplication-cast-to-long | Result of multiplication cast to wider type |
+| CWE-681 | Java/Kotlin | java/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-681 | Java/Kotlin | java/tainted-numeric-cast | User-controlled data in numeric cast |
+| CWE-681 | JavaScript/TypeScript | js/shift-out-of-range | Shift out of range |
+| CWE-682 | C/C++ | cpp/overflow-calculated | Buffer not sufficient for string |
+| CWE-682 | C/C++ | cpp/overflow-destination | Copy function using source size |
+| CWE-682 | C/C++ | cpp/static-buffer-overflow | Static array access may cause overflow |
+| CWE-682 | C/C++ | cpp/allocation-too-small | Not enough memory allocated for pointer type |
+| CWE-682 | C/C++ | cpp/suspicious-allocation-size | Not enough memory allocated for array of pointer type |
+| CWE-682 | C/C++ | cpp/ambiguously-signed-bit-field | Ambiguously signed bit-field member |
+| CWE-682 | C/C++ | cpp/bad-addition-overflow-check | Bad check for overflow of integer addition |
+| CWE-682 | C/C++ | cpp/integer-multiplication-cast-to-long | Multiplication result converted to larger type |
+| CWE-682 | C/C++ | cpp/signed-overflow-check | Signed overflow check |
+| CWE-682 | C/C++ | cpp/overflowing-snprintf | Potentially overflowing call to snprintf |
+| CWE-682 | C/C++ | cpp/suspicious-sizeof | Suspicious 'sizeof' use |
+| CWE-682 | C/C++ | cpp/overrun-write | Overrunning write |
+| CWE-682 | C/C++ | cpp/no-space-for-terminator | No space for zero terminator |
+| CWE-682 | C/C++ | cpp/tainted-arithmetic | User-controlled data in arithmetic expression |
+| CWE-682 | C/C++ | cpp/uncontrolled-arithmetic | Uncontrolled data in arithmetic expression |
+| CWE-682 | C/C++ | cpp/arithmetic-with-extreme-values | Use of extreme values in arithmetic expression |
+| CWE-682 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-682 | C/C++ | cpp/integer-overflow-tainted | Potential integer arithmetic overflow |
+| CWE-682 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-682 | C/C++ | cpp/unsigned-difference-expression-compared-zero | Unsigned difference expression compared to zero |
+| CWE-682 | C/C++ | cpp/invalid-pointer-deref | Invalid pointer dereference |
+| CWE-682 | C/C++ | cpp/suspicious-pointer-scaling | Suspicious pointer scaling |
+| CWE-682 | C/C++ | cpp/incorrect-pointer-scaling-char | Suspicious pointer scaling to char |
+| CWE-682 | C/C++ | cpp/suspicious-pointer-scaling-void | Suspicious pointer scaling to void |
+| CWE-682 | C/C++ | cpp/suspicious-add-sizeof | Suspicious add with sizeof |
+| CWE-682 | C/C++ | cpp/multiplication-overflow-in-alloc | Multiplication result may overflow and be used in allocation |
+| CWE-682 | C/C++ | cpp/dangerous-use-of-transformation-after-operation | Dangerous use of transformation after operation |
+| CWE-682 | C/C++ | cpp/divide-by-zero-using-return-value | Divide by zero using return value |
+| CWE-682 | C/C++ | cpp/signed-bit-field | Possible signed bit-field member |
+| CWE-682 | C# | cs/index-out-of-bounds | Off-by-one comparison against container length |
+| CWE-682 | C# | cs/loss-of-precision | Possible loss of precision |
+| CWE-682 | Go | go/index-out-of-bounds | Off-by-one comparison against length |
+| CWE-682 | Go | go/allocation-size-overflow | Size computation for allocation may overflow |
+| CWE-682 | Go | go/incorrect-integer-conversion | Incorrect conversion between integer types |
+| CWE-682 | Go | go/divide-by-zero | Divide by zero |
+| CWE-682 | Java/Kotlin | java/implicit-cast-in-compound-assignment | Implicit narrowing conversion in compound assignment |
+| CWE-682 | Java/Kotlin | java/integer-multiplication-cast-to-long | Result of multiplication cast to wider type |
+| CWE-682 | Java/Kotlin | java/index-out-of-bounds | Array index out of bounds |
+| CWE-682 | Java/Kotlin | java/tainted-arithmetic | User-controlled data in arithmetic expression |
+| CWE-682 | Java/Kotlin | java/uncontrolled-arithmetic | Uncontrolled data in arithmetic expression |
+| CWE-682 | Java/Kotlin | java/extreme-value-arithmetic | Use of extreme values in arithmetic expression |
+| CWE-682 | Java/Kotlin | java/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-682 | JavaScript/TypeScript | js/index-out-of-bounds | Off-by-one comparison against length |
+| CWE-682 | Swift | swift/string-length-conflation | String length conflation |
+| CWE-684 | C# | cs/web/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-684 | JavaScript/TypeScript | js/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-685 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-685 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-685 | Java/Kotlin | java/missing-format-argument | Missing format argument |
+| CWE-685 | Java/Kotlin | java/unused-format-argument | Unused format argument |
+| CWE-685 | JavaScript/TypeScript | js/superfluous-trailing-arguments | Superfluous trailing arguments |
+| CWE-685 | Python | py/call/wrong-number-class-arguments | Wrong number of arguments in a class instantiation |
+| CWE-685 | Python | py/percent-format/wrong-arguments | Wrong number of arguments for format |
+| CWE-685 | Python | py/call/wrong-arguments | Wrong number of arguments in a call |
+| CWE-686 | C/C++ | cpp/wrong-type-format-argument | Wrong type of arguments to formatting function |
+| CWE-687 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-687 | Python | py/super-not-enclosing-class | First argument to super() is not enclosing class |
+| CWE-691 | GitHub Actions | actions/code-injection/critical | Code injection |
+| CWE-691 | GitHub Actions | actions/code-injection/medium | Code injection |
+| CWE-691 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-691 | GitHub Actions | actions/untrusted-checkout-toctou/critical | Untrusted Checkout TOCTOU |
+| CWE-691 | GitHub Actions | actions/untrusted-checkout-toctou/high | Untrusted Checkout TOCTOU |
+| CWE-691 | C/C++ | cpp/comma-before-misleading-indentation | Comma before misleading indentation |
+| CWE-691 | C/C++ | cpp/assign-where-compare-meant | Assignment where comparison was intended |
+| CWE-691 | C/C++ | cpp/compare-where-assign-meant | Comparison where assignment was intended |
+| CWE-691 | C/C++ | cpp/incorrect-not-operator-usage | Incorrect 'not' operator usage |
+| CWE-691 | C/C++ | cpp/logical-operator-applied-to-flag | Short-circuiting operator applied to flag |
+| CWE-691 | C/C++ | cpp/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-691 | C/C++ | cpp/unsafe-use-of-this | Unsafe use of this in constructor |
+| CWE-691 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-691 | C/C++ | cpp/toctou-race-condition | Time-of-check time-of-use filesystem race condition |
+| CWE-691 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-691 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-691 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-691 | C/C++ | cpp/infinite-loop-with-unsatisfiable-exit-condition | Infinite loop with unsatisfiable exit condition |
+| CWE-691 | C/C++ | cpp/linux-kernel-double-fetch-vulnerability | Linux kernel double-fetch vulnerability detection |
+| CWE-691 | C/C++ | cpp/operator-find-incorrectly-used-switch | Incorrect switch statement |
+| CWE-691 | C/C++ | cpp/dangerous-use-of-ssl-shutdown | Dangerous use SSL_shutdown |
+| CWE-691 | C/C++ | cpp/errors-after-refactoring | Errors After Refactoring |
+| CWE-691 | C/C++ | cpp/errors-when-using-bit-operations | Errors When Using Bit Operations |
+| CWE-691 | C/C++ | cpp/operator-find-incorrectly-used-exceptions | Operator Find Incorrectly Used Exceptions |
+| CWE-691 | C/C++ | cpp/operator-precedence-logic-error-when-use-bitwise-logical-operations | Operator Precedence Logic Error When Use Bitwise Or Logical Operations |
+| CWE-691 | C/C++ | cpp/operator-precedence-logic-error-when-use-bool-type | Operator Precedence Logic Error When Use Bool Type |
+| CWE-691 | C# | cs/catch-nullreferenceexception | Poor error handling: catch of NullReferenceException |
+| CWE-691 | C# | cs/constant-condition | Constant condition |
+| CWE-691 | C# | cs/unsafe-sync-on-field | Futile synchronization on field |
+| CWE-691 | C# | cs/inconsistent-lock-sequence | Inconsistent lock sequence |
+| CWE-691 | C# | cs/lock-this | Locking the 'this' object in a lock statement |
+| CWE-691 | C# | cs/locked-wait | A lock is held during a wait |
+| CWE-691 | C# | cs/unsynchronized-getter | Inconsistently synchronized property |
+| CWE-691 | C# | cs/unsafe-double-checked-lock | Double-checked lock is not thread-safe |
+| CWE-691 | C# | cs/unsynchronized-static-access | Unsynchronized access to static collection member in non-static context |
+| CWE-691 | C# | cs/catch-of-all-exceptions | Generic catch clause |
+| CWE-691 | C# | cs/non-short-circuit | Potentially dangerous use of non-short-circuit logic |
+| CWE-691 | C# | cs/thread-unsafe-icryptotransform-field-in-class | Thread-unsafe use of a static ICryptoTransform field |
+| CWE-691 | C# | cs/thread-unsafe-icryptotransform-captured-in-lambda | Thread-unsafe capturing of an ICryptoTransform object |
+| CWE-691 | C# | cs/linq/inconsistent-enumeration | Bad multiple iteration |
+| CWE-691 | C# | cs/code-injection | Improper control of generation of code |
+| CWE-691 | C# | cs/web/missing-global-error-handler | Missing global error handler |
+| CWE-691 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-691 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-691 | Go | go/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-691 | Go | go/mistyped-exponentiation | Bitwise exclusive-or used like exponentiation |
+| CWE-691 | Go | go/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-691 | Go | go/useless-expression | Expression has no effect |
+| CWE-691 | Go | go/redundant-operation | Identical operands |
+| CWE-691 | Go | go/redundant-recover | Redundant call to recover |
+| CWE-691 | Go | go/redundant-assignment | Self assignment |
+| CWE-691 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-691 | Java/Kotlin | java/ejb/container-interference | EJB interferes with container operation |
+| CWE-691 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-691 | Java/Kotlin | java/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-691 | Java/Kotlin | java/assignment-in-boolean-expression | Assignment in Boolean expression |
+| CWE-691 | Java/Kotlin | java/reference-equality-on-strings | Reference equality test on strings |
+| CWE-691 | Java/Kotlin | java/wait-on-condition-interface | Wait on condition |
+| CWE-691 | Java/Kotlin | java/call-to-thread-run | Direct call to a run() method |
+| CWE-691 | Java/Kotlin | java/unsafe-double-checked-locking | Double-checked locking is not thread-safe |
+| CWE-691 | Java/Kotlin | java/unsafe-double-checked-locking-init-order | Race condition in double-checked locking object initialization |
+| CWE-691 | Java/Kotlin | java/unsafe-sync-on-field | Futile synchronization on field |
+| CWE-691 | Java/Kotlin | java/inconsistent-field-synchronization | Inconsistent synchronization for field |
+| CWE-691 | Java/Kotlin | java/lazy-initialization | Incorrect lazy initialization of a static field |
+| CWE-691 | Java/Kotlin | java/non-sync-override | Non-synchronized override of synchronized method |
+| CWE-691 | Java/Kotlin | java/notify-instead-of-notify-all | notify instead of notifyAll |
+| CWE-691 | Java/Kotlin | java/sleep-with-lock-held | Sleep with lock held |
+| CWE-691 | Java/Kotlin | java/sync-on-boxed-types | Synchronization on boxed types or strings |
+| CWE-691 | Java/Kotlin | java/unsynchronized-getter | Inconsistent synchronization of getter and setter |
+| CWE-691 | Java/Kotlin | java/inconsistent-sync-writeobject | Inconsistent synchronization for writeObject() |
+| CWE-691 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-691 | Java/Kotlin | java/wait-with-two-locks | Wait with two locks held |
+| CWE-691 | Java/Kotlin | java/non-short-circuit-evaluation | Dangerous non-short-circuit logic |
+| CWE-691 | Java/Kotlin | java/constant-loop-condition | Constant loop condition |
+| CWE-691 | Java/Kotlin | java/android/arbitrary-apk-installation | Android APK installation |
+| CWE-691 | Java/Kotlin | java/groovy-injection | Groovy Language injection |
+| CWE-691 | Java/Kotlin | java/insecure-bean-validation | Insecure Bean Validation |
+| CWE-691 | Java/Kotlin | java/jexl-expression-injection | Expression language injection (JEXL) |
+| CWE-691 | Java/Kotlin | java/mvel-expression-injection | Expression language injection (MVEL) |
+| CWE-691 | Java/Kotlin | java/spel-expression-injection | Expression language injection (Spring) |
+| CWE-691 | Java/Kotlin | java/server-side-template-injection | Server-side template injection |
+| CWE-691 | Java/Kotlin | java/toctou-race-condition | Time-of-check time-of-use race condition |
+| CWE-691 | Java/Kotlin | java/socket-auth-race-condition | Race condition in socket authentication |
+| CWE-691 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-691 | Java/Kotlin | java/android/unsafe-android-webview-fetch | Unsafe resource fetching in Android WebView |
+| CWE-691 | Java/Kotlin | java/lock-order-inconsistency | Lock order inconsistency |
+| CWE-691 | Java/Kotlin | java/unreachable-exit-in-loop | Loop with unreachable exit condition |
+| CWE-691 | Java/Kotlin | java/switch-fall-through | Unterminated switch case |
+| CWE-691 | Java/Kotlin | java/overly-general-catch | Overly-general catch clause |
+| CWE-691 | Java/Kotlin | java/uncaught-number-format-exception | Missing catch of NumberFormatException |
+| CWE-691 | Java/Kotlin | java/jvm-exit | Forcible JVM termination |
+| CWE-691 | Java/Kotlin | java/abnormal-finally-completion | Finally block may not complete normally |
+| CWE-691 | Java/Kotlin | java/beanshell-injection | BeanShell injection |
+| CWE-691 | Java/Kotlin | java/android-insecure-dex-loading | Insecure loading of an Android Dex File |
+| CWE-691 | Java/Kotlin | java/jshell-injection | JShell injection |
+| CWE-691 | Java/Kotlin | java/javaee-expression-injection | Jakarta Expression Language injection |
+| CWE-691 | Java/Kotlin | java/jython-injection | Injection in Jython |
+| CWE-691 | Java/Kotlin | java/unsafe-eval | Injection in Java Script Engine |
+| CWE-691 | Java/Kotlin | java/spring-view-manipulation-implicit | Spring Implicit View Manipulation |
+| CWE-691 | Java/Kotlin | java/spring-view-manipulation | Spring View Manipulation |
+| CWE-691 | Java/Kotlin | java/uncaught-servlet-exception | Uncaught Servlet Exception |
+| CWE-691 | JavaScript/TypeScript | js/enabling-electron-renderer-node-integration | Enabling Node.js integration for Electron web content renderers |
+| CWE-691 | JavaScript/TypeScript | js/useless-expression | Expression has no effect |
+| CWE-691 | JavaScript/TypeScript | js/redundant-operation | Identical operands |
+| CWE-691 | JavaScript/TypeScript | js/redundant-assignment | Self assignment |
+| CWE-691 | JavaScript/TypeScript | js/unclear-operator-precedence | Unclear precedence of nested operators |
+| CWE-691 | JavaScript/TypeScript | js/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-691 | JavaScript/TypeScript | js/deletion-of-non-property | Deleting non-property |
+| CWE-691 | JavaScript/TypeScript | js/exit-from-finally | Jump from finally |
+| CWE-691 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-691 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-691 | JavaScript/TypeScript | js/bad-code-sanitization | Improper code sanitization |
+| CWE-691 | JavaScript/TypeScript | js/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-691 | JavaScript/TypeScript | js/unsafe-dynamic-method-access | Unsafe dynamic method access |
+| CWE-691 | JavaScript/TypeScript | js/file-system-race | Potential file system race condition |
+| CWE-691 | JavaScript/TypeScript | js/server-crash | Server crash |
+| CWE-691 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-691 | JavaScript/TypeScript | js/xml-bomb | XML internal entity expansion |
+| CWE-691 | JavaScript/TypeScript | js/loop-bound-injection | Loop bound injection |
+| CWE-691 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-691 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-691 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-691 | JavaScript/TypeScript | js/misleading-indentation-of-dangling-else | Misleading indentation of dangling 'else' |
+| CWE-691 | JavaScript/TypeScript | js/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-691 | JavaScript/TypeScript | js/misleading-indentation-after-control-statement | Misleading indentation after control statement |
+| CWE-691 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-691 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-691 | JavaScript/TypeScript | js/xml-bomb-more-sources | XML internal entity expansion with additional heuristic sources |
+| CWE-691 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-691 | Python | py/catch-base-exception | Except block handles 'BaseException' |
+| CWE-691 | Python | py/use-of-input | 'input' function used in Python 2 |
+| CWE-691 | Python | py/code-injection | Code injection |
+| CWE-691 | Python | py/xml-bomb | XML internal entity expansion |
+| CWE-691 | Python | py/asserts-tuple | Asserting a tuple |
+| CWE-691 | Python | py/exit-from-finally | 'break' or 'return' statement in finally |
+| CWE-691 | Python | py/js2py-rce | JavaScript code execution |
+| CWE-691 | Python | py/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-691 | Python | py/simple-xml-rpc-server-dos | SimpleXMLRPCServer denial of service |
+| CWE-691 | Ruby | rb/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-691 | Ruby | rb/server-side-template-injection | Server-side template injection |
+| CWE-691 | Ruby | rb/code-injection | Code injection |
+| CWE-691 | Ruby | rb/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-691 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-691 | Rust | rust/ctor-initialization | Bad 'ctor' initialization |
+| CWE-691 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-691 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-691 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-693 | GitHub Actions | actions/composite-action-sinks | Composite Action Sinks |
+| CWE-693 | GitHub Actions | actions/composite-action-sources | Composite Action Sources |
+| CWE-693 | GitHub Actions | actions/composite-action-summaries | Composite Action Summaries |
+| CWE-693 | GitHub Actions | actions/reusable-workflow-sinks | Reusable Workflow Sinks |
+| CWE-693 | GitHub Actions | actions/reusable-workflow-sources | Reusable Workflow Sources |
+| CWE-693 | GitHub Actions | actions/reusable-workflow-summaries | Reusable Workflows Summaries |
+| CWE-693 | GitHub Actions | actions/envpath-injection/critical | PATH environment variable built from user-controlled sources |
+| CWE-693 | GitHub Actions | actions/envpath-injection/medium | PATH environment variable built from user-controlled sources |
+| CWE-693 | GitHub Actions | actions/envvar-injection/critical | Environment variable built from user-controlled sources |
+| CWE-693 | GitHub Actions | actions/envvar-injection/medium | Environment variable built from user-controlled sources |
+| CWE-693 | GitHub Actions | actions/improper-access-control | Improper Access Control |
+| CWE-693 | GitHub Actions | actions/excessive-secrets-exposure | Excessive Secrets Exposure |
+| CWE-693 | GitHub Actions | actions/secrets-in-artifacts | Storage of sensitive information in GitHub Actions artifact |
+| CWE-693 | GitHub Actions | actions/unmasked-secret-exposure | Unmasked Secret Exposure |
+| CWE-693 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-693 | GitHub Actions | actions/cache-poisoning/direct-cache | Cache Poisoning via caching of untrusted files |
+| CWE-693 | GitHub Actions | actions/cache-poisoning/poisonable-step | Cache Poisoning via execution of untrusted code |
+| CWE-693 | GitHub Actions | actions/pr-on-self-hosted-runner | Pull Request code execution on self-hosted runner |
+| CWE-693 | C/C++ | cpp/boost/tls-settings-misconfiguration | boost::asio TLS settings misconfiguration |
+| CWE-693 | C/C++ | cpp/boost/use-of-deprecated-hardcoded-security-protocol | boost::asio use of deprecated hardcoded protocol |
+| CWE-693 | C/C++ | cpp/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-693 | C/C++ | cpp/count-untrusted-data-external-api-ir | Frequency counts for external APIs that are used with untrusted data |
+| CWE-693 | C/C++ | cpp/untrusted-data-to-external-api-ir | Untrusted data passed to external API |
+| CWE-693 | C/C++ | cpp/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-693 | C/C++ | cpp/uncontrolled-process-operation | Uncontrolled process operation |
+| CWE-693 | C/C++ | cpp/unclear-array-index-validation | Unclear validation of array index |
+| CWE-693 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-693 | C/C++ | cpp/user-controlled-bypass | Authentication bypass by spoofing |
+| CWE-693 | C/C++ | cpp/certificate-result-conflation | Certificate result conflation |
+| CWE-693 | C/C++ | cpp/certificate-not-checked | Certificate not checked |
+| CWE-693 | C/C++ | cpp/cleartext-storage-buffer | Cleartext storage of sensitive information in buffer |
+| CWE-693 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-693 | C/C++ | cpp/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-693 | C/C++ | cpp/cleartext-storage-database | Cleartext storage of sensitive information in an SQLite database |
+| CWE-693 | C/C++ | cpp/non-https-url | Failure to use HTTPS URLs |
+| CWE-693 | C/C++ | cpp/insufficient-key-size | Use of a cryptographic algorithm with insufficient key size |
+| CWE-693 | C/C++ | cpp/weak-cryptographic-algorithm | Use of a broken or risky cryptographic algorithm |
+| CWE-693 | C/C++ | cpp/openssl-heartbleed | Use of a version of OpenSSL with Heartbleed |
+| CWE-693 | C/C++ | cpp/world-writable-file-creation | File created without restricting permissions |
+| CWE-693 | C/C++ | cpp/open-call-with-mode-argument | File opened with O_CREAT flag but without mode argument |
+| CWE-693 | C/C++ | cpp/unsafe-dacl-security-descriptor | Setting a DACL to NULL in a SECURITY_DESCRIPTOR |
+| CWE-693 | C/C++ | cpp/tainted-permissions-check | Untrusted input for a condition |
+| CWE-693 | C/C++ | cpp/late-check-of-function-argument | Late Check Of Function Argument |
+| CWE-693 | C/C++ | cpp/linux-kernel-no-check-before-unsafe-put-user | Linux kernel no check before unsafe_put_user vulnerability detection |
+| CWE-693 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-693 | C/C++ | cpp/drop-linux-privileges-outoforder | LinuxPrivilegeDroppingOutoforder |
+| CWE-693 | C/C++ | cpp/pam-auth-bypass | PAM Authorization bypass |
+| CWE-693 | C/C++ | cpp/curl-disabled-ssl | Disabled certifcate verification |
+| CWE-693 | C/C++ | cpp/unknown-asymmetric-key-gen-size | Unknown key generation key size |
+| CWE-693 | C/C++ | cpp/weak-asymmetric-key-gen-size | Weak asymmetric key generation key size (< 2048 bits) |
+| CWE-693 | C/C++ | cpp/weak-block-mode | Weak block mode |
+| CWE-693 | C/C++ | cpp/weak-elliptic-curve | Weak elliptic curve |
+| CWE-693 | C/C++ | cpp/weak-crypto/banned-encryption-algorithms | Weak cryptography |
+| CWE-693 | C/C++ | cpp/weak-crypto/banned-hash-algorithms | Weak cryptography |
+| CWE-693 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-693 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-693 | C# | cs/web/ambiguous-client-variable | Value shadowing |
+| CWE-693 | C# | cs/web/ambiguous-server-variable | Value shadowing: server variable |
+| CWE-693 | C# | cs/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-693 | C# | cs/serialization-check-bypass | Serialization check bypass |
+| CWE-693 | C# | cs/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-693 | C# | cs/xml/missing-validation | Missing XML validation |
+| CWE-693 | C# | cs/assembly-path-injection | Assembly path injection |
+| CWE-693 | C# | cs/web/missing-function-level-access-control | Missing function level access control |
+| CWE-693 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-693 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-693 | C# | cs/adding-cert-to-root-store | Do not add certificates to the system root store |
+| CWE-693 | C# | cs/insecure-sql-connection | Insecure SQL connection |
+| CWE-693 | C# | cs/web/missing-token-validation | Missing cross-site request forgery token validation |
+| CWE-693 | C# | cs/session-reuse | Failure to abandon session |
+| CWE-693 | C# | cs/web/cookie-secure-not-set | Cookie 'Secure' attribute is not set to true |
+| CWE-693 | C# | cs/web/requiressl-not-set | 'requireSSL' attribute is not set to true |
+| CWE-693 | C# | cs/web/insecure-direct-object-reference | Insecure Direct Object Reference |
+| CWE-693 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-693 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-693 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-693 | C# | cs/web/broad-cookie-domain | Cookie security: overly broad domain |
+| CWE-693 | C# | cs/web/broad-cookie-path | Cookie security: overly broad path |
+| CWE-693 | C# | cs/ecb-encryption | Encryption using ECB |
+| CWE-693 | C# | cs/inadequate-rsa-padding | Weak encryption: inadequate RSA padding |
+| CWE-693 | C# | cs/insufficient-key-size | Weak encryption: Insufficient key size |
+| CWE-693 | C# | cs/weak-encryption | Weak encryption |
+| CWE-693 | C# | cs/azure-storage/unsafe-usage-of-client-side-encryption-version | Unsafe usage of v1 version of Azure Storage client-side encryption (CVE-2022-30187) |
+| CWE-693 | C# | cs/hash-without-salt | Use of a hash function without a salt |
+| CWE-693 | Go | go/constant-length-comparison | Constant length comparison |
+| CWE-693 | Go | go/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-693 | Go | go/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-693 | Go | go/incomplete-url-scheme-check | Incomplete URL scheme check |
+| CWE-693 | Go | go/regex/missing-regexp-anchor | Missing regular expression anchor |
+| CWE-693 | Go | go/suspicious-character-in-regex | Suspicious characters in a regular expression |
+| CWE-693 | Go | go/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-693 | Go | go/untrusted-data-to-unknown-external-api | Untrusted data passed to unknown external API |
+| CWE-693 | Go | go/disabled-certificate-check | Disabled TLS certificate check |
+| CWE-693 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-693 | Go | go/insecure-hostkeycallback | Use of insecure HostKeyCallback implementation |
+| CWE-693 | Go | go/weak-crypto-key | Use of a weak cryptographic key |
+| CWE-693 | Go | go/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-693 | Go | go/insecure-tls | Insecure TLS configuration |
+| CWE-693 | Go | go/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-693 | Go | go/missing-jwt-signature-check | Missing JWT signature check |
+| CWE-693 | Go | go/constant-oauth2-state | Use of constant state value in OAuth 2.0 URL |
+| CWE-693 | Go | go/cookie-secure-not-set | Cookie 'Secure' attribute is not set to true |
+| CWE-693 | Go | go/email-injection | Email content injection |
+| CWE-693 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-693 | Go | go/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-693 | Go | go/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-693 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-693 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-693 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-693 | Java/Kotlin | java/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-693 | Java/Kotlin | java/overly-large-range | Overly permissive regular expression range |
+| CWE-693 | Java/Kotlin | java/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-693 | Java/Kotlin | java/improper-validation-of-array-construction | Improper validation of user-provided size used for array construction |
+| CWE-693 | Java/Kotlin | java/improper-validation-of-array-construction-code-specified | Improper validation of code-specified size used for array construction |
+| CWE-693 | Java/Kotlin | java/improper-validation-of-array-index | Improper validation of user-provided array index |
+| CWE-693 | Java/Kotlin | java/improper-validation-of-array-index-code-specified | Improper validation of code-specified array index |
+| CWE-693 | Java/Kotlin | java/local-temp-file-or-directory-information-disclosure | Local information disclosure in a temporary directory |
+| CWE-693 | Java/Kotlin | java/android/intent-uri-permission-manipulation | Intent URI permission manipulation |
+| CWE-693 | Java/Kotlin | java/unsafe-cert-trust | Unsafe certificate trust |
+| CWE-693 | Java/Kotlin | java/android/insecure-local-key-gen | Insecurely generated keys for local authentication |
+| CWE-693 | Java/Kotlin | java/android/insecure-local-authentication | Insecure local authentication |
+| CWE-693 | Java/Kotlin | java/android/missing-certificate-pinning | Android missing certificate pinning |
+| CWE-693 | Java/Kotlin | java/improper-webview-certificate-validation | Android WebView that accepts all certificates |
+| CWE-693 | Java/Kotlin | java/insecure-trustmanager | TrustManager that accepts all certificates |
+| CWE-693 | Java/Kotlin | java/insecure-smtp-ssl | Insecure JavaMail SSL Configuration |
+| CWE-693 | Java/Kotlin | java/unsafe-hostname-verification | Unsafe hostname verification |
+| CWE-693 | Java/Kotlin | java/android/backup-enabled | Application backup allowed |
+| CWE-693 | Java/Kotlin | java/android/cleartext-storage-database | Cleartext storage of sensitive information using a local database on Android |
+| CWE-693 | Java/Kotlin | java/android/cleartext-storage-filesystem | Cleartext storage of sensitive information in the Android filesystem |
+| CWE-693 | Java/Kotlin | java/cleartext-storage-in-class | Cleartext storage of sensitive information using storable class |
+| CWE-693 | Java/Kotlin | java/cleartext-storage-in-cookie | Cleartext storage of sensitive information in cookie |
+| CWE-693 | Java/Kotlin | java/cleartext-storage-in-properties | Cleartext storage of sensitive information using 'Properties' class |
+| CWE-693 | Java/Kotlin | java/android/cleartext-storage-shared-prefs | Cleartext storage of sensitive information using SharedPreferences on Android |
+| CWE-693 | Java/Kotlin | java/non-https-url | Failure to use HTTPS URLs |
+| CWE-693 | Java/Kotlin | java/non-ssl-connection | Failure to use SSL |
+| CWE-693 | Java/Kotlin | java/non-ssl-socket-factory | Failure to use SSL socket factories |
+| CWE-693 | Java/Kotlin | java/insufficient-key-size | Use of a cryptographic algorithm with insufficient key size |
+| CWE-693 | Java/Kotlin | java/weak-cryptographic-algorithm | Use of a broken or risky cryptographic algorithm |
+| CWE-693 | Java/Kotlin | java/potentially-weak-cryptographic-algorithm | Use of a potentially broken or risky cryptographic algorithm |
+| CWE-693 | Java/Kotlin | java/missing-jwt-signature-check | Missing JWT signature check |
+| CWE-693 | Java/Kotlin | java/csrf-unprotected-request-type | HTTP request type unprotected from CSRF |
+| CWE-693 | Java/Kotlin | java/spring-disabled-csrf-protection | Disabled Spring CSRF protection |
+| CWE-693 | Java/Kotlin | java/socket-auth-race-condition | Race condition in socket authentication |
+| CWE-693 | Java/Kotlin | java/insecure-basic-auth | Insecure basic authentication |
+| CWE-693 | Java/Kotlin | java/insecure-ldap-auth | Insecure LDAP authentication |
+| CWE-693 | Java/Kotlin | java/insecure-cookie | Failure to use secure cookies |
+| CWE-693 | Java/Kotlin | java/world-writable-file-read | Reading from a world writable file |
+| CWE-693 | Java/Kotlin | java/rsa-without-oaep | Use of RSA algorithm without OAEP |
+| CWE-693 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-693 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-693 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-693 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-693 | Java/Kotlin | java/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-693 | Java/Kotlin | java/tainted-permissions-check | User-controlled data used in permissions check |
+| CWE-693 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-693 | Java/Kotlin | java/improper-intent-verification | Improper verification of intent by broadcast receiver |
+| CWE-693 | Java/Kotlin | java/android/incomplete-provider-permissions | Missing read or write permission in a content provider |
+| CWE-693 | Java/Kotlin | java/android/implicitly-exported-component | Implicitly exported Android component |
+| CWE-693 | Java/Kotlin | java/android/implicit-pendingintents | Use of implicit PendingIntents |
+| CWE-693 | Java/Kotlin | java/android/sensitive-communication | Leaking sensitive information through an implicit Intent |
+| CWE-693 | Java/Kotlin | java/android/sensitive-result-receiver | Leaking sensitive information through a ResultReceiver |
+| CWE-693 | Java/Kotlin | java/android/intent-redirection | Android Intent redirection |
+| CWE-693 | Java/Kotlin | java/log4j-injection | Potential Log4J LDAP JNDI injection (CVE-2021-44228) |
+| CWE-693 | Java/Kotlin | java/jxbrowser/disabled-certificate-validation | JxBrowser with disabled certificate validation |
+| CWE-693 | Java/Kotlin | java/ignored-hostname-verification | Ignored result of hostname verification |
+| CWE-693 | Java/Kotlin | java/insecure-ldaps-endpoint | Insecure LDAPS Endpoint Configuration |
+| CWE-693 | Java/Kotlin | java/disabled-certificate-revocation-checking | Disabled certificate revocation checking |
+| CWE-693 | Java/Kotlin | java/azure-storage/unsafe-client-side-encryption-in-use | Unsafe usage of v1 version of Azure Storage client-side encryption (CVE-2022-30187) |
+| CWE-693 | Java/Kotlin | java/unsafe-tls-version | Unsafe TLS version |
+| CWE-693 | Java/Kotlin | java/unvalidated-cors-origin-set | CORS is derived from untrusted input |
+| CWE-693 | Java/Kotlin | java/missing-jwt-signature-check-auth0 | Missing JWT signature check |
+| CWE-693 | Java/Kotlin | java/ip-address-spoofing | IP address spoofing |
+| CWE-693 | Java/Kotlin | java/jsonp-injection | JSONP Injection |
+| CWE-693 | Java/Kotlin | java/credentials-in-properties | Cleartext Credentials in Properties File |
+| CWE-693 | Java/Kotlin | java/password-in-configuration | Password in configuration file |
+| CWE-693 | Java/Kotlin | java/permissive-dot-regex | URL matched by permissive . in a regular expression |
+| CWE-693 | Java/Kotlin | java/hash-without-salt | Use of a hash function without a salt |
+| CWE-693 | Java/Kotlin | java/incorrect-url-verification | Incorrect URL verification |
+| CWE-693 | Java/Kotlin | java/weak-cryptographic-algorithm-new-model | Use of a broken or risky cryptographic algorithm |
+| CWE-693 | Java/Kotlin | java/quantum/examples/weak-hash | Weak hashes |
+| CWE-693 | Java/Kotlin | java/quantum/examples/weak-ciphers | Weak symmetric ciphers |
+| CWE-693 | JavaScript/TypeScript | js/angular/insecure-url-whitelist | Insecure URL whitelist |
+| CWE-693 | JavaScript/TypeScript | js/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-693 | JavaScript/TypeScript | js/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-693 | JavaScript/TypeScript | js/incomplete-url-scheme-check | Incomplete URL scheme check |
+| CWE-693 | JavaScript/TypeScript | js/incomplete-url-substring-sanitization | Incomplete URL substring sanitization |
+| CWE-693 | JavaScript/TypeScript | js/incorrect-suffix-check | Incorrect suffix check |
+| CWE-693 | JavaScript/TypeScript | js/missing-origin-check | Missing origin verification in postMessage handler |
+| CWE-693 | JavaScript/TypeScript | js/regex/missing-regexp-anchor | Missing regular expression anchor |
+| CWE-693 | JavaScript/TypeScript | js/overly-large-range | Overly permissive regular expression range |
+| CWE-693 | JavaScript/TypeScript | js/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-693 | JavaScript/TypeScript | js/useless-regexp-character-escape | Useless regular-expression character escape |
+| CWE-693 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-693 | JavaScript/TypeScript | js/double-escaping | Double escaping or unescaping |
+| CWE-693 | JavaScript/TypeScript | js/incomplete-html-attribute-sanitization | Incomplete HTML attribute sanitization |
+| CWE-693 | JavaScript/TypeScript | js/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-693 | JavaScript/TypeScript | js/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-693 | JavaScript/TypeScript | js/exposure-of-private-files | Exposure of private files |
+| CWE-693 | JavaScript/TypeScript | js/disabling-certificate-validation | Disabling certificate validation |
+| CWE-693 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-693 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-693 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-693 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-693 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-693 | JavaScript/TypeScript | js/insufficient-key-size | Use of a weak cryptographic key |
+| CWE-693 | JavaScript/TypeScript | js/biased-cryptographic-random | Creating biased random numbers from a cryptographically secure source |
+| CWE-693 | JavaScript/TypeScript | js/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-693 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-693 | JavaScript/TypeScript | js/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-693 | JavaScript/TypeScript | js/missing-token-validation | Missing CSRF middleware |
+| CWE-693 | JavaScript/TypeScript | js/session-fixation | Failure to abandon session |
+| CWE-693 | JavaScript/TypeScript | js/remote-property-injection | Remote property injection |
+| CWE-693 | JavaScript/TypeScript | js/clear-text-cookie | Clear text transmission of sensitive cookie |
+| CWE-693 | JavaScript/TypeScript | js/host-header-forgery-in-email-generation | Host header poisoning in email generation |
+| CWE-693 | JavaScript/TypeScript | js/insecure-helmet-configuration | Insecure configuration of Helmet security middleware |
+| CWE-693 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-693 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-693 | JavaScript/TypeScript | js/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-693 | JavaScript/TypeScript | js/different-kinds-comparison-bypass | Comparison of user-controlled data of different kinds |
+| CWE-693 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-693 | JavaScript/TypeScript | js/insufficient-password-hash | Use of password hash with insufficient computational effort |
+| CWE-693 | JavaScript/TypeScript | js/cors-permissive-configuration | Permissive CORS configuration |
+| CWE-693 | JavaScript/TypeScript | js/decode-jwt-without-verification | JWT missing secret or public key verification |
+| CWE-693 | JavaScript/TypeScript | js/decode-jwt-without-verification-local-source | JWT missing secret or public key verification |
+| CWE-693 | JavaScript/TypeScript | js/user-controlled-data-decompression | User-controlled file decompression |
+| CWE-693 | JavaScript/TypeScript | js/untrusted-data-to-external-api-more-sources | Untrusted data passed to external API with additional heuristic sources |
+| CWE-693 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-693 | JavaScript/TypeScript | js/remote-property-injection-more-sources | Remote property injection with additional heuristic sources |
+| CWE-693 | JavaScript/TypeScript | js/user-controlled-bypass-more-sources | User-controlled bypass of security check with additional heuristic sources |
+| CWE-693 | Python | py/count-untrusted-data-external-api | Frequency counts for external APIs that are used with untrusted data |
+| CWE-693 | Python | py/untrusted-data-to-external-api | Untrusted data passed to external API |
+| CWE-693 | Python | py/cookie-injection | Construction of a cookie using user-supplied input |
+| CWE-693 | Python | py/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-693 | Python | py/incomplete-url-substring-sanitization | Incomplete URL substring sanitization |
+| CWE-693 | Python | py/overly-large-range | Overly permissive regular expression range |
+| CWE-693 | Python | py/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-693 | Python | py/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-693 | Python | py/paramiko-missing-host-key-validation | Accepting unknown SSH host keys when using Paramiko |
+| CWE-693 | Python | py/request-without-cert-validation | Request without certificate validation |
+| CWE-693 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-693 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-693 | Python | py/weak-crypto-key | Use of weak cryptographic key |
+| CWE-693 | Python | py/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-693 | Python | py/insecure-default-protocol | Default version of SSL/TLS may be insecure |
+| CWE-693 | Python | py/insecure-protocol | Use of insecure SSL/TLS version |
+| CWE-693 | Python | py/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-693 | Python | py/csrf-protection-disabled | CSRF protection weakened or disabled |
+| CWE-693 | Python | py/insecure-cookie | Failure to use secure cookies |
+| CWE-693 | Python | py/overly-permissive-file | Overly permissive file permissions |
+| CWE-693 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-693 | Python | py/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-693 | Python | py/flask-constant-secret-key | Initializing SECRET_KEY of Flask application with Constant value |
+| CWE-693 | Python | py/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-693 | Python | py/azure-storage/unsafe-client-side-encryption-in-use | Unsafe usage of v1 version of Azure Storage client-side encryption |
+| CWE-693 | Python | py/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-693 | Python | py/ip-address-spoofing | IP address spoofing |
+| CWE-693 | Python | py/insecure-ldap-auth | Python Insecure LDAP Authentication |
+| CWE-693 | Python | py/cors-misconfiguration-with-credentials | Cors misconfiguration with credentials |
+| CWE-693 | Python | py/unknown-asymmetric-key-gen-size | Unknown key generation key size |
+| CWE-693 | Python | py/weak-asymmetric-key-gen-size | Weak key generation key size (< 2048 bits) |
+| CWE-693 | Python | py/weak-block-mode | Weak block mode |
+| CWE-693 | Python | py/weak-elliptic-curve | Weak elliptic curve |
+| CWE-693 | Python | py/weak-hashes | Weak hashes |
+| CWE-693 | Python | py/weak-symmetric-encryption | Weak symmetric encryption algorithm |
+| CWE-693 | Ruby | rb/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-693 | Ruby | rb/jwt-missing-verification | JWT missing secret or public key verification |
+| CWE-693 | Ruby | rb/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-693 | Ruby | rb/improper-ldap-auth | Improper LDAP Authentication |
+| CWE-693 | Ruby | rb/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-693 | Ruby | rb/incomplete-url-substring-sanitization | Incomplete URL substring sanitization |
+| CWE-693 | Ruby | rb/regex/badly-anchored-regexp | Badly anchored regular expression |
+| CWE-693 | Ruby | rb/regex/missing-regexp-anchor | Missing regular expression anchor |
+| CWE-693 | Ruby | rb/overly-large-range | Overly permissive regular expression range |
+| CWE-693 | Ruby | rb/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-693 | Ruby | rb/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-693 | Ruby | rb/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-693 | Ruby | rb/request-without-cert-validation | Request without certificate validation |
+| CWE-693 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-693 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-693 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-693 | Ruby | rb/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-693 | Ruby | rb/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-693 | Ruby | rb/csrf-protection-disabled | CSRF protection weakened or disabled |
+| CWE-693 | Ruby | rb/csrf-protection-not-enabled | CSRF protection not enabled |
+| CWE-693 | Ruby | rb/weak-cookie-configuration | Weak cookie configuration |
+| CWE-693 | Ruby | rb/overly-permissive-file | Overly permissive file permissions |
+| CWE-693 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-693 | Rust | rust/regex-injection | Regular expression injection |
+| CWE-693 | Rust | rust/disabled-certificate-check | Disabled TLS certificate check |
+| CWE-693 | Rust | rust/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-693 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-693 | Rust | rust/cleartext-storage-database | Cleartext storage of sensitive information in a database |
+| CWE-693 | Rust | rust/non-https-url | Failure to use HTTPS URLs |
+| CWE-693 | Rust | rust/weak-cryptographic-algorithm | Use of a broken or weak cryptographic algorithm |
+| CWE-693 | Rust | rust/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-693 | Rust | rust/insecure-cookie | 'Secure' attribute is not set to true |
+| CWE-693 | Rust | rust/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-693 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-693 | Swift | swift/incomplete-hostname-regexp | Incomplete regular expression for hostnames |
+| CWE-693 | Swift | swift/missing-regexp-anchor | Missing regular expression anchor |
+| CWE-693 | Swift | swift/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-693 | Swift | swift/constant-password | Constant password |
+| CWE-693 | Swift | swift/cleartext-storage-database | Cleartext storage of sensitive information in a local database |
+| CWE-693 | Swift | swift/cleartext-transmission | Cleartext transmission of sensitive information |
+| CWE-693 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-693 | Swift | swift/cleartext-storage-preferences | Cleartext storage of sensitive information in an application preference store |
+| CWE-693 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-693 | Swift | swift/ecb-encryption | Encryption using ECB |
+| CWE-693 | Swift | swift/weak-password-hashing | Use of an inappropriate cryptographic hashing algorithm on passwords |
+| CWE-693 | Swift | swift/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-693 | Swift | swift/insecure-tls | Insecure TLS configuration |
+| CWE-693 | Swift | swift/constant-salt | Use of constant salts |
+| CWE-693 | Swift | swift/insufficient-hash-iterations | Insufficient hash iterations |
+| CWE-695 | Java/Kotlin | java/ejb/file-io | EJB uses file input/output |
+| CWE-695 | Java/Kotlin | java/ejb/graphics | EJB uses graphics |
+| CWE-695 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-695 | Java/Kotlin | java/ejb/threads | EJB uses threads |
+| CWE-696 | Python | py/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-696 | Ruby | rb/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-696 | Rust | rust/ctor-initialization | Bad 'ctor' initialization |
+| CWE-697 | C/C++ | cpp/missing-case-in-switch | Missing enum case in switch |
+| CWE-697 | C/C++ | cpp/operator-find-incorrectly-used-switch | Incorrect switch statement |
+| CWE-697 | C# | cs/class-name-comparison | Erroneous class compare |
+| CWE-697 | C# | cs/reference-equality-with-object | Reference equality test on System.Object |
+| CWE-697 | C# | cs/reference-equality-on-valuetypes | Call to ReferenceEquals(...) on value type expressions |
+| CWE-697 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-697 | Java/Kotlin | java/missing-default-in-switch | Missing default case in switch |
+| CWE-697 | Java/Kotlin | java/reference-equality-with-object | Reference equality test on java.lang.Object |
+| CWE-697 | Java/Kotlin | java/reference-equality-of-boxed-types | Reference equality test of boxed types |
+| CWE-697 | Java/Kotlin | java/reference-equality-on-strings | Reference equality test on strings |
+| CWE-697 | Java/Kotlin | java/missing-case-in-switch | Missing enum case in switch |
+| CWE-697 | Java/Kotlin | java/permissive-dot-regex | URL matched by permissive . in a regular expression |
+| CWE-697 | JavaScript/TypeScript | js/angular/insecure-url-whitelist | Insecure URL whitelist |
+| CWE-697 | JavaScript/TypeScript | js/incomplete-url-scheme-check | Incomplete URL scheme check |
+| CWE-697 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-697 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-697 | JavaScript/TypeScript | js/cors-permissive-configuration | Permissive CORS configuration |
+| CWE-697 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-697 | Python | py/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-697 | Python | py/cors-misconfiguration-with-credentials | Cors misconfiguration with credentials |
+| CWE-697 | Ruby | rb/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-697 | Swift | swift/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-703 | C/C++ | cpp/incorrectly-checked-scanf | Incorrect return-value check for a 'scanf'-like function |
+| CWE-703 | C/C++ | cpp/missing-check-scanf | Missing return-value check for a 'scanf'-like function |
+| CWE-703 | C/C++ | cpp/return-value-ignored | Return value of a function is ignored |
+| CWE-703 | C/C++ | cpp/overflowing-snprintf | Potentially overflowing call to snprintf |
+| CWE-703 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-703 | C/C++ | cpp/inconsistent-call-on-result | Inconsistent operation on return value |
+| CWE-703 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-703 | C/C++ | cpp/ignore-return-value-sal | SAL requires inspecting return value |
+| CWE-703 | C/C++ | cpp/hresult-boolean-conversion | Cast between HRESULT and a Boolean type |
+| CWE-703 | C/C++ | cpp/incorrect-allocation-error-handling | Incorrect allocation-error handling |
+| CWE-703 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-703 | C/C++ | cpp/drop-linux-privileges-outoforder | LinuxPrivilegeDroppingOutoforder |
+| CWE-703 | C/C++ | cpp/operator-find-incorrectly-used-exceptions | Operator Find Incorrectly Used Exceptions |
+| CWE-703 | C/C++ | cpp/improper-check-return-value-scanf | Improper check of return value of scanf |
+| CWE-703 | C# | cs/dispose-not-called-on-throw | Dispose may not be called if an exception is thrown during execution |
+| CWE-703 | C# | cs/local-not-disposed | Missing Dispose call on local IDisposable |
+| CWE-703 | C# | cs/unchecked-return-value | Unchecked return value |
+| CWE-703 | C# | cs/catch-nullreferenceexception | Poor error handling: catch of NullReferenceException |
+| CWE-703 | C# | cs/empty-catch-block | Poor error handling: empty catch block |
+| CWE-703 | C# | cs/catch-of-all-exceptions | Generic catch clause |
+| CWE-703 | C# | cs/information-exposure-through-exception | Information exposure through an exception |
+| CWE-703 | C# | cs/web/missing-global-error-handler | Missing global error handler |
+| CWE-703 | Go | go/missing-error-check | Missing error check |
+| CWE-703 | Go | go/unhandled-writable-file-close | Writable file handle closed without error handling |
+| CWE-703 | Go | go/redundant-recover | Redundant call to recover |
+| CWE-703 | Go | go/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-703 | Java/Kotlin | java/inconsistent-call-on-result | Inconsistent operation on return value |
+| CWE-703 | Java/Kotlin | java/return-value-ignored | Method result ignored |
+| CWE-703 | Java/Kotlin | java/error-message-exposure | Information exposure through an error message |
+| CWE-703 | Java/Kotlin | java/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-703 | Java/Kotlin | java/unsafe-cert-trust | Unsafe certificate trust |
+| CWE-703 | Java/Kotlin | java/discarded-exception | Discarded exception |
+| CWE-703 | Java/Kotlin | java/overly-general-catch | Overly-general catch clause |
+| CWE-703 | Java/Kotlin | java/ignored-error-status-of-call | Ignored error status of call |
+| CWE-703 | Java/Kotlin | java/uncaught-number-format-exception | Missing catch of NumberFormatException |
+| CWE-703 | Java/Kotlin | java/uncaught-servlet-exception | Uncaught Servlet Exception |
+| CWE-703 | Java/Kotlin | java/android/nfe-local-android-dos | Local Android DoS Caused By NumberFormatException |
+| CWE-703 | JavaScript/TypeScript | js/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-703 | JavaScript/TypeScript | js/server-crash | Server crash |
+| CWE-703 | JavaScript/TypeScript | js/unvalidated-dynamic-method-call | Unvalidated dynamic method call |
+| CWE-703 | Python | py/catch-base-exception | Except block handles 'BaseException' |
+| CWE-703 | Python | py/empty-except | Empty except |
+| CWE-703 | Python | py/ignored-return-value | Ignored return value |
+| CWE-703 | Python | py/stack-trace-exposure | Information exposure through an exception |
+| CWE-703 | Ruby | rb/stack-trace-exposure | Information exposure through an exception |
+| CWE-704 | C/C++ | cpp/bad-addition-overflow-check | Bad check for overflow of integer addition |
+| CWE-704 | C/C++ | cpp/integer-multiplication-cast-to-long | Multiplication result converted to larger type |
+| CWE-704 | C/C++ | cpp/upcast-array-pointer-arithmetic | Upcast array used in pointer arithmetic |
+| CWE-704 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-704 | C/C++ | cpp/integer-overflow-tainted | Potential integer arithmetic overflow |
+| CWE-704 | C/C++ | cpp/incorrect-string-type-conversion | Cast from char to wchar_t |
+| CWE-704 | C/C++ | cpp/type-confusion | Type confusion |
+| CWE-704 | C# | cs/loss-of-precision | Possible loss of precision |
+| CWE-704 | Go | go/shift-out-of-range | Shift out of range |
+| CWE-704 | Go | go/incorrect-integer-conversion | Incorrect conversion between integer types |
+| CWE-704 | Java/Kotlin | java/implicit-cast-in-compound-assignment | Implicit narrowing conversion in compound assignment |
+| CWE-704 | Java/Kotlin | java/integer-multiplication-cast-to-long | Result of multiplication cast to wider type |
+| CWE-704 | Java/Kotlin | java/impossible-array-cast | Impossible array cast |
+| CWE-704 | Java/Kotlin | java/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-704 | Java/Kotlin | java/tainted-numeric-cast | User-controlled data in numeric cast |
+| CWE-704 | JavaScript/TypeScript | js/implicit-operand-conversion | Implicit operand conversion |
+| CWE-704 | JavaScript/TypeScript | js/shift-out-of-range | Shift out of range |
+| CWE-704 | JavaScript/TypeScript | js/invalid-prototype-value | Invalid prototype value |
+| CWE-704 | JavaScript/TypeScript | js/property-assignment-on-primitive | Assignment to property of primitive value |
+| CWE-704 | JavaScript/TypeScript | js/type-confusion-through-parameter-tampering | Type confusion through parameter tampering |
+| CWE-705 | C/C++ | cpp/operator-find-incorrectly-used-exceptions | Operator Find Incorrectly Used Exceptions |
+| CWE-705 | C# | cs/catch-nullreferenceexception | Poor error handling: catch of NullReferenceException |
+| CWE-705 | C# | cs/catch-of-all-exceptions | Generic catch clause |
+| CWE-705 | C# | cs/web/missing-global-error-handler | Missing global error handler |
+| CWE-705 | Go | go/redundant-recover | Redundant call to recover |
+| CWE-705 | Java/Kotlin | java/ejb/container-interference | EJB interferes with container operation |
+| CWE-705 | Java/Kotlin | java/overly-general-catch | Overly-general catch clause |
+| CWE-705 | Java/Kotlin | java/uncaught-number-format-exception | Missing catch of NumberFormatException |
+| CWE-705 | Java/Kotlin | java/jvm-exit | Forcible JVM termination |
+| CWE-705 | Java/Kotlin | java/abnormal-finally-completion | Finally block may not complete normally |
+| CWE-705 | Java/Kotlin | java/uncaught-servlet-exception | Uncaught Servlet Exception |
+| CWE-705 | JavaScript/TypeScript | js/exit-from-finally | Jump from finally |
+| CWE-705 | JavaScript/TypeScript | js/server-crash | Server crash |
+| CWE-705 | Python | py/catch-base-exception | Except block handles 'BaseException' |
+| CWE-705 | Python | py/exit-from-finally | 'break' or 'return' statement in finally |
+| CWE-706 | C/C++ | cpp/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | C# | cs/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-706 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-706 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-706 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-706 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | Go | go/unsafe-unzip-symlink | Arbitrary file write extracting an archive containing symbolic links |
+| CWE-706 | Go | go/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-706 | Java/Kotlin | java/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | Java/Kotlin | java/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-706 | Java/Kotlin | java/partial-path-traversal | Partial path traversal vulnerability |
+| CWE-706 | Java/Kotlin | java/partial-path-traversal-from-remote | Partial path traversal vulnerability from remote |
+| CWE-706 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-706 | Java/Kotlin | java/openstream-called-on-tainted-url | openStream called on URLs created from remote source |
+| CWE-706 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | JavaScript/TypeScript | js/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-706 | JavaScript/TypeScript | js/case-sensitive-middleware-path | Case-sensitive middleware path |
+| CWE-706 | JavaScript/TypeScript | js/xxe | XML external entity expansion |
+| CWE-706 | JavaScript/TypeScript | js/xxe-more-sources | XML external entity expansion with additional heuristic sources |
+| CWE-706 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | Python | py/tarslip | Arbitrary file write during tarfile extraction |
+| CWE-706 | Python | py/xxe | XML external entity expansion |
+| CWE-706 | Python | py/zipslip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-706 | Python | py/tarslip-extended | Arbitrary file write during tarfile extraction |
+| CWE-706 | Python | py/unsafe-unpacking | Arbitrary file write during a tarball extraction from a user controlled source |
+| CWE-706 | Ruby | rb/zip-slip | Arbitrary file access during archive extraction ("Zip Slip") |
+| CWE-706 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-706 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | Swift | swift/unsafe-unpacking | Arbitrary file write during a zip extraction from a user controlled source |
+| CWE-706 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-706 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-707 | GitHub Actions | actions/envpath-injection/critical | PATH environment variable built from user-controlled sources |
+| CWE-707 | GitHub Actions | actions/envpath-injection/medium | PATH environment variable built from user-controlled sources |
+| CWE-707 | GitHub Actions | actions/envvar-injection/critical | Environment variable built from user-controlled sources |
+| CWE-707 | GitHub Actions | actions/envvar-injection/medium | Environment variable built from user-controlled sources |
+| CWE-707 | GitHub Actions | actions/code-injection/critical | Code injection |
+| CWE-707 | GitHub Actions | actions/code-injection/medium | Code injection |
+| CWE-707 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-707 | GitHub Actions | actions/output-clobbering/high | Output Clobbering |
+| CWE-707 | GitHub Actions | actions/command-injection/critical | Command built from user-controlled sources |
+| CWE-707 | GitHub Actions | actions/command-injection/medium | Command built from user-controlled sources |
+| CWE-707 | GitHub Actions | actions/argument-injection/critical | Argument injection |
+| CWE-707 | GitHub Actions | actions/argument-injection/medium | Argument injection |
+| CWE-707 | C/C++ | cpp/non-constant-format | Non-constant format string |
+| CWE-707 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-707 | C/C++ | cpp/improper-null-termination | Potential improper null termination |
+| CWE-707 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-707 | C/C++ | cpp/command-line-injection | Uncontrolled data used in OS command |
+| CWE-707 | C/C++ | cpp/cgi-xss | CGI script vulnerable to cross-site scripting |
+| CWE-707 | C/C++ | cpp/sql-injection | Uncontrolled data in SQL query |
+| CWE-707 | C/C++ | cpp/tainted-format-string | Uncontrolled format string |
+| CWE-707 | C/C++ | cpp/user-controlled-null-termination-tainted | User-controlled data may not be null terminated |
+| CWE-707 | C/C++ | cpp/wordexp-injection | Uncontrolled data used in wordexp command |
+| CWE-707 | C# | cs/path-injection | Uncontrolled data used in path expression |
+| CWE-707 | C# | cs/command-line-injection | Uncontrolled command line |
+| CWE-707 | C# | cs/web/xss | Cross-site scripting |
+| CWE-707 | C# | cs/sql-injection | SQL query built from user-controlled sources |
+| CWE-707 | C# | cs/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-707 | C# | cs/xml-injection | XML injection |
+| CWE-707 | C# | cs/code-injection | Improper control of generation of code |
+| CWE-707 | C# | cs/resource-injection | Resource injection |
+| CWE-707 | C# | cs/log-forging | Log entries created from user input |
+| CWE-707 | C# | cs/uncontrolled-format-string | Uncontrolled format string |
+| CWE-707 | C# | cs/xml/xpath-injection | XPath injection |
+| CWE-707 | C# | cs/inappropriate-encoding | Inappropriate encoding |
+| CWE-707 | C# | cs/web/disabled-header-checking | Header checking disabled |
+| CWE-707 | C# | cs/webclient-path-injection | Uncontrolled data used in a WebClient |
+| CWE-707 | Go | go/path-injection | Uncontrolled data used in path expression |
+| CWE-707 | Go | go/command-injection | Command built from user-controlled sources |
+| CWE-707 | Go | go/stored-command | Command built from stored data |
+| CWE-707 | Go | go/html-template-escaping-bypass-xss | Cross-site scripting via HTML template escaping bypass |
+| CWE-707 | Go | go/reflected-xss | Reflected cross-site scripting |
+| CWE-707 | Go | go/stored-xss | Stored cross-site scripting |
+| CWE-707 | Go | go/sql-injection | Database query built from user-controlled sources |
+| CWE-707 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-707 | Go | go/log-injection | Log entries created from user input |
+| CWE-707 | Go | go/xml/xpath-injection | XPath injection |
+| CWE-707 | Go | go/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-707 | Go | go/dsn-injection | SQL Data-source URI built from user-controlled sources |
+| CWE-707 | Go | go/dsn-injection-local | SQL Data-source URI built from local user-controlled sources |
+| CWE-707 | Java/Kotlin | java/jndi-injection | JNDI lookup with user-controlled name |
+| CWE-707 | Java/Kotlin | java/xslt-injection | XSLT transformation with user-controlled stylesheet |
+| CWE-707 | Java/Kotlin | java/relative-path-command | Executing a command with a relative path |
+| CWE-707 | Java/Kotlin | java/command-line-injection | Uncontrolled command line |
+| CWE-707 | Java/Kotlin | java/exec-tainted-environment | Building a command with an injected environment variable |
+| CWE-707 | Java/Kotlin | java/concatenated-command-line | Building a command line with string concatenation |
+| CWE-707 | Java/Kotlin | java/android/webview-addjavascriptinterface | Access Java object methods through JavaScript exposure |
+| CWE-707 | Java/Kotlin | java/android/websettings-javascript-enabled | Android WebView JavaScript settings |
+| CWE-707 | Java/Kotlin | java/xss | Cross-site scripting |
+| CWE-707 | Java/Kotlin | java/concatenated-sql-query | Query built by concatenation with a possibly-untrusted string |
+| CWE-707 | Java/Kotlin | java/sql-injection | Query built from user-controlled sources |
+| CWE-707 | Java/Kotlin | java/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-707 | Java/Kotlin | java/android/arbitrary-apk-installation | Android APK installation |
+| CWE-707 | Java/Kotlin | java/groovy-injection | Groovy Language injection |
+| CWE-707 | Java/Kotlin | java/insecure-bean-validation | Insecure Bean Validation |
+| CWE-707 | Java/Kotlin | java/jexl-expression-injection | Expression language injection (JEXL) |
+| CWE-707 | Java/Kotlin | java/mvel-expression-injection | Expression language injection (MVEL) |
+| CWE-707 | Java/Kotlin | java/spel-expression-injection | Expression language injection (Spring) |
+| CWE-707 | Java/Kotlin | java/server-side-template-injection | Server-side template injection |
+| CWE-707 | Java/Kotlin | java/netty-http-request-or-response-splitting | Disabled Netty HTTP header validation |
+| CWE-707 | Java/Kotlin | java/http-response-splitting | HTTP response splitting |
+| CWE-707 | Java/Kotlin | java/log-injection | Log Injection |
+| CWE-707 | Java/Kotlin | java/tainted-format-string | Use of externally-controlled format string |
+| CWE-707 | Java/Kotlin | java/xml/xpath-injection | XPath injection |
+| CWE-707 | Java/Kotlin | java/android/unsafe-android-webview-fetch | Unsafe resource fetching in Android WebView |
+| CWE-707 | Java/Kotlin | java/ognl-injection | OGNL Expression Language statement with user-controlled input |
+| CWE-707 | Java/Kotlin | java/log4j-injection | Potential Log4J LDAP JNDI injection (CVE-2021-44228) |
+| CWE-707 | Java/Kotlin | java/command-line-injection-extra | Command Injection into Runtime.exec() with dangerous command |
+| CWE-707 | Java/Kotlin | java/command-line-injection-extra-local | Command Injection into Runtime.exec() with dangerous command |
+| CWE-707 | Java/Kotlin | java/command-line-injection-experimental | Uncontrolled command line (experimental sinks) |
+| CWE-707 | Java/Kotlin | java/mybatis-annotation-sql-injection | SQL injection in MyBatis annotation |
+| CWE-707 | Java/Kotlin | java/mybatis-xml-sql-injection | SQL injection in MyBatis Mapper XML |
+| CWE-707 | Java/Kotlin | java/beanshell-injection | BeanShell injection |
+| CWE-707 | Java/Kotlin | java/android-insecure-dex-loading | Insecure loading of an Android Dex File |
+| CWE-707 | Java/Kotlin | java/jshell-injection | JShell injection |
+| CWE-707 | Java/Kotlin | java/javaee-expression-injection | Jakarta Expression Language injection |
+| CWE-707 | Java/Kotlin | java/jython-injection | Injection in Jython |
+| CWE-707 | Java/Kotlin | java/unsafe-eval | Injection in Java Script Engine |
+| CWE-707 | Java/Kotlin | java/spring-view-manipulation-implicit | Spring Implicit View Manipulation |
+| CWE-707 | Java/Kotlin | java/spring-view-manipulation | Spring View Manipulation |
+| CWE-707 | Java/Kotlin | java/xquery-injection | XQuery query built from user-controlled sources |
+| CWE-707 | JavaScript/TypeScript | js/angular/disabling-sce | Disabling SCE |
+| CWE-707 | JavaScript/TypeScript | js/disabling-electron-websecurity | Disabling Electron webSecurity |
+| CWE-707 | JavaScript/TypeScript | js/enabling-electron-renderer-node-integration | Enabling Node.js integration for Electron web content renderers |
+| CWE-707 | JavaScript/TypeScript | js/identity-replacement | Replacement of a substring with itself |
+| CWE-707 | JavaScript/TypeScript | js/path-injection | Uncontrolled data used in path expression |
+| CWE-707 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-707 | JavaScript/TypeScript | js/command-line-injection | Uncontrolled command line |
+| CWE-707 | JavaScript/TypeScript | js/indirect-command-line-injection | Indirect uncontrolled command line |
+| CWE-707 | JavaScript/TypeScript | js/second-order-command-line-injection | Second order command injection |
+| CWE-707 | JavaScript/TypeScript | js/shell-command-injection-from-environment | Shell command built from environment values |
+| CWE-707 | JavaScript/TypeScript | js/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-707 | JavaScript/TypeScript | js/unnecessary-use-of-cat | Unnecessary use of cat process |
+| CWE-707 | JavaScript/TypeScript | js/xss-through-exception | Exception text reinterpreted as HTML |
+| CWE-707 | JavaScript/TypeScript | js/reflected-xss | Reflected cross-site scripting |
+| CWE-707 | JavaScript/TypeScript | js/stored-xss | Stored cross-site scripting |
+| CWE-707 | JavaScript/TypeScript | js/html-constructed-from-input | Unsafe HTML constructed from library input |
+| CWE-707 | JavaScript/TypeScript | js/unsafe-jquery-plugin | Unsafe jQuery plugin |
+| CWE-707 | JavaScript/TypeScript | js/xss | Client-side cross-site scripting |
+| CWE-707 | JavaScript/TypeScript | js/xss-through-dom | DOM text reinterpreted as HTML |
+| CWE-707 | JavaScript/TypeScript | js/sql-injection | Database query built from user-controlled sources |
+| CWE-707 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-707 | JavaScript/TypeScript | js/bad-code-sanitization | Improper code sanitization |
+| CWE-707 | JavaScript/TypeScript | js/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-707 | JavaScript/TypeScript | js/unsafe-dynamic-method-access | Unsafe dynamic method access |
+| CWE-707 | JavaScript/TypeScript | js/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-707 | JavaScript/TypeScript | js/double-escaping | Double escaping or unescaping |
+| CWE-707 | JavaScript/TypeScript | js/incomplete-html-attribute-sanitization | Incomplete HTML attribute sanitization |
+| CWE-707 | JavaScript/TypeScript | js/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-707 | JavaScript/TypeScript | js/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-707 | JavaScript/TypeScript | js/unsafe-html-expansion | Unsafe expansion of self-closing HTML tag |
+| CWE-707 | JavaScript/TypeScript | js/log-injection | Log injection |
+| CWE-707 | JavaScript/TypeScript | js/tainted-format-string | Use of externally-controlled format string |
+| CWE-707 | JavaScript/TypeScript | js/client-side-unvalidated-url-redirection | Client-side URL redirect |
+| CWE-707 | JavaScript/TypeScript | js/xpath-injection | XPath injection |
+| CWE-707 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-707 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-707 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-707 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-707 | JavaScript/TypeScript | js/env-key-and-value-injection | User controlled arbitrary environment variable injection |
+| CWE-707 | JavaScript/TypeScript | js/env-value-injection | User controlled environment variable value injection |
+| CWE-707 | JavaScript/TypeScript | js/command-line-injection-more-sources | Uncontrolled command line with additional heuristic sources |
+| CWE-707 | JavaScript/TypeScript | js/xss-more-sources | Client-side cross-site scripting with additional heuristic sources |
+| CWE-707 | JavaScript/TypeScript | js/sql-injection-more-sources | Database query built from user-controlled sources with additional heuristic sources |
+| CWE-707 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-707 | JavaScript/TypeScript | js/log-injection-more-sources | Log injection with additional heuristic sources |
+| CWE-707 | JavaScript/TypeScript | js/tainted-format-string-more-sources | Use of externally-controlled format string with additional heuristic sources |
+| CWE-707 | JavaScript/TypeScript | js/xpath-injection-more-sources | XPath injection with additional heuristic sources |
+| CWE-707 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-707 | Python | py/use-of-input | 'input' function used in Python 2 |
+| CWE-707 | Python | py/path-injection | Uncontrolled data used in path expression |
+| CWE-707 | Python | py/template-injection | Server Side Template Injection |
+| CWE-707 | Python | py/command-line-injection | Uncontrolled command line |
+| CWE-707 | Python | py/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-707 | Python | py/jinja2/autoescape-false | Jinja2 templating with autoescape=False |
+| CWE-707 | Python | py/reflective-xss | Reflected server-side cross-site scripting |
+| CWE-707 | Python | py/sql-injection | SQL query built from user-controlled sources |
+| CWE-707 | Python | py/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-707 | Python | py/code-injection | Code injection |
+| CWE-707 | Python | py/http-response-splitting | HTTP Response Splitting |
+| CWE-707 | Python | py/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-707 | Python | py/log-injection | Log Injection |
+| CWE-707 | Python | py/xpath-injection | XPath query built from user-controlled sources |
+| CWE-707 | Python | py/nosql-injection | NoSQL Injection |
+| CWE-707 | Python | py/paramiko-command-injection | Command execution on a secondary remote server |
+| CWE-707 | Python | py/reflective-xss-email | Reflected server-side cross-site scripting |
+| CWE-707 | Python | py/xslt-injection | XSLT query built from user-controlled sources |
+| CWE-707 | Python | py/js2py-rce | JavaScript code execution |
+| CWE-707 | Python | py/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-707 | Ruby | rb/unicode-bypass-validation | Bypass Logical Validation Using Unicode Characters |
+| CWE-707 | Ruby | rb/ldap-injection | LDAP Injection |
+| CWE-707 | Ruby | rb/server-side-template-injection | Server-side template injection |
+| CWE-707 | Ruby | rb/xpath-injection | XPath query built from user-controlled sources |
+| CWE-707 | Ruby | rb/path-injection | Uncontrolled data used in path expression |
+| CWE-707 | Ruby | rb/command-line-injection | Uncontrolled command line |
+| CWE-707 | Ruby | rb/kernel-open | Use of Kernel.open, IO.read or similar sinks with user-controlled input |
+| CWE-707 | Ruby | rb/non-constant-kernel-open | Use of Kernel.open or IO.read or similar sinks with a non-constant value |
+| CWE-707 | Ruby | rb/shell-command-constructed-from-input | Unsafe shell command constructed from library input |
+| CWE-707 | Ruby | rb/reflected-xss | Reflected server-side cross-site scripting |
+| CWE-707 | Ruby | rb/stored-xss | Stored cross-site scripting |
+| CWE-707 | Ruby | rb/html-constructed-from-input | Unsafe HTML constructed from library input |
+| CWE-707 | Ruby | rb/sql-injection | SQL query built from user-controlled sources |
+| CWE-707 | Ruby | rb/code-injection | Code injection |
+| CWE-707 | Ruby | rb/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-707 | Ruby | rb/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-707 | Ruby | rb/incomplete-multi-character-sanitization | Incomplete multi-character sanitization |
+| CWE-707 | Ruby | rb/incomplete-sanitization | Incomplete string escaping or encoding |
+| CWE-707 | Ruby | rb/log-injection | Log injection |
+| CWE-707 | Ruby | rb/tainted-format-string | Use of externally-controlled format string |
+| CWE-707 | Rust | rust/regex-injection | Regular expression injection |
+| CWE-707 | Rust | rust/path-injection | Uncontrolled data used in path expression |
+| CWE-707 | Rust | rust/xss | Cross-site scripting |
+| CWE-707 | Rust | rust/sql-injection | Database query built from user-controlled sources |
+| CWE-707 | Rust | rust/log-injection | Log injection |
+| CWE-707 | Swift | swift/path-injection | Uncontrolled data used in path expression |
+| CWE-707 | Swift | swift/command-line-injection | System command built from user-controlled sources |
+| CWE-707 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-707 | Swift | swift/sql-injection | Database query built from user-controlled sources |
+| CWE-707 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-707 | Swift | swift/bad-tag-filter | Bad HTML filtering regexp |
+| CWE-707 | Swift | swift/uncontrolled-format-string | Uncontrolled format string |
+| CWE-707 | Swift | swift/predicate-injection | Predicate built from user-controlled sources |
+| CWE-710 | C/C++ | cpp/unused-local-variable | Unused local variable |
+| CWE-710 | C/C++ | cpp/unused-static-function | Unused static function |
+| CWE-710 | C/C++ | cpp/unused-static-variable | Unused static variable |
+| CWE-710 | C/C++ | cpp/dead-code-condition | Branching condition always evaluates to same value |
+| CWE-710 | C/C++ | cpp/dead-code-function | Function is never called |
+| CWE-710 | C/C++ | cpp/dead-code-goto | Dead code due to goto or break statement |
+| CWE-710 | C/C++ | cpp/double-free | Potential double free |
+| CWE-710 | C/C++ | cpp/inconsistent-nullness-testing | Inconsistent null check of pointer |
+| CWE-710 | C/C++ | cpp/incorrectly-checked-scanf | Incorrect return-value check for a 'scanf'-like function |
+| CWE-710 | C/C++ | cpp/missing-check-scanf | Missing return-value check for a 'scanf'-like function |
+| CWE-710 | C/C++ | cpp/missing-null-test | Returned pointer not checked |
+| CWE-710 | C/C++ | cpp/unused-variable | Variable is assigned a value that is never read |
+| CWE-710 | C/C++ | cpp/fixme-comment | FIXME comment |
+| CWE-710 | C/C++ | cpp/todo-comment | TODO comment |
+| CWE-710 | C/C++ | cpp/overflowing-snprintf | Potentially overflowing call to snprintf |
+| CWE-710 | C/C++ | cpp/wrong-number-format-arguments | Too few arguments to formatting function |
+| CWE-710 | C/C++ | cpp/wrong-type-format-argument | Wrong type of arguments to formatting function |
+| CWE-710 | C/C++ | cpp/inconsistent-null-check | Inconsistent nullness check |
+| CWE-710 | C/C++ | cpp/useless-expression | Expression has no effect |
+| CWE-710 | C/C++ | cpp/pointer-overflow-check | Pointer overflow check |
+| CWE-710 | C/C++ | cpp/bad-strncpy-size | Possibly wrong buffer size in string copy |
+| CWE-710 | C/C++ | cpp/suspicious-call-to-memset | Suspicious call to memset |
+| CWE-710 | C/C++ | cpp/unsafe-strncat | Potentially unsafe call to strncat |
+| CWE-710 | C/C++ | cpp/unsafe-strcat | Potentially unsafe use of strcat |
+| CWE-710 | C/C++ | cpp/redundant-null-check-simple | Redundant null check due to previous dereference |
+| CWE-710 | C/C++ | cpp/too-few-arguments | Call to function with fewer arguments than declared parameters |
+| CWE-710 | C/C++ | cpp/ignore-return-value-sal | SAL requires inspecting return value |
+| CWE-710 | C/C++ | cpp/memset-may-be-deleted | Call to memset may be deleted |
+| CWE-710 | C/C++ | cpp/hresult-boolean-conversion | Cast between HRESULT and a Boolean type |
+| CWE-710 | C/C++ | cpp/incorrect-allocation-error-handling | Incorrect allocation-error handling |
+| CWE-710 | C/C++ | cpp/dangerous-function-overflow | Use of dangerous function |
+| CWE-710 | C/C++ | cpp/dangerous-cin | Dangerous use of 'cin' |
+| CWE-710 | C/C++ | cpp/potentially-dangerous-function | Use of potentially dangerous function |
+| CWE-710 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-710 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-710 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-710 | C/C++ | cpp/deref-null-result | Null dereference from a function result |
+| CWE-710 | C/C++ | cpp/redundant-null-check-param | Redundant null check or missing null check of parameter |
+| CWE-710 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-710 | C/C++ | cpp/wrong-use-of-the-umask | Find the wrong use of the umask function |
+| CWE-710 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-710 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-710 | C/C++ | cpp/operator-find-incorrectly-used-switch | Incorrect switch statement |
+| CWE-710 | C/C++ | cpp/double-release | Errors When Double Release |
+| CWE-710 | C/C++ | cpp/errors-of-undefined-program-behavior | Errors Of Undefined Program Behavior |
+| CWE-710 | C# | cs/call-to-obsolete-method | Call to obsolete method |
+| CWE-710 | C# | cs/inconsistent-equals-and-gethashcode | Inconsistent Equals(object) and GetHashCode() |
+| CWE-710 | C# | cs/todo-comment | TODO comment |
+| CWE-710 | C# | cs/dereferenced-value-is-always-null | Dereferenced variable is always null |
+| CWE-710 | C# | cs/dereferenced-value-may-be-null | Dereferenced variable may be null |
+| CWE-710 | C# | cs/unused-reftype | Dead reference types |
+| CWE-710 | C# | cs/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-710 | C# | cs/unused-field | Unused field |
+| CWE-710 | C# | cs/unused-method | Unused method |
+| CWE-710 | C# | cs/useless-cast-to-self | Cast to same type |
+| CWE-710 | C# | cs/useless-is-before-as | Useless 'is' before 'as' |
+| CWE-710 | C# | cs/coalesce-of-identical-expressions | Useless ?? expression |
+| CWE-710 | C# | cs/useless-type-test | Useless type test |
+| CWE-710 | C# | cs/useless-upcast | Useless upcast |
+| CWE-710 | C# | cs/empty-collection | Container contents are never initialized |
+| CWE-710 | C# | cs/unused-collection | Container contents are never accessed |
+| CWE-710 | C# | cs/invalid-dynamic-call | Bad dynamic call |
+| CWE-710 | C# | cs/empty-lock-statement | Empty lock statement |
+| CWE-710 | C# | cs/linq/useless-select | Redundant Select |
+| CWE-710 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-710 | C# | cs/web/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-710 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-710 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-710 | Go | go/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-710 | Go | go/useless-assignment-to-field | Useless assignment to field |
+| CWE-710 | Go | go/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-710 | Go | go/duplicate-branches | Duplicate 'if' branches |
+| CWE-710 | Go | go/duplicate-condition | Duplicate 'if' condition |
+| CWE-710 | Go | go/duplicate-switch-case | Duplicate switch case |
+| CWE-710 | Go | go/useless-expression | Expression has no effect |
+| CWE-710 | Go | go/impossible-interface-nil-check | Impossible interface nil check |
+| CWE-710 | Go | go/negative-length-check | Redundant check for negative value |
+| CWE-710 | Go | go/redundant-operation | Identical operands |
+| CWE-710 | Go | go/redundant-assignment | Self assignment |
+| CWE-710 | Go | go/unreachable-statement | Unreachable statement |
+| CWE-710 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-710 | Go | go/pam-auth-bypass | PAM authorization bypass due to incorrect usage |
+| CWE-710 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-710 | Java/Kotlin | java/deprecated-call | Deprecated method or constructor invocation |
+| CWE-710 | Java/Kotlin | java/dead-class | Dead class |
+| CWE-710 | Java/Kotlin | java/dead-enum-constant | Dead enum constant |
+| CWE-710 | Java/Kotlin | java/dead-field | Dead field |
+| CWE-710 | Java/Kotlin | java/dead-function | Dead method |
+| CWE-710 | Java/Kotlin | java/lines-of-dead-code | Lines of dead code in files |
+| CWE-710 | Java/Kotlin | java/unused-parameter | Useless parameter |
+| CWE-710 | Java/Kotlin | java/ejb/container-interference | EJB interferes with container operation |
+| CWE-710 | Java/Kotlin | java/ejb/file-io | EJB uses file input/output |
+| CWE-710 | Java/Kotlin | java/ejb/graphics | EJB uses graphics |
+| CWE-710 | Java/Kotlin | java/ejb/native-code | EJB uses native code |
+| CWE-710 | Java/Kotlin | java/ejb/reflection | EJB uses reflection |
+| CWE-710 | Java/Kotlin | java/ejb/security-configuration-access | EJB accesses security configuration |
+| CWE-710 | Java/Kotlin | java/ejb/substitution-in-serialization | EJB uses substitution in serialization |
+| CWE-710 | Java/Kotlin | java/ejb/socket-or-stream-handler-factory | EJB sets socket factory or URL stream handler factory |
+| CWE-710 | Java/Kotlin | java/ejb/server-socket | EJB uses server socket |
+| CWE-710 | Java/Kotlin | java/ejb/non-final-static-field | EJB uses non-final static field |
+| CWE-710 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-710 | Java/Kotlin | java/ejb/this | EJB uses 'this' as argument or result |
+| CWE-710 | Java/Kotlin | java/ejb/threads | EJB uses threads |
+| CWE-710 | Java/Kotlin | java/useless-null-check | Useless null check |
+| CWE-710 | Java/Kotlin | java/useless-type-test | Useless type test |
+| CWE-710 | Java/Kotlin | java/useless-upcast | Useless upcast |
+| CWE-710 | Java/Kotlin | java/missing-call-to-super-clone | Missing super clone |
+| CWE-710 | Java/Kotlin | java/empty-container | Container contents are never initialized |
+| CWE-710 | Java/Kotlin | java/unused-container | Container contents are never accessed |
+| CWE-710 | Java/Kotlin | java/equals-on-unrelated-types | Equals on incomparable types |
+| CWE-710 | Java/Kotlin | java/inconsistent-equals-and-hashcode | Inconsistent equals and hashCode |
+| CWE-710 | Java/Kotlin | java/constant-comparison | Useless comparison test |
+| CWE-710 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-710 | Java/Kotlin | java/missing-super-finalize | Finalizer inconsistency |
+| CWE-710 | Java/Kotlin | java/missing-format-argument | Missing format argument |
+| CWE-710 | Java/Kotlin | java/unused-format-argument | Unused format argument |
+| CWE-710 | Java/Kotlin | java/dereferenced-value-is-always-null | Dereferenced variable is always null |
+| CWE-710 | Java/Kotlin | java/dereferenced-expr-may-be-null | Dereferenced expression may be null |
+| CWE-710 | Java/Kotlin | java/dereferenced-value-may-be-null | Dereferenced variable may be null |
+| CWE-710 | Java/Kotlin | java/empty-synchronized-block | Empty synchronized block |
+| CWE-710 | Java/Kotlin | java/unreachable-catch-clause | Unreachable catch clause |
+| CWE-710 | Java/Kotlin | java/static-initialization-vector | Using a static initialization vector for encryption |
+| CWE-710 | Java/Kotlin | java/potentially-dangerous-function | Use of a potentially dangerous function |
+| CWE-710 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-710 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-710 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-710 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-710 | Java/Kotlin | java/todo-comment | TODO/FIXME comments |
+| CWE-710 | Java/Kotlin | java/unused-reference-type | Unused classes and interfaces |
+| CWE-710 | Java/Kotlin | java/overwritten-assignment-to-local | Assigned value is overwritten |
+| CWE-710 | Java/Kotlin | java/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-710 | Java/Kotlin | java/empty-finalizer | Empty body of finalizer |
+| CWE-710 | Java/Kotlin | java/unused-initialized-local | Local variable is initialized but not used |
+| CWE-710 | Java/Kotlin | java/local-variable-is-never-read | Unread local variable |
+| CWE-710 | Java/Kotlin | java/unused-field | Unused field |
+| CWE-710 | Java/Kotlin | java/unused-label | Unused label |
+| CWE-710 | Java/Kotlin | java/unused-local-variable | Unused local variable |
+| CWE-710 | Java/Kotlin | java/switch-fall-through | Unterminated switch case |
+| CWE-710 | Java/Kotlin | java/do-not-call-finalize | Do not call finalize() |
+| CWE-710 | Java/Kotlin | java/redundant-cast | Unnecessary cast |
+| CWE-710 | Java/Kotlin | java/unused-import | Unnecessary import |
+| CWE-710 | JavaScript/TypeScript | js/todo-comment | TODO comment |
+| CWE-710 | JavaScript/TypeScript | js/conflicting-html-attribute | Conflicting HTML element attributes |
+| CWE-710 | JavaScript/TypeScript | js/malformed-html-id | Malformed id attribute |
+| CWE-710 | JavaScript/TypeScript | js/eval-like-call | Call to eval-like DOM function |
+| CWE-710 | JavaScript/TypeScript | js/variable-initialization-conflict | Conflicting variable initialization |
+| CWE-710 | JavaScript/TypeScript | js/function-declaration-conflict | Conflicting function declarations |
+| CWE-710 | JavaScript/TypeScript | js/useless-assignment-to-global | Useless assignment to global variable |
+| CWE-710 | JavaScript/TypeScript | js/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-710 | JavaScript/TypeScript | js/overwritten-property | Overwritten property |
+| CWE-710 | JavaScript/TypeScript | js/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-710 | JavaScript/TypeScript | js/comparison-with-nan | Comparison with NaN |
+| CWE-710 | JavaScript/TypeScript | js/duplicate-condition | Duplicate 'if' condition |
+| CWE-710 | JavaScript/TypeScript | js/duplicate-property | Duplicate property |
+| CWE-710 | JavaScript/TypeScript | js/duplicate-switch-case | Duplicate switch case |
+| CWE-710 | JavaScript/TypeScript | js/useless-expression | Expression has no effect |
+| CWE-710 | JavaScript/TypeScript | js/comparison-between-incompatible-types | Comparison between inconvertible types |
+| CWE-710 | JavaScript/TypeScript | js/redundant-operation | Identical operands |
+| CWE-710 | JavaScript/TypeScript | js/redundant-assignment | Self assignment |
+| CWE-710 | JavaScript/TypeScript | js/call-to-non-callable | Invocation of non-function |
+| CWE-710 | JavaScript/TypeScript | js/property-access-on-non-object | Property access on null or undefined |
+| CWE-710 | JavaScript/TypeScript | js/unneeded-defensive-code | Unneeded defensive code |
+| CWE-710 | JavaScript/TypeScript | js/useless-type-test | Useless type test |
+| CWE-710 | JavaScript/TypeScript | js/conditional-comment | Conditional comments |
+| CWE-710 | JavaScript/TypeScript | js/eval-call | Use of eval |
+| CWE-710 | JavaScript/TypeScript | js/non-standard-language-feature | Use of platform-specific language features |
+| CWE-710 | JavaScript/TypeScript | js/for-in-comprehension | Use of for-in comprehension blocks |
+| CWE-710 | JavaScript/TypeScript | js/superfluous-trailing-arguments | Superfluous trailing arguments |
+| CWE-710 | JavaScript/TypeScript | js/yield-outside-generator | Yield in non-generator function |
+| CWE-710 | JavaScript/TypeScript | js/node/assignment-to-exports-variable | Assignment to exports variable |
+| CWE-710 | JavaScript/TypeScript | js/regex/unmatchable-caret | Unmatchable caret in regular expression |
+| CWE-710 | JavaScript/TypeScript | js/regex/unmatchable-dollar | Unmatchable dollar in regular expression |
+| CWE-710 | JavaScript/TypeScript | js/remote-property-injection | Remote property injection |
+| CWE-710 | JavaScript/TypeScript | js/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-710 | JavaScript/TypeScript | js/hardcoded-data-interpreted-as-code | Hard-coded data interpreted as code |
+| CWE-710 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-710 | JavaScript/TypeScript | js/http-to-file-access | Network data written to file |
+| CWE-710 | JavaScript/TypeScript | js/useless-assignment-in-return | Return statement assigns local variable |
+| CWE-710 | JavaScript/TypeScript | js/unreachable-statement | Unreachable statement |
+| CWE-710 | JavaScript/TypeScript | js/trivial-conditional | Useless conditional |
+| CWE-710 | JavaScript/TypeScript | js/remote-property-injection-more-sources | Remote property injection with additional heuristic sources |
+| CWE-710 | Python | py/equals-hash-mismatch | Inconsistent equality and hashing |
+| CWE-710 | Python | py/call/wrong-named-class-argument | Wrong name for an argument in a class instantiation |
+| CWE-710 | Python | py/call/wrong-number-class-arguments | Wrong number of arguments in a class instantiation |
+| CWE-710 | Python | py/unreachable-except | Unreachable except block |
+| CWE-710 | Python | py/super-not-enclosing-class | First argument to super() is not enclosing class |
+| CWE-710 | Python | py/comparison-of-constants | Comparison of constants |
+| CWE-710 | Python | py/comparison-of-identical-expressions | Comparison of identical values |
+| CWE-710 | Python | py/comparison-missing-self | Maybe missing 'self' in comparison |
+| CWE-710 | Python | py/redundant-comparison | Redundant comparison |
+| CWE-710 | Python | py/duplicate-key-dict-literal | Duplicate key in dict literal |
+| CWE-710 | Python | py/call/wrong-named-argument | Wrong name for an argument in a call |
+| CWE-710 | Python | py/percent-format/wrong-arguments | Wrong number of arguments for format |
+| CWE-710 | Python | py/call/wrong-arguments | Wrong number of arguments in a call |
+| CWE-710 | Python | py/import-deprecated-module | Import of deprecated module |
+| CWE-710 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-710 | Python | py/constant-conditional-expression | Constant in conditional expression or statement |
+| CWE-710 | Python | py/redundant-assignment | Redundant assignment |
+| CWE-710 | Python | py/ineffectual-statement | Statement has no effect |
+| CWE-710 | Python | py/unreachable-statement | Unreachable code |
+| CWE-710 | Python | py/multiple-definition | Variable defined multiple times |
+| CWE-710 | Python | py/unused-local-variable | Unused local variable |
+| CWE-710 | Python | py/unused-global-variable | Unused global variable |
+| CWE-710 | Ruby | rb/hardcoded-data-interpreted-as-code | Hard-coded data interpreted as code |
+| CWE-710 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-710 | Ruby | rb/http-to-file-access | Network data written to file |
+| CWE-710 | Ruby | rb/useless-assignment-to-local | Useless assignment to local variable |
+| CWE-710 | Ruby | rb/unused-parameter | Unused parameter |
+| CWE-710 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-710 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-710 | Swift | swift/static-initialization-vector | Static initialization vector for encryption |
+| CWE-710 | Swift | swift/constant-password | Constant password |
+| CWE-710 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-732 | C/C++ | cpp/world-writable-file-creation | File created without restricting permissions |
+| CWE-732 | C/C++ | cpp/open-call-with-mode-argument | File opened with O_CREAT flag but without mode argument |
+| CWE-732 | C/C++ | cpp/unsafe-dacl-security-descriptor | Setting a DACL to NULL in a SECURITY_DESCRIPTOR |
+| CWE-732 | Java/Kotlin | java/local-temp-file-or-directory-information-disclosure | Local information disclosure in a temporary directory |
+| CWE-732 | Java/Kotlin | java/world-writable-file-read | Reading from a world writable file |
+| CWE-732 | Python | py/overly-permissive-file | Overly permissive file permissions |
+| CWE-732 | Ruby | rb/weak-cookie-configuration | Weak cookie configuration |
+| CWE-732 | Ruby | rb/overly-permissive-file | Overly permissive file permissions |
+| CWE-733 | C/C++ | cpp/memset-may-be-deleted | Call to memset may be deleted |
+| CWE-749 | Java/Kotlin | java/android/unsafe-android-webview-fetch | Unsafe resource fetching in Android WebView |
+| CWE-749 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-749 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-754 | C/C++ | cpp/incorrectly-checked-scanf | Incorrect return-value check for a 'scanf'-like function |
+| CWE-754 | C/C++ | cpp/missing-check-scanf | Missing return-value check for a 'scanf'-like function |
+| CWE-754 | C/C++ | cpp/return-value-ignored | Return value of a function is ignored |
+| CWE-754 | C/C++ | cpp/overflowing-snprintf | Potentially overflowing call to snprintf |
+| CWE-754 | C/C++ | cpp/inconsistent-call-on-result | Inconsistent operation on return value |
+| CWE-754 | C/C++ | cpp/ignore-return-value-sal | SAL requires inspecting return value |
+| CWE-754 | C/C++ | cpp/hresult-boolean-conversion | Cast between HRESULT and a Boolean type |
+| CWE-754 | C/C++ | cpp/incorrect-allocation-error-handling | Incorrect allocation-error handling |
+| CWE-754 | C/C++ | cpp/work-with-changing-working-directories | Find work with changing working directories, with security errors |
+| CWE-754 | C/C++ | cpp/drop-linux-privileges-outoforder | LinuxPrivilegeDroppingOutoforder |
+| CWE-754 | C/C++ | cpp/improper-check-return-value-scanf | Improper check of return value of scanf |
+| CWE-754 | C# | cs/unchecked-return-value | Unchecked return value |
+| CWE-754 | Go | go/missing-error-check | Missing error check |
+| CWE-754 | Go | go/unhandled-writable-file-close | Writable file handle closed without error handling |
+| CWE-754 | Java/Kotlin | java/inconsistent-call-on-result | Inconsistent operation on return value |
+| CWE-754 | Java/Kotlin | java/return-value-ignored | Method result ignored |
+| CWE-754 | Java/Kotlin | java/unsafe-cert-trust | Unsafe certificate trust |
+| CWE-754 | JavaScript/TypeScript | js/unvalidated-dynamic-method-call | Unvalidated dynamic method call |
+| CWE-754 | Python | py/ignored-return-value | Ignored return value |
+| CWE-755 | C/C++ | cpp/incorrect-allocation-error-handling | Incorrect allocation-error handling |
+| CWE-755 | C/C++ | cpp/operator-find-incorrectly-used-exceptions | Operator Find Incorrectly Used Exceptions |
+| CWE-755 | C# | cs/dispose-not-called-on-throw | Dispose may not be called if an exception is thrown during execution |
+| CWE-755 | C# | cs/local-not-disposed | Missing Dispose call on local IDisposable |
+| CWE-755 | C# | cs/catch-nullreferenceexception | Poor error handling: catch of NullReferenceException |
+| CWE-755 | C# | cs/empty-catch-block | Poor error handling: empty catch block |
+| CWE-755 | C# | cs/catch-of-all-exceptions | Generic catch clause |
+| CWE-755 | C# | cs/information-exposure-through-exception | Information exposure through an exception |
+| CWE-755 | C# | cs/web/missing-global-error-handler | Missing global error handler |
+| CWE-755 | Go | go/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-755 | Java/Kotlin | java/error-message-exposure | Information exposure through an error message |
+| CWE-755 | Java/Kotlin | java/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-755 | Java/Kotlin | java/overly-general-catch | Overly-general catch clause |
+| CWE-755 | Java/Kotlin | java/android/nfe-local-android-dos | Local Android DoS Caused By NumberFormatException |
+| CWE-755 | JavaScript/TypeScript | js/stack-trace-exposure | Information exposure through a stack trace |
+| CWE-755 | Python | py/catch-base-exception | Except block handles 'BaseException' |
+| CWE-755 | Python | py/empty-except | Empty except |
+| CWE-755 | Python | py/stack-trace-exposure | Information exposure through an exception |
+| CWE-755 | Ruby | rb/stack-trace-exposure | Information exposure through an exception |
+| CWE-756 | C# | cs/web/missing-global-error-handler | Missing global error handler |
+| CWE-757 | Swift | swift/insecure-tls | Insecure TLS configuration |
+| CWE-758 | C/C++ | cpp/pointer-overflow-check | Pointer overflow check |
+| CWE-758 | C/C++ | cpp/memset-may-be-deleted | Call to memset may be deleted |
+| CWE-758 | C/C++ | cpp/errors-of-undefined-program-behavior | Errors Of Undefined Program Behavior |
+| CWE-758 | JavaScript/TypeScript | js/conflicting-html-attribute | Conflicting HTML element attributes |
+| CWE-758 | JavaScript/TypeScript | js/malformed-html-id | Malformed id attribute |
+| CWE-758 | JavaScript/TypeScript | js/conditional-comment | Conditional comments |
+| CWE-758 | JavaScript/TypeScript | js/non-standard-language-feature | Use of platform-specific language features |
+| CWE-758 | JavaScript/TypeScript | js/for-in-comprehension | Use of for-in comprehension blocks |
+| CWE-758 | JavaScript/TypeScript | js/yield-outside-generator | Yield in non-generator function |
+| CWE-759 | C# | cs/hash-without-salt | Use of a hash function without a salt |
+| CWE-759 | Java/Kotlin | java/hash-without-salt | Use of a hash function without a salt |
+| CWE-760 | Swift | swift/constant-salt | Use of constant salts |
+| CWE-764 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-764 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-764 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-764 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-770 | C/C++ | cpp/alloca-in-loop | Call to alloca in a loop |
+| CWE-770 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-770 | Go | go/uncontrolled-allocation-size | Slice memory allocation with excessive size value |
+| CWE-770 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-770 | JavaScript/TypeScript | js/resource-exhaustion | Resource exhaustion |
+| CWE-770 | JavaScript/TypeScript | js/resource-exhaustion-more-sources | Resource exhaustion with additional heuristic sources |
+| CWE-770 | Python | py/unicode-dos | Denial of Service using Unicode Characters |
+| CWE-770 | Rust | rust/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-772 | C/C++ | cpp/catch-missing-free | Leaky catch |
+| CWE-772 | C/C++ | cpp/descriptor-may-not-be-closed | Open descriptor may not be closed |
+| CWE-772 | C/C++ | cpp/descriptor-never-closed | Open descriptor never closed |
+| CWE-772 | C/C++ | cpp/file-may-not-be-closed | Open file may not be closed |
+| CWE-772 | C/C++ | cpp/file-never-closed | Open file is not closed |
+| CWE-772 | C/C++ | cpp/memory-may-not-be-freed | Memory may not be freed |
+| CWE-772 | C/C++ | cpp/memory-never-freed | Memory is never freed |
+| CWE-772 | C/C++ | cpp/new-free-mismatch | Mismatching new/free or malloc/delete |
+| CWE-772 | C/C++ | cpp/memory-leak-on-failed-call-to-realloc | Memory leak on failed call to realloc |
+| CWE-772 | Java/Kotlin | java/input-resource-leak | Potential input resource leak |
+| CWE-772 | Java/Kotlin | java/database-resource-leak | Potential database resource leak |
+| CWE-772 | Java/Kotlin | java/output-resource-leak | Potential output resource leak |
+| CWE-772 | Python | py/file-not-closed | File is not always closed |
+| CWE-775 | C/C++ | cpp/descriptor-may-not-be-closed | Open descriptor may not be closed |
+| CWE-775 | C/C++ | cpp/descriptor-never-closed | Open descriptor never closed |
+| CWE-775 | C/C++ | cpp/file-may-not-be-closed | Open file may not be closed |
+| CWE-775 | C/C++ | cpp/file-never-closed | Open file is not closed |
+| CWE-776 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-776 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-776 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-776 | JavaScript/TypeScript | js/xml-bomb | XML internal entity expansion |
+| CWE-776 | JavaScript/TypeScript | js/xml-bomb-more-sources | XML internal entity expansion with additional heuristic sources |
+| CWE-776 | Python | py/xml-bomb | XML internal entity expansion |
+| CWE-776 | Python | py/simple-xml-rpc-server-dos | SimpleXMLRPCServer denial of service |
+| CWE-776 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-776 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-780 | C# | cs/inadequate-rsa-padding | Weak encryption: inadequate RSA padding |
+| CWE-780 | Java/Kotlin | java/rsa-without-oaep | Use of RSA algorithm without OAEP |
+| CWE-783 | C/C++ | cpp/operator-precedence-logic-error-when-use-bitwise-logical-operations | Operator Precedence Logic Error When Use Bitwise Or Logical Operations |
+| CWE-783 | C/C++ | cpp/operator-precedence-logic-error-when-use-bool-type | Operator Precedence Logic Error When Use Bool Type |
+| CWE-783 | Go | go/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-783 | Java/Kotlin | java/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-783 | JavaScript/TypeScript | js/unclear-operator-precedence | Unclear precedence of nested operators |
+| CWE-783 | JavaScript/TypeScript | js/whitespace-contradicts-precedence | Whitespace contradicts operator precedence |
+| CWE-787 | C/C++ | cpp/allocation-too-small | Not enough memory allocated for pointer type |
+| CWE-787 | C/C++ | cpp/suspicious-allocation-size | Not enough memory allocated for array of pointer type |
+| CWE-787 | C/C++ | cpp/overflow-buffer | Call to memory access function may overflow buffer |
+| CWE-787 | C/C++ | cpp/badly-bounded-write | Badly bounded write |
+| CWE-787 | C/C++ | cpp/overrunning-write | Potentially overrunning write |
+| CWE-787 | C/C++ | cpp/overrunning-write-with-float | Potentially overrunning write with float to string conversion |
+| CWE-787 | C/C++ | cpp/unbounded-write | Unbounded write |
+| CWE-787 | C/C++ | cpp/very-likely-overrunning-write | Likely overrunning write |
+| CWE-787 | C/C++ | cpp/unterminated-variadic-call | Unterminated variadic call |
+| CWE-787 | C/C++ | cpp/no-space-for-terminator | No space for zero terminator |
+| CWE-787 | C/C++ | cpp/invalid-pointer-deref | Invalid pointer dereference |
+| CWE-787 | C/C++ | cpp/sign-conversion-pointer-arithmetic | unsigned to signed used in pointer arithmetic |
+| CWE-787 | C# | cs/unvalidated-local-pointer-arithmetic | Unvalidated local pointer arithmetic |
+| CWE-788 | C/C++ | cpp/allocation-too-small | Not enough memory allocated for pointer type |
+| CWE-788 | C/C++ | cpp/suspicious-allocation-size | Not enough memory allocated for array of pointer type |
+| CWE-788 | C/C++ | cpp/unsafe-strncat | Potentially unsafe call to strncat |
+| CWE-788 | C/C++ | cpp/overflow-buffer | Call to memory access function may overflow buffer |
+| CWE-788 | C/C++ | cpp/unterminated-variadic-call | Unterminated variadic call |
+| CWE-788 | C/C++ | cpp/no-space-for-terminator | No space for zero terminator |
+| CWE-788 | C/C++ | cpp/openssl-heartbleed | Use of a version of OpenSSL with Heartbleed |
+| CWE-788 | C/C++ | cpp/access-memory-location-after-end-buffer-strlen | Access Of Memory Location After End Of Buffer |
+| CWE-788 | C# | cs/unvalidated-local-pointer-arithmetic | Unvalidated local pointer arithmetic |
+| CWE-788 | Go | go/wrong-usage-of-unsafe | Wrong usage of package unsafe |
+| CWE-789 | C/C++ | cpp/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-789 | Rust | rust/uncontrolled-allocation-size | Uncontrolled allocation size |
+| CWE-798 | C# | cs/hard-coded-symmetric-encryption-key | Hard-coded symmetric encryption key |
+| CWE-798 | C# | cs/hardcoded-connection-string-credentials | Hard-coded connection string with credentials |
+| CWE-798 | C# | cs/hardcoded-credentials | Hard-coded credentials |
+| CWE-798 | Go | go/hardcoded-credentials | Hard-coded credentials |
+| CWE-798 | Go | go/parse-jwt-with-hardcoded-key | Decoding JWT with hardcoded key |
+| CWE-798 | Java/Kotlin | java/hardcoded-credential-api-call | Hard-coded credential in API call |
+| CWE-798 | Java/Kotlin | java/hardcoded-credential-comparison | Hard-coded credential comparison |
+| CWE-798 | Java/Kotlin | java/hardcoded-credential-sensitive-call | Hard-coded credential in sensitive call |
+| CWE-798 | Java/Kotlin | java/hardcoded-password-field | Hard-coded password field |
+| CWE-798 | JavaScript/TypeScript | js/hardcoded-credentials | Hard-coded credentials |
+| CWE-798 | Python | py/hardcoded-credentials | Hard-coded credentials |
+| CWE-798 | Ruby | rb/hardcoded-credentials | Hard-coded credentials |
+| CWE-798 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-798 | Swift | swift/constant-password | Constant password |
+| CWE-798 | Swift | swift/hardcoded-key | Hard-coded encryption key |
+| CWE-799 | JavaScript/TypeScript | js/missing-rate-limiting | Missing rate limiting |
+| CWE-805 | C/C++ | cpp/badly-bounded-write | Badly bounded write |
+| CWE-805 | C/C++ | cpp/overrunning-write | Potentially overrunning write |
+| CWE-805 | C/C++ | cpp/overrunning-write-with-float | Potentially overrunning write with float to string conversion |
+| CWE-805 | C/C++ | cpp/unbounded-write | Unbounded write |
+| CWE-805 | C/C++ | cpp/very-likely-overrunning-write | Likely overrunning write |
+| CWE-805 | C/C++ | cpp/buffer-access-with-incorrect-length-value | Buffer access with incorrect length value |
+| CWE-807 | C/C++ | cpp/tainted-permissions-check | Untrusted input for a condition |
+| CWE-807 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-807 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-807 | Java/Kotlin | java/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-807 | Java/Kotlin | java/tainted-permissions-check | User-controlled data used in permissions check |
+| CWE-807 | JavaScript/TypeScript | js/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-807 | JavaScript/TypeScript | js/different-kinds-comparison-bypass | Comparison of user-controlled data of different kinds |
+| CWE-807 | JavaScript/TypeScript | js/user-controlled-bypass-more-sources | User-controlled bypass of security check with additional heuristic sources |
+| CWE-807 | Ruby | rb/user-controlled-bypass | User-controlled bypass of security check |
+| CWE-820 | C# | cs/unsynchronized-static-access | Unsynchronized access to static collection member in non-static context |
+| CWE-820 | Java/Kotlin | java/lazy-initialization | Incorrect lazy initialization of a static field |
+| CWE-820 | Java/Kotlin | java/non-sync-override | Non-synchronized override of synchronized method |
+| CWE-821 | Java/Kotlin | java/ejb/synchronization | EJB uses synchronization |
+| CWE-821 | Java/Kotlin | java/call-to-thread-run | Direct call to a run() method |
+| CWE-823 | C/C++ | cpp/late-negative-test | Pointer offset used before it is checked |
+| CWE-823 | C/C++ | cpp/missing-negativity-test | Unchecked return value used as offset |
+| CWE-825 | C/C++ | cpp/double-free | Potential double free |
+| CWE-825 | C/C++ | cpp/use-after-free | Potential use after free |
+| CWE-825 | C/C++ | cpp/return-stack-allocated-memory | Returning stack-allocated memory |
+| CWE-825 | C/C++ | cpp/using-expired-stack-address | Use of expired stack-address |
+| CWE-825 | C/C++ | cpp/iterator-to-expired-container | Iterator to expired container |
+| CWE-825 | C/C++ | cpp/use-of-string-after-lifetime-ends | Use of string after lifetime ends |
+| CWE-825 | C/C++ | cpp/use-of-unique-pointer-after-lifetime-ends | Use of unique pointer after lifetime ends |
+| CWE-825 | C/C++ | cpp/experimental-double-free | Errors When Double Free |
+| CWE-825 | C/C++ | cpp/use-after-expired-lifetime | Use of object after its lifetime has ended |
+| CWE-825 | C/C++ | cpp/dangerous-use-of-exception-blocks | Dangerous use of exception blocks |
+| CWE-825 | Rust | rust/access-after-lifetime-ended | Access of a pointer after its lifetime has ended |
+| CWE-825 | Rust | rust/access-invalid-pointer | Access of invalid pointer |
+| CWE-826 | C/C++ | cpp/self-assignment-check | Self assignment check |
+| CWE-827 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-827 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-827 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-827 | JavaScript/TypeScript | js/xxe | XML external entity expansion |
+| CWE-827 | JavaScript/TypeScript | js/xxe-more-sources | XML external entity expansion with additional heuristic sources |
+| CWE-827 | Python | py/xxe | XML external entity expansion |
+| CWE-827 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-827 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-829 | GitHub Actions | actions/artifact-poisoning/critical | Artifact poisoning |
+| CWE-829 | GitHub Actions | actions/artifact-poisoning/medium | Artifact poisoning |
+| CWE-829 | GitHub Actions | actions/unpinned-tag | Unpinned tag for a non-immutable Action in workflow |
+| CWE-829 | GitHub Actions | actions/untrusted-checkout/critical | Checkout of untrusted code in a privileged context |
+| CWE-829 | GitHub Actions | actions/untrusted-checkout/high | Checkout of untrusted code in trusted context |
+| CWE-829 | GitHub Actions | actions/untrusted-checkout/medium | Checkout of untrusted code in trusted context |
+| CWE-829 | GitHub Actions | actions/artifact-poisoning/path-traversal | Artifact Poisoning (Path Traversal) |
+| CWE-829 | GitHub Actions | actions/unversioned-immutable-action | Unversioned Immutable Action |
+| CWE-829 | C# | cs/web/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-829 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-829 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-829 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-829 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-829 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-829 | JavaScript/TypeScript | js/missing-x-frame-options | Missing X-Frame-Options HTTP header |
+| CWE-829 | JavaScript/TypeScript | js/xxe | XML external entity expansion |
+| CWE-829 | JavaScript/TypeScript | js/insecure-download | Download of sensitive file through insecure connection |
+| CWE-829 | JavaScript/TypeScript | js/functionality-from-untrusted-domain | Untrusted domain used in script or other content |
+| CWE-829 | JavaScript/TypeScript | js/functionality-from-untrusted-source | Inclusion of functionality from an untrusted source |
+| CWE-829 | JavaScript/TypeScript | js/xxe-more-sources | XML external entity expansion with additional heuristic sources |
+| CWE-829 | Python | py/xxe | XML external entity expansion |
+| CWE-829 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-829 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-829 | Ruby | rb/insecure-download | Download of sensitive file through insecure connection |
+| CWE-829 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-830 | JavaScript/TypeScript | js/functionality-from-untrusted-domain | Untrusted domain used in script or other content |
+| CWE-830 | JavaScript/TypeScript | js/functionality-from-untrusted-source | Inclusion of functionality from an untrusted source |
+| CWE-833 | C/C++ | cpp/lock-order-cycle | Cyclic lock order dependency |
+| CWE-833 | C/C++ | cpp/twice-locked | Mutex locked twice |
+| CWE-833 | C/C++ | cpp/unreleased-lock | Lock may not be released |
+| CWE-833 | C# | cs/locked-wait | A lock is held during a wait |
+| CWE-833 | Java/Kotlin | java/sleep-with-lock-held | Sleep with lock held |
+| CWE-833 | Java/Kotlin | java/unreleased-lock | Unreleased lock |
+| CWE-833 | Java/Kotlin | java/wait-with-two-locks | Wait with two locks held |
+| CWE-833 | Java/Kotlin | java/lock-order-inconsistency | Lock order inconsistency |
+| CWE-834 | C/C++ | cpp/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-834 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-834 | C/C++ | cpp/infinite-loop-with-unsatisfiable-exit-condition | Infinite loop with unsatisfiable exit condition |
+| CWE-834 | C# | cs/constant-condition | Constant condition |
+| CWE-834 | C# | cs/linq/inconsistent-enumeration | Bad multiple iteration |
+| CWE-834 | C# | cs/xml/insecure-dtd-handling | Untrusted XML is read insecurely |
+| CWE-834 | C# | cs/insecure-xml-read | XML is read insecurely |
+| CWE-834 | Go | go/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-834 | Java/Kotlin | java/constant-loop-condition | Constant loop condition |
+| CWE-834 | Java/Kotlin | java/xxe | Resolving XML external entity in user-controlled data |
+| CWE-834 | Java/Kotlin | java/unreachable-exit-in-loop | Loop with unreachable exit condition |
+| CWE-834 | JavaScript/TypeScript | js/xml-bomb | XML internal entity expansion |
+| CWE-834 | JavaScript/TypeScript | js/loop-bound-injection | Loop bound injection |
+| CWE-834 | JavaScript/TypeScript | js/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-834 | JavaScript/TypeScript | js/xml-bomb-more-sources | XML internal entity expansion with additional heuristic sources |
+| CWE-834 | Python | py/xml-bomb | XML internal entity expansion |
+| CWE-834 | Python | py/simple-xml-rpc-server-dos | SimpleXMLRPCServer denial of service |
+| CWE-834 | Ruby | rb/xxe | XML external entity expansion |
+| CWE-834 | Swift | swift/xxe | Resolving XML external entity in user-controlled data |
+| CWE-835 | C/C++ | cpp/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-835 | C/C++ | cpp/comparison-with-wider-type | Comparison of narrow type with wide type in loop condition |
+| CWE-835 | C/C++ | cpp/infinite-loop-with-unsatisfiable-exit-condition | Infinite loop with unsatisfiable exit condition |
+| CWE-835 | C# | cs/constant-condition | Constant condition |
+| CWE-835 | Go | go/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-835 | Java/Kotlin | java/constant-loop-condition | Constant loop condition |
+| CWE-835 | Java/Kotlin | java/unreachable-exit-in-loop | Loop with unreachable exit condition |
+| CWE-835 | JavaScript/TypeScript | js/inconsistent-loop-direction | Inconsistent direction of for loop |
+| CWE-838 | C# | cs/inappropriate-encoding | Inappropriate encoding |
+| CWE-843 | C/C++ | cpp/upcast-array-pointer-arithmetic | Upcast array used in pointer arithmetic |
+| CWE-843 | C/C++ | cpp/type-confusion | Type confusion |
+| CWE-843 | JavaScript/TypeScript | js/type-confusion-through-parameter-tampering | Type confusion through parameter tampering |
+| CWE-862 | C# | cs/empty-password-in-configuration | Empty password in configuration file |
+| CWE-862 | C# | cs/web/missing-function-level-access-control | Missing function level access control |
+| CWE-862 | C# | cs/web/insecure-direct-object-reference | Insecure Direct Object Reference |
+| CWE-862 | Java/Kotlin | java/incorrect-url-verification | Incorrect URL verification |
+| CWE-862 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-862 | JavaScript/TypeScript | js/empty-password-in-configuration-file | Empty password in configuration file |
+| CWE-862 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-863 | Java/Kotlin | java/permissive-dot-regex | URL matched by permissive . in a regular expression |
+| CWE-908 | C/C++ | cpp/improper-check-return-value-scanf | Improper check of return value of scanf |
+| CWE-909 | C/C++ | cpp/initialization-not-run | Initialization code not run |
+| CWE-912 | JavaScript/TypeScript | js/hardcoded-data-interpreted-as-code | Hard-coded data interpreted as code |
+| CWE-912 | JavaScript/TypeScript | js/http-to-file-access | Network data written to file |
+| CWE-912 | Ruby | rb/hardcoded-data-interpreted-as-code | Hard-coded data interpreted as code |
+| CWE-912 | Ruby | rb/http-to-file-access | Network data written to file |
+| CWE-913 | GitHub Actions | actions/code-injection/critical | Code injection |
+| CWE-913 | GitHub Actions | actions/code-injection/medium | Code injection |
+| CWE-913 | GitHub Actions | actions/cache-poisoning/code-injection | Cache Poisoning via low-privileged code injection |
+| CWE-913 | C# | cs/code-injection | Improper control of generation of code |
+| CWE-913 | C# | cs/deserialized-delegate | Deserialized delegate |
+| CWE-913 | C# | cs/unsafe-deserialization | Unsafe deserializer |
+| CWE-913 | C# | cs/unsafe-deserialization-untrusted-input | Deserialization of untrusted data |
+| CWE-913 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-913 | Java/Kotlin | java/android/arbitrary-apk-installation | Android APK installation |
+| CWE-913 | Java/Kotlin | java/groovy-injection | Groovy Language injection |
+| CWE-913 | Java/Kotlin | java/insecure-bean-validation | Insecure Bean Validation |
+| CWE-913 | Java/Kotlin | java/jexl-expression-injection | Expression language injection (JEXL) |
+| CWE-913 | Java/Kotlin | java/mvel-expression-injection | Expression language injection (MVEL) |
+| CWE-913 | Java/Kotlin | java/spel-expression-injection | Expression language injection (Spring) |
+| CWE-913 | Java/Kotlin | java/server-side-template-injection | Server-side template injection |
+| CWE-913 | Java/Kotlin | java/android/fragment-injection | Android fragment injection |
+| CWE-913 | Java/Kotlin | java/android/fragment-injection-preference-activity | Android fragment injection in PreferenceActivity |
+| CWE-913 | Java/Kotlin | java/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-913 | Java/Kotlin | java/log4j-injection | Potential Log4J LDAP JNDI injection (CVE-2021-44228) |
+| CWE-913 | Java/Kotlin | java/beanshell-injection | BeanShell injection |
+| CWE-913 | Java/Kotlin | java/android-insecure-dex-loading | Insecure loading of an Android Dex File |
+| CWE-913 | Java/Kotlin | java/jshell-injection | JShell injection |
+| CWE-913 | Java/Kotlin | java/javaee-expression-injection | Jakarta Expression Language injection |
+| CWE-913 | Java/Kotlin | java/jython-injection | Injection in Jython |
+| CWE-913 | Java/Kotlin | java/unsafe-eval | Injection in Java Script Engine |
+| CWE-913 | Java/Kotlin | java/spring-view-manipulation-implicit | Spring Implicit View Manipulation |
+| CWE-913 | Java/Kotlin | java/spring-view-manipulation | Spring View Manipulation |
+| CWE-913 | Java/Kotlin | java/android/unsafe-reflection | Load 3rd party classes or code ('unsafe reflection') without signature check |
+| CWE-913 | Java/Kotlin | java/unsafe-reflection | Use of externally-controlled input to select classes or code ('unsafe reflection') |
+| CWE-913 | Java/Kotlin | java/unsafe-deserialization-rmi | Unsafe deserialization in a remotely callable method |
+| CWE-913 | Java/Kotlin | java/unsafe-deserialization-spring-exporter-in-configuration-class | Unsafe deserialization with Spring's remote service exporters |
+| CWE-913 | Java/Kotlin | java/unsafe-deserialization-spring-exporter-in-xml-configuration | Unsafe deserialization with Spring's remote service exporters |
+| CWE-913 | JavaScript/TypeScript | js/enabling-electron-renderer-node-integration | Enabling Node.js integration for Electron web content renderers |
+| CWE-913 | JavaScript/TypeScript | js/template-object-injection | Template Object Injection |
+| CWE-913 | JavaScript/TypeScript | js/code-injection | Code injection |
+| CWE-913 | JavaScript/TypeScript | js/bad-code-sanitization | Improper code sanitization |
+| CWE-913 | JavaScript/TypeScript | js/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-913 | JavaScript/TypeScript | js/unsafe-dynamic-method-access | Unsafe dynamic method access |
+| CWE-913 | JavaScript/TypeScript | js/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-913 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-913 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-913 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-913 | JavaScript/TypeScript | js/code-injection-dynamic-import | Code injection from dynamically imported code |
+| CWE-913 | JavaScript/TypeScript | js/code-injection-more-sources | Code injection with additional heuristic sources |
+| CWE-913 | JavaScript/TypeScript | js/unsafe-deserialization-more-sources | Deserialization of user-controlled data with additional heuristic sources |
+| CWE-913 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-913 | Python | py/use-of-input | 'input' function used in Python 2 |
+| CWE-913 | Python | py/code-injection | Code injection |
+| CWE-913 | Python | py/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-913 | Python | py/js2py-rce | JavaScript code execution |
+| CWE-913 | Ruby | rb/unsafe-unsafeyamldeserialization | Deserialization of user-controlled yaml data |
+| CWE-913 | Ruby | rb/server-side-template-injection | Server-side template injection |
+| CWE-913 | Ruby | rb/code-injection | Code injection |
+| CWE-913 | Ruby | rb/unsafe-code-construction | Unsafe code constructed from library input |
+| CWE-913 | Ruby | rb/unsafe-deserialization | Deserialization of user-controlled data |
+| CWE-913 | Ruby | rb/insecure-mass-assignment | Insecure Mass Assignment |
+| CWE-913 | Swift | swift/unsafe-webview-fetch | Unsafe WebView fetch |
+| CWE-913 | Swift | swift/unsafe-js-eval | JavaScript Injection |
+| CWE-915 | JavaScript/TypeScript | js/prototype-polluting-assignment | Prototype-polluting assignment |
+| CWE-915 | JavaScript/TypeScript | js/prototype-pollution-utility | Prototype-polluting function |
+| CWE-915 | JavaScript/TypeScript | js/prototype-pollution | Prototype-polluting merge call |
+| CWE-915 | JavaScript/TypeScript | js/prototype-polluting-assignment-more-sources | Prototype-polluting assignment with additional heuristic sources |
+| CWE-915 | Ruby | rb/insecure-mass-assignment | Insecure Mass Assignment |
+| CWE-916 | C# | cs/hash-without-salt | Use of a hash function without a salt |
+| CWE-916 | Go | go/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-916 | Java/Kotlin | java/hash-without-salt | Use of a hash function without a salt |
+| CWE-916 | JavaScript/TypeScript | js/insufficient-password-hash | Use of password hash with insufficient computational effort |
+| CWE-916 | Python | py/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-916 | Ruby | rb/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-916 | Rust | rust/weak-sensitive-data-hashing | Use of a broken or weak cryptographic hashing algorithm on sensitive data |
+| CWE-916 | Swift | swift/weak-password-hashing | Use of an inappropriate cryptographic hashing algorithm on passwords |
+| CWE-916 | Swift | swift/constant-salt | Use of constant salts |
+| CWE-916 | Swift | swift/insufficient-hash-iterations | Insufficient hash iterations |
+| CWE-917 | Java/Kotlin | java/ognl-injection | OGNL Expression Language statement with user-controlled input |
+| CWE-918 | GitHub Actions | actions/request-forgery | Uncontrolled data used in network request |
+| CWE-918 | C# | cs/request-forgery | Server-side request forgery |
+| CWE-918 | Go | go/request-forgery | Uncontrolled data used in network request |
+| CWE-918 | Go | go/ssrf | Uncontrolled data used in network request |
+| CWE-918 | Java/Kotlin | java/ssrf | Server-side request forgery |
+| CWE-918 | JavaScript/TypeScript | js/client-side-request-forgery | Client-side request forgery |
+| CWE-918 | JavaScript/TypeScript | js/request-forgery | Server-side request forgery |
+| CWE-918 | JavaScript/TypeScript | javascript/ssrf | Uncontrolled data used in network request |
+| CWE-918 | Python | py/full-ssrf | Full server-side request forgery |
+| CWE-918 | Python | py/partial-ssrf | Partial server-side request forgery |
+| CWE-918 | Ruby | rb/request-forgery | Server-side request forgery |
+| CWE-918 | Rust | rust/request-forgery | Server-side request forgery |
+| CWE-922 | GitHub Actions | actions/excessive-secrets-exposure | Excessive Secrets Exposure |
+| CWE-922 | GitHub Actions | actions/secrets-in-artifacts | Storage of sensitive information in GitHub Actions artifact |
+| CWE-922 | GitHub Actions | actions/unmasked-secret-exposure | Unmasked Secret Exposure |
+| CWE-922 | C/C++ | cpp/cleartext-storage-buffer | Cleartext storage of sensitive information in buffer |
+| CWE-922 | C/C++ | cpp/cleartext-storage-file | Cleartext storage of sensitive information in file |
+| CWE-922 | C/C++ | cpp/cleartext-storage-database | Cleartext storage of sensitive information in an SQLite database |
+| CWE-922 | C# | cs/password-in-configuration | Password in configuration file |
+| CWE-922 | C# | cs/cleartext-storage-of-sensitive-information | Clear text storage of sensitive information |
+| CWE-922 | Go | go/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-922 | Java/Kotlin | java/android/backup-enabled | Application backup allowed |
+| CWE-922 | Java/Kotlin | java/android/cleartext-storage-database | Cleartext storage of sensitive information using a local database on Android |
+| CWE-922 | Java/Kotlin | java/android/cleartext-storage-filesystem | Cleartext storage of sensitive information in the Android filesystem |
+| CWE-922 | Java/Kotlin | java/cleartext-storage-in-class | Cleartext storage of sensitive information using storable class |
+| CWE-922 | Java/Kotlin | java/cleartext-storage-in-cookie | Cleartext storage of sensitive information in cookie |
+| CWE-922 | Java/Kotlin | java/cleartext-storage-in-properties | Cleartext storage of sensitive information using 'Properties' class |
+| CWE-922 | Java/Kotlin | java/android/cleartext-storage-shared-prefs | Cleartext storage of sensitive information using SharedPreferences on Android |
+| CWE-922 | JavaScript/TypeScript | js/build-artifact-leak | Storage of sensitive information in build artifact |
+| CWE-922 | JavaScript/TypeScript | js/clear-text-logging | Clear-text logging of sensitive information |
+| CWE-922 | JavaScript/TypeScript | js/clear-text-storage-of-sensitive-data | Clear text storage of sensitive information |
+| CWE-922 | JavaScript/TypeScript | js/password-in-configuration-file | Password in configuration file |
+| CWE-922 | JavaScript/TypeScript | js/clear-text-cookie | Clear text transmission of sensitive cookie |
+| CWE-922 | Python | py/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-922 | Python | py/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-922 | Ruby | rb/clear-text-logging-sensitive-data | Clear-text logging of sensitive information |
+| CWE-922 | Ruby | rb/clear-text-storage-sensitive-data | Clear-text storage of sensitive information |
+| CWE-922 | Rust | rust/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-922 | Rust | rust/cleartext-storage-database | Cleartext storage of sensitive information in a database |
+| CWE-922 | Swift | swift/cleartext-storage-database | Cleartext storage of sensitive information in a local database |
+| CWE-922 | Swift | swift/cleartext-logging | Cleartext logging of sensitive information |
+| CWE-922 | Swift | swift/cleartext-storage-preferences | Cleartext storage of sensitive information in an application preference store |
+| CWE-923 | C# | cs/user-controlled-bypass | User-controlled bypass of sensitive method |
+| CWE-923 | Go | go/insecure-hostkeycallback | Use of insecure HostKeyCallback implementation |
+| CWE-923 | Go | go/sensitive-condition-bypass | User-controlled bypassing of sensitive action |
+| CWE-923 | Java/Kotlin | java/insecure-smtp-ssl | Insecure JavaMail SSL Configuration |
+| CWE-923 | Java/Kotlin | java/unsafe-hostname-verification | Unsafe hostname verification |
+| CWE-923 | Java/Kotlin | java/socket-auth-race-condition | Race condition in socket authentication |
+| CWE-923 | Java/Kotlin | java/maven/non-https-url | Failure to use HTTPS or SFTP URL in Maven artifact upload/download |
+| CWE-923 | Java/Kotlin | java/improper-intent-verification | Improper verification of intent by broadcast receiver |
+| CWE-923 | Java/Kotlin | java/android/intent-redirection | Android Intent redirection |
+| CWE-923 | Java/Kotlin | java/ignored-hostname-verification | Ignored result of hostname verification |
+| CWE-923 | Java/Kotlin | java/insecure-ldaps-endpoint | Insecure LDAPS Endpoint Configuration |
+| CWE-923 | JavaScript/TypeScript | js/missing-origin-check | Missing origin verification in postMessage handler |
+| CWE-923 | JavaScript/TypeScript | js/disabling-certificate-validation | Disabling certificate validation |
+| CWE-923 | JavaScript/TypeScript | js/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-923 | Ruby | rb/insecure-dependency | Dependency download using unencrypted communication channel |
+| CWE-925 | Java/Kotlin | java/improper-intent-verification | Improper verification of intent by broadcast receiver |
+| CWE-926 | Java/Kotlin | java/android/intent-uri-permission-manipulation | Intent URI permission manipulation |
+| CWE-926 | Java/Kotlin | java/android/incomplete-provider-permissions | Missing read or write permission in a content provider |
+| CWE-926 | Java/Kotlin | java/android/implicitly-exported-component | Implicitly exported Android component |
+| CWE-926 | Java/Kotlin | java/android/intent-redirection | Android Intent redirection |
+| CWE-927 | Java/Kotlin | java/android/implicit-pendingintents | Use of implicit PendingIntents |
+| CWE-927 | Java/Kotlin | java/android/sensitive-communication | Leaking sensitive information through an implicit Intent |
+| CWE-927 | Java/Kotlin | java/android/sensitive-result-receiver | Leaking sensitive information through a ResultReceiver |
+| CWE-939 | Java/Kotlin | java/incorrect-url-verification | Incorrect URL verification |
+| CWE-940 | Java/Kotlin | java/android/intent-redirection | Android Intent redirection |
+| CWE-940 | JavaScript/TypeScript | js/missing-origin-check | Missing origin verification in postMessage handler |
+| CWE-942 | Go | go/cors-misconfiguration | CORS misconfiguration |
+| CWE-942 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials | CORS misconfiguration for credentials transfer |
+| CWE-942 | JavaScript/TypeScript | js/cors-permissive-configuration | Permissive CORS configuration |
+| CWE-942 | JavaScript/TypeScript | js/cors-misconfiguration-for-credentials-more-sources | CORS misconfiguration for credentials transfer with additional heuristic sources |
+| CWE-942 | Python | py/cors-misconfiguration-with-credentials | Cors misconfiguration with credentials |
+| CWE-943 | C/C++ | cpp/sql-injection | Uncontrolled data in SQL query |
+| CWE-943 | C# | cs/sql-injection | SQL query built from user-controlled sources |
+| CWE-943 | C# | cs/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-943 | C# | cs/xml/xpath-injection | XPath injection |
+| CWE-943 | Go | go/sql-injection | Database query built from user-controlled sources |
+| CWE-943 | Go | go/unsafe-quoting | Potentially unsafe quoting |
+| CWE-943 | Go | go/xml/xpath-injection | XPath injection |
+| CWE-943 | Go | go/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-943 | Java/Kotlin | java/concatenated-sql-query | Query built by concatenation with a possibly-untrusted string |
+| CWE-943 | Java/Kotlin | java/sql-injection | Query built from user-controlled sources |
+| CWE-943 | Java/Kotlin | java/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-943 | Java/Kotlin | java/xml/xpath-injection | XPath injection |
+| CWE-943 | Java/Kotlin | java/mybatis-annotation-sql-injection | SQL injection in MyBatis annotation |
+| CWE-943 | Java/Kotlin | java/mybatis-xml-sql-injection | SQL injection in MyBatis Mapper XML |
+| CWE-943 | Java/Kotlin | java/xquery-injection | XQuery query built from user-controlled sources |
+| CWE-943 | JavaScript/TypeScript | js/sql-injection | Database query built from user-controlled sources |
+| CWE-943 | JavaScript/TypeScript | js/xpath-injection | XPath injection |
+| CWE-943 | JavaScript/TypeScript | js/env-key-and-value-injection | User controlled arbitrary environment variable injection |
+| CWE-943 | JavaScript/TypeScript | js/env-value-injection | User controlled environment variable value injection |
+| CWE-943 | JavaScript/TypeScript | js/sql-injection-more-sources | Database query built from user-controlled sources with additional heuristic sources |
+| CWE-943 | JavaScript/TypeScript | js/xpath-injection-more-sources | XPath injection with additional heuristic sources |
+| CWE-943 | Python | py/sql-injection | SQL query built from user-controlled sources |
+| CWE-943 | Python | py/ldap-injection | LDAP query built from user-controlled sources |
+| CWE-943 | Python | py/xpath-injection | XPath query built from user-controlled sources |
+| CWE-943 | Python | py/nosql-injection | NoSQL Injection |
+| CWE-943 | Python | py/xslt-injection | XSLT query built from user-controlled sources |
+| CWE-943 | Ruby | rb/ldap-injection | LDAP Injection |
+| CWE-943 | Ruby | rb/xpath-injection | XPath query built from user-controlled sources |
+| CWE-943 | Ruby | rb/sql-injection | SQL query built from user-controlled sources |
+| CWE-943 | Rust | rust/sql-injection | Database query built from user-controlled sources |
+| CWE-943 | Swift | swift/sql-injection | Database query built from user-controlled sources |
+| CWE-943 | Swift | swift/predicate-injection | Predicate built from user-controlled sources |
+| CWE-1004 | C# | cs/web/cookie-httponly-not-set | Cookie 'HttpOnly' attribute is not set to true |
+| CWE-1004 | Go | go/cookie-httponly-not-set | Cookie 'HttpOnly' attribute is not set to true |
+| CWE-1004 | Java/Kotlin | java/sensitive-cookie-not-httponly | Sensitive cookies without the HttpOnly response header set |
+| CWE-1004 | Java/Kotlin | java/tomcat-disabled-httponly | Tomcat config disables 'HttpOnly' flag (XSS risk) |
+| CWE-1004 | JavaScript/TypeScript | js/client-exposed-cookie | Sensitive server cookie exposed to the client |
+| CWE-1004 | Python | py/client-exposed-cookie | Sensitive cookie missing HttpOnly attribute |
+| CWE-1021 | JavaScript/TypeScript | js/insecure-helmet-configuration | Insecure configuration of Helmet security middleware |
+| CWE-1022 | JavaScript/TypeScript | js/unsafe-external-link | Potentially unsafe external link |
+| CWE-1041 | C/C++ | cpp/call-to-function-without-wrapper | Missed opportunity to call wrapper function |
+| CWE-1071 | Java/Kotlin | java/empty-method | Empty method |
+| CWE-1078 | C/C++ | cpp/comma-before-misleading-indentation | Comma before misleading indentation |
+| CWE-1104 | Java/Kotlin | java/maven/dependency-upon-bintray | Depending upon JCenter/Bintray as an artifact repository |
+| CWE-1126 | C/C++ | cpp/errors-when-using-variable-declaration-inside-loop | Errors When Using Variable Declaration Inside Loop |
+| CWE-1176 | Java/Kotlin | java/string-replace-all-with-non-regex | Use of String#replaceAll with a first argument which is not a regular expression |
+| CWE-1176 | JavaScript/TypeScript | js/angular/double-compilation | Double compilation |
+| CWE-1204 | Java/Kotlin | java/static-initialization-vector | Using a static initialization vector for encryption |
+| CWE-1204 | Rust | rust/hard-coded-cryptographic-value | Hard-coded cryptographic value |
+| CWE-1204 | Swift | swift/static-initialization-vector | Static initialization vector for encryption |
+| CWE-1236 | Python | py/csv-injection | Csv Injection |
+| CWE-1240 | C/C++ | cpp/crypto-primitive | Implementation of a cryptographic primitive |
+| CWE-1275 | JavaScript/TypeScript | js/samesite-none-cookie | Sensitive cookie without SameSite restrictions |
+| CWE-1275 | Python | py/samesite-none-cookie | Sensitive cookie with SameSite attribute set to None |
+| CWE-1275 | Ruby | rb/weak-cookie-configuration | Weak cookie configuration |
+| CWE-1333 | C# | cs/redos | Denial of Service from comparison of user input against expensive regex |
+| CWE-1333 | Java/Kotlin | java/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-1333 | Java/Kotlin | java/redos | Inefficient regular expression |
+| CWE-1333 | JavaScript/TypeScript | js/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-1333 | JavaScript/TypeScript | js/redos | Inefficient regular expression |
+| CWE-1333 | Python | py/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-1333 | Python | py/redos | Inefficient regular expression |
+| CWE-1333 | Ruby | rb/polynomial-redos | Polynomial regular expression used on uncontrolled data |
+| CWE-1333 | Ruby | rb/redos | Inefficient regular expression |
+| CWE-1333 | Ruby | rb/regexp-injection | Regular expression injection |
+| CWE-1333 | Swift | swift/redos | Inefficient regular expression |
+| CWE-1336 | Java/Kotlin | java/server-side-template-injection | Server-side template injection |
+| CWE-1395 | GitHub Actions | actions/vulnerable-action | Use of a known vulnerable action |

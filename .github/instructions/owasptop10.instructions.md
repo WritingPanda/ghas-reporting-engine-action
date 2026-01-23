@@ -1,24 +1,29 @@
-# OWASP Top 10
+# OWASP Top 10:2025
 
-The following is a list of the OWASP Top and the associated CWEs for each vulnerability type.
+The following is a list of the OWASP Top 10 (2025) and the associated CWEs for each vulnerability type.
 
-- A01:2021 Broken Access Control
-  - CWE-022 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
-  - CWE-023 Relative Path Traversal
-  - CWE-035 Path Traversal: '.../...//'
-  - CWE-059 Improper Link Resolution Before File Access ('Link Following')
+- A01:2025 Broken Access Control
+  - CWE-22 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
+  - CWE-23 Relative Path Traversal
+  - CWE-36 Absolute Path Traversal
+  - CWE-59 Improper Link Resolution Before File Access ('Link Following')
+  - CWE-61 UNIX Symbolic Link (Symlink) Following
+  - CWE-65 Windows Hard Link
   - CWE-200 Exposure of Sensitive Information to an Unauthorized Actor
   - CWE-201 Exposure of Sensitive Information Through Sent Data
   - CWE-219 Storage of File with Sensitive Data Under Web Root
-  - CWE-264 Permissions, Privileges, and Access Controls (deprecated)
-  - CWE-275 Permission Issues
   - CWE-276 Incorrect Default Permissions
+  - CWE-281 Improper Preservation of Permissions
+  - CWE-282 Improper Ownership Management
+  - CWE-283 Unverified Ownership
   - CWE-284 Improper Access Control
   - CWE-285 Improper Authorization
   - CWE-352 Cross-Site Request Forgery (CSRF)
   - CWE-359 Exposure of Private Personal Information to an Unauthorized Actor
   - CWE-377 Insecure Temporary File
+  - CWE-379 Creation of Temporary File in Directory with Insecure Permissions
   - CWE-402 Transmission of Private Resources into a New Sphere ('Resource Leak')
+  - CWE-424 Improper Protection of Alternate Path
   - CWE-425 Direct Request ('Forced Browsing')
   - CWE-441 Unintended Proxy or Intermediary ('Confused Deputy')
   - CWE-497 Exposure of Sensitive System Information to an Unauthorized Control Sphere
@@ -28,22 +33,48 @@ The following is a list of the OWASP Top and the associated CWEs for each vulner
   - CWE-552 Files or Directories Accessible to External Parties
   - CWE-566 Authorization Bypass Through User-Controlled SQL Primary Key
   - CWE-601 URL Redirection to Untrusted Site ('Open Redirect')
+  - CWE-615 Inclusion of Sensitive Information in Source Code Comments
   - CWE-639 Authorization Bypass Through User-Controlled Key
-  - CWE-651 Exposure of WSDL File Containing Sensitive Information
   - CWE-668 Exposure of Resource to Wrong Sphere
-  - CWE-706 Use of Incorrectly-Resolved Name or Reference
+  - CWE-732 Incorrect Permission Assignment for Critical Resource
+  - CWE-749 Exposed Dangerous Method or Function
   - CWE-862 Missing Authorization
   - CWE-863 Incorrect Authorization
-  - CWE-913 Improper Control of Dynamically-Managed Code Resources
+  - CWE-918 Server-Side Request Forgery (SSRF)
   - CWE-922 Insecure Storage of Sensitive Information
   - CWE-1275 Sensitive Cookie with Improper SameSite Attribute
 
-- A02:2021 Cryptographic Failures
-  - CWE-259 Use of Hard-coded Password
+- A02:2025 Security Misconfiguration
+  - CWE-5 J2EE Misconfiguration: Data Transmission Without Encryption
+  - CWE-11 ASP.NET Misconfiguration: Creating Debug Binary
+  - CWE-13 ASP.NET Misconfiguration: Password in Configuration File
+  - CWE-15 External Control of System or Configuration Setting
+  - CWE-16 Configuration
+  - CWE-260 Password in Configuration File
+  - CWE-315 Cleartext Storage of Sensitive Information in a Cookie
+  - CWE-489 Active Debug Code
+  - CWE-526 Exposure of Sensitive Information Through Environmental Variables
+  - CWE-547 Use of Hard-coded, Security-relevant Constants
+  - CWE-611 Improper Restriction of XML External Entity Reference
+  - CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute
+  - CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')
+  - CWE-942 Permissive Cross-domain Policy with Untrusted Domains
+  - CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag
+  - CWE-1174 ASP.NET Misconfiguration: Improper Model Validation
+
+- A03:2025 Software Supply Chain Failures
+  - CWE-447 Use of Obsolete Function
+  - CWE-1035 2017 Top 10 A9: Using Components with Known Vulnerabilities
+  - CWE-1104 Use of Unmaintained Third Party Components
+  - CWE-1329 Reliance on Component That is Not Updateable
+  - CWE-1357 Reliance on Insufficiently Trustworthy Component
+  - CWE-1395 Dependency on Vulnerable Third-Party Component
+
+- A04:2025 Cryptographic Failures
   - CWE-261 Weak Encoding for Password
   - CWE-296 Improper Following of a Certificate's Chain of Trust
-  - CWE-310 Cryptographic Issues
   - CWE-319 Cleartext Transmission of Sensitive Information
+  - CWE-320 Key Management Errors (Prohibited)
   - CWE-321 Use of Hard-coded Cryptographic Key
   - CWE-322 Key Exchange without Entity Authentication
   - CWE-323 Reusing a Nonce, Key Pair in Encryption
@@ -55,140 +86,129 @@ The following is a list of the OWASP Top and the associated CWEs for each vulner
   - CWE-329 Not Using a Random IV with CBC Mode
   - CWE-330 Use of Insufficiently Random Values
   - CWE-331 Insufficient Entropy
-  - CWE-335 Incorrect Usage of Seeds in Pseudo-Random Number Generator (PRNG)
+  - CWE-332 Insufficient Entropy in PRNG
+  - CWE-334 Small Space of Random Values
+  - CWE-335 Incorrect Usage of Seeds in Pseudo-Random Number Generator(PRNG)
   - CWE-336 Same Seed in Pseudo-Random Number Generator (PRNG)
   - CWE-337 Predictable Seed in Pseudo-Random Number Generator (PRNG)
-  - CWE-338 Use of Cryptographically Weak Pseudo-Random Number Generator (PRNG)
+  - CWE-338 Use of Cryptographically Weak Pseudo-Random Number Generator(PRNG)
   - CWE-340 Generation of Predictable Numbers or Identifiers
+  - CWE-342 Predictable Exact Value from Previous Values
   - CWE-347 Improper Verification of Cryptographic Signature
   - CWE-523 Unprotected Transport of Credentials
-  - CWE-720 OWASP Top Ten 2007 Category A9 - Insecure Communications
-  - CWE-757 Selection of Less-Secure Algorithm During Negotiation ('Algorithm Downgrade')
+  - CWE-757 Selection of Less-Secure Algorithm During Negotiation('Algorithm Downgrade')
   - CWE-759 Use of a One-Way Hash without a Salt
   - CWE-760 Use of a One-Way Hash with a Predictable Salt
   - CWE-780 Use of RSA Algorithm without OAEP
-  - CWE-818 Insufficient Transport Layer Protection
   - CWE-916 Use of Password Hash With Insufficient Computational Effort
+  - CWE-1240 Use of a Cryptographic Primitive with a Risky Implementation
+  - CWE-1241 Use of Predictable Algorithm in Random Number Generator
 
-- A03:2021 Injection
-  - CWE-020 Improper Input Validation
-  - CWE-074 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')
-  - CWE-075 Failure to Sanitize Special Elements into a Different Plane (Special Element Injection)
-  - CWE-077 Improper Neutralization of Special Elements used in a Command ('Command Injection')
-  - CWE-078 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')
-  - CWE-079 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
-  - CWE-080 Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)
-  - CWE-083 Improper Neutralization of Script in Attributes in a Web Page
-  - CWE-087 Improper Neutralization of Alternate XSS Syntax
-  - CWE-088 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')
-  - CWE-089 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
-  - CWE-090 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')
-  - CWE-091 XML Injection (aka Blind XPath Injection)
-  - CWE-093 Improper Neutralization of CRLF Sequences ('CRLF Injection')
-  - CWE-094 Improper Control of Generation of Code ('Code Injection')
-  - CWE-095 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')
-  - CWE-096 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')
-  - CWE-097 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page
-  - CWE-098 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')
-  - CWE-099 Improper Control of Resource Identifiers ('Resource Injection')
-  - CWE-100 Deprecated: Was catch-all for input validation issues
+- A05:2025 Injection
+  - CWE-20 Improper Input Validation
+  - CWE-74 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')
+  - CWE-76 Improper Neutralization of Equivalent Special Elements
+  - CWE-77 Improper Neutralization of Special Elements used in a Command ('Command Injection')
+  - CWE-78 Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')
+  - CWE-79 Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')
+  - CWE-80 Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)
+  - CWE-83 Improper Neutralization of Script in Attributes in a Web Page
+  - CWE-86 Improper Neutralization of Invalid Characters in Identifiers in Web Pages
+  - CWE-88 Improper Neutralization of Argument Delimiters in a Command ('Argument Injection')
+  - CWE-89 Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')
+  - CWE-90 Improper Neutralization of Special Elements used in an LDAP Query ('LDAP Injection')
+  - CWE-91 XML Injection (aka Blind XPath Injection)
+  - CWE-93 Improper Neutralization of CRLF Sequences ('CRLF Injection')
+  - CWE-94 Improper Control of Generation of Code ('Code Injection')
+  - CWE-95 Improper Neutralization of Directives in Dynamically Evaluated Code ('Eval Injection')
+  - CWE-96 Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')
+  - CWE-97 Improper Neutralization of Server-Side Includes (SSI) Within a Web Page
+  - CWE-98 Improper Control of Filename for Include/Require Statement in PHP Program ('PHP Remote File Inclusion')
+  - CWE-99 Improper Control of Resource Identifiers ('Resource Injection')
+  - CWE-103 Struts: Incomplete validate() Method Definition
+  - CWE-104 Struts: Form Bean Does Not Extend Validation Class
+  - CWE-112 Missing XML Validation
   - CWE-113 Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Response Splitting')
+  - CWE-114 Process Control
+  - CWE-115 Misinterpretation of Output
   - CWE-116 Improper Encoding or Escaping of Output
-  - CWE-138 Improper Neutralization of Special Elements
-  - CWE-184 Incomplete List of Disallowed Inputs
+  - CWE-129 Improper Validation of Array Index
+  - CWE-159 Improper Handling of Invalid Use of Special Elements
   - CWE-470 Use of Externally-Controlled Input to Select Classes or Code ('Unsafe Reflection')
-  - CWE-471 Modification of Assumed-Immutable Data (MAID)
+  - CWE-493 Critical Public Variable Without Final Modifier
+  - CWE-500 Public Static Field Not Marked Final
   - CWE-564 SQL Injection: Hibernate
   - CWE-610 Externally Controlled Reference to a Resource in Another Sphere
   - CWE-643 Improper Neutralization of Data within XPath Expressions ('XPath Injection')
   - CWE-644 Improper Neutralization of HTTP Headers for Scripting Syntax
-  - CWE-652 Improper Neutralization of Data within XQuery Expressions ('XQuery Injection')
   - CWE-917 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')
 
-- A04:2021 Insecure Design
-  - CWE-073 External Control of File Name or Path
+- A06:2025 Insecure Design
+  - CWE-73 External Control of File Name or Path
   - CWE-183 Permissive List of Allowed Inputs
-  - CWE-209 Generation of Error Message Containing Sensitive Information
-  - CWE-213 Exposure of Sensitive Information Due to Incompatible Policies
-  - CWE-235 Improper Handling of Extra Parameters
   - CWE-256 Unprotected Storage of Credentials
-  - CWE-257 Storing Passwords in a Recoverable Format
   - CWE-266 Incorrect Privilege Assignment
   - CWE-269 Improper Privilege Management
-  - CWE-280 Improper Handling of Insufficient Permissions or Privileges
+  - CWE-286 Incorrect User Management
   - CWE-311 Missing Encryption of Sensitive Data
   - CWE-312 Cleartext Storage of Sensitive Information
   - CWE-313 Cleartext Storage in a File or on Disk
   - CWE-316 Cleartext Storage of Sensitive Information in Memory
+  - CWE-362 Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')
+  - CWE-382 J2EE Bad Practices: Use of System.exit()
   - CWE-419 Unprotected Primary Channel
-  - CWE-430 Deployment of Wrong Handler
   - CWE-434 Unrestricted Upload of File with Dangerous Type
+  - CWE-436 Interpretation Conflict
   - CWE-444 Inconsistent Interpretation of HTTP Requests ('HTTP Request Smuggling')
   - CWE-451 User Interface (UI) Misrepresentation of Critical Information
+  - CWE-454 External Initialization of Trusted Variables or Data Stores
   - CWE-472 External Control of Assumed-Immutable Web Parameter
   - CWE-501 Trust Boundary Violation
   - CWE-522 Insufficiently Protected Credentials
   - CWE-525 Use of Web Browser Cache Containing Sensitive Information
   - CWE-539 Use of Persistent Cookies Containing Sensitive Information
-  - CWE-579 J2EE Bad Practices: Non-serializable Object Stored in Session
   - CWE-598 Use of GET Request Method With Sensitive Query Strings
   - CWE-602 Client-Side Enforcement of Server-Side Security
+  - CWE-628 Function Call with Incorrectly Specified Arguments
   - CWE-642 External Control of Critical State Data
   - CWE-646 Reliance on File Name or Extension of Externally-Supplied File
-  - CWE-650 Trusting HTTP Permission Methods on the Server Side
   - CWE-653 Insufficient Compartmentalization
   - CWE-656 Reliance on Security Through Obscurity
   - CWE-657 Violation of Secure Design Principles
+  - CWE-676 Use of Potentially Dangerous Function
+  - CWE-693 Protection Mechanism Failure
   - CWE-799 Improper Control of Interaction Frequency
   - CWE-807 Reliance on Untrusted Inputs in a Security Decision
-  - CWE-840 Business Logic Errors
   - CWE-841 Improper Enforcement of Behavioral Workflow
-  - CWE-927 Use of Implicit Intent for Sensitive Communication
   - CWE-1021 Improper Restriction of Rendered UI Layers or Frames
-  - CWE-1173 Improper Use of Validation Framework
+  - CWE-1022 Use of Web Link to Untrusted Target with window.opener Access
+  - CWE-1125 Excessive Attack Surface
 
-- A05:2021 Security Misconfiguration
-  - CWE-002 7PK - Environment
-  - CWE-011 ASP.NET Misconfiguration: Creating Debug Binary
-  - CWE-013 ASP.NET Misconfiguration: Password in Configuration File
-  - CWE-015 External Control of System or Configuration Setting
-  - CWE-016 Configuration
-  - CWE-260 Password in Configuration File
-  - CWE-315 Cleartext Storage of Sensitive Information in a Cookie
-  - CWE-520 .NET Misconfiguration: Use of Impersonation
-  - CWE-526 Exposure of Sensitive Information Through Environmental Variables
-  - CWE-537 Java Runtime Error Message Containing Sensitive Information
-  - CWE-541 Inclusion of Sensitive Information in an Include File
-  - CWE-547 Use of Hard-coded, Security-relevant Constants
-  - CWE-611 Improper Restriction of XML External Entity Reference
-  - CWE-614 Sensitive Cookie in HTTPS Session Without 'Secure' Attribute
-  - CWE-756 Missing Custom Error Page
-  - CWE-776 Improper Restriction of Recursive Entity References in DTDs ('XML Entity Expansion')
-  - CWE-942 Permissive Cross-domain Policy with Untrusted Domains
-  - CWE-1004 Sensitive Cookie Without 'HttpOnly' Flag
-  - CWE-1032 OWASP Top Ten 2017 Category A6 - Security Misconfiguration
-  - CWE-1174 ASP.NET Misconfiguration: Improper Model Validation
-
-- A06:2021 Vulnerable and Outdated Components
-  - CWE-937 OWASP Top 10 2013: Using Components with Known Vulnerabilities
-  - CWE-1035 2017 Top 10 A9: Using Components with Known Vulnerabilities
-  - CWE-1104 Use of Unmaintained Third Party Components
-
-- A07:2021 Identification and Authentication Failures
-  - CWE-255 Credentials Management Errors
+- A07:2025 Authentication Failures
+  - CWE-258 Empty Password in Configuration File
   - CWE-259 Use of Hard-coded Password
   - CWE-287 Improper Authentication
   - CWE-288 Authentication Bypass Using an Alternate Path or Channel
+  - CWE-289 Authentication Bypass by Alternate Name
   - CWE-290 Authentication Bypass by Spoofing
+  - CWE-291 Reliance on IP Address for Authentication
+  - CWE-293 Using Referer Field for Authentication
   - CWE-294 Authentication Bypass by Capture-replay
   - CWE-295 Improper Certificate Validation
   - CWE-297 Improper Validation of Certificate with Host Mismatch
+  - CWE-298 Improper Validation of Certificate with Host Mismatch
+  - CWE-299 Improper Validation of Certificate with Host Mismatch
   - CWE-300 Channel Accessible by Non-Endpoint
   - CWE-302 Authentication Bypass by Assumed-Immutable Data
+  - CWE-303 Incorrect Implementation of Authentication Algorithm
   - CWE-304 Missing Critical Step in Authentication
+  - CWE-305 Authentication Bypass by Primary Weakness
   - CWE-306 Missing Authentication for Critical Function
   - CWE-307 Improper Restriction of Excessive Authentication Attempts
+  - CWE-308 Use of Single-factor Authentication
+  - CWE-309 Use of Password System for Primary Authentication
   - CWE-346 Origin Validation Error
+  - CWE-350 Reliance on Reverse DNS Resolution for a Security-Critical Action
   - CWE-384 Session Fixation
   - CWE-521 Weak Password Requirements
   - CWE-613 Insufficient Session Expiration
@@ -196,31 +216,63 @@ The following is a list of the OWASP Top and the associated CWEs for each vulner
   - CWE-640 Weak Password Recovery Mechanism for Forgotten Password
   - CWE-798 Use of Hard-coded Credentials
   - CWE-940 Improper Verification of Source of a Communication Channel
-  - CWE-1216 Lockout Mechanism Errors
+  - CWE-941 Incorrectly Specified Destination in a Communication Channel
+  - CWE-1390 Weak Authentication
+  - CWE-1391 Use of Weak Credentials
+  - CWE-1392 Use of Default Credentials
+  - CWE-1393 Use of Default Password
 
-- A08:2021 Software and Data Integrity Failures
+- A08:2025 Software or Data Integrity Failures
   - CWE-345 Insufficient Verification of Data Authenticity
   - CWE-353 Missing Support for Integrity Check
   - CWE-426 Untrusted Search Path
+  - CWE-427 Uncontrolled Search Path Element
   - CWE-494 Download of Code Without Integrity Check
   - CWE-502 Deserialization of Untrusted Data
+  - CWE-506 Embedded Malicious Code
+  - CWE-509 Replicating Malicious Code (Virus or Worm)
   - CWE-565 Reliance on Cookies without Validation and Integrity Checking
   - CWE-784 Reliance on Cookies without Validation and Integrity Checking in a Security Decision
   - CWE-829 Inclusion of Functionality from Untrusted Control Sphere
   - CWE-830 Inclusion of Web Functionality from an Untrusted Source
   - CWE-915 Improperly Controlled Modification of Dynamically-Determined Object Attributes
+  - CWE-926 Improper Export of Android Application Components
 
-- A09:2021 Security Logging and Monitoring Failures
+- A09:2025 Security Logging and Alerting Failures
   - CWE-117 Improper Output Neutralization for Logs
+  - CWE-221 Information Loss of Omission
   - CWE-223 Omission of Security-relevant Information
   - CWE-532 Insertion of Sensitive Information into Log File
   - CWE-778 Insufficient Logging
 
-- A10:2021 Server-Side Request Forgery (SSRF)
-  - CWE-918 Server-Side Request Forgery (SSRF)
+- A10:2025 Mishandling of Exceptional Conditions
+  - CWE-209 Generation of Error Message Containing Sensitive Information
+  - CWE-215 Insertion of Sensitive Information Into Debugging Code
+  - CWE-234 Failure to Handle Missing Parameter
+  - CWE-235 Improper Handling of Extra Parameters
+  - CWE-248 Uncaught Exception
+  - CWE-252 Unchecked Return Value
+  - CWE-274 Improper Handling of Insufficient Privileges
+  - CWE-280 Improper Handling of Insufficient Permissions or Privileges
+  - CWE-369 Divide By Zero
+  - CWE-390 Detection of Error Condition Without Action
+  - CWE-391 Unchecked Error Condition
+  - CWE-394 Unexpected Status Code or Return Value
+  - CWE-396 Declaration of Catch for Generic Exception
+  - CWE-397 Declaration of Throws for Generic Exception
+  - CWE-460 Improper Cleanup on Thrown Exception
+  - CWE-476 NULL Pointer Dereference
+  - CWE-478 Missing Default Case in Multiple Condition Expression
+  - CWE-484 Omitted Break Statement in Switch
+  - CWE-550 Server-generated Error Message Containing Sensitive Information
+  - CWE-636 Not Failing Securely ('Failing Open')
+  - CWE-703 Improper Check or Handling of Exceptional Conditions
+  - CWE-754 Improper Check for Unusual or Exceptional Conditions
+  - CWE-755 Improper Handling of Exceptional Conditions
+  - CWE-756 Missing Custom Error Page
 
 ---
 
 Raw CWE List:
 
-CWE-022, CWE-023, CWE-035, CWE-059, CWE-200, CWE-201, CWE-219, CWE-264, CWE-275, CWE-276, CWE-284, CWE-285, CWE-352, CWE-359, CWE-377, CWE-402, CWE-425, CWE-441, CWE-497, CWE-538, CWE-540, CWE-548, CWE-552, CWE-566, CWE-601, CWE-639, CWE-651, CWE-668, CWE-706, CWE-862, CWE-863, CWE-913, CWE-922, CWE-1275, CWE-259, CWE-261, CWE-296, CWE-310, CWE-319, CWE-321, CWE-322, CWE-323, CWE-324, CWE-325, CWE-326, CWE-327, CWE-328, CWE-329, CWE-330, CWE-331, CWE-335, CWE-336, CWE-337, CWE-338, CWE-340, CWE-347, CWE-523, CWE-720, CWE-757, CWE-759, CWE-760, CWE-780, CWE-818, CWE-916, CWE-020, CWE-074, CWE-075, CWE-077, CWE-078, CWE-079, CWE-080, CWE-083, CWE-087, CWE-088, CWE-089, CWE-090, CWE-091, CWE-093, CWE-094, CWE-095, CWE-096, CWE-097, CWE-098, CWE-099, CWE-100, CWE-113, CWE-116, CWE-138, CWE-184, CWE-470, CWE-471, CWE-564, CWE-610, CWE-643, CWE-644, CWE-652, CWE-917, CWE-073, CWE-183, CWE-209, CWE-213, CWE-235, CWE-256, CWE-257, CWE-266, CWE-269, CWE-280, CWE-311, CWE-312, CWE-313, CWE-316, CWE-419, CWE-430, CWE-434, CWE-444, CWE-451, CWE-472, CWE-501, CWE-522, CWE-525, CWE-539, CWE-579, CWE-598, CWE-602, CWE-642, CWE-646, CWE-650, CWE-653, CWE-656, CWE-657, CWE-799, CWE-807, CWE-840, CWE-841, CWE-927, CWE-1021, CWE-1173, CWE-002, CWE-011, CWE-013, CWE-015, CWE-016, CWE-260, CWE-315, CWE-520, CWE-526, CWE-537, CWE-541, CWE-547, CWE-611, CWE-614, CWE-756, CWE-776, CWE-942, CWE-1004, CWE-1032, CWE-1174, CWE-937, CWE-1035, CWE-1104, CWE-255, CWE-288, CWE-290, CWE-294, CWE-295, CWE-297, CWE-300, CWE-302, CWE-304, CWE-306, CWE-307, CWE-346, CWE-384, CWE-521, CWE-613, CWE-620, CWE-640, CWE-798, CWE-940, CWE-1216, CWE-345, CWE-353, CWE-426, CWE-494, CWE-502, CWE-565, CWE-784, CWE-829, CWE-830, CWE-915, CWE-117, CWE-223, CWE-532, CWE-778, CWE-918
+CWE-22, CWE-23, CWE-36, CWE-59, CWE-61, CWE-65, CWE-200, CWE-201, CWE-219, CWE-276, CWE-281, CWE-282, CWE-283, CWE-284, CWE-285, CWE-352, CWE-359, CWE-377, CWE-379, CWE-402, CWE-424, CWE-425, CWE-441, CWE-497, CWE-538, CWE-540, CWE-548, CWE-552, CWE-566, CWE-601, CWE-615, CWE-639, CWE-668, CWE-732, CWE-749, CWE-862, CWE-863, CWE-918, CWE-922, CWE-1275, CWE-5, CWE-11, CWE-13, CWE-15, CWE-16, CWE-260, CWE-315, CWE-489, CWE-526, CWE-547, CWE-611, CWE-614, CWE-776, CWE-942, CWE-1004, CWE-1174, CWE-447, CWE-1035, CWE-1104, CWE-1329, CWE-1357, CWE-1395, CWE-261, CWE-296, CWE-319, CWE-320, CWE-321, CWE-322, CWE-323, CWE-324, CWE-325, CWE-326, CWE-327, CWE-328, CWE-329, CWE-330, CWE-331, CWE-332, CWE-334, CWE-335, CWE-336, CWE-337, CWE-338, CWE-340, CWE-342, CWE-347, CWE-523, CWE-757, CWE-759, CWE-760, CWE-780, CWE-916, CWE-1240, CWE-1241, CWE-20, CWE-74, CWE-76, CWE-77, CWE-78, CWE-79, CWE-80, CWE-83, CWE-86, CWE-88, CWE-89, CWE-90, CWE-91, CWE-93, CWE-94, CWE-95, CWE-96, CWE-97, CWE-98, CWE-99, CWE-103, CWE-104, CWE-112, CWE-113, CWE-114, CWE-115, CWE-116, CWE-129, CWE-159, CWE-470, CWE-493, CWE-500, CWE-564, CWE-610, CWE-643, CWE-644, CWE-917, CWE-73, CWE-183, CWE-256, CWE-266, CWE-269, CWE-286, CWE-311, CWE-312, CWE-313, CWE-316, CWE-362, CWE-382, CWE-419, CWE-434, CWE-436, CWE-444, CWE-451, CWE-454, CWE-472, CWE-501, CWE-522, CWE-525, CWE-539, CWE-598, CWE-602, CWE-628, CWE-642, CWE-646, CWE-653, CWE-656, CWE-657, CWE-676, CWE-693, CWE-799, CWE-807, CWE-841, CWE-1021, CWE-1022, CWE-1125, CWE-258, CWE-259, CWE-287, CWE-288, CWE-289, CWE-290, CWE-291, CWE-293, CWE-294, CWE-295, CWE-297, CWE-298, CWE-299, CWE-300, CWE-302, CWE-303, CWE-304, CWE-305, CWE-306, CWE-307, CWE-308, CWE-309, CWE-346, CWE-350, CWE-384, CWE-521, CWE-613, CWE-620, CWE-640, CWE-798, CWE-940, CWE-941, CWE-1390, CWE-1391, CWE-1392, CWE-1393, CWE-345, CWE-353, CWE-426, CWE-427, CWE-494, CWE-502, CWE-506, CWE-509, CWE-565, CWE-784, CWE-829, CWE-830, CWE-915, CWE-926, CWE-117, CWE-221, CWE-223, CWE-532, CWE-778, CWE-209, CWE-215, CWE-234, CWE-235, CWE-248, CWE-252, CWE-274, CWE-280, CWE-369, CWE-390, CWE-391, CWE-394, CWE-396, CWE-397, CWE-460, CWE-476, CWE-478, CWE-484, CWE-550, CWE-636, CWE-703, CWE-754, CWE-755, CWE-756
