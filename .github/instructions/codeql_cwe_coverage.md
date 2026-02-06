@@ -1,4 +1,4 @@
-# CodeQ
+# CodeQL CWE Coverage
 
 | CWE | Language | Query id | Query name |
 | --- | --- | --- | --- |
