@@ -2,82 +2,23 @@ name: Build and Test
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, go-rewrite]
   pull_request:
     branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.11", "3.12"]
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v2
+      - name: Set up Go
+        uses: actions/setup-go@v5
         with:
-          enable-cache: true
-
-      - name: Set up Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
-
-      - name: Install dependencies
-        run: uv sync --dev
-
-      - name: Lint with ruff
-        run: |
-          uv run ruff check src/ tests/
-
-      - name: Format check with black
-        run: |
-          uv run black --check src/ tests/
-
-      - name: Type check with mypy
-        run: |
-          uv run mypy src/ghas_reporting_engine/
-
-      - name: Test with pytest
-        run: |
-          uv run pytest tests/ -v --cov=src/ghas_reporting_engine --cov-report=xml
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          file: ./coverage.xml
-          flags: unittests
-          name: codecov-umbrella
-
-  integration-test:
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v2
-        with:
-          enable-cache: true
-
-      - name: Set up Python
-        run: uv python install 3.11
-
-      - name: Install package
-        run: uv sync
-
-      - name: Test CLI help
-        run: |
-          uv run ghas-report --help
-
-      - name: Test GitHub Action (dry run)
-        uses: ./.github/actions/ghas-reporting
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          organization: "microsoft" # Use a known public org for testing
-          report-types: "owasp"
-          days-back: "7"
-        continue-on-error: true # Allow failure for demo purposes
+          go-version: "1.22"
+      - name: Download modules
+        run: go mod download
+      - name: Run tests
+        run: go test -v ./...

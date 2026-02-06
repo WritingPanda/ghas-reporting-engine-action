@@ -1,6 +1,7 @@
 package reporters
 
 import (
+	"fmt"
 	"html/template"
 	"os"
 	"sort"
@@ -28,14 +29,28 @@ type cweGroup struct {
 
 // WriteHTML renders a simple HTML report using the embedded template.
 func WriteHTML(result analyzer.AnalysisResult, framework string, alerts []models.Alert, metadata map[string]any, path string, templateText string) error {
-	funcMap := template.FuncMap{"upper": strings.ToUpper}
+	funcMap := template.FuncMap{"upper": func(v any) string {
+		return strings.ToUpper(fmt.Sprint(v))
+	}}
 	tpl, err := template.New("report").Funcs(funcMap).Parse(templateText)
 	if err != nil {
 		return err
 	}
 
+	// Build Metadata with the keys the template expects (title-cased).
+	meta := map[string]any{
+		"Framework": metadata["framework"],
+		"Target":    metadata["version"],
+	}
+	// Copy any remaining keys so callers can add extra metadata.
+	for k, v := range metadata {
+		if k != "framework" && k != "version" {
+			meta[k] = v
+		}
+	}
+
 	ctx := map[string]any{
-		"Metadata":        metadata,
+		"Metadata":        meta,
 		"Summary":         result.Summary,
 		"Framework":       result.FrameworkMappings[framework],
 		"CWEAnalysis":     result.CWEAnalysis,
