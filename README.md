@@ -53,7 +53,7 @@ go build -o ghas-report ./cmd/ghas-report
 ## CLI Options
 
 | Flag | Description | Default |
-|------|-------------|---------|
+| ------ | ------------- | --------- |
 | `--token` | GitHub token (env: `GITHUB_TOKEN`) | Required |
 | `--organization` | GitHub organization name | — |
 | `--enterprise` | GitHub enterprise name | — |
